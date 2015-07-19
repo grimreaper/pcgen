@@ -246,6 +246,7 @@ public final class ListKey<T>
 	public static final ListKey<EquipmentModifier> EQMOD = new ListKey<EquipmentModifier>();
 	public static final ListKey<CDOMSingleRef<Race>> APPLIED_RACE = new ListKey<CDOMSingleRef<Race>>();
 	public static final ListKey<EqModRef> EQMOD_INFO = new ListKey<EqModRef>();
+	public static final ListKey<EquipModRef> EQUIPMOD_INFO = new ListKey<EquipModRef>();
 	public static final ListKey<CampaignURL> CAMPAIGN_URL = new ListKey<CampaignURL>();
 	public static final ListKey<Qualifier> FORWARDREF = new ListKey<Qualifier>();
 	public static final ListKey<Campaign> CAMPAIGN = new ListKey<Campaign>();
