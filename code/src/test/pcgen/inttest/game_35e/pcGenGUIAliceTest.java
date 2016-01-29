@@ -1,3 +1,6 @@
+/*
+ * pcGenGUIAliceTest.java
+ */
 package pcgen.inttest.game_35e;
 
 import pcgen.inttest.pcGenGUITestCase;
@@ -45,6 +48,6 @@ public class pcGenGUIAliceTest extends pcGenGUITestCase
 	 */
 	public void testCode() throws Exception
 	{
-		runTest("Alice", "35e");
+		runTest("35e_Alice", "35e");
 	}
 }

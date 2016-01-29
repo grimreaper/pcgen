@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import pcgen.cdom.base.CDOMObject;
 
+@Deprecated
 public final class DisplayUtilities
 {
 	private DisplayUtilities()
@@ -14,13 +15,13 @@ public final class DisplayUtilities
 	/**
 	 * Concatenates the Display Name of given Collection of CDOMObjects into a String
 	 * using the separator as the delimiter.
-	 * 
+	 *
 	 * The items will be joined in the order determined by the ordering of the
 	 * given Collection.
-	 * 
+	 *
 	 * This method is value-semantic. DisplayUtilities will not maintain a
 	 * reference to or modify the given Collection.
-	 * 
+	 *
 	 * @param cdoCollection
 	 *            An Collection of CDOMObjects
 	 * @param separator
@@ -28,6 +29,7 @@ public final class DisplayUtilities
 	 * @return A 'separator' separated String containing the Display Name of the
 	 *         given Collection of CDOMObject objects
 	 */
+	@Deprecated
 	public static String joinDisplayName(
 		Collection<? extends CDOMObject> cdoCollection, String separator)
 	{

@@ -227,13 +227,13 @@ public class QualifyTokenTest extends AbstractGlobalTokenTestCase
 				"Lightning Bolt");
 		secondaryContext.getReferenceContext().constructCDOMObject(Spell.class,
 				"Lightning Bolt");
-		runRoundRobin("FEAT|My Feat", "SPELL|Lightning Bolt");
+		runRoundRobin("ABILITY=FEAT|My Feat", "SPELL|Lightning Bolt");
 	}
 
 	@Override
 	protected String getLegalValue()
 	{
-		return "FEAT|My Feat";
+		return "ABILITY=FEAT|My Feat";
 	}
 
 	@Override

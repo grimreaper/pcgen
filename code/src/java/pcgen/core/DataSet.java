@@ -36,10 +36,12 @@ import java.util.TreeMap;
 import pcgen.cdom.base.Category;
 import pcgen.cdom.base.ChooseInformation;
 import pcgen.cdom.base.Constants;
+import pcgen.cdom.enumeration.IntegerKey;
 import pcgen.cdom.enumeration.ObjectKey;
 import pcgen.cdom.enumeration.StringKey;
 import pcgen.cdom.enumeration.Type;
 import pcgen.core.character.EquipSlot;
+import pcgen.core.prereq.Prerequisite;
 import pcgen.facade.core.AbilityCategoryFacade;
 import pcgen.facade.core.AbilityFacade;
 import pcgen.facade.core.AlignmentFacade;
@@ -62,7 +64,6 @@ import pcgen.facade.util.AbstractMapFacade;
 import pcgen.facade.util.DefaultListFacade;
 import pcgen.facade.util.ListFacade;
 import pcgen.facade.util.MapFacade;
-import pcgen.core.prereq.Prerequisite;
 import pcgen.core.prereq.PrerequisiteOperator;
 import pcgen.rules.context.LoadContext;
 import pcgen.util.enumeration.View;
@@ -232,9 +233,12 @@ public class DataSet implements DataSetFacade
 			}
 		}
 
-		for(Equipment eq : context.getReferenceContext().getConstructedCDOMObjects(Equipment.class))
+		for (Equipment eq : context.getReferenceContext().getConstructedCDOMObjects(Equipment.class))
 		{
-			equipment.addElement(eq);
+			if (eq.getSafe(ObjectKey.VISIBILITY).isVisibleTo(View.VISIBLE_DISPLAY))
+			{
+				equipment.addElement(eq);
+			}
 		}
 		for (String xpTableName : gameMode.getXPTableNames())
 		{
@@ -244,7 +248,8 @@ public class DataSet implements DataSetFacade
 		{
 			characterTypes.addElement(characterType);
 		}
-		for (SizeAdjustment size : context.getReferenceContext().getOrderSortedCDOMObjects(SizeAdjustment.class))
+		for (SizeAdjustment size : context.getReferenceContext().getSortedList(
+			SizeAdjustment.class, IntegerKey.SIZEORDER))
 		{
 			sizes.addElement(size);
 		}

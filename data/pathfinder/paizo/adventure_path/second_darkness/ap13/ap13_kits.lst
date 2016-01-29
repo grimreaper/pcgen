@@ -308,8 +308,8 @@ SKILL:Intimidate	RANK:3
 SKILL:Perception	RANK:3
 ABILITY:CATEGORY=FEAT|Dodge
 ABILITY:CATEGORY=FEAT|Improved Initiative
-ABILITY:CATEGORY=Monk Bonus Feat|Combat Reflexes
-#ABILITY:CATEGORY=Monk Bonus Feat|Stunning Fist
+ABILITY:CATEGORY=Monk Bonus Feat|Monk Bonus Feat ~ Combat Reflexes
+#ABILITY:CATEGORY=Monk Bonus Feat|Monk Bonus Feat ~ Stunning Fist
 GEAR:Amulet of Natural Armor +1	LOCATION:Equipped
 GEAR:Outfit (Monk's)			LOCATION:Equipped
 GEAR:Unarmed Strike			LOCATION:Equipped
@@ -359,7 +359,7 @@ SKILL:Stealth			RANK:4
 SKILL:Survival			RANK:4
 ABILITY:CATEGORY=FEAT|Point-Blank Shot
 ABILITY:CATEGORY=FEAT|Precise Shot
-ABILITY:CATEGORY=Ranger Bonus Feat|Ranger Bonus Feat ~ Rapid Shot
+ABILITY:CATEGORY=Ranger Combat Style Feat|Ranger Combat Style Feat ~ Rapid Shot
 GEAR:Leather						LOCATION:Equipped		EQMOD:PLUS1A
 GEAR:Longbow (Composite)				LOCATION:Both Hands	EQMOD:BOWSTR|+2.PLUS1W
 GEAR:Dagger							LOCATION:Carried
@@ -426,7 +426,7 @@ SKILL:Stealth			RANK:2
 SKILL:Survival			RANK:2
 ABILITY:CATEGORY=FEAT|Skill Focus (Handle Animal)
 ABILITY:CATEGORY=FEAT|Animal Affinity
-ABILITY:CATEGORY=Ranger Bonus Feat|Ranger Bonus Feat ~ Two-Weapon Fighting
+ABILITY:CATEGORY=Ranger Combat Style Feat|Ranger Combat Style Feat ~ Two-Weapon Fighting
 GEAR:Chain Shirt					LOCATION:Equipped		EQMOD:PLUS1A
 GEAR:Battleaxe					LOCATION:Primary Hand	EQMOD:MWORKW
 GEAR:Handaxe					LOCATION:Secondary Hand	EQMOD:MWORKW

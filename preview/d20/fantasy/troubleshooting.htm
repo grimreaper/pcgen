@@ -52,6 +52,7 @@ $Date$
 <b>Total Classes</b> |VAR.COUNT[CLASSES]|<br>
 <b>Face</b> |FACE|<br>
 <b>Reach</b> |REACH|<br>
+<b>Encumbrance Category:</b> |TOTAL.LOAD|<br>
 
 <hr />
 
@@ -217,7 +218,8 @@ Reach: |WEAPON.%weap.REACH| ft.
 |ENDIF|
 <blockquote>
 |IIF(WEAPON.%weap.ISTYPE.Ranged)|
-To Hit: |WEAPON.%weap.BASEHIT.0| = |ATTACK.RANGED.BASE|[BAB] 
+To Hit: |WEAPON.%weap.BASEHIT.0|
+= |ATTACK.RANGED.BASE|[BAB] 
 |IIF(ATTACK.RANGED.STAT:0)|
 |ELSE|
 |ATTACK.RANGED.STAT|[STAT] 
@@ -380,7 +382,7 @@ To Hit:
 |ENDIF|
 <blockquote>
 |FOR,%ability,0,count("ABILITIES","CATEGORY=Special Ability","VISIBILITY=DEFAULT[or]VISIBILITY=OUTPUT_ONLY","NATURE=NORMAL")-1,1,0|
-<b>|ABILITY.Special Ability.VISIBLE.%ability|</b> [<i>|ABILITY.Special Ability.VISIBLE.%ability.SOURCE|</i>]<br>
+<b>|ABILITY.Special Ability.VISIBLE.%ability.KEY|</b> [<i>|ABILITY.Special Ability.VISIBLE.%ability.SOURCE|</i>]<br>
 |ENDFOR|
 </blockquote>
 
@@ -390,7 +392,7 @@ To Hit:
 |ENDIF|
 <blockquote>
 |FOR,%ability,0,count("ABILITIES","CATEGORY=Special Ability","VISIBILITY=DEFAULT[or]VISIBILITY=OUTPUT_ONLY","NATURE=AUTOMATIC")-1,1,0|
-<b>|ABILITYAUTO.Special Ability.VISIBLE.%ability|</b> [<i>|ABILITYAUTO.Special Ability.VISIBLE.%ability.SOURCE|</i>]<br>
+<b>|ABILITYAUTO.Special Ability.VISIBLE.%ability.KEY|</b> [<i>|ABILITYAUTO.Special Ability.VISIBLE.%ability.SOURCE|</i>]<br>
 |ENDFOR|
 </blockquote>
 
@@ -400,7 +402,7 @@ To Hit:
 |ENDIF|
 <blockquote>
 |FOR,%ability,0,count("ABILITIES","CATEGORY=Special Ability","VISIBILITY=DEFAULT[or]VISIBILITY=OUTPUT_ONLY","NATURE=VIRTUAL")-1,1,0|
-<b>|VABILITY.Special Ability.VISIBLE.%ability|</b> [<i>|VABILITY.Special Ability.VISIBLE.%ability.SOURCE|</i>]<br>
+<b>|VABILITY.Special Ability.VISIBLE.%ability.KEY|</b> [<i>|VABILITY.Special Ability.VISIBLE.%ability.SOURCE|</i>]<br>
 |ENDFOR|
 </blockquote>
 
@@ -416,7 +418,7 @@ To Hit:
 |ENDIF|
 <blockquote>
 |FOR,%ability,0,count("ABILITIES","CATEGORY=Special Ability","VISIBILITY=HIDDEN[or]VISIBILITY=DISPLAY_ONLY","NATURE=NORMAL")-1,1,0|
-<b>|ABILITY.Special Ability.HIDDEN.%ability|</b> [<i>|ABILITY.Special Ability.HIDDEN.%ability.SOURCE|</i>]<br>
+<b>|ABILITY.Special Ability.HIDDEN.%ability.KEY|</b> [<i>|ABILITY.Special Ability.HIDDEN.%ability.SOURCE|</i>]<br>
 |ENDFOR|
 </blockquote>
 
@@ -426,7 +428,7 @@ To Hit:
 |ENDIF|
 <blockquote>
 |FOR,%ability,0,count("ABILITIES","CATEGORY=Special Ability","VISIBILITY=HIDDEN[or]VISIBILITY=DISPLAY_ONLY","NATURE=AUTOMATIC")-1,1,0|
-<b>|ABILITYAUTO.Special Ability.HIDDEN.%ability|</b> [<i>|ABILITYAUTO.Special Ability.HIDDEN.%ability.SOURCE|</i>]<br>
+<b>|ABILITYAUTO.Special Ability.HIDDEN.%ability.KEY|</b> [<i>|ABILITYAUTO.Special Ability.HIDDEN.%ability.SOURCE|</i>]<br>
 |ENDFOR|
 </blockquote>
 
@@ -436,7 +438,7 @@ To Hit:
 |ENDIF|
 <blockquote>
 |FOR,%ability,0,count("ABILITIES","CATEGORY=Special Ability","VISIBILITY=HIDDEN[or]VISIBILITY=DISPLAY_ONLY","NATURE=VIRTUAL")-1,1,0|
-<b>|VABILITY.Special Ability.HIDDEN.%ability|</b> [<i>|VABILITY.Special Ability.HIDDEN.%ability.SOURCE|</i>]<br>
+<b>|VABILITY.Special Ability.HIDDEN.%ability.KEY|</b> [<i>|VABILITY.Special Ability.HIDDEN.%ability.SOURCE|</i>]<br>
 |ENDFOR|
 </blockquote>
 
@@ -453,7 +455,7 @@ To Hit:
 |ENDIF|
 <blockquote>
 |FOR,%ability,0,count("ABILITIES","CATEGORY=Internal","VISIBILITY=DEFAULT[or]VISIBILITY=OUTPUT_ONLY","NATURE=NORMAL")-1,1,0|
-<b>|ABILITY.Internal.VISIBLE.%ability|</b> [<i>|ABILITY.Internal.VISIBLE.%ability.SOURCE|</i>]<br>
+<b>|ABILITY.Internal.VISIBLE.%ability.KEY|</b> [<i>|ABILITY.Internal.VISIBLE.%ability.SOURCE|</i>]<br>
 |ENDFOR|
 </blockquote>
 
@@ -463,7 +465,7 @@ To Hit:
 |ENDIF|
 <blockquote>
 |FOR,%ability,0,count("ABILITIES","CATEGORY=Internal","VISIBILITY=DEFAULT[or]VISIBILITY=OUTPUT_ONLY","NATURE=AUTOMATIC")-1,1,0|
-<b>|ABILITYAUTO.Internal.VISIBLE.%ability|</b> [<i>|ABILITYAUTO.Internal.VISIBLE.%ability.SOURCE|</i>]<br>
+<b>|ABILITYAUTO.Internal.VISIBLE.%ability.KEY|</b> [<i>|ABILITYAUTO.Internal.VISIBLE.%ability.SOURCE|</i>]<br>
 |ENDFOR|
 </blockquote>
 
@@ -473,7 +475,7 @@ To Hit:
 |ENDIF|
 <blockquote>
 |FOR,%ability,0,count("ABILITIES","CATEGORY=Internal","VISIBILITY=DEFAULT[or]VISIBILITY=OUTPUT_ONLY","NATURE=VIRTUAL")-1,1,0|
-<b>|VABILITY.Internal.VISIBLE.%ability|</b> [<i>|VABILITY.Internal.VISIBLE.%ability.SOURCE|</i>]<br>
+<b>|VABILITY.Internal.VISIBLE.%ability.KEY|</b> [<i>|VABILITY.Internal.VISIBLE.%ability.SOURCE|</i>]<br>
 |ENDFOR|
 </blockquote>
 
@@ -489,7 +491,7 @@ To Hit:
 |ENDIF|
 <blockquote>
 |FOR,%ability,0,count("ABILITIES","CATEGORY=Internal","VISIBILITY=HIDDEN[or]VISIBILITY=DISPLAY_ONLY","NATURE=NORMAL")-1,1,0|
-<b>|ABILITY.Internal.HIDDEN.%ability|</b> [<i>|ABILITY.Internal.HIDDEN.%ability.SOURCE|</i>]<br>
+<b>|ABILITY.Internal.HIDDEN.%ability.KEY|</b> [<i>|ABILITY.Internal.HIDDEN.%ability.SOURCE|</i>]<br>
 |ENDFOR|
 </blockquote>
 
@@ -499,7 +501,7 @@ To Hit:
 |ENDIF|
 <blockquote>
 |FOR,%ability,0,count("ABILITIES","CATEGORY=Internal","VISIBILITY=HIDDEN[or]VISIBILITY=DISPLAY_ONLY","NATURE=AUTOMATIC")-1,1,0|
-<b>|ABILITYAUTO.Internal.HIDDEN.%ability|</b> [<i>|ABILITYAUTO.Internal.HIDDEN.%ability.SOURCE|</i>]<br>
+<b>|ABILITYAUTO.Internal.HIDDEN.%ability.KEY|</b> [<i>|ABILITYAUTO.Internal.HIDDEN.%ability.SOURCE|</i>]<br>
 |ENDFOR|
 </blockquote>
 
@@ -509,7 +511,7 @@ To Hit:
 |ENDIF|
 <blockquote>
 |FOR,%ability,0,count("ABILITIES","CATEGORY=Internal","VISIBILITY=HIDDEN[or]VISIBILITY=DISPLAY_ONLY","NATURE=VIRTUAL")-1,1,0|
-<b>|VABILITY.Internal.HIDDEN.%ability|</b> [<i>|VABILITY.Internal.HIDDEN.%ability.SOURCE|</i>]<br>
+<b>|VABILITY.Internal.HIDDEN.%ability.KEY|</b> [<i>|VABILITY.Internal.HIDDEN.%ability.SOURCE|</i>]<br>
 |ENDFOR|
 </blockquote>
 
@@ -519,7 +521,7 @@ To Hit:
 |ENDIF|
 <blockquote>
 |FOR,%ability,0,count("ABILITIES","CATEGORY=Skill")-1,1,0|
-<b>|ABILITYALL.Skill.%ability|</b> [<i>|ABILITYALL.Skill.%ability.SOURCE|</i>]<br>
+<b>|ABILITYALL.Skill.%ability.KEY|</b> [<i>|ABILITYALL.Skill.%ability.SOURCE|</i>]<br>
 |ENDFOR|
 </blockquote>
 
@@ -529,7 +531,7 @@ To Hit:
 |ENDIF|
 <blockquote>
 |FOR,%ability,0,count("ABILITIES","CATEGORY=Language")-1,1,0|
-<b>|ABILITYALL.Language.%ability|</b> [<i>|ABILITYALL.Language.%ability.SOURCE|</i>]<br>
+<b>|ABILITYALL.Language.%ability.KEY|</b> [<i>|ABILITYALL.Language.%ability.SOURCE|</i>]<br>
 |ENDFOR|
 </blockquote>
 
@@ -539,7 +541,17 @@ To Hit:
 |ENDIF|
 <blockquote>
 |FOR,%ability,0,count("ABILITIES","CATEGORY=Weapon")-1,1,0|
-<b>|ABILITYALL.Weapon.%ability|</b> [<i>|ABILITYALL.Weapon.%ability.SOURCE|</i>]<br>
+<b>|ABILITYALL.Weapon.%ability.KEY|</b> [<i>|ABILITYALL.Weapon.%ability.SOURCE|</i>]<br>
+|ENDFOR|
+</blockquote>
+
+|IIF(count("ABILITIES";"CATEGORY=Class")==0)|
+|ELSE|
+<b>Class</b>
+|ENDIF|
+<blockquote>
+|FOR,%ability,0,count("ABILITIES","CATEGORY=Class")-1,1,0|
+<b>|ABILITYALL.Class.%ability.KEY|</b> [<i>|ABILITYALL.Class.%ability.SOURCE|</i>]<br>
 |ENDFOR|
 </blockquote>
 
@@ -550,9 +562,23 @@ To Hit:
 |ENDIF|
 <blockquote>
 |FOR,%ability,0,count("ABILITIES","CATEGORY=Natural Attack")-1,1,0|
-<b>|ABILITYALL.Natural Attack.%ability|</b> [<i>|ABILITYALL.Natural Attack.%ability.SOURCE|</i>]<br>
+<b>|ABILITYALL.Natural Attack.%ability.KEY|</b> [<i>|ABILITYALL.Natural Attack.%ability.SOURCE|</i>]<br>
 |ENDFOR|
 </blockquote>
+
+<!-- Domain  -->
+|IIF(count("ABILITIES";"CATEGORY=Domain")==0)|
+|ELSE|
+<b>Domain Abilities </b>
+|ENDIF|
+<blockquote>
+|FOR,%ability,0,count("ABILITIES","CATEGORY=Domain")-1,1,0|
+<b>|ABILITYALL.Domain.%ability.KEY|</b> [<i>|ABILITYALL.Domain.%ability.SOURCE|</i>]<br>
+|ENDFOR|
+</blockquote>
+
+
+
 
 <!-- START Template Table -->
 |%TEMPLATE.0|
@@ -568,7 +594,38 @@ To Hit:
 |%|
 <!-- STOP Template Table -->
 
+<!--   Trouble-shooting stuff   -->
+ 
+<hr />
 
+|IIF(VAR.IF(var("FEATPOINTS")==0;1;0):1)|
+|ELSE|
+<font color="#FF0000" size="+1"><strong>Unspent Feat Points: |FEATPOINTS.INTVAL|</strong></font>
+|ENDIF|
+
+|IIF(VAR.IF(var("SKILLPOINTS.UNUSED")==0;1;0):1)|
+|ELSE|
+<br /><font color="#FF0000" size="+1"><strong>Unspent Skill Points: |SKILLPOINTS.UNUSED.INTVAL|</strong></font>
+|ENDIF|
+
+
+<p>Skill Breakdown</p>
+<p>
+|FOR,%skill,0,${count("SKILLSIT", "VIEW=VISIBLE_EXPORT")-1},1,0|
+|IIF(VAR.IF(var("SKILL.%skill.RANK")==0;1;0):1)|
+|IIF(VAR.IF(var("SKILL.%skill.TOTAL")==0;1;0):1)|
+|ELSE|
+<font color="#FF6600"><b>|SKILL.%skill| |SKILL.%skill.TOTAL.INTVAL.SIGN| =</b> |SKILL.%skill.EXPLAIN_LONG| </font><br />
+|ENDIF|
+|ELSE|
+<b>|SKILL.%skill| |SKILL.%skill.TOTAL.INTVAL.SIGN| =</b> |SKILL.%skill.RANK.INTVAL.SIGN|[RANK] |SKILL.%skill.EXPLAIN_LONG| <br />
+|ENDIF|
+|ENDFOR|
+</p>
+<font size="-2">Created using PCGen |EXPORT.VERSION| on |EXPORT.DATE| </font>
+
+
+<!--   End Trouble-shooting stuff   -->
 <hr />
 
 </body>

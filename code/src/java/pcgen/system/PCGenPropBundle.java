@@ -29,7 +29,11 @@ import java.util.ResourceBundle;
 
 import org.apache.commons.lang.StringUtils;
 
+import pcgen.output.publish.OutputDB;
 import pcgen.util.Logging;
+import freemarker.template.ObjectWrapper;
+import freemarker.template.TemplateModel;
+import freemarker.template.TemplateModelException;
 
 /**
  * This class is used to manage the properties of the PCGen application
@@ -102,6 +106,17 @@ public class PCGenPropBundle
 			Logging.errorPrint("Failed to load autobuild.properties", e);
 			svnProperties = null;
 		}
+		//Safe as d_properties was constructed earlier in this block
+		try
+		{
+			TemplateModel wrappedVersion =
+					ObjectWrapper.DEFAULT_WRAPPER.wrap(getVersionNumber());
+			OutputDB.addGlobalModel("version", wrappedVersion);
+		}
+		catch (TemplateModelException e)
+		{
+			Logging.errorPrint("Failed to load version for FreeMarker", e);
+		}
 	}
 
 	/**
@@ -155,6 +170,17 @@ public class PCGenPropBundle
 	public static String getMailingList()
 	{
 		return getPropValue("MailingList", "http://groups.yahoo.com/group/pcgen");
+	}
+
+	/**
+	 * This method gets the Production Version Series, the major.minor version 
+	 * of the prod release the current version is targeting.
+	 * 
+	 * @return String containing the Production Version Series number
+	 */
+	public static String getProdVersionSeries()
+	{
+		return getPropValue("ProdVersionSeries", null);
 	}
 
 	/**
@@ -253,7 +279,7 @@ public class PCGenPropBundle
 	}
 
 	/**
-	 * Retrieve the date of the the autobuild in which this PCGen instance was 
+	 * Retrieve the date of the autobuild in which this PCGen instance was 
 	 * built.
 	 * @return The build date, or blank if unknown. 
 	 */

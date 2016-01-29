@@ -294,7 +294,7 @@ public final class PrerequisiteUtilities
 
 
 	/**
-	 * This operation deals with matching subKeys against abilities where the the main key
+	 * This operation deals with matching subKeys against abilities where the main key
 	 * has already matched.
 
 	 * The subKey may be prefixed with TYPE(=|.) in which case the Choice string from the
@@ -345,7 +345,8 @@ public final class PrerequisiteUtilities
 			if (countMults && ability.getSafe(ObjectKey.MULTIPLE_ALLOWED))
 			{
 				int select = ability.getSafe(FormulaKey.SELECT).resolve(character, "").intValue();
-				runningTotal = assocs.size() / select;
+				int countMatchingSubKey = countSubkeyMatches(assocs, subKey);
+				runningTotal = countMatchingSubKey / select;
 			}
 			else
 			{
@@ -366,6 +367,19 @@ public final class PrerequisiteUtilities
 		}
 
 		return runningTotal;
+	}
+
+	private static int countSubkeyMatches(List<String> assocs, String subKey)
+	{
+		int numMatches = 0;
+		for (String s : assocs)
+		{
+			if (subKey.equalsIgnoreCase(s))
+			{
+				numMatches++;
+			}
+		}
+		return numMatches;
 	}
 
 	private static boolean hasAssoc(List<String> assocs, String subKey)

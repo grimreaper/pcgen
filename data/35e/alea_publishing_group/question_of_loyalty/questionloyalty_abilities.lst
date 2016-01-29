@@ -6,7 +6,7 @@ SOURCELONG:A Question of Loyalty: A Guidebook to Military Orders	SOURCESHORT:Gui
 ### Solomon Brotherhood Class
 # Feat Name				Type							Visible	Var. Min. Value							Special ABility							Define							Modify VAR																			Allow Follower			Allowed Companions													Class Skill
 # Ability Name			Unique Key								Category of Ability		Type							Var. Min. Value							Define							Description																						Modify VAR																			Class Skill
-Knightly Order			KEY:hiddensolomonbrotherhood					CATEGORY:Special Ability	TYPE:SpecialQuality													DEFINE:BrotherhoodSolomonSecretEnlightenment|0																								BONUS:VAR|BrotherhoodSolomonSecretEnlightenment|var("CL=Monk")	BONUS:VAR|BrotherhoodSolomonSecretEnlightenment|WIS	CSKILL:Concentration|Diplomacy|Knowledge (Arcana)|Knowledge (Arcana)|Profession (Soldier)|Ride
+Knightly Order			KEY:hiddensolomonbrotherhood					CATEGORY:Special Ability	TYPE:SpecialQuality													DEFINE:BrotherhoodSolomonSecretEnlightenment|0																								BONUS:VAR|BrotherhoodSolomonSecretEnlightenment|var("CL=Monk")	BONUS:VAR|BrotherhoodSolomonSecretEnlightenment|WIS	CSKILL:Concentration|Diplomacy|Knowledge (arcana)|Knowledge (arcana)|Profession (Soldier)|Ride
 Enlightenment			KEY:hiddensolomonbrotherhood-4				CATEGORY:Special Ability	TYPE:SpecialQuality
 Knighthood				KEY:hiddensolomonbrotherhood-7				CATEGORY:Special Ability	TYPE:SpecialQuality
 
@@ -40,7 +40,7 @@ Rules of Dawn			KEY:hiddenOrderPerpetDay-2					CATEGORY:Special Ability	TYPE:Spe
 Knighthood				KEY:hiddenOrderPerpetDayLV7					CATEGORY:Special Ability	TYPE:SpecialQuality
 
 ### Radiant Enlightenment ~
-#RadiantEnlightenment		MULT:YES	CHOOSE:FEAT|TYPE.RadiantEnlightenment
+#RadiantEnlightenment		MULT:YES	CHOOSE:ABILITY|FEAT|TYPE.RadiantEnlightenment
 Counter Resistance		KEY:Radiant Enlightenment ~ Counter Resistance		CATEGORY:Special Ability	TYPE:SpecialQuality.RadiantEnlightenment	PREVARGTEQ:OrderPerpetDayRadiantEnlightenment,1
 Radiance				KEY:Radiant Enlightenment ~ Radiance			CATEGORY:Special Ability	TYPE:SpecialQuality.RadiantEnlightenment	PREVARGTEQ:OrderPerpetDayRadiantEnlightenment,2
 Animal Pheromone			KEY:Radiant Enlightenment ~ Animal Pheromone		CATEGORY:Special Ability	TYPE:SpecialQuality.RadiantEnlightenment	PREVARGTEQ:OrderPerpetDayRadiantEnlightenment,3
@@ -66,10 +66,10 @@ One-Weapon (One Mind)		KEY:Combat Enlightenment ~ One-Weapon One Mind		CATEGORY:
 Two-Weapons (One Mind)		KEY:Combat Enlightenment ~ Two-Weapons One Mind		CATEGORY:Special Ability	TYPE:SpecialQuality.TeutonicKnightCombat	PREVARGTEQ:TeutonicCombatEnlightenment,6
 
 ### COMMENT: These were created if the TEMPLATE - LEVEL:x:FEAT doesn't work
-#hiddensolomonbrotherhood-5	CATEGORY:Special Ability	TYPE:SpecialQuality																																								STACK:NO	MULT:YES	CHOOSE:FEAT|Absorb Arcana|Arcane Heresy|Contemplation|Forbidden Arcana|Mind over Body|Reflection|True Insight
-#hiddenStJohn-5(+5)																																													STACK:NO	MULT:YES	CHOOSE:FEAT|Healing Poultices|Healing Components|Healer's Stamina|Prodigal Healer|Healer's Will|Blood of my Brother|Surgeon|Breath of Life
-#hiddenOrderPerpetDay-5(+5)																																												STACK:NO	MULT:YES	CHOOSE:FEAT|Counter Resistance|Radiance|Animal Pheromone|Empty Mind|Blood of the Blessed|Will of the Blessed|Spirit of the Blessed
-#hiddenTeutonicKnight-5		CATEGORY:Special Ability	TYPE:SpecialQuality																																								STACK:NO	MULT:YES	CHOOSE:FEAT|Predator|Quick Feint|Zealous Charge|Firm Grasp|Zealous Haste|Zealous Strike|One-Weapon (One Mind)|Two-Weapons (One Mind)
+#hiddensolomonbrotherhood-5	CATEGORY:Special Ability	TYPE:SpecialQuality																																								STACK:NO	MULT:YES	CHOOSE:ABILITY|FEAT|Absorb Arcana|Arcane Heresy|Contemplation|Forbidden Arcana|Mind over Body|Reflection|True Insight
+#hiddenStJohn-5(+5)																																													STACK:NO	MULT:YES	CHOOSE:ABILITY|FEAT|Healing Poultices|Healing Components|Healer's Stamina|Prodigal Healer|Healer's Will|Blood of my Brother|Surgeon|Breath of Life
+#hiddenOrderPerpetDay-5(+5)																																												STACK:NO	MULT:YES	CHOOSE:ABILITY|FEAT|Counter Resistance|Radiance|Animal Pheromone|Empty Mind|Blood of the Blessed|Will of the Blessed|Spirit of the Blessed
+#hiddenTeutonicKnight-5		CATEGORY:Special Ability	TYPE:SpecialQuality																																								STACK:NO	MULT:YES	CHOOSE:ABILITY|FEAT|Predator|Quick Feint|Zealous Charge|Firm Grasp|Zealous Haste|Zealous Strike|One-Weapon (One Mind)|Two-Weapons (One Mind)
 
 
 # Feat Name			Special ABility							Define				Modify VAR

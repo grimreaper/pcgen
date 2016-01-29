@@ -60,6 +60,7 @@ import pcgen.cdom.enumeration.IntegerKey;
 import pcgen.cdom.enumeration.ListKey;
 import pcgen.cdom.enumeration.Nature;
 import pcgen.cdom.enumeration.ObjectKey;
+import pcgen.cdom.enumeration.PCStringKey;
 import pcgen.cdom.enumeration.SkillFilter;
 import pcgen.cdom.enumeration.StringKey;
 import pcgen.cdom.enumeration.Type;
@@ -436,9 +437,9 @@ public class CharacterFacadeImpl implements CharacterFacade, EquipmentListListen
 		xpTableName = new DefaultReferenceFacade<String>(charDisplay.getXPTableName());
 		hpRef = new DefaultReferenceFacade<Integer>(theCharacter.hitPoints());
 
-		skinColor = new DefaultReferenceFacade<String>(charDisplay.getSkinColor());
-		hairColor = new DefaultReferenceFacade<String>(charDisplay.getHairColor());
-		eyeColor = new DefaultReferenceFacade<String>(charDisplay.getEyeColor());
+		skinColor = new DefaultReferenceFacade<String>(charDisplay.getSafeStringFor(PCStringKey.SKINCOLOR));
+		hairColor = new DefaultReferenceFacade<String>(charDisplay.getSafeStringFor(PCStringKey.HAIRCOLOR));
+		eyeColor = new DefaultReferenceFacade<String>(charDisplay.getSafeStringFor(PCStringKey.EYECOLOR));
 		weightRef = new DefaultReferenceFacade<Integer>();
 		heightRef = new DefaultReferenceFacade<Integer>();
 		refreshHeightWeight();
@@ -2247,13 +2248,15 @@ public class CharacterFacadeImpl implements CharacterFacade, EquipmentListListen
 	@Override
 	public void removeDomain(DomainFacade domain)
 	{
-		domains.removeElement(domain);
-		Domain dom = ((DomainFacadeImpl) domain).getRawObject();
-		DomainApplication.removeDomain(theCharacter, dom);
-		theCharacter.removeDomain(((DomainFacadeImpl) domain).getRawObject());
-		remainingDomains.setReference(theCharacter.getMaxCharacterDomains() - charDisplay.getDomainCount());
-		updateDomainTodo();
-		spellSupportFacade.refreshAvailableKnownSpells();
+		if (domains.removeElement(domain))
+		{
+			Domain dom = ((DomainFacadeImpl) domain).getRawObject();
+			DomainApplication.removeDomain(theCharacter, dom);
+			theCharacter.removeDomain(((DomainFacadeImpl) domain).getRawObject());
+			remainingDomains.setReference(theCharacter.getMaxCharacterDomains() - charDisplay.getDomainCount());
+			updateDomainTodo();
+			spellSupportFacade.refreshAvailableKnownSpells();
+		}
 	}
 
 	/**
@@ -3467,7 +3470,7 @@ public class CharacterFacadeImpl implements CharacterFacade, EquipmentListListen
 	 * @see pcgen.core.facade.CharacterFacade#addPurchasedEquipment(pcgen.core.facade.EquipmentFacade, int)
 	 */
 	@Override
-	public void addPurchasedEquipment(EquipmentFacade equipment, int quantity, boolean customize)
+	public void addPurchasedEquipment(EquipmentFacade equipment, int quantity, boolean customize, boolean free)
 	{
 		if (equipment == null || quantity <= 0)
 		{
@@ -3501,7 +3504,9 @@ public class CharacterFacadeImpl implements CharacterFacade, EquipmentListListen
 		}
 		Equipment updatedItem = theCharacter.getEquipmentNamed(equipItemToAdjust.getName());
 
-		if (!canAfford(equipItemToAdjust, quantity, (GearBuySellScheme) gearBuySellSchemeRef.getReference()))
+		if (!free
+			&& !canAfford(equipItemToAdjust, quantity,
+				(GearBuySellScheme) gearBuySellSchemeRef.getReference()))
 		{
 			delegate.showInfoMessage(Constants.APPLICATION_NAME,
 					LanguageBundle.getFormattedString("in_igBuyInsufficientFunds", quantity, //$NON-NLS-1$
@@ -3536,8 +3541,11 @@ public class CharacterFacadeImpl implements CharacterFacade, EquipmentListListen
 		}
 
 		// Update the PC and equipment
-		double itemCost = calcItemCost(updatedItem, quantity, (GearBuySellScheme) gearBuySellSchemeRef.getReference());
-		theCharacter.adjustGold(itemCost * -1);
+		if (!free)
+		{
+			double itemCost = calcItemCost(updatedItem, quantity, (GearBuySellScheme) gearBuySellSchemeRef.getReference());
+			theCharacter.adjustGold(itemCost * -1);
+		}
 		theCharacter.setCalcEquipmentList();
 		theCharacter.setDirty(true);
 		updateWealthFields();
@@ -3620,7 +3628,7 @@ public class CharacterFacadeImpl implements CharacterFacade, EquipmentListListen
 	 * @see pcgen.core.facade.CharacterFacade#removePurchasedEquipment(pcgen.core.facade.EquipmentFacade, int)
 	 */
 	@Override
-	public void removePurchasedEquipment(EquipmentFacade equipment, int quantity)
+	public void removePurchasedEquipment(EquipmentFacade equipment, int quantity, boolean free)
 	{
 		if (equipment == null || quantity <= 0)
 		{
@@ -3672,9 +3680,13 @@ public class CharacterFacadeImpl implements CharacterFacade, EquipmentListListen
 		}
 
 		// Update the PC and equipment
-		double itemCost = calcItemCost(updatedItem, numRemoved * -1,
-				(GearBuySellScheme) gearBuySellSchemeRef.getReference());
-		theCharacter.adjustGold(itemCost * -1);
+		if (!free)
+		{
+			double itemCost =
+					calcItemCost(updatedItem, numRemoved * -1,
+						(GearBuySellScheme) gearBuySellSchemeRef.getReference());
+			theCharacter.adjustGold(itemCost * -1);
+		}
 		theCharacter.setCalcEquipmentList();
 		theCharacter.setDirty(true);
 		updateWealthFields();
@@ -3707,7 +3719,7 @@ public class CharacterFacadeImpl implements CharacterFacade, EquipmentListListen
 			return;
 		}
 		
-		removePurchasedEquipment(itemToBeDeleted, Integer.MAX_VALUE);
+		removePurchasedEquipment(itemToBeDeleted, Integer.MAX_VALUE, false);
 		Globals.getContext().getReferenceContext().forget(itemToBeDeleted);
 		
 		if (dataSet.getEquipment() instanceof DefaultListFacade<?>)
@@ -4008,6 +4020,21 @@ public class CharacterFacadeImpl implements CharacterFacade, EquipmentListListen
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see pcgen.core.facade.CharacterFacade#isQualifiedFor(pcgen.core.facade.DeityFacade)
+	 */
+	@Override
+	public boolean isQualifiedFor(DeityFacade deityFacade)
+	{
+		if (!(deityFacade instanceof Deity))
+		{
+			return false;
+		}
+		Deity aDeity = (Deity) deityFacade;
+		return PrereqHandler.passesAll(aDeity.getPrerequisiteList(), theCharacter, aDeity)
+				&& theCharacter.isQualified(aDeity);
+	}
+	
 	/* (non-Javadoc)
 	 * @see pcgen.core.facade.CharacterFacade#isQualifiedFor(pcgen.core.facade.DomainFacade)
 	 */

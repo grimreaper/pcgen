@@ -18,7 +18,7 @@ SOURCEWEB:http://paizo.com/store/games/roleplayingGames/p/pathfinderRPG/paizo/pa
 SOURCEDATE:2009-10
 ISOGL:YES
 
-COVER:@/pathfinder/paizo/campaign_setting/book_of_the_damned_volume_1/book_of_the_damned_volume_1.jpg
+#COVER:@/pathfinder/paizo/campaign_setting/book_of_the_damned_volume_1/book_of_the_damned_volume_1.jpg
 LOGO:@/publisher_logos/Paizo_Publishing.png
 URL:WEBSITE|http://www.paizo.com/|Visit Paizo Publishing!
 URL:WEBSITE|http://www.paizo.com/communityuse|Paizo's Community Use Policy.
@@ -45,4 +45,3 @@ LSTEXCLUDE:@/pathfinder/paizo/campaign_setting/book_of_the_damned_volume_1/botd1
 LSTEXCLUDE:@/pathfinder/paizo/campaign_setting/book_of_the_damned_volume_1/botd1_kits_race.lst
 LSTEXCLUDE:@/pathfinder/paizo/campaign_setting/book_of_the_damned_volume_1/botd1_races.lst
 SPELL:pfs_botd1_spells.lst|PRECAMPAIGN:1,Princes of Darkness - Book of the Damned - Volume 1
-

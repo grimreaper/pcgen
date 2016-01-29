@@ -1,6 +1,9 @@
+/*
+ * pcGenGUIQPsiCrystalTest.java
+ */
 package pcgen.inttest.game_35e;
 
-import pcgen.inttest.pcGenGUITestCase;
+import pcgen.inttest.PcgenFtlTestCase;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
@@ -9,7 +12,7 @@ import junit.framework.TestSuite;
  * See the PCG file for details
  */
 @SuppressWarnings("nls")
-public class pcGenGUIQPsiCrystalTest extends pcGenGUITestCase
+public class pcGenGUIQPsiCrystalTest extends PcgenFtlTestCase
 {
 
 	/**
@@ -17,7 +20,7 @@ public class pcGenGUIQPsiCrystalTest extends pcGenGUITestCase
 	 */
 	public pcGenGUIQPsiCrystalTest()
 	{
-		// Empty Constructor
+		super("35e_psicrystal");
 	}
 
 	/**
@@ -45,6 +48,6 @@ public class pcGenGUIQPsiCrystalTest extends pcGenGUITestCase
 	 */
 	public void testQPsiCrystal() throws Exception
 	{
-		runTest("Q-PsiCrystal", "35e");
+		runTest("35e_Q-PsiCrystal", "35e");
 	}
 }

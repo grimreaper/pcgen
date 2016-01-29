@@ -65,7 +65,7 @@ import pcgen.cdom.enumeration.Type;
 import pcgen.cdom.helper.Capacity;
 import pcgen.cdom.inst.EqSizePenalty;
 import pcgen.cdom.inst.EquipmentHead;
-import pcgen.cdom.modifier.ChangeArmorType;
+import pcgen.cdom.processor.ChangeArmorType;
 import pcgen.cdom.reference.CDOMDirectSingleRef;
 import pcgen.cdom.reference.CDOMSingleRef;
 import pcgen.core.analysis.BonusActivation;
@@ -79,13 +79,14 @@ import pcgen.core.bonus.BonusObj;
 import pcgen.core.bonus.BonusUtilities;
 import pcgen.core.character.EquipSlot;
 import pcgen.core.character.WieldCategory;
-import pcgen.facade.core.EquipmentFacade;
 import pcgen.core.prereq.PrereqHandler;
 import pcgen.core.prereq.Prerequisite;
 import pcgen.core.utils.CoreUtility;
 import pcgen.core.utils.MessageType;
 import pcgen.core.utils.ShowMessageDelegate;
+import pcgen.facade.core.EquipmentFacade;
 import pcgen.io.FileAccess;
+import pcgen.rules.context.AbstractReferenceContext;
 import pcgen.util.BigDecimalHelper;
 import pcgen.util.JEPResourceChecker;
 import pcgen.util.Logging;
@@ -681,6 +682,21 @@ public final class Equipment extends PObject implements Serializable,
 	}
 
 	/**
+	 * Gets the keyName attribute of the base item of this Equipment object.
+	 * 
+	 * @return The base item's keyName value
+	 */
+	public String getBaseItemKeyName()
+	{
+		CDOMSingleRef<Equipment> baseItem = get(ObjectKey.BASE_ITEM);
+		if (baseItem == null)
+		{
+			return getKeyName();
+		}
+		return baseItem.resolvesTo().getKeyName();
+	}
+
+	/**
 	 * Gets the cost attribute of the Equipment object
 	 * 
 	 * @param aPC The PC with the Equipment
@@ -1170,6 +1186,17 @@ public final class Equipment extends PObject implements Serializable,
 	 */
 	public String getItemNameFromModifiers()
 	{
+		return getItemNameFromModifiers(getBaseItemName());
+	}
+
+	/**
+	 * Get the item name based off the modifiers
+	 * 
+	 * @param The base name of the object, may instead be the base key if generating a key
+	 * @return item name based off the modifiers
+	 */
+	public String getItemNameFromModifiers(String baseName)
+	{
 
 		CDOMSingleRef<Equipment> baseItem = get(ObjectKey.BASE_ITEM);
 		if (baseItem == null)
@@ -1252,7 +1279,7 @@ public final class Equipment extends PObject implements Serializable,
 		}
 
 		// Add in the base name, less any modifiers
-		final String baseName = getBaseItemName().trim();
+		baseName = baseName.trim();
 		int idx = baseName.indexOf('(');
 		if (idx >= 0)
 		{
@@ -2329,7 +2356,7 @@ public final class Equipment extends PObject implements Serializable,
 	 * Get the weight as a double
 	 * 
 	 * @param aPC The PC that has this Equipment
-	 * @return weight as as double
+	 * @return weight as double
 	 */
 	public double getWeightAsDouble(final PlayerCharacter aPC)
 	{
@@ -3274,33 +3301,6 @@ public final class Equipment extends PObject implements Serializable,
 	 * load a "line" i.e. a String and use its data to populate the attributes
 	 * of this Equipment
 	 * 
-	 * @param aLine The data to parse
-	 */
-	public void load(final String aLine)
-	{
-		load(aLine, "\t", ":");
-	}
-
-	/**
-	 * load a "line" i.e. a String and use its data to populate the attributes
-	 * of this Equipment
-	 * 
-	 * @param aLine
-	 *             The data to parse
-	 * @param sep
-	 *             The item separator used in the data
-	 * @param endPart
-	 *             The separator used between a label and its associated data
-	 */
-	private void load(final String aLine, final String sep, final String endPart)
-	{
-		load(aLine, sep, endPart, null);
-	}
-
-	/**
-	 * load a "line" i.e. a String and use its data to populate the attributes
-	 * of this Equipment
-	 * 
 	 * @param aLine
 	 *             The data to parse
 	 * @param sep  
@@ -3316,7 +3316,7 @@ public final class Equipment extends PObject implements Serializable,
 
 		final StringTokenizer aTok = new StringTokenizer(aLine, sep);
 		final int endPartLen = endPart.length();
-		SizeAdjustment newSize = getSafe(ObjectKey.SIZE).resolvesTo();
+		CDOMSingleRef<SizeAdjustment> size = getSafe(ObjectKey.SIZE);
 		boolean firstSprop = true;
 		
 		while (aTok.hasMoreTokens())
@@ -3334,10 +3334,12 @@ public final class Equipment extends PObject implements Serializable,
 			}
 			else if (aString.startsWith("SIZE" + endPart))
 			{
-				newSize =
-						Globals.getContext().getReferenceContext().silentlyGetConstructedCDOMObject(
-							SizeAdjustment.class, aString
-								.substring(4 + endPartLen));
+				size =
+						Globals
+							.getContext()
+							.getReferenceContext()
+							.getCDOMReference(SizeAdjustment.class,
+								aString.substring(4 + endPartLen));
 			}
 			else if (aString.startsWith("EQMOD" + endPart))
 			{
@@ -3367,7 +3369,27 @@ public final class Equipment extends PObject implements Serializable,
 					.substring(9 + endPartLen)));
 			}
 		}
-		resizeItem(aPC, newSize);
+		put(ObjectKey.CUSTOMSIZE, size);
+	}
+
+	/**
+	 * Sets this Equipment to the size defined in ObjectKey.CUSTOMSIZE. This
+	 * should be done after equipment load but before use of the Equipment.
+	 * 
+	 * Note that this *should not* be done until full data load is complete to
+	 * ensure that there is not a race condition on resolving sizes.
+	 */
+	public void setToCustomSize(PlayerCharacter pc)
+	{
+		CDOMSingleRef<SizeAdjustment> csr = get(ObjectKey.CUSTOMSIZE);
+		if (csr != null)
+		{
+			SizeAdjustment customSize = csr.resolvesTo();
+			if (!getSafe(ObjectKey.SIZE).equals(customSize))
+			{
+				resizeItem(pc, customSize);
+			}
+		}
 	}
 
 	/**
@@ -3494,12 +3516,16 @@ public final class Equipment extends PObject implements Serializable,
 	public String nameItemFromModifiers(final PlayerCharacter pc)
 	{
 
-		final String itemName = getItemNameFromModifiers();
+		final String itemName = getItemNameFromModifiers(getBaseItemName());
 		setDefaultCrit(pc);
 		setName(itemName);
+		String itemKey =
+				getItemNameFromModifiers(getBaseItemKeyName()).replaceAll(
+					"[^A-Za-z0-9/_() +-]", "_");
+		setKeyName(itemKey);
 		remove(StringKey.OUTPUT_NAME);
 
-		return getName();
+		return getKeyName();
 	}
 
 	/**
@@ -3723,7 +3749,7 @@ public final class Equipment extends PObject implements Serializable,
 		setBase();
 
 		final int iOldSize = sizeInt();
-		int iNewSize = SizeUtilities.sizeInt(newSize);
+		int iNewSize = newSize.get(IntegerKey.SIZEORDER);
 
 		if (iNewSize != iOldSize)
 		{
@@ -3801,15 +3827,16 @@ public final class Equipment extends PObject implements Serializable,
 		//
 		if (hasPrerequisites())
 		{
-			int maxIndex =
-					Globals.getContext().getReferenceContext()
-						.getConstructedObjectCount(SizeAdjustment.class);
+			AbstractReferenceContext ref = Globals.getContext().getReferenceContext();
+			int maxIndex = ref.getConstructedObjectCount(SizeAdjustment.class);
 			for (Prerequisite aBonus : getPrerequisiteList())
 			{
 				if ("SIZE".equalsIgnoreCase(aBonus.getKind()))
 				{
-					final int iOldPre =
-							SizeUtilities.sizeInt(aBonus.getOperand());
+					SizeAdjustment sa =
+							ref.silentlyGetConstructedCDOMObject(
+								SizeAdjustment.class, aBonus.getOperand());
+					final int iOldPre = sa.get(IntegerKey.SIZEORDER);
 					iNewSize += (iOldPre - iOldSize);
 
 					if ((iNewSize >= 0) && (iNewSize <= maxIndex))
@@ -3818,9 +3845,10 @@ public final class Equipment extends PObject implements Serializable,
 						// Equipment, since it is returned
 						// by reference from the get above ... thus no need to
 						// perform a set
-						aBonus.setOperand(Globals.getContext().getReferenceContext()
-							.getItemInOrder(SizeAdjustment.class, iNewSize)
-							.getKeyName());
+						SizeAdjustment size =
+								ref.getSortedList(SizeAdjustment.class,
+									IntegerKey.SIZEORDER).get(iNewSize);
+						aBonus.setOperand(size.getKeyName());
 					}
 				}
 			}
@@ -3834,7 +3862,8 @@ public final class Equipment extends PObject implements Serializable,
 	 */
 	public int sizeInt()
 	{
-		return SizeUtilities.sizeInt(getSafe(ObjectKey.SIZE).resolvesTo());
+		SizeAdjustment size = getSafe(ObjectKey.SIZE).resolvesTo();
+		return size.get(IntegerKey.SIZEORDER);
 	}
 
 	/**
@@ -5095,7 +5124,7 @@ public final class Equipment extends PObject implements Serializable,
 					new LinkedHashSet<String>(calculatedTypeList);
 			for (ChangeArmorType cat : eqMod.getSafeListFor(ListKey.ARMORTYPE))
 			{
-				List<String> tempTypeList = cat.applyModifier(newTypeList);
+				List<String> tempTypeList = cat.applyProcessor(newTypeList);
 				LinkedHashSet<String> tempTypeSet =
 						new LinkedHashSet<String>(tempTypeList);
 				boolean noMatch =
@@ -5811,6 +5840,7 @@ public final class Equipment extends PObject implements Serializable,
 				iSize + (int) bonusTo(apc, "EQMWEAPON", "DAMAGESIZE", bPrimary);
 		iMod += (int) bonusTo(apc, "WEAPON", "DAMAGESIZE", bPrimary);
 
+		AbstractReferenceContext ref = Globals.getContext().getReferenceContext();
 		if (iMod < 0)
 		{
 			iMod = 0;
@@ -5818,16 +5848,15 @@ public final class Equipment extends PObject implements Serializable,
 		else
 		{
 			int maxIndex =
-					Globals.getContext().getReferenceContext()
-						.getConstructedObjectCount(SizeAdjustment.class) - 1;
+					ref.getConstructedObjectCount(SizeAdjustment.class) - 1;
 			if (iMod > maxIndex)
 			{
 				iMod = maxIndex;
 			}
 		}
 		SizeAdjustment sa =
-				Globals.getContext().getReferenceContext().getItemInOrder(SizeAdjustment.class,
-					iMod);
+				ref.getSortedList(SizeAdjustment.class, IntegerKey.SIZEORDER)
+					.get(iMod);
 		return adjustDamage(dam, sa);
 	}
 

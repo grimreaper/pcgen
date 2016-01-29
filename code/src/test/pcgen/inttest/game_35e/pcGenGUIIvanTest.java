@@ -1,6 +1,9 @@
+/*
+ * pcGenGUIIvanTest.java
+ */
 package pcgen.inttest.game_35e;
 
-import pcgen.inttest.pcGenGUITestCase;
+import pcgen.inttest.PcgenFtlTestCase;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
@@ -9,7 +12,7 @@ import junit.framework.TestSuite;
  * See the PCG file for details
  */
 @SuppressWarnings("nls")
-public class pcGenGUIIvanTest extends pcGenGUITestCase
+public class pcGenGUIIvanTest extends PcgenFtlTestCase
 {
 
 	/**
@@ -17,7 +20,7 @@ public class pcGenGUIIvanTest extends pcGenGUITestCase
 	 */
 	public pcGenGUIIvanTest()
 	{
-		// Empty Constructor
+		super("35e_ivan");
 	}
 
 	/**
@@ -45,6 +48,6 @@ public class pcGenGUIIvanTest extends pcGenGUITestCase
 	 */
 	public void testCode() throws Exception
 	{
-		runTest("Ivan", "35e");
+		runTest("35e_Ivan", "35e");
 	}
 }

@@ -415,6 +415,7 @@ public class PurchaseInfoTab extends FlippingSplitPane implements CharacterInfoT
 		models.get(CurrencyLabelHandler.class).install();
 		models.get(BuyPopupMenuHandler.class).install();
 		models.get(SellPopupMenuHandler.class).install();
+		models.get(AllowDebtAction.class).install();;
 	}
 
 	@Override
@@ -538,7 +539,7 @@ public class PurchaseInfoTab extends FlippingSplitPane implements CharacterInfoT
 						{
 							equip = character.getEquipmentSizedForCharacter(equip);
 						}
-						character.addPurchasedEquipment(equip, 1, false);
+						character.addPurchasedEquipment(equip, 1, false, false);
 					}
 				}
 				availableTable.refilter();
@@ -584,7 +585,7 @@ public class PurchaseInfoTab extends FlippingSplitPane implements CharacterInfoT
 						{
 							equip = character.getEquipmentSizedForCharacter(equip);
 						}
-						character.addPurchasedEquipment(equip, 1, true);
+						character.addPurchasedEquipment(equip, 1, true, false);
 					}
 				}
 			}
@@ -672,7 +673,7 @@ public class PurchaseInfoTab extends FlippingSplitPane implements CharacterInfoT
 			{
 				for (Object object : data)
 				{
-					character.removePurchasedEquipment((EquipmentFacade) object, 1);
+					character.removePurchasedEquipment((EquipmentFacade) object, 1, false);
 				}
 				availableTable.refilter();
 			}
@@ -878,6 +879,7 @@ public class PurchaseInfoTab extends FlippingSplitPane implements CharacterInfoT
 		private final List<DefaultDataViewColumn> columns
 				= Arrays.asList(new DefaultDataViewColumn("in_igEqModelColCost", Float.class, true), //$NON-NLS-1$
 						new DefaultDataViewColumn("in_igEqModelColWeight", Float.class, true), //$NON-NLS-1$
+						new DefaultDataViewColumn("in_descrip", String.class, false), //$NON-NLS-1$
 						new DefaultDataViewColumn("in_igEqModelColSource", String.class, false)); //$NON-NLS-1$
 		private final CharacterFacade character;
 		private final ListFacade<EquipmentFacade> equipmentList;
@@ -945,6 +947,7 @@ public class PurchaseInfoTab extends FlippingSplitPane implements CharacterInfoT
 		{
 			return Arrays.asList(character.getInfoFactory().getCost(obj),
 					character.getInfoFactory().getWeight(obj),
+					character.getInfoFactory().getDescription(obj),
 					obj.getSource());
 		}
 
@@ -971,7 +974,8 @@ public class PurchaseInfoTab extends FlippingSplitPane implements CharacterInfoT
 		private final List<DefaultDataViewColumn> columns
 				= Arrays.asList(new DefaultDataViewColumn("in_igEqModelColCost", Float.class, true), //$NON-NLS-1$
 						new DefaultDataViewColumn("in_igEqModelColWeight", Float.class, false), //$NON-NLS-1$
-						new DefaultDataViewColumn("in_igEqModelColQty", Integer.class, true)); //$NON-NLS-1$
+						new DefaultDataViewColumn("in_igEqModelColQty", Integer.class, true), //$NON-NLS-1$
+						new DefaultDataViewColumn("in_descrip", String.class, false)); //$NON-NLS-1$
 		private final CharacterFacade character;
 		private final EquipmentListFacade equipmentList;
 
@@ -1009,7 +1013,10 @@ public class PurchaseInfoTab extends FlippingSplitPane implements CharacterInfoT
 		@Override
 		public List<?> getData(EquipmentFacade obj)
 		{
-			return Arrays.asList(character.getInfoFactory().getCost(obj), character.getInfoFactory().getWeight(obj), equipmentList.getQuantity(obj));
+			return Arrays.asList(character.getInfoFactory().getCost(obj), 
+					character.getInfoFactory().getWeight(obj), 
+					equipmentList.getQuantity(obj),
+					character.getInfoFactory().getDescription(obj));
 		}
 
 		@Override
@@ -1313,7 +1320,7 @@ public class PurchaseInfoTab extends FlippingSplitPane implements CharacterInfoT
 			{
 				for (EquipmentFacade equipmentFacade : equipmentArray)
 				{
-					character.removePurchasedEquipment(equipmentFacade, 1);
+					character.removePurchasedEquipment(equipmentFacade, 1, false);
 				}
 			}
 			else if (support.getComponent() == purchasedTable)
@@ -1321,7 +1328,7 @@ public class PurchaseInfoTab extends FlippingSplitPane implements CharacterInfoT
 				for (EquipmentFacade equipmentFacade : equipmentArray)
 				{
 					EquipmentFacade equip = character.getEquipmentSizedForCharacter(equipmentFacade);
-					character.addPurchasedEquipment(equip, 1, false);
+					character.addPurchasedEquipment(equip, 1, false, false);
 				}
 			}
 			availableTable.refilter();
@@ -1445,7 +1452,7 @@ public class PurchaseInfoTab extends FlippingSplitPane implements CharacterInfoT
 					{
 						equip = character.getEquipmentSizedForCharacter(equip);
 					}
-					character.addPurchasedEquipment(equip, num, false);
+					character.addPurchasedEquipment(equip, num, false, false);
 					availableTable.refilter();
 				}
 			}
@@ -1599,7 +1606,7 @@ public class PurchaseInfoTab extends FlippingSplitPane implements CharacterInfoT
 					{
 						num = character.getPurchasedEquipment().getQuantity(equip);
 					}
-					character.removePurchasedEquipment(equip, num);
+					character.removePurchasedEquipment(equip, num, false);
 				}
 				availableTable.refilter();
 			}
@@ -1677,15 +1684,15 @@ public class PurchaseInfoTab extends FlippingSplitPane implements CharacterInfoT
 		}
 
 		/**
-		 * Action to modify the number of charges on the items.
+		 * Action to move the items between characters.
 		 */
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
 			for (EquipmentFacade item : targets)
 			{
-				character.removePurchasedEquipment(item, 1);
-				destination.addPurchasedEquipment(item, 1, false);
+				character.removePurchasedEquipment(item, 1, true);
+				destination.addPurchasedEquipment(item, 1, false, true);
 			}
 		}
 
@@ -1709,14 +1716,14 @@ public class PurchaseInfoTab extends FlippingSplitPane implements CharacterInfoT
 		}
 
 		/**
-		 * Action to modify the number of charges on the items.
+		 * Action to copy the items to another character.
 		 */
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
 			for (EquipmentFacade item : targets)
 			{
-				destination.addPurchasedEquipment(item, 1, false);
+				destination.addPurchasedEquipment(item, 1, false, true);
 			}
 		}
 

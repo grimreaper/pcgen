@@ -37,5 +37,7 @@ public interface ModelFactory
 	 * @return A TemplateModel produced by this ModelFactory for the given
 	 *         CharID
 	 */
-	public <T extends TemplateModel & Iterable<T>> T generate(CharID id);
+	//TODO This is reckless, as T is not well enforced and can be avoided (see FactModelFactory)
+	//TODO The usage in PREFACT/PREFACTSET is also reckless
+	public <T extends TemplateModel & Iterable<?>> T generate(CharID id);
 }

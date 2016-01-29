@@ -17,21 +17,30 @@
  */
 package pcgen.rules.context;
 
+import java.lang.ref.WeakReference;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
+import pcgen.base.util.DoubleKeyMap;
+import pcgen.base.util.FormatManager;
+import pcgen.base.util.FormatManagerLibrary;
 import pcgen.cdom.base.CDOMObject;
-import pcgen.cdom.base.CategorizedCDOMObject;
+import pcgen.cdom.base.Categorized;
 import pcgen.cdom.base.CategorizedClassIdentity;
 import pcgen.cdom.base.Category;
 import pcgen.cdom.base.ClassIdentity;
 import pcgen.cdom.base.Loadable;
 import pcgen.cdom.enumeration.FactKey;
+import pcgen.cdom.enumeration.IntegerKey;
 import pcgen.cdom.enumeration.ListKey;
 import pcgen.cdom.enumeration.ObjectKey;
 import pcgen.cdom.enumeration.SubClassCategory;
@@ -45,19 +54,26 @@ import pcgen.cdom.reference.CDOMSingleRef;
 import pcgen.cdom.reference.ManufacturableFactory;
 import pcgen.cdom.reference.ReferenceManufacturer;
 import pcgen.cdom.reference.UnconstructedValidator;
+import pcgen.cdom.util.IntegerKeyComparator;
 import pcgen.core.Domain;
+import pcgen.core.Globals;
 import pcgen.core.PCClass;
 import pcgen.core.SubClass;
 import pcgen.util.Logging;
+import pcgen.util.StringPClassUtil;
 
 public abstract class AbstractReferenceContext
 {
 
-	private static final Class<CategorizedCDOMObject> CATEGORIZED_CDOM_OBJECT_CLASS = CategorizedCDOMObject.class;
+	@SuppressWarnings("rawtypes")
+	private static final Class<Categorized> CATEGORIZED_CLASS = Categorized.class;
 	private static final Class<DomainSpellList> DOMAINSPELLLIST_CLASS = DomainSpellList.class;
 	private static final Class<ClassSkillList> CLASSSKILLLIST_CLASS = ClassSkillList.class;
 	private static final Class<ClassSpellList> CLASSSPELLLIST_CLASS = ClassSpellList.class;
 	private static final Class<SubClass> SUBCLASS_CLASS = SubClass.class;
+
+	private DoubleKeyMap<Class<?>, Object, WeakReference<List<?>>> sortedMap =
+			new DoubleKeyMap<Class<?>, Object, WeakReference<List<?>>>();
 
 	private final Map<CDOMObject, CDOMSingleRef<?>> directRefCache = new HashMap<CDOMObject, CDOMSingleRef<?>>();
 
@@ -70,7 +86,7 @@ public abstract class AbstractReferenceContext
 	
 	public abstract <T extends Loadable> boolean hasManufacturer(Class<T> cl);
 	
-	protected abstract <T extends CDOMObject & CategorizedCDOMObject<T>> boolean hasManufacturer(
+	protected abstract <T extends Categorized<T>> boolean hasManufacturer(
 		Class<T> cl, Category<T> cat);
 	
 	/**
@@ -97,8 +113,8 @@ public abstract class AbstractReferenceContext
 		return getManufacturer(c).getAllReference();
 	}
 
-	public <T extends CDOMObject & CategorizedCDOMObject<T>> CDOMGroupRef<T> getCDOMAllReference(
-			Class<T> c, Category<T> cat)
+	public <T extends Categorized<T>> CDOMGroupRef<T> getCDOMAllReference(
+		Class<T> c, Category<T> cat)
 	{
 		return getManufacturer(c, cat).getAllReference();
 	}
@@ -109,7 +125,7 @@ public abstract class AbstractReferenceContext
 		return getManufacturer(c).getTypeReference(val);
 	}
 
-	public <T extends CDOMObject & CategorizedCDOMObject<T>> CDOMGroupRef<T> getCDOMTypeReference(
+	public <T extends Categorized<T>> CDOMGroupRef<T> getCDOMTypeReference(
 			Class<T> c, Category<T> cat, String... val)
 	{
 		return getManufacturer(c, cat).getTypeReference(val);
@@ -118,7 +134,7 @@ public abstract class AbstractReferenceContext
 	public <T extends Loadable> T constructCDOMObject(Class<T> c, String val)
 	{
 		T obj;
-		if (CATEGORIZED_CDOM_OBJECT_CLASS.isAssignableFrom(c))
+		if (CATEGORIZED_CLASS.isAssignableFrom(c))
 		{
 			Class cl = c;
 			obj = (T) getManufacturer(cl, (Category) null).constructObject(val);
@@ -140,28 +156,18 @@ public abstract class AbstractReferenceContext
 	public <T extends Loadable> CDOMSingleRef<T> getCDOMReference(Class<T> c,
 			String val)
 	{
-		/*
-		 * Keeping this generic (not inlined as the other methods in this class)
-		 * is required by bugs in Sun's Java 5 compiler.
-		 */
-		ReferenceManufacturer manufacturer = getManufacturer(c);
-		return manufacturer.getReference(val);
+		return getManufacturer(c).getReference(val);
 	}
 
-	public <T extends CDOMObject & CategorizedCDOMObject<T>> CDOMSingleRef<T> getCDOMReference(
+	public <T extends Categorized<T>> CDOMSingleRef<T> getCDOMReference(
 			Class<T> c, Category<T> cat, String val)
 	{
-		/*
-		 * Keeping this generic (not inlined as the other methods in this class)
-		 * is required by bugs in Sun's Java 5 compiler.
-		 */
-		ReferenceManufacturer manufacturer = getManufacturer(c, cat);
-		return manufacturer.getReference(val);
+		return getManufacturer(c, cat).getReference(val);
 	}
 
 	public <T extends Loadable> void reassociateKey(String key, T obj)
 	{
-		if (CATEGORIZED_CDOM_OBJECT_CLASS.isAssignableFrom(obj.getClass()))
+		if (CATEGORIZED_CLASS.isAssignableFrom(obj.getClass()))
 		{
 			Class cl = obj.getClass();
 			reassociateCategorizedKey(key, obj, cl);
@@ -172,7 +178,7 @@ public abstract class AbstractReferenceContext
 		}
 	}
 
-	private <T extends Loadable & CategorizedCDOMObject<T>> void reassociateCategorizedKey(
+	private <T extends Categorized<T>> void reassociateCategorizedKey(
 			String key, Loadable orig, Class<T> cl)
 	{
 		T obj = (T) orig;
@@ -185,14 +191,14 @@ public abstract class AbstractReferenceContext
 		return getManufacturer(c).getActiveObject(val);
 	}
 
-	public <T extends CDOMObject & CategorizedCDOMObject<T>> T silentlyGetConstructedCDOMObject(
-			Class<T> c, Category<T> cat, String val)
+	public <T extends Categorized<T>> T silentlyGetConstructedCDOMObject(
+		Class<T> c, Category<T> cat, String val)
 	{
 		return getManufacturer(c, cat).getActiveObject(val);
 	}
 
-	public <T extends CDOMObject & CategorizedCDOMObject<T>> void reassociateCategory(
-			Category<T> cat, T obj)
+	public <T extends Categorized<T>> void reassociateCategory(Category<T> cat,
+		T obj)
 	{
 		Category<T> oldCat = obj.getCDOMCategory();
 		if (oldCat == null && cat == null || oldCat != null
@@ -201,10 +207,16 @@ public abstract class AbstractReferenceContext
 			Logging.errorPrint("Worthless Category change encountered: "
 					+ obj.getDisplayName() + " " + oldCat);
 		}
-		reassociateCategory((Class<T>) obj.getClass(), obj, oldCat, cat);
+		reassociateCategory(getGenericClass(obj), obj, oldCat, cat);
 	}
 
-	private <T extends CDOMObject & CategorizedCDOMObject<T>> void reassociateCategory(
+	@SuppressWarnings("unchecked")
+	protected <T> Class<T> getGenericClass(T obj)
+	{
+		return (Class<T>) obj.getClass();
+	}
+
+	private <T extends Categorized<T>> void reassociateCategory(
 			Class<T> cl, T obj, Category<T> oldCat, Category<T> cat)
 	{
 		getManufacturer(cl, oldCat).forgetObject(obj);
@@ -214,7 +226,7 @@ public abstract class AbstractReferenceContext
 
 	public <T extends Loadable> void importObject(T orig)
 	{
-		if (CATEGORIZED_CDOM_OBJECT_CLASS.isAssignableFrom(orig.getClass()))
+		if (CATEGORIZED_CLASS.isAssignableFrom(orig.getClass()))
 		{
 			Class cl = orig.getClass();
 			importCategorized(orig, cl);
@@ -226,8 +238,8 @@ public abstract class AbstractReferenceContext
 		}
 	}
 
-	private <T extends Loadable & CategorizedCDOMObject<T>> void importCategorized(
-			Loadable orig, Class<T> cl)
+	private <T extends Categorized<T>> void importCategorized(Loadable orig,
+		Class<T> cl)
 	{
 		T obj = (T) orig;
 		getManufacturer(cl, obj.getCDOMCategory()).addObject(obj,
@@ -236,10 +248,10 @@ public abstract class AbstractReferenceContext
 
 	public <T extends Loadable> boolean forget(T obj)
 	{
-		if (CATEGORIZED_CDOM_OBJECT_CLASS.isAssignableFrom(obj.getClass()))
+		if (CATEGORIZED_CLASS.isAssignableFrom(obj.getClass()))
 		{
 			Class cl = obj.getClass();
-			CategorizedCDOMObject cdo = (CategorizedCDOMObject) obj;
+			Categorized cdo = (Categorized) obj;
 			if (hasManufacturer(cl, cdo.getCDOMCategory()))
 			{
                 // Work around a bug in the Eclipse 3.7.0/1 compiler by explicitly extracting a Category<?>
@@ -270,7 +282,7 @@ public abstract class AbstractReferenceContext
 		// }
 	}
 
-	public <T extends CDOMObject> List<T> getOrderSortedCDOMObjects(Class<T> c)
+	public <T extends Loadable> List<T> getOrderSortedCDOMObjects(Class<T> c)
 	{
 		return getManufacturer(c).getOrderSortedObjects();
 	}
@@ -333,7 +345,7 @@ public abstract class AbstractReferenceContext
 			if (pcc.containsListFor(ListKey.SUB_CLASS))
 			{
 				SubClassCategory cat = SubClassCategory.getConstant(key);
-				boolean needSelf = pcc.getSafe(ObjectKey.ALLOWBASECLASS);
+				boolean needSelf = pcc.getSafe(ObjectKey.ALLOWBASECLASS).booleanValue();
 				for (SubClass subcl : pcc.getListFor(ListKey.SUB_CLASS))
 				{
 					String subKey = subcl.getKeyName();
@@ -379,12 +391,13 @@ public abstract class AbstractReferenceContext
 
 	public <T extends CDOMObject> CDOMSingleRef<T> getCDOMDirectReference(T obj)
 	{
-		CDOMSingleRef<?> ref = directRefCache.get(obj);
+		@SuppressWarnings("unchecked")
+		CDOMSingleRef<T> ref = (CDOMSingleRef<T>) directRefCache.get(obj);
 		if (ref == null)
 		{
 			ref = new CDOMDirectSingleRef<T>(obj);
 		}
-		return (CDOMSingleRef<T>) ref;
+		return ref;
 	}
 
 	URI getExtractURI()
@@ -455,7 +468,7 @@ public abstract class AbstractReferenceContext
 			ClassIdentity<T> identity)
 	{
 		Class cl = identity.getChoiceClass();
-		if (CategorizedCDOMObject.class.isAssignableFrom(cl))
+		if (Categorized.class.isAssignableFrom(cl))
 		{
 			//Do categorized.
 			Category category = ((CategorizedClassIdentity) identity).getCategory();
@@ -467,17 +480,78 @@ public abstract class AbstractReferenceContext
 		}
 	}
 
-	public abstract <T extends Loadable & CategorizedCDOMObject<T>> ReferenceManufacturer<T> getManufacturer(
+	public <T extends CDOMObject> List<T> getSortedList(Class<T> cl,
+		IntegerKey key)
+	{
+		List<T> returnList;
+		WeakReference<List<?>> wr = sortedMap.get(cl, key);
+		if ((wr == null) || ((returnList = (List<T>) wr.get()) == null))
+		{
+			returnList = generateList(cl, new IntegerKeyComparator(key));
+			sortedMap.put(cl, key, new WeakReference<List<?>>(returnList));
+		}
+		return Collections.unmodifiableList(returnList);
+	}
+
+	public <T extends CDOMObject> List<T> getSortOrderedList(Class<T> cl)
+	{
+		List<T> returnList;
+		Comparator<CDOMObject> comp = Globals.pObjectNameComp;
+		//We arbitrarily use the sort order comparator as the second key
+		WeakReference<List<?>> wr = sortedMap.get(cl, comp);
+		if ((wr == null) || ((returnList = (List<T>) wr.get()) == null))
+		{
+			returnList = generateList(cl, comp);
+			sortedMap.put(cl, comp, new WeakReference<List<?>>(returnList));
+		}
+		return Collections.unmodifiableList(returnList);
+	}
+
+	private <T extends CDOMObject> List<T> generateList(Class<T> cl,
+		Comparator<? super T> comp)
+	{
+		Set<T> tm = new TreeSet<T>(comp);
+		tm.addAll(getConstructedCDOMObjects(cl));
+		return new ArrayList<>(tm);
+	}
+
+	public abstract <T extends Categorized<T>> ReferenceManufacturer<T> getManufacturer(
 		Class<T> cl, Category<T> cat);
 
 	public abstract <T extends Loadable> ReferenceManufacturer<T> getManufacturer(
 		ManufacturableFactory<T> factory);
 
-	public abstract <T extends Loadable & CategorizedCDOMObject<T>> ReferenceManufacturer<T> getManufacturer(
+	public abstract <T extends Categorized<T>> ReferenceManufacturer<T> getManufacturer(
 		Class<T> cl, Class<? extends Category<T>> catClass, String category);
 
 	abstract <T extends CDOMObject> T performCopy(T object, String copyName);
 
 	public abstract <T extends CDOMObject> T performMod(T obj);
 
+	public <T> FormatManager<T> getFormatManager(Class<T> cl)
+	{
+		if (Categorized.class.isAssignableFrom(cl))
+		{
+			throw new IllegalArgumentException(
+				"Cannot support Categorized items");
+		}
+		else if (Loadable.class.isAssignableFrom(cl))
+		{
+			return getManufacturer((Class) cl);
+		}
+		else
+		{
+			return FormatManagerLibrary.getFormatManager(cl);
+		}
+	}
+
+	public FormatManager<?> getFormatManager(String clName)
+	{
+		Class<? extends Loadable> cl = StringPClassUtil.getClassFor(clName);
+		if (cl != null)
+		{
+			return getManufacturer(cl);
+		}
+		return FormatManagerLibrary.getFormatManager(clName);
+	}
 }

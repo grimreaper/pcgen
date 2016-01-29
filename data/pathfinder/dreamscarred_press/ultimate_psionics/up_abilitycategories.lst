@@ -1,4 +1,4 @@
-# CVS $Revision: $ $Author: $ -- Thu Jul 10 13:41:29 2014 -- reformated by prettylst.pl v1.51 (build 24365)
+# CVS $Revision: $ $Author: $ -- Tue Dec 15 01:48:08 2015 -- reformated by PCGen PrettyLST v6.06.00
 # SOURCELONG:Ultimate Psionics	SOURCESHORT:UP	SOURCEWEB:http://dreamscarredpress.com/dragonfly/index.php	SOURCEDATE:2013-12
 # ORIGINAL ENTRY: Douglas Limmer
 # ORIGINAL ENTRY DATE: 2013/07/05
@@ -170,7 +170,6 @@ ABILITYCATEGORY:Pacifist Method						VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:NO		F
 
 
 ###Block: Prestige Class ability pools
-
 ###Block: Soul Archer
 # NEEDS CODE/DATA WORK: How to limit this to only soulbolt blade skills, but not Alter Mind Bolt?
 # WORKAROUND: Allow any blade skill.  The rest is user-enforced.
@@ -199,6 +198,7 @@ ABILITYCATEGORY:Sighted Seeker Metafaculty	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL
 
 ###Block: Enhancement choice ability pools
 # Ability Category							Visible		Editable?		Change Pool?	Fractional values?	Category of Object		Type of Object						Display Location
+ABILITYCATEGORY:Manifesting Level Advancement			VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:NO		FRACTIONALPOOL:NO		CATEGORY:Internal			TYPE:BonusManifesting					PLURAL:Manifesting Level Advancements		DISPLAYLOCATION:Class Features
 ABILITYCATEGORY:Adaptive Warrior Enhancement Choice		VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:NO		FRACTIONALPOOL:NO		CATEGORY:Special Ability	TYPE:AdaptiveWarriorEnhancementChoice		DISPLAYLOCATION:Class Features
 ABILITYCATEGORY:Body Snatcher Enhancement Choice		VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:NO		FRACTIONALPOOL:NO		CATEGORY:Special Ability	TYPE:BodySnatcherEnhancementChoice			DISPLAYLOCATION:Class Features
 ABILITYCATEGORY:Cerebremancer Enhancement Choice		VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:NO		FRACTIONALPOOL:NO		CATEGORY:Special Ability	TYPE:CerebremancerEnhancementChoice			DISPLAYLOCATION:Class Features
@@ -297,8 +297,8 @@ ABILITYCATEGORY:Ophiduan Scholar Bonus		VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:NO
 
 ABILITYCATEGORY:Crystal Mask				VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:NO		FRACTIONALPOOL:NO		CATEGORY:Internal								ABILITYLIST:Equipment ~ Crystal Mask								DISPLAYLOCATION:Equipment
 
-ABILITYCATEGORY:Expanded Knowledge			VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:NO		FRACTIONALPOOL:NO		CATEGORY:Feat	ABILITYLIST:Expanded Knowledge
-ABILITYCATEGORY:Feral Combat Training		VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:NO		FRACTIONALPOOL:NO		CATEGORY:Feat	ABILITYLIST:Feral Combat Training
+ABILITYCATEGORY:Expanded Knowledge			VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:NO		FRACTIONALPOOL:NO		CATEGORY:Feat								ABILITYLIST:Expanded Knowledge
+ABILITYCATEGORY:Feral Combat Training		VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:NO		FRACTIONALPOOL:NO		CATEGORY:Feat								ABILITYLIST:Feral Combat Training
 
 #
 # End

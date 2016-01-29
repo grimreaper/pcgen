@@ -36,9 +36,9 @@ public class GeneralSaveRestoreTest extends AbstractSaveRestoreTest
 		//Represents CODE-2547
 		try
 		{
-			TokenRegistration.register(new plugin.lsttokens.template.FeatToken());
+			TokenRegistration.register(new plugin.lsttokens.deprecated.TemplateFeatToken());
 			TokenRegistration.register(new plugin.lsttokens.ability.StackToken());
-			TokenRegistration.register(new plugin.exporttokens.TemplateToken());
+			TokenRegistration.register(new plugin.exporttokens.deprecated.TemplateToken());
 		}
 		catch (PersistenceLayerException e)
 		{

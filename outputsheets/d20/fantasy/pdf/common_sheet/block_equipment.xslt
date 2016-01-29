@@ -18,7 +18,9 @@
 ====================================-->
 	<xsl:template match="equipment">
 		<fo:block>
-			<fo:table table-layout="fixed" space-before.optimum="2mm">
+			<fo:table table-layout="fixed" border-collapse="collapse" padding="0.5pt" space-before="2mm">
+
+		<!--	<fo:table table-layout="fixed" space-before.optimum="2mm"> -->
 				<xsl:call-template name="attrib">
 					<xsl:with-param name="attribute" select="'equipment.border'"/>
 				</xsl:call-template>
@@ -126,14 +128,14 @@
 									</fo:block>
 								</xsl:if>
 								<!-- Display the ammunition as a series of checkboxes -->
+<!--	Redundant Code, Potion is both POTION & CONSUMABLE	
 								<xsl:if test="contains(type, 'POTION') and quantity &gt; 1">
 									<fo:block font-size="7pt" font-family="ZapfDingbats">
-										<xsl:call-template name="for.loop">
-<!--Potion is Consumable	-->
+										<xsl:call-template name="for.loop">	
 											<xsl:with-param name="count" select="checkbox"/>
 										</xsl:call-template>
 									</fo:block>
-								</xsl:if>
+								</xsl:if>	-->
 								<xsl:if test="contains(type, 'AMMUNITION') and quantity &gt; 1">
 									<fo:block font-size="7pt" font-family="ZapfDingbats">
 										<xsl:call-template name="for.loop">
@@ -335,7 +337,7 @@
 									</xsl:call-template>
 								</xsl:variable>
 								Total= <xsl:value-of select="format-number($TotalValue, '##,##0.#')"/> gp
-								<xsl:if test="misc/gold &gt; 0">
+								<xsl:if test="misc/gold != 0">
 								[Unspent Funds = <xsl:value-of select="misc/gold"/> gp]
 								</xsl:if>
 							</fo:block>

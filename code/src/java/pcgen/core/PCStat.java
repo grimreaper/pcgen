@@ -21,6 +21,7 @@
 package pcgen.core;
 
 import pcgen.cdom.base.NonInteractive;
+import pcgen.cdom.base.SortKeyRequired;
 import pcgen.cdom.enumeration.FormulaKey;
 import pcgen.cdom.enumeration.IntegerKey;
 import pcgen.cdom.enumeration.ObjectKey;
@@ -32,27 +33,25 @@ import pcgen.facade.core.StatFacade;
  * @author Bryan McRoberts <merton_monk@users.sourceforge.net>
  * @version $Revision$
  */
-public final class PCStat extends PObject implements StatFacade, NonInteractive
+public final class PCStat extends PObject implements StatFacade,
+		NonInteractive, SortKeyRequired
 {
 	@Override
 	public int getMinValue()
 	{
 		return getSafe(IntegerKey.MIN_VALUE);		
 	}
-	
+	/*
+	 * (non-Javadoc)
+	 * @see pcgen.core.PObject#toString()
+	 * 
+	 * This is what the UI displays for the CHOOSE:PCSTAT. Removed additional sb.append to de-clutter display.
+	 * 
+	 */
 	@Override
 	public String toString()
 	{
-		final StringBuilder sb = new StringBuilder(30);
-		sb.append("stat:").append(getKeyName()).append(' ');
-		sb.append("formula:").append(getSafe(FormulaKey.STAT_MOD)).append(' ');
-		boolean rolled = getSafe(ObjectKey.ROLLED);
-		if (!rolled)
-		{
-			sb.append(' ').append("rolled:").append(rolled);
-		}
-
-		return sb.toString();
+		return getKeyName();
 	}
 
 	/* (non-Javadoc)

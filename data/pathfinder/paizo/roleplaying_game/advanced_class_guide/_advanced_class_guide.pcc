@@ -1,7 +1,7 @@
 # CVS $Revision$ $Author$ -- Wed Nov 20 08:25:04 2013 -- reformated by prettylst.pl v1.50 (build 21703)
 CAMPAIGN:Advanced Class Guide
 KEY:Advanced Class Guide
-GAMEMODE:Pathfinder
+GAMEMODE:Pathfinder|Pathfinder_PFS
 TYPE:Paizo Publishing.Pathfinder RPG
 STATUS:ALPHA
 RANK:1
@@ -9,7 +9,8 @@ GENRE:Fantasy
 BOOKTYPE:Supplement
 SETTING:Pathfinder
 PRECAMPAIGN:1,INCLUDESBOOKTYPE=Core Rules
-PRECAMPAIGN:3,INCLUDES=Advanced Player's Guide,INCLUDES=Ultimate Magic,INCLUDES=Ultimate Combat
+PRECAMPAIGN:4,INCLUDES=Advanced Player's Guide,INCLUDES=Ultimate Magic,INCLUDES=Ultimate Combat,INCLUDES=Ultimate Equipment
+!PRECAMPAIGN:1,Pathfinder RPG Core Supplements,Pathfinder RPG for Game Masters
 PUBNAMELONG:Paizo Inc.
 PUBNAMESHORT:Paizo
 PUBNAMEWEB:http://paizo.com
@@ -19,7 +20,7 @@ SOURCEWEB:http://paizo.com/products/btpy92zi
 SOURCEDATE:2014-08
 ISOGL:YES
 
-COVER:advanced_class_guide_playtest.jpg
+#COVER:advanced_class_guide.jpg
 LOGO:@/publisher_logos/Paizo_Publishing.png
 URL:WEBSITE|http://www.paizo.com/|Visit Paizo Publishing!
 URL:WEBSITE|http://www.paizo.com/communityuse|Paizo's Community Use Policy.
@@ -41,6 +42,8 @@ COPYRIGHT:PCGen dataset conversion for "Pathfinder RPG Advanced Class Guide" Cop
 
 #Do Not Remove Comment
 #EXTRAFILE:OGL.txt
+DATACONTROL:acg__datacontrols.lst
+ABILITY:acg_abilities_globalvar.lst
 
 ABILITY:acg_abilities_class.lst
 ABILITY:acg_abilities_race.lst
@@ -56,6 +59,9 @@ SKILL:acg_skills.lst
 SPELL:acg_spells.lst
 TEMPLATE:acg_templates.lst
 COMPANIONMOD:acg_companionmods.lst
+
+
+ABILITY:support/acg_abilities_arg.lst|PRECAMPAIGN:1,INCLUDES=Advanced Race Guide
 
 #Spells from ARG
 
@@ -76,9 +82,6 @@ SPELL:@/pathfinder/paizo/roleplaying_game/advanced_race_guide/arg_spells.lst|(IN
 #Hide internal feat types
 HIDETYPE:FEAT|AberrantBloodRagerBloodline|AbyssalBloodRagerBloodline|ArcaneBloodRagerBloodline|CelestialBloodRagerBloodline|DestinedBloodRagerBloodline|DraconicBloodRagerBloodline|ElementalBloodRagerBloodline|FeyBloodRagerBloodline|InfernalBloodRagerBloodline|UndeadBloodRagerBloodline
 
-# B3 items that get some new types. Silently ignore if B3 is not loaded
-FORWARDREF:EQUIPMENT|Dagger (Chain),Binding Contract,Shears
-
 # ENTRY DATE: 2015-01
 # LST MONKEY: Stefan Radermacher and Andrew Wilson
 # LICENSE MONKEY:
@@ -90,5 +93,3 @@ FORWARDREF:EQUIPMENT|Dagger (Chain),Binding Contract,Shears
 # MINVER:6.5
 # MINDEVVER:6.05.1
 # COMMENTS: Extra contributors - JP Sugarbroad
-
-

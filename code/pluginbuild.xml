@@ -23,7 +23,7 @@ jar-all-plugins - Generate the plugin jar files
 	<property name="jepplugins.dir" value="${plugins.dir}/jepplugins" />
 	<property name="converterplugins.dir" value="${plugins.dir}/converterplugins" />
 
-	<target name="jar-all-plugins" depends="makeplugindirs,jar-gmgen-plugins,jar-export-plugins,jar-bonus-plugins,jar-pre-plugins,jar-lst-plugins, jar-systemlst-plugins, jar-converter-plugins, jar-jep-plugins, jar-deprecated-plugin, jar-primitive-plugins, jar-qualifier-plugins, jar-format-plugins" description="Build (Link) plugin jar files">
+	<target name="jar-all-plugins" depends="makeplugindirs,jar-gmgen-plugins,jar-export-plugins,jar-bonus-plugins,jar-pre-plugins,jar-lst-plugins, jar-systemlst-plugins, jar-converter-plugins, jar-jep-plugins, jar-deprecated-plugin, jar-primitive-plugins, jar-qualifier-plugins" description="Build (Link) plugin jar files">
 	</target>
 
 	<target name="jar-gmgen-plugins" depends="makeplugindirs" description="Build (Link) GMGen plugin jar files">
@@ -149,17 +149,17 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-AGE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-AGE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/AgeToken.class" />
+					<include name="plugin/exporttokens/deprecated/AgeToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-ALIGNMENT.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-ALIGNMENT.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/AlignmentToken.class" />
+					<include name="plugin/exporttokens/deprecated/AlignmentToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -191,24 +191,24 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-BIO.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-BIO.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/BioToken.class" />
+					<include name="plugin/exporttokens/deprecated/BioToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-BIRTHDAY.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-BIRTHDAY.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/BirthdayToken.class" />
+					<include name="plugin/exporttokens/deprecated/BirthdayToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-BIRTHPLACE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-BIRTHPLACE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/BirthplaceToken.class" />
+					<include name="plugin/exporttokens/deprecated/BirthplaceToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -219,10 +219,10 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-BR.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-BR.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/BRToken.class" />
+					<include name="plugin/exporttokens/deprecated/BRToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -240,52 +240,52 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-CATCHPHRASE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-CATCHPHRASE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/CatchPhraseToken.class" />
+					<include name="plugin/exporttokens/deprecated/CatchPhraseToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-CHARACTERTYPE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-CHARACTERTYPE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/CharactertypeToken.class" />
+					<include name="plugin/exporttokens/deprecated/CharactertypeToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-CLASSABB.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-CLASSABB.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/ClassAbbToken.class" />
+					<include name="plugin/exporttokens/deprecated/ClassAbbToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-CHECK.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-CHECK.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/CheckToken.class" />
+					<include name="plugin/exporttokens/deprecated/CheckToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-CLASSLIST.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-CLASSLIST.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/ClassListToken.class" />
+					<include name="plugin/exporttokens/deprecated/ClassListToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-CLASS.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-CLASS.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/ClassToken.class" />
+					<include name="plugin/exporttokens/deprecated/ClassToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-COLOR.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-COLOR.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/ColorToken.class" />
+					<include name="plugin/exporttokens/deprecated/ColorToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -310,17 +310,17 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-DEITY.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-DEITY.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/DeityToken.class" />
+					<include name="plugin/exporttokens/deprecated/DeityToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-DESC.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-DESC.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/DescToken.class" />
+					<include name="plugin/exporttokens/deprecated/DescToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -331,10 +331,10 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-DOMAIN.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-DOMAIN.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/DomainToken.class" />
+					<include name="plugin/exporttokens/deprecated/DomainToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -352,10 +352,10 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-ENDMANUALWHITESPACE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-ENDMANUALWHITESPACE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/EndManualWhitespaceToken.class" />
+					<include name="plugin/exporttokens/deprecated/EndManualWhitespaceToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -387,10 +387,10 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-EXPORT.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-EXPORT.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/ExportToken.class" />
+					<include name="plugin/exporttokens/deprecated/ExportToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -401,24 +401,24 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-FACE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-FACE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/FaceToken.class" />
+					<include name="plugin/exporttokens/deprecated/FaceToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-FAVOREDCLASS.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-FAVOREDCLASS.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/FavoredClassToken.class" />
+					<include name="plugin/exporttokens/deprecated/FavoredClassToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-FAVOREDLIST.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-FAVOREDLIST.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/FavoredListToken.class" />
+					<include name="plugin/exporttokens/deprecated/FavoredListToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -492,31 +492,31 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-GENDER.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-GENDER.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/GenderToken.class" />
+					<include name="plugin/exporttokens/deprecated/GenderToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-GOLD.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-GOLD.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/GoldToken.class" />
+					<include name="plugin/exporttokens/deprecated/GoldToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-HANDED.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-HANDED.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/HandedToken.class" />
+					<include name="plugin/exporttokens/deprecated/HandedToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-HEIGHT.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-HEIGHT.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/HeightToken.class" />
+					<include name="plugin/exporttokens/deprecated/HeightToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -562,31 +562,31 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-INTERESTS.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-INTERESTS.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/InterestsToken.class" />
+					<include name="plugin/exporttokens/deprecated/InterestsToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-INVALIDTEXT.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-INVALIDTEXT.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/InvalidTextToken.class" />
+					<include name="plugin/exporttokens/deprecated/InvalidTextToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-LANGUAGES.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-LANGUAGES.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/LanguagesToken.class" />
+					<include name="plugin/exporttokens/deprecated/LanguagesToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-LENGTH.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-LENGTH.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/LengthToken.class" />
+					<include name="plugin/exporttokens/deprecated/LengthToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -597,17 +597,17 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-LOCATION.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-LOCATION.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/LocationToken.class" />
+					<include name="plugin/exporttokens/deprecated/LocationToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-MANUALWHITESPACE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-MANUALWHITESPACE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/ManualWhitespaceToken.class" />
+					<include name="plugin/exporttokens/deprecated/ManualWhitespaceToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -639,10 +639,10 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-MISC.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-MISC.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/MiscToken.class" />
+					<include name="plugin/exporttokens/deprecated/MiscToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -674,38 +674,38 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-PERSONALITY1.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-PERSONALITY1.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/Personality1Token.class" />
+					<include name="plugin/exporttokens/deprecated/Personality1Token.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-PERSONALITY2.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-PERSONALITY2.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/Personality2Token.class" />
+					<include name="plugin/exporttokens/deprecated/Personality2Token.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-PHOBIAS.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-PHOBIAS.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/PhobiasToken.class" />
+					<include name="plugin/exporttokens/deprecated/PhobiasToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-PIPE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-PIPE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/PipeToken.class" />
+					<include name="plugin/exporttokens/deprecated/PipeToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-PLAYERNAME.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-PLAYERNAME.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/PlayerNameToken.class" />
+					<include name="plugin/exporttokens/deprecated/PlayerNameToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -730,10 +730,10 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-RACE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-RACE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/RaceToken.class" />
+					<include name="plugin/exporttokens/deprecated/RaceToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -751,10 +751,10 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-REACH.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-REACH.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/ReachToken.class" />
+					<include name="plugin/exporttokens/deprecated/ReachToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -765,10 +765,10 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-RESIDENCE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-RESIDENCE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/ResidenceToken.class" />
+					<include name="plugin/exporttokens/deprecated/ResidenceToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -779,17 +779,17 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-SIZE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-SIZE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/SizeToken.class" />
+					<include name="plugin/exporttokens/deprecated/SizeToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-SIZELONG.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-SIZELONG.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/SizeLongToken.class" />
+					<include name="plugin/exporttokens/deprecated/SizeLongToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -828,10 +828,10 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-SPACE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-SPACE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/SpaceToken.class" />
+					<include name="plugin/exporttokens/deprecated/SpaceToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -849,10 +849,10 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-SPEECHTENDANCY.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-SPEECHTENDANCY.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/SpeechTendancyToken.class" />
+					<include name="plugin/exporttokens/deprecated/SpeechTendancyToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -940,13 +940,6 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-SPELLPOINTS.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/exporttokens/SpellPointsToken.class" />
-				</patternset>
-			</fileset>
-		</jar>
 		<jar jarfile="${outputplugins.dir}/ExportToken-SR.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
@@ -961,10 +954,10 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-TABNAME.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-TABNAME.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/TabNameToken.class" />
+					<include name="plugin/exporttokens/deprecated/TabNameToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -975,17 +968,17 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-TEMPLATELIST.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-TEMPLATELIST.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/TemplateListToken.class" />
+					<include name="plugin/exporttokens/deprecated/TemplateListToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-TEMPLATE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-TEMPLATE.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/TemplateToken.class" />
+					<include name="plugin/exporttokens/deprecated/TemplateToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -1010,10 +1003,10 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-UNITSET.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-UNITSET.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/UnitSetToken.class" />
+					<include name="plugin/exporttokens/deprecated/UnitSetToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -1073,10 +1066,10 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${outputplugins.dir}/ExportToken-WEAPONPROFS.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
+		<jar jarfile="${outputplugins.dir}/ExportToken-DEPRECATED-WEAPONPROFS.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/exporttokens/WeaponProfsToken.class" />
+					<include name="plugin/exporttokens/deprecated/WeaponProfsToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -1451,13 +1444,6 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${bonusplugins.dir}/BonusToken-SPELLPOINTCOSTS.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/bonustokens/SpellPointCosts.class" />
-				</patternset>
-			</fileset>
-		</jar>
 		<jar jarfile="${bonusplugins.dir}/BonusToken-STAT.jar" manifest="${src.java.dir}/plugin/exporttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
@@ -1754,15 +1740,6 @@ jar-all-plugins - Generate the plugin jar files
 					<include name="plugin/pretokens/parser/PreFactSetParser.class" />
 					<include name="plugin/pretokens/test/PreFactSetTester.class" />
 					<include name="plugin/pretokens/writer/PreFactSetWriter.class" />
-				</patternset>
-			</fileset>
-		</jar>
-		<jar jarfile="${preplugins.dir}/PreToken-PREFEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/pretokens/parser/PreFeatParser.class" />
-					<include name="plugin/pretokens/test/PreFeatTester.class" />
-					<include name="plugin/pretokens/writer/PreFeatWriter.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -2149,7 +2126,7 @@ jar-all-plugins - Generate the plugin jar files
 		</jar>
 	</target>
 
-	<target name="jar-lst-plugins" depends="jar-lst-global-plugins, jar-lst-ability-plugins, jar-lst-add-plugins, jar-lst-auto-plugins, jar-lst-campaign-plugins, jar-lst-choose-plugins, jar-lst-class-plugins, jar-lst-pcclass-level-plugins, jar-lst-companionmod-plugins, jar-lst-datacontrol-plugins, jar-lst-diety-plugins, jar-lst-domain-plugins, jar-lst-equipment-plugins, jar-lst-equipmentmodifier-plugins, jar-lst-equipmentmodifier-choose-plugins, jar-lst-race-plugins, jar-lst-remove-plugins, jar-lst-skill-plugins, jar-lst-spell-plugins, jar-lst-subclass-plugins, jar-lst-substitutionlevel-plugins, jar-lst-tempbonus-plugins, jar-lst-template-plugins, jar-lst-weaponprof-plugins, jar-lst-kit-plugins" description="Build (Link) Lst Token plugin jar files">
+	<target name="jar-lst-plugins" depends="jar-lst-global-plugins, jar-lst-ability-plugins, jar-lst-add-plugins, jar-lst-auto-plugins, jar-lst-campaign-plugins, jar-lst-choose-plugins, jar-lst-class-plugins, jar-lst-pcclass-level-plugins, jar-lst-companionmod-plugins, jar-lst-datacontrol-plugins, jar-lst-diety-plugins, jar-lst-domain-plugins, jar-lst-equipment-plugins, jar-lst-equipmentmodifier-plugins, jar-lst-equipmentmodifier-choose-plugins, jar-lst-race-plugins, jar-lst-skill-plugins, jar-lst-spell-plugins, jar-lst-subclass-plugins, jar-lst-substitutionlevel-plugins, jar-lst-tempbonus-plugins, jar-lst-template-plugins, jar-lst-weaponprof-plugins, jar-lst-kit-plugins" description="Build (Link) Lst Token plugin jar files">
 	</target>
 
 	<target name="jar-lst-global-plugins" depends="makeplugindirs" description="Build (Link) Global Lst Token plugin jar files">
@@ -2350,13 +2327,6 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${lstplugins.dir}/LstToken-REMOVE.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/lsttokens/RemoveLst.class" />
-				</patternset>
-			</fileset>
-		</jar>
 		<jar jarfile="${lstplugins.dir}/LstToken-SAB.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
@@ -2504,13 +2474,6 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${lstplugins.dir}/LstToken-VFEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/lsttokens/VFeatLst.class" />
-				</patternset>
-			</fileset>
-		</jar>
 		<jar jarfile="${lstplugins.dir}/LstToken-VISION.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
@@ -2554,13 +2517,6 @@ jar-all-plugins - Generate the plugin jar files
 			<fileset dir="${build.classes.dir}">
 				<patternset>
 					<include name="plugin/lsttokens/ability/CostToken.class" />
-				</patternset>
-			</fileset>
-		</jar>
-		<jar jarfile="${lstplugins.dir}/AbilityLstToken-MODIFYFEATCHOICE.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/lsttokens/ability/ModifyfeatchoiceToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -2617,13 +2573,6 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${lstplugins.dir}/AddLstToken-FEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/lsttokens/add/FeatToken.class" />
-				</patternset>
-			</fileset>
-		</jar>
 		<jar jarfile="${lstplugins.dir}/AddLstToken-LANGUAGE.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
@@ -2652,13 +2601,6 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${lstplugins.dir}/AddLstToken-VFEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/lsttokens/add/VFeatToken.class" />
-				</patternset>
-			</fileset>
-		</jar>
 	</target>
 
 	<target name="jar-lst-auto-plugins" depends="makeplugindirs" description="Build (Link) Auto Lst Token plugin jar files">
@@ -2674,13 +2616,6 @@ jar-all-plugins - Generate the plugin jar files
 			<fileset dir="${build.classes.dir}">
 				<patternset>
 					<include name="plugin/lsttokens/auto/EquipToken.class" />
-				</patternset>
-			</fileset>
-		</jar>
-		<jar jarfile="${lstplugins.dir}/AutoLstToken-FEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/lsttokens/auto/FeatToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -2720,6 +2655,13 @@ jar-all-plugins - Generate the plugin jar files
 			<fileset dir="${build.classes.dir}">
 				<patternset>
 					<include name="plugin/lsttokens/campaign/AbilityCategoryToken.class" />
+				</patternset>
+			</fileset>
+		</jar>
+		<jar jarfile="${lstplugins.dir}/CampaignLstToken-ALIGNMENT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/lsttokens/campaign/AlignmentToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -2818,13 +2760,6 @@ jar-all-plugins - Generate the plugin jar files
 			<fileset dir="${build.classes.dir}">
 				<patternset>
 					<include name="plugin/lsttokens/campaign/EquipmodToken.class" />
-				</patternset>
-			</fileset>
-		</jar>
-		<jar jarfile="${lstplugins.dir}/CampaignLstToken-FEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/lsttokens/campaign/FeatToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -2975,6 +2910,13 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
+		<jar jarfile="${lstplugins.dir}/CampaignLstToken-SAVE.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/lsttokens/campaign/SaveToken.class" />
+				</patternset>
+			</fileset>
+		</jar>
 		<jar jarfile="${lstplugins.dir}/CampaignLstToken-SETTING.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
@@ -3000,6 +2942,13 @@ jar-all-plugins - Generate the plugin jar files
 			<fileset dir="${build.classes.dir}">
 				<patternset>
 					<include name="plugin/lsttokens/campaign/SpellToken.class" />
+				</patternset>
+			</fileset>
+		</jar>
+		<jar jarfile="${lstplugins.dir}/CampaignLstToken-STAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/lsttokens/campaign/StatToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -3138,20 +3087,6 @@ jar-all-plugins - Generate the plugin jar files
 			<fileset dir="${build.classes.dir}">
 				<patternset>
 					<include name="plugin/lsttokens/choose/EquipmentToken.class" />
-				</patternset>
-			</fileset>
-		</jar>
-		<jar jarfile="${lstplugins.dir}/ChooseToken-FEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/lsttokens/choose/FeatToken.class" />
-				</patternset>
-			</fileset>
-		</jar>
-		<jar jarfile="${lstplugins.dir}/ChooseToken-FEATSELECTION.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/lsttokens/choose/FeatSelectionToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -3738,13 +3673,6 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${lstplugins.dir}/DomainLstToken-FEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/lsttokens/domain/FeatToken.class" />
-				</patternset>
-			</fileset>
-		</jar>
 	</target>
 
 	<target name="jar-lst-equipment-plugins" depends="makeplugindirs" description="Build (Link) Equipment Lst Token plugin jar files">
@@ -3956,6 +3884,13 @@ jar-all-plugins - Generate the plugin jar files
 			<fileset dir="${build.classes.dir}">
 				<patternset>
 					<include name="plugin/lsttokens/equipment/SpropToken.class" />
+				</patternset>
+			</fileset>
+		</jar>
+		<jar jarfile="${lstplugins.dir}/EquipmentLstToken-VISIBLE.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/lsttokens/equipment/VisibleToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -4194,13 +4129,6 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${lstplugins.dir}/RaceLstToken-FEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/lsttokens/race/FeatToken.class" />
-				</patternset>
-			</fileset>
-		</jar>
 		<jar jarfile="${lstplugins.dir}/RaceLstToken-HANDS.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
@@ -4331,16 +4259,6 @@ jar-all-plugins - Generate the plugin jar files
 			<fileset dir="${build.classes.dir}">
 				<patternset>
 					<include name="plugin/lsttokens/race/XtraskillptsperlvlToken.class" />
-				</patternset>
-			</fileset>
-		</jar>
-	</target>
-
-	<target name="jar-lst-remove-plugins" depends="makeplugindirs" description="Build (Link) Remove Lst Token plugin jar files">
-		<jar jarfile="${lstplugins.dir}/RemoveLstToken-FEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/lsttokens/remove/FeatToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -4534,13 +4452,6 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${lstplugins.dir}/SpellLstToken-SpellPointCost.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/lsttokens/spell/SpellPointCostToken.class" />
-				</patternset>
-			</fileset>
-		</jar>
 	</target>
 
 	<target name="jar-lst-subclass-plugins" depends="makeplugindirs" description="Build (Link) SubClass Lst Token plugin jar files">
@@ -4634,13 +4545,6 @@ jar-all-plugins - Generate the plugin jar files
 			<fileset dir="${build.classes.dir}">
 				<patternset>
 					<include name="plugin/lsttokens/template/FavoredclassToken.class" />
-				</patternset>
-			</fileset>
-		</jar>
-		<jar jarfile="${lstplugins.dir}/TemplateLstToken-FEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/lsttokens/template/FeatToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -4899,13 +4803,6 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
-		<jar jarfile="${lstplugins.dir}/KitAbilityLstToken-FEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/lsttokens/kit/ability/FeatToken.class" />
-				</patternset>
-			</fileset>
-		</jar>
 		<jar jarfile="${lstplugins.dir}/KitAbilityLstToken-FREE.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
@@ -5156,13 +5053,6 @@ jar-all-plugins - Generate the plugin jar files
 	</target>
 
 	<target name="jar-converter-plugins" depends="makeplugindirs" description="Build (Link) Converter plugin jar files">
-		<jar jarfile="${converterplugins.dir}/ConverterPlugin-ABB.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/converter/AbbConvertPlugin.class" />
-				</patternset>
-			</fileset>
-		</jar>
 		<jar jarfile="${converterplugins.dir}/ConverterPlugin-BONUS.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
@@ -6408,6 +6298,13 @@ jar-all-plugins - Generate the plugin jar files
 				</patternset>
 			</fileset>
 		</jar>
+		<jar jarfile="${systemlstplugins.dir}/SizeAdjustmentLstToken-SIZENUM.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/lsttokens/sizeadjustment/SizeNumToken.class" />
+				</patternset>
+			</fileset>
+		</jar>
 		<!-- StatsAndChecks tokens-->
 		<!-- StatsAndChecks: Alignment tokens-->
 		<jar jarfile="${systemlstplugins.dir}/StatsAndChecks-AlignmentLstToken-ABB.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
@@ -6578,6 +6475,13 @@ jar-all-plugins - Generate the plugin jar files
 			</fileset>
 		</jar>
 		<!-- Paper tokens-->
+		<jar jarfile="${systemlstplugins.dir}/Paper-SORTKEY.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/lsttokens/paper/SortKeyToken.class" />
+				</patternset>
+			</fileset>
+		</jar>
 		<jar jarfile="${systemlstplugins.dir}/Paper-HEIGHT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
@@ -6725,10 +6629,10 @@ jar-all-plugins - Generate the plugin jar files
 
 	<target name="jar-primitive-pobject-plugins" depends="makeplugindirs" description="Build (Link) PObject Primitive Token plugin jar files">
 		<!-- PObject Primitive tokens-->
-		<jar jarfile="${lstplugins.dir}/PObjectPrimitive-FEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+		<jar jarfile="${lstplugins.dir}/PObjectPrimitive-ABILITY.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
 				<patternset>
-					<include name="plugin/primitive/pobject/FeatToken.class" />
+					<include name="plugin/primitive/pobject/AbilityToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -7040,59 +6944,6 @@ jar-all-plugins - Generate the plugin jar files
 		</jar>
 	</target>
 	
-	<target name="jar-format-plugins" depends="makeplugindirs" description="Build (Link) Data Format plugin jar files">
-		<!-- Format Managers -->
-		<jar jarfile="${lstplugins.dir}/FormatManager-ALIGNMENT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/format/AlignmentManager.class" />
-				</patternset>
-			</fileset>
-		</jar>
-		<jar jarfile="${lstplugins.dir}/FormatManager-BOOLEAN.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/format/BooleanManager.class" />
-				</patternset>
-			</fileset>
-		</jar>
-		<jar jarfile="${lstplugins.dir}/FormatManager-GRIDPOINT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/format/GridPointManager.class" />
-				</patternset>
-			</fileset>
-		</jar>
-		<jar jarfile="${lstplugins.dir}/FormatManager-NUMBER.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/format/NumberManager.class" />
-				</patternset>
-			</fileset>
-		</jar>
-		<jar jarfile="${lstplugins.dir}/FormatManager-PCCLASS.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/format/PCClassManager.class" />
-				</patternset>
-			</fileset>
-		</jar>
-		<jar jarfile="${lstplugins.dir}/FormatManager-STAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/format/StatManager.class" />
-				</patternset>
-			</fileset>
-		</jar>
-		<jar jarfile="${lstplugins.dir}/FormatManager-STRING.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
-			<fileset dir="${build.classes.dir}">
-				<patternset>
-					<include name="plugin/format/StringManager.class" />
-				</patternset>
-			</fileset>
-		</jar>
-	</target>
-
 	<target name="jar-deprecated-plugin" depends="manifest" description="Build (Link) plugin jar files">
 		<jar jarfile="${lstplugins.dir}/DeityLstToken-DEPRECATED-PANTHEON.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
 			<fileset dir="${build.classes.dir}">
@@ -7189,6 +7040,104 @@ jar-all-plugins - Generate the plugin jar files
 			<fileset dir="${build.classes.dir}">
 				<patternset>
 					<include name="plugin/lsttokens/deprecated/TemplateChooseLangautoToken.class" />
+					</patternset>
+				</fileset>
+			</jar>
+		<jar jarfile="${lstplugins.dir}/CampaignLstToken-DEPRECATED-CAMPAIGNFEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/lsttokens/deprecated/CampaignFeatToken.class" />
+				</patternset>
+			</fileset>
+		</jar>
+		<jar jarfile="${lstplugins.dir}/AbilityLstToken-DEPRECATED-MODIFYFEATCHOICE.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/lsttokens/deprecated/ModifyfeatchoiceToken.class" />
+				</patternset>
+			</fileset>
+		</jar>
+		<jar jarfile="${lstplugins.dir}/ChooseToken-DEPRECATED-CHOOSEFEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/lsttokens/deprecated/ChooseFeatToken.class" />
+				</patternset>
+			</fileset>
+		</jar>
+		<jar jarfile="${lstplugins.dir}/ChooseToken-DEPRECATED-CHOOSEFEATSELECTION.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/lsttokens/deprecated/ChooseFeatSelectionToken.class" />
+				</patternset>
+			</fileset>
+		</jar>
+		<jar jarfile="${lstplugins.dir}/AddLstToken-DEPRECATED-ADDFEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/lsttokens/deprecated/AddFeatToken.class" />
+				</patternset>
+			</fileset>
+		</jar>
+		<jar jarfile="${lstplugins.dir}/AddLstToken-DEPRECATED-ADDVFEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/lsttokens/deprecated/AddVFeatToken.class" />
+				</patternset>
+			</fileset>
+		</jar>
+		<jar jarfile="${lstplugins.dir}/LstToken-DEPRECATED-VFEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/lsttokens/deprecated/VFeatLst.class" />
+				</patternset>
+			</fileset>
+		</jar>
+		<jar jarfile="${lstplugins.dir}/AutoLstToken-DEPRECATED-AUTOFEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/lsttokens/deprecated/AutoFeatToken.class" />
+				</patternset>
+			</fileset>
+		</jar>
+		<jar jarfile="${lstplugins.dir}/DomainLstToken-DEPRECATED-DOMAINFEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/lsttokens/deprecated/DomainFeatToken.class" />
+				</patternset>
+			</fileset>
+		</jar>
+		<jar jarfile="${lstplugins.dir}/LstToken-DEPRECATED-REMOVE.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/lsttokens/deprecated/RemoveLst.class" />
+				</patternset>
+			</fileset>
+		</jar>
+		<jar jarfile="${lstplugins.dir}/RemoveLstToken-DEPRECATED-REMOVEFEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/lsttokens/deprecated/RemoveFeatToken.class" />
+				</patternset>
+			</fileset>
+		</jar>
+		<jar jarfile="${lstplugins.dir}/RaceLstToken-DEPRECATED-RACEFEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/lsttokens/deprecated/RaceFeatToken.class" />
+				</patternset>
+			</fileset>
+		</jar>
+		<jar jarfile="${lstplugins.dir}/TemplateLstToken-DEPRECATED-TEMPLATEFEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/lsttokens/deprecated/TemplateFeatToken.class" />
+				</patternset>
+			</fileset>
+		</jar>
+		<jar jarfile="${lstplugins.dir}/KitAbilityLstToken-DEPRECATED-KITFEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/lsttokens/deprecated/KitFeatToken.class" />
 				</patternset>
 			</fileset>
 		</jar>
@@ -7217,6 +7166,13 @@ jar-all-plugins - Generate the plugin jar files
 			<fileset dir="${build.classes.dir}">
 				<patternset>
 					<include name="plugin/lsttokens/deprecated/NumberToken.class" />
+				</patternset>
+			</fileset>
+		</jar>
+		<jar jarfile="${lstplugins.dir}/PObjectPrimitive-FEAT.jar" manifest="${src.java.dir}/plugin/lsttokens/manifest.mf">
+			<fileset dir="${build.classes.dir}">
+				<patternset>
+					<include name="plugin/primitive/pobject/FeatToken.class" />
 				</patternset>
 			</fileset>
 		</jar>

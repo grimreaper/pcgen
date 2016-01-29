@@ -1,6 +1,8 @@
 package plugin.lsttokens.testsupport;
 
+import pcgen.base.format.StringManager;
 import pcgen.base.util.BasicIndirect;
+import pcgen.base.util.FormatManager;
 import pcgen.base.util.ObjectContainer;
 import pcgen.cdom.base.CDOMObject;
 import pcgen.cdom.base.FormulaFactory;
@@ -10,14 +12,13 @@ import pcgen.cdom.content.factset.FactSetDefinition;
 import pcgen.cdom.enumeration.FactKey;
 import pcgen.cdom.enumeration.FactSetKey;
 import pcgen.cdom.enumeration.FormulaKey;
+import pcgen.cdom.enumeration.IntegerKey;
 import pcgen.cdom.enumeration.VariableKey;
 import pcgen.core.Globals;
 import pcgen.core.PCAlignment;
 import pcgen.core.PCStat;
 import pcgen.core.SizeAdjustment;
 import pcgen.rules.context.LoadContext;
-import pcgen.rules.types.FormatManager;
-import plugin.format.StringManager;
 
 public class BuildUtilities
 {
@@ -32,7 +33,7 @@ public class BuildUtilities
 		return align;
 	}
 
-	public static SizeAdjustment createSize(String name)
+	public static SizeAdjustment createSize(String name, int order)
 	{
 		final String abb  = name.substring(0, 1);
 	
@@ -40,6 +41,7 @@ public class BuildUtilities
 	
 		sa.setName(name);
 		sa.setKeyName(abb);
+		sa.put(IntegerKey.SIZEORDER, order);
 	
 		Globals.getContext().getReferenceContext().importObject(sa);
 		return sa;
@@ -73,7 +75,7 @@ public class BuildUtilities
 	{
 		FactSetKey<String> fk = FactSetKey.getConstant(factsetname, STR_MGR);
 		FormatManager<String> tm = new StringManager();
-		ObjectContainer<String> indirect = tm.convertObjectContainer(null, value);
+		ObjectContainer<String> indirect = tm.convertObjectContainer(value);
 		cdo.addToSetFor(fk, indirect);
 	}
 

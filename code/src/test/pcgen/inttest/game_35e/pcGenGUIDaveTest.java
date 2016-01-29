@@ -1,6 +1,9 @@
+/*
+ * pcGenGUIDaveTest.java
+ */
 package pcgen.inttest.game_35e;
 
-import pcgen.inttest.pcGenGUITestCase;
+import pcgen.inttest.PcgenFtlTestCase;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
@@ -9,7 +12,7 @@ import junit.framework.TestSuite;
  * See the PCG file for details
  */
 @SuppressWarnings("nls")
-public class pcGenGUIDaveTest extends pcGenGUITestCase
+public class pcGenGUIDaveTest extends PcgenFtlTestCase
 {
 
 	/**
@@ -17,7 +20,7 @@ public class pcGenGUIDaveTest extends pcGenGUITestCase
 	 */
 	public pcGenGUIDaveTest()
 	{
-		// Empty Constructor
+		super("35e_dave");
 	}
 
 	/**
@@ -45,6 +48,6 @@ public class pcGenGUIDaveTest extends pcGenGUITestCase
 	 */
 	public void testCode() throws Exception
 	{
-		runTest("Dave", "35e");
+		runTest("35e_Dave", "35e");
 	}
 }

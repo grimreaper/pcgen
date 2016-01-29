@@ -662,6 +662,38 @@ ${pcstring('VAR.CMD_Trip.INTVAL')}
    <font style="font-size:2pt"><br /></font>
 <!-- STOP Unarmed Attack Table -->
 
+<#if (pcvar("MonkLVL") >= 1)>
+<!-- START Flurry Attack Table -->
+   <table cellpadding="0" cellspacing="0" border="0" width="100%" summary="Flurry Attack">
+    <tr>
+     <td align="center" height="25" bgcolor="black" rowspan="2" width="40%"><font style="font-size:10pt" color="white"><b>Flurry of Blows</b></font></td>
+     <td align="center" bgcolor="black" width="60%" height="15"><font style="font-size:6pt" color="white"><b>TOTAL ATTACK BONUS</b></font></td>
+    </tr>
+    <tr>
+     <td align="center" bgcolor="white" class="border"><font style="font-size:8pt" color="black"><b>
+     ${pcstring('VAR.FAB_1.INTVAL.SIGN')}/
+     ${pcstring('VAR.FAB_2.INTVAL.SIGN')}
+     <#if (pcvar("FlurryAttacks") >= 3)>
+     /${pcstring('VAR.FAB_3.INTVAL.SIGN')}
+     </#if>
+     <#if (pcvar("FlurryAttacks") >= 4)>
+     /${pcstring('VAR.FAB_4.INTVAL.SIGN')}
+     </#if>
+     <#if (pcvar("FlurryAttacks") >= 5)>
+     /${pcstring('VAR.FAB_5.INTVAL.SIGN')}
+     </#if>
+     <#if (pcvar("FlurryAttacks") >= 6)>
+     /${pcstring('VAR.FAB_6.INTVAL.SIGN')}
+     </#if>
+     <#if (pcvar("FlurryAttacks") >= 7)>
+     /${pcstring('VAR.FAB_7.INTVAL.SIGN')}
+     </#if>
+     <br /></b></font></td>
+    </tr>
+   </table>
+   <font style="font-size:2pt"><br /></font>
+<!-- STOP Flurry Attack Table -->
+</#if>
 
 
 
@@ -1642,6 +1674,37 @@ ${pcstring('ABILITYALL.Special Ability.VISIBLE.${specialAttack}.TYPE=SpecialAtta
    </table>
 </#if>
 <!-- STOP Special Attacks Table -->
+
+<!-- START Prestige Awards Table -->
+<#if (pcvar('count("ABILITIES","CATEGORY=Special Ability","TYPE=Prestige Award Display","VISIBILITY=DEFAULT[or]VISIBILITY=OUTPUT_ONLY")') > 0)>
+   <table width="100%" cellspacing="0" cellpadding="2" summary="Prestige Awards Table">
+    <tr>
+     <th bgcolor="black" align="center" colspan="2"><font color="white" style="font-size: small"><b>Prestige Awards</b></font></th>
+    </tr>
+<@loop from=0 to=pcvar('count("ABILITIES","CATEGORY=Special Ability","TYPE=Prestige Award Display","VISIBILITY=DEFAULT[or]VISIBILITY=OUTPUT_ONLY")-1') ; prestigeAward , prestigeAward_has_next>
+<#if (prestigeAward % 2 = 0)><tr bgcolor="#DDDDDD"><#else><tr bgcolor="white"></#if>
+     <td valign="top" class="font8"><b>
+<#assign typeOfAbility = pcstring("ABILITYALL.Special Ability.VISIBLE.${prestigeAward}.TYPE=Prestige Award Display.TYPE")?lower_case />
+<#if (pcstring("ABILITYALL.Special Ability.VISIBLE.${prestigeAward}.TYPE=Prestige Award Display.HASASPECT.Name") = "Y")>
+${pcstring('ABILITYALL.Special Ability.VISIBLE.${prestigeAward}.TYPE=Prestige Award Display.ASPECT.Name')}
+<@typeOfAbilitySuffix typeOfAbility=typeOfAbility />
+<#else>
+${pcstring('ABILITYALL.Special Ability.VISIBLE.${prestigeAward}.TYPE=Prestige Award Display')}
+<@typeOfAbilitySuffix typeOfAbility=typeOfAbility />
+</#if>
+</b>
+</td>
+<td class="font8" valign="top"	width="30%" align="right">[${pcstring('ABILITYALL.Special Ability.VISIBLE.${prestigeAward}.TYPE=Prestige Award Display.SOURCE')}]</td>
+<tr>
+<#if (prestigeAward % 2 = 0)><tr bgcolor="#DDDDDD"><#else><tr bgcolor="white"></#if>
+<td class="font8" valign="top"	align="indent" colspan="2">&#160;&#160;&#160;&#160;
+${pcstring('ABILITYALL.Special Ability.VISIBLE.${prestigeAward}.TYPE=Prestige Award Display.DESC')}</td>
+    </tr>
+</@loop>
+   </table>
+</#if>
+<!-- STOP Prestige Award Table -->
+
 <!-- Start Animal Tricks -->
 <#if (pcvar('count("ABILITIES","CATEGORY=Special Ability","VISIBILITY=DEFAULT[or]VISIBILITY=OUTPUT_ONLY","TYPE=AnimalTrick")') = 0)>
 <#else>
@@ -1716,6 +1779,9 @@ ${pcstring('ABILITYALL.Special Ability.VISIBLE.${specialQuality}.TYPE=SpecialQua
   <tr>
 <#if (feat % 2 = 0)><tr bgcolor="#DDDDDD"><#else><tr bgcolor="white"></#if>
     <td class="font8" valign="top" colspan="2">&#160;&#160;&#160;&#160;${pcstring('FEATALL.VISIBLE.${feat}.DESC')}</td>
+  </tr>
+<#if (feat % 2 = 0)><tr bgcolor="#DDDDDD"><#else><tr bgcolor="white"></#if>
+    <td class="font8" valign="top" colspan="2">&#160;&#160;&#160;&#160;${pcstring('FEATALL.VISIBLE.${feat}.BENEFIT')}</td>
   </tr>
 </@loop>
 </table>

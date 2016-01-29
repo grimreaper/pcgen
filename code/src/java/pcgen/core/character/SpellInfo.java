@@ -54,10 +54,8 @@ public final class SpellInfo implements Comparable<SpellInfo>
 	private int times; // times the spell is in this list
 	private String timeUnit; // the timeunit the times is for (day, week etc)
 	private int actualPPCost = -1;
-	private int actualSpellPointCost = 0;
 	private int numPages = 0;
 	private String fixedDC = null;
-	private String fixedConcentration = null;
 
 	SpellInfo(final CharacterSpell owner, final int originalLevel, final int actualLevel,
 			final int times, final String book)
@@ -94,15 +92,6 @@ public final class SpellInfo implements Comparable<SpellInfo>
 	public int getActualPPCost()
 	{
 		return actualPPCost;
-	}
-	public void setActualSpellPointCost(final int actualSPCost)
-	{
-		actualSpellPointCost = actualSPCost;
-	}
-
-	public int getActualSpellPointCost()
-	{
-		return actualSpellPointCost;
 	}
 
 	public String getBook()
@@ -202,22 +191,6 @@ public final class SpellInfo implements Comparable<SpellInfo>
 		this.fixedDC = fixedDC;
 	}
 
-	/**
-	 * @return Returns the fixedConcentration.
-	 */
-	public String getFixedConcentration()
-	{
-		return fixedConcentration;
-	}
-
-	/**
-	 * @param fixedConcentration The fixedConcentration to set.
-	 */
-	public void setFixedConcentration(final String fixedConcentration)
-	{
-		this.fixedConcentration = fixedConcentration;
-	}
-
 	@Override
 	public int compareTo(SpellInfo other)
 	{
@@ -287,17 +260,6 @@ public final class SpellInfo implements Comparable<SpellInfo>
 		}
 		if (compare == 0)
 		{
-			if (actualSpellPointCost < other.actualSpellPointCost)
-			{
-				compare = -1;
-			}
-			else if (actualSpellPointCost > other.actualSpellPointCost)
-			{
-				compare = 1;
-			}
-		}
-		if (compare == 0)
-		{
 			if (numPages < other.numPages)
 			{
 				compare = -1;
@@ -323,24 +285,6 @@ public final class SpellInfo implements Comparable<SpellInfo>
 			else
 			{
 				compare = fixedDC.compareTo(other.fixedDC);
-			}
-		}
-		if (compare == 0)
-		{
-			if (fixedConcentration == null)
-			{
-				if (other.fixedConcentration != null)
-				{
-					compare = -1;
-				}
-			}
-			else if (other.fixedConcentration == null)
-			{
-				compare = 1;
-			}
-			else
-			{
-				compare = fixedConcentration.compareTo(other.fixedConcentration);
 			}
 		}
 		if (compare == 0)

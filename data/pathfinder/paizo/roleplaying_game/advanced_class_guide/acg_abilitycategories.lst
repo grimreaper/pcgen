@@ -1,4 +1,4 @@
-# CVS $Revision: 12957 $ $Author: jbaril $ -- Mon Jun 22 00:01:05 2015 -- reformated by PCGen PrettyLST v6.05.01
+# CVS $Revision: 12957 $ $Author: jbaril $ -- Fri Jan  1 12:57:05 2016 -- reformated by PCGen PrettyLST v6.06.00
 #SOURCELONG:Advanced Class Guide	SOURCESHORT:ACG	SOURCEWEB:http://paizo.com/products/btpy95d1	SOURCEDATE:2013-11
 # Original Entry by: Stefan Radermacher and Douglas Limmer
 
@@ -43,25 +43,25 @@ ABILITYCATEGORY:Investigator Talent			VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	
 ABILITYCATEGORY:Skald Versatile Performance	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		CATEGORY:Special Ability	TYPE:SkaldVersatilePerformance	PLURAL:Skald Versatile Performances		DISPLAYLOCATION:Class Features
 
 ###Block: Class Bonus Feat Categories
-# Ability Category						Visible		Editable?		Change Pool?	Fractional values?	Base Pool number				Category of Object		Type of Object					Specific choices list		Plural description for UI				Display Location
-ABILITYCATEGORY:Arcanist Item Creation Feat		VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:ItemCreation										PLURAL:Arcanist Item Creation Feats			DISPLAYLOCATION:Feats
-ABILITYCATEGORY:Arcanist Metamagic Feat			VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:Metamagic										PLURAL:Arcanist Metamagic Feats			DISPLAYLOCATION:Feats
-ABILITYCATEGORY:Aberrant Bloodrager Bloodline Feat	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:AberrantBloodragerBloodline							PLURAL:Aberrant Bloodrager Bloodline Feats	DISPLAYLOCATION:Feats
-ABILITYCATEGORY:Abyssal Bloodrager Bloodline Feat	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:AbyssalBloodragerBloodline							PLURAL:Abyssal Bloodrager Bloodline Feats		DISPLAYLOCATION:Feats
-ABILITYCATEGORY:Arcane Bloodrager Bloodline Feat	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:ArcaneBloodragerBloodline							PLURAL:Arcane Bloodrager Bloodline Feats		DISPLAYLOCATION:Feats
-ABILITYCATEGORY:Celestial Bloodrager Bloodline Feat	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:CelestialBloodragerBloodline							PLURAL:Celestial Bloodrager Bloodline Feats	DISPLAYLOCATION:Feats
-ABILITYCATEGORY:Destined Bloodrager Bloodline Feat	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:DestinedBloodragerBloodline							PLURAL:Destined Bloodrager Bloodline Feats	DISPLAYLOCATION:Feats
+# Ability Category						Visible		Editable?		Change Pool?	Fractional values?	Base Pool number				Category of Object		Type of Object					Specific choices list						Plural description for UI				Display Location
+ABILITYCATEGORY:Arcanist Item Creation Feat		VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:ItemCreation														PLURAL:Arcanist Item Creation Feats			DISPLAYLOCATION:Feats
+ABILITYCATEGORY:Arcanist Metamagic Feat			VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:Metamagic														PLURAL:Arcanist Metamagic Feats			DISPLAYLOCATION:Feats
+ABILITYCATEGORY:Aberrant Bloodrager Bloodline Feat	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:AberrantBloodragerBloodline		ABILITYLIST:Special Bloodline Feat				PLURAL:Aberrant Bloodrager Bloodline Feats	DISPLAYLOCATION:Feats
+ABILITYCATEGORY:Abyssal Bloodrager Bloodline Feat	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:AbyssalBloodragerBloodline		ABILITYLIST:Special Bloodline Feat				PLURAL:Abyssal Bloodrager Bloodline Feats		DISPLAYLOCATION:Feats
+ABILITYCATEGORY:Arcane Bloodrager Bloodline Feat	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:ArcaneBloodragerBloodline		ABILITYLIST:Special Bloodline Feat				PLURAL:Arcane Bloodrager Bloodline Feats		DISPLAYLOCATION:Feats
+ABILITYCATEGORY:Celestial Bloodrager Bloodline Feat	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:CelestialBloodragerBloodline		ABILITYLIST:Special Bloodline Feat				PLURAL:Celestial Bloodrager Bloodline Feats	DISPLAYLOCATION:Feats
+ABILITYCATEGORY:Destined Bloodrager Bloodline Feat	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:DestinedBloodragerBloodline		ABILITYLIST:Special Bloodline Feat				PLURAL:Destined Bloodrager Bloodline Feats	DISPLAYLOCATION:Feats
 # COMMENT: Should only be able to take Skill Focus (Fly); can take all Skill Focus feats
-ABILITYCATEGORY:Draconic Bloodrager Bloodline Feat	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:DraconicBloodragerBloodline		ABILITYLIST:Skill Focus (Fly)	PLURAL:Draconic Bloodrager Bloodline Feats	DISPLAYLOCATION:Feats
-ABILITYCATEGORY:Elemental Bloodrager Bloodline Feat	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:ElementalBloodragerBloodline							PLURAL:Elemental Bloodrager Bloodline Feats	DISPLAYLOCATION:Feats
-ABILITYCATEGORY:Fey Bloodrager Bloodline Feat		VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:FeyBloodragerBloodline								PLURAL:Fey Bloodrager Bloodline Feats		DISPLAYLOCATION:Feats
-ABILITYCATEGORY:Infernal Bloodrager Bloodline Feat	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:InfernalBloodragerBloodline							PLURAL:Infernal Bloodrager Bloodline Feats	DISPLAYLOCATION:Feats
-ABILITYCATEGORY:Undead Bloodrager Bloodline Feat	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:UndeadBloodragerBloodline							PLURAL:Undead Bloodrager Bloodline Feats		DISPLAYLOCATION:Feats
+ABILITYCATEGORY:Draconic Bloodrager Bloodline Feat	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:DraconicBloodragerBloodline		ABILITYLIST:Special Bloodline Feat|Skill Focus (Fly)	PLURAL:Draconic Bloodrager Bloodline Feats	DISPLAYLOCATION:Feats
+ABILITYCATEGORY:Elemental Bloodrager Bloodline Feat	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:ElementalBloodragerBloodline		ABILITYLIST:Special Bloodline Feat				PLURAL:Elemental Bloodrager Bloodline Feats	DISPLAYLOCATION:Feats
+ABILITYCATEGORY:Fey Bloodrager Bloodline Feat		VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:FeyBloodragerBloodline			ABILITYLIST:Special Bloodline Feat				PLURAL:Fey Bloodrager Bloodline Feats		DISPLAYLOCATION:Feats
+ABILITYCATEGORY:Infernal Bloodrager Bloodline Feat	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:InfernalBloodragerBloodline		ABILITYLIST:Special Bloodline Feat				PLURAL:Infernal Bloodrager Bloodline Feats	DISPLAYLOCATION:Feats
+ABILITYCATEGORY:Undead Bloodrager Bloodline Feat	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:UndeadBloodragerBloodline		ABILITYLIST:Special Bloodline Feat				PLURAL:Undead Bloodrager Bloodline Feats		DISPLAYLOCATION:Feats
 #
-ABILITYCATEGORY:Crossblooded Rager Bloodline		VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:Special Ability	TYPE:CrossbloodedRagerBloodline							PLURAL:Crossblooded Rager Bloodlines		DISPLAYLOCATION:Class Features
-ABILITYCATEGORY:Crossblooded Rager Bloodline Feat	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:Special Ability	TYPE:CrossbloodedRagerFeat								PLURAL:Crossblooded Rager Feats			DISPLAYLOCATION:Class Features
-ABILITYCATEGORY:Crossblooded Rager Spell			VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:Special Ability	TYPE:CrossbloodedRagerSpellChoice							PLURAL:Crossblooded Rager Spells			DISPLAYLOCATION:Class Features
-ABILITYCATEGORY:Crossblooded Rager Bloodline Powers	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:Special Ability	TYPE:CrossbloodedRagerPowerChoice							PLURAL:Crossblooded Rager Bloodline Powers	DISPLAYLOCATION:Class Features
+ABILITYCATEGORY:Crossblooded Rager Bloodline		VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:Special Ability	TYPE:CrossbloodedRagerBloodline											PLURAL:Crossblooded Rager Bloodlines		DISPLAYLOCATION:Class Features
+ABILITYCATEGORY:Crossblooded Rager Bloodline Feat	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:Special Ability	TYPE:CrossbloodedRagerFeat												PLURAL:Crossblooded Rager Feats			DISPLAYLOCATION:Class Features
+ABILITYCATEGORY:Crossblooded Rager Spell			VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:Special Ability	TYPE:CrossbloodedRagerSpellChoice											PLURAL:Crossblooded Rager Spells			DISPLAYLOCATION:Class Features
+ABILITYCATEGORY:Crossblooded Rager Bloodline Powers	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:Special Ability	TYPE:CrossbloodedRagerPowerChoice											PLURAL:Crossblooded Rager Bloodline Powers	DISPLAYLOCATION:Class Features
 
 
 #
@@ -105,32 +105,53 @@ ABILITYCATEGORY:Shaman Witch Hex				VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FR
 
 ABILITYCATEGORY:Slayer Talent					VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:Special Ability	TYPE:SlayerTalent										PLURAL:Slayer Talents					DISPLAYLOCATION:Class Features
 
-ABILITYCATEGORY:Swashbuckler Bonus Feat			VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:FEAT			TYPE:Combat											PLURAL:Swashbuckler Bonus Feats			DISPLAYLOCATION:Feats
+ABILITYCATEGORY:Swashbuckler Bonus Feat			VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		POOL:Pool_Swashbuckler_Feat		CATEGORY:FEAT			TYPE:Combat											PLURAL:Swashbuckler Bonus Feats			DISPLAYLOCATION:Feats
 
 ###Block: Class Feature Categories
 # Ability Category					Visible		Editable?		Change Pool?	Fractional values?	Category of Object		Type of Object				Plural description for UI			Display Location
 ABILITYCATEGORY:Warpriest Blessing			VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		CATEGORY:Special Ability	TYPE:Blessings				PLURAL:Warpriest Blessings			DISPLAYLOCATION:Class Features
-ABILITYCATEGORY:Warpriest Bonus Feat		VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		CATEGORY:FEAT			TYPE:Combat					PLURAL:Warpriest Bonus Feats			DISPLAYLOCATION:Feats
+ABILITYCATEGORY:Warpriest Bonus Feat		VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		CATEGORY:Special Ability	TYPE:Warpriest Bonus Feat		PLURAL:Warpriest Bonus Feats			DISPLAYLOCATION:Feats
 ABILITYCATEGORY:Warpriest Focus Weapon Choice	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		CATEGORY:Special Ability	TYPE:WarpriestFocusWeaponChoices	PLURAL:Warpriest Focus Weapon Choices	DISPLAYLOCATION:Class Features
 ABILITYCATEGORY:Warpriest Unarmed Strike		VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		CATEGORY:Internal			TYPE:WarpriestIUS											DISPLAYLOCATION:Class Features
 
 ###Block: Favoured Class Choice Categories
-# Ability Category							Visible		Editable?		Change Pool?	Fractional values?	Category of Object		Type of Object						Display Location
-ABILITYCATEGORY:Elf Hunter Critial Confirmation Choice	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		CATEGORY:Special Ability	TYPE:ElfHunterCritialConfirmationChoice		DISPLAYLOCATION:Class Features
-ABILITYCATEGORY:Elf Shaman Hex Range Choice			VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		CATEGORY:Special Ability	TYPE:ElfShamanHexRangeChoice				DISPLAYLOCATION:Class Features
+# Ability Category							Visible		Editable?		Change Pool?	Fractional values?	Base Pool number				Category of Object		Type of Object						Display Location
+ABILITYCATEGORY:Elf Hunter Critial Confirmation Choice	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:Special Ability	TYPE:ElfHunterCritialConfirmationChoice		DISPLAYLOCATION:Class Features
+ABILITYCATEGORY:Elf Shaman Hex Range Choice			VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:Special Ability	TYPE:ElfShamanHexRangeChoice				DISPLAYLOCATION:Class Features
 
-ABILITYCATEGORY:Halfling Skald Critial Confirmation Choice	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		CATEGORY:Special Ability	TYPE:HalflingSkaldCritialConfirmationChoice	DISPLAYLOCATION:Class Features
+ABILITYCATEGORY:Halfling Skald Critial Confirmation Choice	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:Special Ability	TYPE:HalflingSkaldCritialConfirmationChoice	DISPLAYLOCATION:Class Features
 
-ABILITYCATEGORY:Skald Bonus Spell Known Choice			VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		CATEGORY:Special Ability	TYPE:BonusSpellKnownSkald				DISPLAYLOCATION:Class Features
+ABILITYCATEGORY:Skald Bonus Spell Known Choice			VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO								CATEGORY:Special Ability	TYPE:BonusSpellKnownSkald				DISPLAYLOCATION:Class Features
+
+
+ABILITYCATEGORY:Dare							VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		POOL:Pool_Dare				CATEGORY:Special Ability	TYPE:Dare							DISPLAYLOCATION:Class Features
+ABILITYCATEGORY:Swashbuckler Bonus Feat Selection		VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		POOL:Pool_SwashbucklerBonusFeat	CATEGORY:Internal			TYPE:Swashbuckler Bonus Feat Selection		DISPLAYLOCATION:Feats
+
+
 
 
 ###Block: Feat categories
-# Ability Category					Visible		Editable?		Change Pool?	Fractional values?	Base Pool number		Category of Object		Type of Object			Specific choices list		Display Location
-ABILITYCATEGORY:Raging Blood Bloodline		VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO						CATEGORY:Special Ability	TYPE:RagingBloodBloodline						DISPLAYLOCATION:Feats
+# Ability Category							Visible		Editable?		Change Pool?	Fractional values?	Base Pool number					Category of Object		Type of Object						Specific choices list				Plural description for UI					Display Location
+ABILITYCATEGORY:Raging Blood Bloodline				VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO									CATEGORY:Special Ability	TYPE:RagingBloodBloodline																				DISPLAYLOCATION:Feats
 
-ABILITYCATEGORY:Firearm Proficiency Choice	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		POOL:Pool_FirearmChoice	CATEGORY:Special Ability	TYPE:FirearmProfChoice							DISPLAYLOCATION:Class Features
+ABILITYCATEGORY:Firearm Proficiency Choice			VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		POOL:Pool_FirearmChoice				CATEGORY:Special Ability	TYPE:FirearmProfChoice																					DISPLAYLOCATION:Class Features
 
-ABILITYCATEGORY:Rapid Reload				VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO						CATEGORY:FEAT								ABILITYLIST:Rapid Reload	DISPLAYLOCATION:Feats
+ABILITYCATEGORY:Rapid Reload						VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO									CATEGORY:FEAT											ABILITYLIST:Rapid Reload												DISPLAYLOCATION:Feats
+
+ABILITYCATEGORY:Temp Eldritch Scrapper Feat			VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		POOL:Pool_Temp_Eldritch_Scrapper_Feat	CATEGORY:FEAT			TYPE:Combat							ABILITYLIST:Arcane Strike|Combat Casting										DISPLAYLOCATION:Feats
+
+ABILITYCATEGORY:Packmaster Companion Choice			VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		POOL:Pool_PackmasterCompanion			CATEGORY:Special Ability	TYPE:PackmasterCompanionChoice										PLURAL:Packmaster Companion Choices				DISPLAYLOCATION:Class Features
+ABILITYCATEGORY:Boon Companion Select Packmaster Companion	VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO									CATEGORY:Internal			TYPE:Boon Companion Select Packmaster Companion								PLURAL:Boon Companion Select Packmaster Companions	DISPLAYLOCATION:Feats
+
+ABILITYCATEGORY:Level 4 Primal Choice				VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		POOL:Pool_BarbarianPrimalistChoice4		CATEGORY:Internal			TYPE:Level 4 Primal Choice											PLURAL:Primal Choices						DISPLAYLOCATION:Class Features
+ABILITYCATEGORY:Level 8 Primal Choice				VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		POOL:Pool_BarbarianPrimalistChoice8		CATEGORY:Internal			TYPE:Level 8 Primal Choice											PLURAL:Primal Choices						DISPLAYLOCATION:Class Features
+ABILITYCATEGORY:Level 12 Primal Choice				VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		POOL:Pool_BarbarianPrimalistChoice12	CATEGORY:Internal			TYPE:Level 12 Primal Choice											PLURAL:Primal Choices						DISPLAYLOCATION:Class Features
+ABILITYCATEGORY:Level 16 Primal Choice				VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		POOL:Pool_BarbarianPrimalistChoice16	CATEGORY:Internal			TYPE:Level 16 Primal Choice											PLURAL:Primal Choices						DISPLAYLOCATION:Class Features
+ABILITYCATEGORY:Level 20 Primal Choice				VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO		POOL:Pool_BarbarianPrimalistChoice20	CATEGORY:Internal			TYPE:Level 20 Primal Choice											PLURAL:Primal Choices						DISPLAYLOCATION:Class Features
+
+ABILITYCATEGORY:Contact Specialist Feat						VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO				CATEGORY:Special Ability			TYPE:Contact Specialist Feat												PLURAL:Primal Choices						DISPLAYLOCATION:Class Features
+
+ABILITYCATEGORY:Style Feat						VISIBLE:QUALIFY	EDITABLE:YES	EDITPOOL:YES	FRACTIONALPOOL:NO				CATEGORY:Feat			TYPE:Style												PLURAL:Style Feats						DISPLAYLOCATION:Feats
 
 
 #

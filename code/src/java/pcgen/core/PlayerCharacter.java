@@ -58,14 +58,13 @@ import pcgen.cdom.base.Category;
 import pcgen.cdom.base.ChooseDriver;
 import pcgen.cdom.base.ChooseInformation;
 import pcgen.cdom.base.Constants;
-import pcgen.cdom.base.PrereqObject;
 import pcgen.cdom.base.TransitionChoice;
 import pcgen.cdom.content.AbilitySelection;
 import pcgen.cdom.content.CNAbility;
 import pcgen.cdom.content.CNAbilityFactory;
 import pcgen.cdom.content.HitDie;
 import pcgen.cdom.content.LevelCommandFactory;
-import pcgen.cdom.content.Modifier;
+import pcgen.cdom.content.Processor;
 import pcgen.cdom.content.RollMethod;
 import pcgen.cdom.enumeration.AssociationKey;
 import pcgen.cdom.enumeration.AssociationListKey;
@@ -81,6 +80,7 @@ import pcgen.cdom.enumeration.ListKey;
 import pcgen.cdom.enumeration.MapKey;
 import pcgen.cdom.enumeration.Nature;
 import pcgen.cdom.enumeration.ObjectKey;
+import pcgen.cdom.enumeration.PCStringKey;
 import pcgen.cdom.enumeration.Region;
 import pcgen.cdom.enumeration.SkillCost;
 import pcgen.cdom.enumeration.SkillFilter;
@@ -235,7 +235,6 @@ import pcgen.core.analysis.SkillModifier;
 import pcgen.core.analysis.SkillRankControl;
 import pcgen.core.analysis.SpellCountCalc;
 import pcgen.core.analysis.SpellLevel;
-import pcgen.core.analysis.SpellPoint;
 import pcgen.core.analysis.StatAnalysis;
 import pcgen.core.bonus.BonusObj;
 import pcgen.core.bonus.BonusPair;
@@ -591,7 +590,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setBio(final String bio)
 	{
-		setStringFor(StringKey.BIO, bio);
+		setStringFor(PCStringKey.BIO, bio);
 	}
 
 	/**
@@ -601,7 +600,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setBirthday(final String birthday)
 	{
-		setStringFor(StringKey.BIRTHDAY, birthday);
+		setStringFor(PCStringKey.BIRTHDAY, birthday);
 	}
 
 	/**
@@ -611,7 +610,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setBirthplace(final String birthPlace)
 	{
-		setStringFor(StringKey.BIRTHPLACE, birthPlace);
+		setStringFor(PCStringKey.BIRTHPLACE, birthPlace);
 	}
 
 	/**
@@ -844,7 +843,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setCatchPhrase(final String phrase)
 	{
-		setStringFor(StringKey.CATCH_PHRASE, phrase);
+		setStringFor(PCStringKey.CATCHPHRASE, phrase);
 	}
 
 	/**
@@ -915,7 +914,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setCurrentEquipSetName(final String aName)
 	{
-		setStringFor(StringKey.CURRENT_EQUIP_SET_NAME, aName);
+		setStringFor(PCStringKey.CURRENT_EQUIP_SET_NAME, aName);
 	}
 
 	/**
@@ -935,7 +934,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setDescription(final String aString)
 	{
-		setStringFor(StringKey.DESCRIPTION, aString);
+		setStringFor(PCStringKey.DESCRIPTION, aString);
 	}
 
 	/**
@@ -1230,7 +1229,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setEyeColor(final String aString)
 	{
-		setStringFor(StringKey.EYE_COLOR, aString);
+		setStringFor(PCStringKey.EYECOLOR, aString);
 	}
 
 	/**
@@ -1343,7 +1342,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setFileName(final String newFileName)
 	{
-		setStringFor(StringKey.FILE_NAME, newFileName);
+		setStringFor(PCStringKey.FILE_NAME, newFileName);
 	}
 
 	/**
@@ -1353,7 +1352,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public String getFileName()
 	{
-		return getSafeStringFor(StringKey.FILE_NAME);
+		return getSafeStringFor(PCStringKey.FILE_NAME);
 	}
 
 	/**
@@ -1445,7 +1444,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setHairColor(final String aString)
 	{
-		setStringFor(StringKey.HAIR_COLOR, aString);
+		setStringFor(PCStringKey.HAIRCOLOR, aString);
 	}
 
 	/**
@@ -1456,7 +1455,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setHairStyle(final String aString)
 	{
-		setStringFor(StringKey.HAIR_STYLE, aString);
+		setStringFor(PCStringKey.HAIRSTYLE, aString);
 	}
 
 	/**
@@ -1517,7 +1516,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setInterests(final String aString)
 	{
-		setStringFor(StringKey.INTERESTS, aString);
+		setStringFor(PCStringKey.INTERESTS, aString);
 	}
 
 	/**
@@ -1538,7 +1537,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setLocation(final String aString)
 	{
-		setStringFor(StringKey.LOCATION, aString);
+		setStringFor(PCStringKey.LOCATION, aString);
 	}
 
 	/**
@@ -1913,7 +1912,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setName(final String aString)
 	{
-		setStringFor(StringKey.NAME, aString);
+		setStringFor(PCStringKey.NAME, aString);
 	}
 
 	/**
@@ -1923,7 +1922,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public String getName()
 	{
-		return getSafeStringFor(StringKey.NAME);
+		return getSafeStringFor(PCStringKey.NAME);
 	}
 
 	/**
@@ -1956,7 +1955,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setPhobias(final String aString)
 	{
-		setStringFor(StringKey.PHOBIAS, aString);
+		setStringFor(PCStringKey.PHOBIAS, aString);
 	}
 
 	/**
@@ -1967,7 +1966,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setPlayersName(final String aString)
 	{
-		setStringFor(StringKey.PLAYERS_NAME, aString);
+		setStringFor(PCStringKey.PLAYERSNAME, aString);
 	}
 
 	/**
@@ -1996,7 +1995,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setPortraitPath(final String newPortraitPath)
 	{
-		setStringFor(StringKey.PORTRAIT_PATH, newPortraitPath);
+		setStringFor(PCStringKey.PORTRAIT_PATH, newPortraitPath);
 	}
 
 	/**
@@ -2035,7 +2034,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setResidence(final String aString)
 	{
-		setStringFor(StringKey.RESIDENCE, aString);
+		setStringFor(PCStringKey.RESIDENCE, aString);
 	}
 
 	/**
@@ -2154,7 +2153,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setSkinColor(final String colour)
 	{
-		setStringFor(StringKey.SKIN_COLOR, colour);
+		setStringFor(PCStringKey.SKINCOLOR, colour);
 	}
 
 	/**
@@ -2244,7 +2243,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setSpeechTendency(final String tendency)
 	{
-		setStringFor(StringKey.SPEECH_TENDENCY, tendency);
+		setStringFor(PCStringKey.SPEECHTENDENCY, tendency);
 	}
 
 	/**
@@ -2255,7 +2254,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setSpellBookNameToAutoAddKnown(final String aString)
 	{
-		setStringFor(StringKey.SPELLBOOK_AUTO_ADD_KNOWN, aString);
+		setStringFor(PCStringKey.SPELLBOOK_AUTO_ADD_KNOWN, aString);
 	}
 
 	/**
@@ -2265,7 +2264,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public String getSpellBookNameToAutoAddKnown()
 	{
-		return getSafeStringFor(StringKey.SPELLBOOK_AUTO_ADD_KNOWN);
+		return getSafeStringFor(PCStringKey.SPELLBOOK_AUTO_ADD_KNOWN);
 	}
 
 	/**
@@ -2350,7 +2349,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setTabName(final String name)
 	{
-		setStringFor(StringKey.TAB_NAME, name);
+		setStringFor(PCStringKey.TABNAME, name);
 	}
 
 	/**
@@ -2421,7 +2420,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setTrait1(final String aString)
 	{
-		setStringFor(StringKey.TRAIT1, aString);
+		setStringFor(PCStringKey.PERSONALITY1, aString);
 	}
 
 	/**
@@ -2431,7 +2430,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 */
 	public void setTrait2(final String aString)
 	{
-		setStringFor(StringKey.TRAIT2, aString);
+		setStringFor(PCStringKey.PERSONALITY2, aString);
 	}
 
 	/**
@@ -4400,7 +4399,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 		final HashMapToList<CDOMList<Spell>, Integer> domainMap = getSpellLevelInfo(aSpell);
 		if (domainMap != null)
 		{
-			for (CDOMList<?> spellList : domainMap.getKeySet())
+			for (CDOMList<Spell> spellList : domainMap.getKeySet())
 			{
 				if (spellList instanceof DomainSpellList)
 				{
@@ -4860,17 +4859,6 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 				}
 				si.setActualPPCost(ppCost);
 			}
-			if (Spell.hasSpellPointCost())
-			{
-				final Spell theSpell = acs.getSpell();
-				int spellPointCost = SpellPoint.getSpellPointCostActual(theSpell);
-				for (Ability feat : aFeatList)
-				{
-					spellPointCost += (int) BonusCalc
-							.charBonusTo(feat, "SPELLPOINTCOST", theSpell.getKeyName(), this);
-				}
-				si.setActualSpellPointCost(spellPointCost);
-			}
 		}
 		// Set number of pages on the spell
 		si.setNumPages(si.getNumPages() + numPages);
@@ -4969,7 +4957,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 			//
 			if (!isImporting())
 			{
-				Modifier<HitDie> dieLock = inTemplate.get(ObjectKey.HITDIE);
+				Processor<HitDie> dieLock = inTemplate.get(ObjectKey.HITDIE);
 				if (dieLock != null)
 				{
 					for (int level = 1; level <= getLevel(pcClass); level++)
@@ -7661,7 +7649,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	}
 
 	/**
-	 * Retrieve the bonus for the stat excluding either temporary bonuses,
+	 * Retrieve the value of the stat excluding either temporary bonuses,
 	 * equipment bonuses or both. This method ensure stacking rules are applied
 	 * to all included bonuses. If not excluding either, it is quicker to use
 	 * getTotalBonusTo.
@@ -7674,9 +7662,11 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 *            Should equipment bonuses be included?
 	 * @return The bonus to the stat.
 	 */
-	public int getPartialStatBonusFor(PCStat stat, boolean useTemp, boolean useEquip)
+	public int getPartialStatFor(PCStat stat, boolean useTemp, boolean useEquip)
 	{
-		return bonusManager.getPartialStatBonusFor(stat, useTemp, useEquip);
+		int partialStatBonus =
+				bonusManager.getPartialStatBonusFor(stat, useTemp, useEquip);
+		return statCalcFacet.getPartialStatFor(id, stat, partialStatBonus);
 	}
 
 	/**
@@ -7825,7 +7815,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	 * @param key
 	 * @param s
 	 */
-	public void setStringFor(StringKey key, String s)
+	public void setStringFor(PCStringKey key, String s)
 	{
 		String currValue = factFacet.get(id, key);
 		if ((currValue == null && s != null)
@@ -8100,22 +8090,37 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	}
 
 	/**
-	 * returns new id_Path with the last id one higher than the current highest
-	 * id for EquipSets with the same ParentIdPath
+	 * returns a new id_Path with the last id one higher than the current highest 
+	 * child of the supplied EquipSet.
 	 * 
-	 * @param eSet
+	 * @param eSet The equipset which would be the parent of a new node. 
 	 * @return new id path
 	 */
 	private String getNewIdPath(EquipSet eSet)
 	{
 		String pid = Constants.EQUIP_SET_ROOT_ID;
-		int newID = 0;
 
 		if (eSet != null)
 		{
 			pid = eSet.getIdPath();
 		}
 
+		int newID = getNewChildId(pid);
+
+		return pid + Constants.EQUIP_SET_PATH_SEPARATOR + newID;
+	}
+
+	/**
+	 * Identify a new id (only the final number in the path) for a child 
+	 * equipment set. The id is guarantyeed to be unique and have no siblings 
+	 * with higher ids.
+	 *  
+	 * @param pid The parent path.
+	 * @return New id for a child node 
+	 */
+	public int getNewChildId(String pid)
+	{
+		int newID = 0;
 		for (EquipSet es : getEquipSet())
 		{
 			if (es.getParentIdPath().equals(pid) && (es.getId() > newID))
@@ -8125,8 +8130,7 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 		}
 
 		++newID;
-
-		return pid + Constants.EQUIP_SET_PATH_SEPARATOR + newID;
+		return newID;
 	}
 
 	public EquipSet addEquipToTarget(final EquipSet eSet, final Equipment eqTarget, String locName,
@@ -8264,12 +8268,24 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	}
 
 	/**
+	 * Move the equipset to a new unique path under its existing parent.
+	 * @param es The equipment set item to be moved.
+	 */
+	public void moveEquipSetToNewPath(EquipSet es)
+	{
+		String parentPath = es.getParentIdPath();
+		EquipSet parent = getEquipSetByIdPath(parentPath);
+		String newPath = getNewIdPath(parent);
+		es.setIdPath(newPath);
+	}
+	
+	/**
 	 * Gets a 'safe' String representation
 	 * 
 	 * @param key
 	 * @return a 'safe' String
 	 */
-	public String getSafeStringFor(StringKey key)
+	public String getSafeStringFor(PCStringKey key)
 	{
 		String s = factFacet.get(id, key);
 		if (s == null)
@@ -8568,10 +8584,10 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 		return grantedAbilityFacet.hasAbilityVisibleTo(id, aCategory, view);
 	}
 
-	private <A extends PrereqObject> void processAbilityListsOnAdd(CDOMObject cdo,
-			CDOMReference<? extends CDOMList<A>> ref)
+	private void processAbilityListsOnAdd(CDOMObject cdo,
+		CDOMReference<? extends CDOMList<?>> ref)
 	{
-		for (CDOMList<A> list : ref.getContainedObjects())
+		for (CDOMList<?> list : ref.getContainedObjects())
 		{
 			if (list instanceof AbilityList)
 			{
@@ -8601,7 +8617,8 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 				for (AssociatedPrereqObject apo : assoc)
 				{
 					Nature nature = apo.getAssociation(AssociationKey.NATURE);
-					Category<Ability> cat = apo.getAssociation(AssociationKey.CATEGORY);
+					CDOMSingleRef<AbilityCategory> acRef = apo.getAssociation(AssociationKey.CATEGORY);
+					AbilityCategory cat = acRef.resolvesTo();
 					if (ab.getSafe(ObjectKey.MULTIPLE_ALLOWED))
 					{
 						List<String> choices = apo.getAssociation(AssociationKey.ASSOC_CHOICES);
@@ -8796,6 +8813,24 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 		return getExpandedAssociations(obj, info);
 	}
 
+	/**
+	 * Return a list of the choice assications in an export compatible string 
+	 * format. Note that this is not sufficient for the choice to be 
+	 * reconstructed, so this format should never be saved, only output.
+	 * 
+	 * @param obj The choice to be output.
+	 * @return The list of choices.
+	 */
+	public List<String> getAssociationExportList(ChooseDriver obj)
+	{
+		ChooseInformation<?> info = obj.getChooseInfo();
+		if (info == null)
+		{
+			return Collections.emptyList();
+		}
+		return getExportAssociations(obj, info);
+	}
+
 	public boolean hasAssociations(ChooseDriver obj)
 	{
 		ChooseInformation<?> info = obj.getChooseInfo();
@@ -8837,6 +8872,23 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 		for (T sel : selections)
 		{
 			ret.add(info.encodeChoice(sel));
+		}
+		return ret;
+	}
+
+	private <T> List<String> getExportAssociations(ChooseDriver obj,
+		ChooseInformation<T> info)
+	{
+		List<? extends T> selections =
+				info.getChoiceActor().getCurrentlySelected(obj, this);
+		if ((selections == null) || selections.isEmpty())
+		{
+			return Collections.emptyList();
+		}
+		List<String> ret = new ArrayList<String>(selections.size());
+		for (T sel : selections)
+		{
+			ret.add(String.valueOf(sel));
 		}
 		return ret;
 	}
@@ -8923,35 +8975,15 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 	{
 		return statLockFacet.getLockedStat(id, stat);
 	}
-
-	public String getDescription(Race cdo)
+	
+	public String getDescription(CNAbility cna)
 	{
-		return getDescription(Collections.singletonList(cdo));
+		return getDescription(Collections.singletonList(cna));
 	}
 
-	public String getDescription(Spell cdo)
+	public String getDescription(PObject pobj)
 	{
-		return getDescription(Collections.singletonList(cdo));
-	}
-
-	public String getDescription(PCTemplate cdo)
-	{
-		return getDescription(Collections.singletonList(cdo));
-	}
-
-	public String getDescription(Equipment cdo)
-	{
-		return getDescription(Collections.singletonList(cdo));
-	}
-
-	public String getDescription(Deity cdo)
-	{
-		return getDescription(Collections.singletonList(cdo));
-	}
-
-	public String getDescription(Domain cdo)
-	{
-		return getDescription(Collections.singletonList(cdo));
+		return getDescription(Collections.singletonList(pobj));
 	}
 
 	public String getDescription(List<? extends Object> objList)
@@ -9246,19 +9278,6 @@ public class PlayerCharacter  implements Cloneable, VariableContainer
 
 		spellLevel = si.getActualLevel();
 		ow = cs.getOwner();
-
-		String fixedConcentration = si.getFixedConcentration();
-
-		if (fixedConcentration != null && "INNATE".equalsIgnoreCase(si.getBook()))
-		{
-			return getVariableValue(fixedConcentration, "").intValue();
-		}
-
-		// Check for a non class based fixed Concentration
-		if (fixedConcentration != null && ow != null && !(ow instanceof PCClass))
-		{
-			return getVariableValue(fixedConcentration, "").intValue();
-		}
 
 		if (si.getFeatList() != null)
 		{

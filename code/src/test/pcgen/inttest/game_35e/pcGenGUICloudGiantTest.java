@@ -1,6 +1,9 @@
+/*
+ * pcGenGUICloudGiantTest.java
+ */
 package pcgen.inttest.game_35e;
 
-import pcgen.inttest.pcGenGUITestCase;
+import pcgen.inttest.PcgenFtlTestCase;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
@@ -9,8 +12,16 @@ import junit.framework.TestSuite;
  * See it's PCG file for what it contains.  
  */
 @SuppressWarnings("nls")
-public class pcGenGUICloudGiantTest extends pcGenGUITestCase
+public class pcGenGUICloudGiantTest extends PcgenFtlTestCase
 {
+
+	/**
+	 *
+	 */
+	public pcGenGUICloudGiantTest()
+	{
+		super("35e_cloudgiant");
+	}
 
 	/**
 	 * standard JUnit style constructor
@@ -36,7 +47,7 @@ public class pcGenGUICloudGiantTest extends pcGenGUITestCase
 	 */
 	public void testCloudGiantHalfDragon() throws Exception
 	{
-		runTest("CloudGiantHalfDragon", "35e");
+		runTest("35e_CloudGiantHalfDragon", "35e");
 	}
 
 }

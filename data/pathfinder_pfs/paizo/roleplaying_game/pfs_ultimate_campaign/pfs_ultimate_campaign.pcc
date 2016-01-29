@@ -1,7 +1,7 @@
 # CVS $Revision: 20739 $ $Author: zaister $
 CAMPAIGN:Ultimate Campaign (PFS)
 #GAMEMODE:Pathfinder
-TYPE:Paizo Publishing PFS.Pathfinder Roleplaying Game
+TYPE:Paizo Publishing PFS.Pathfinder RPG
 RANK:3
 STATUS:BETA
 GENRE:Fantasy
@@ -17,7 +17,7 @@ SOURCEWEB:http://paizo.com/products/btpy8x64?Pathfinder-Roleplaying-Game-Ultimat
 SOURCEDATE:2013-05
 ISOGL:YES
 
-COVER:/pathfinder/paizo/roleplaying_game/ultimate_campaign/ultimate_campaign.jpg
+#COVER:/pathfinder/paizo/roleplaying_game/ultimate_campaign/ultimate_campaign.jpg
 LOGO:@/publisher_logos/Paizo_Publishing.png
 URL:WEBSITE|http://www.paizo.com/|Visit Paizo Publishing!
 URL:WEBSITE|http://www.paizo.com/communityuse|Paizo's Community Use Policy.

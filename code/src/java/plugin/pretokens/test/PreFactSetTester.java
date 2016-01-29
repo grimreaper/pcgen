@@ -18,14 +18,11 @@
 package plugin.pretokens.test;
 
 import java.util.List;
-import java.util.Map;
 
-import freemarker.template.TemplateHashModel;
-import freemarker.template.TemplateModelException;
 import pcgen.base.util.ObjectContainer;
 import pcgen.cdom.base.CDOMObject;
+import pcgen.cdom.base.Reducible;
 import pcgen.cdom.enumeration.FactSetKey;
-import pcgen.core.Globals;
 import pcgen.core.PlayerCharacter;
 import pcgen.core.prereq.AbstractPrerequisiteTest;
 import pcgen.core.prereq.Prerequisite;
@@ -47,13 +44,7 @@ public class PreFactSetTester extends AbstractPrerequisiteTest implements Prereq
 	@Override
 	public int passes(final Prerequisite prereq, final PlayerCharacter aPC, CDOMObject source) throws PrerequisiteException
 	{
-		String location = prereq.getCategoryName();
-		String[] locationElements  = location.split("\\.");
-		String test = prereq.getKey();
-		String[] factinfo = test.split("=");
-		String factid = factinfo[0];
-		String factval = factinfo[1];
-
+		
 		final int number;
 		try
 		{
@@ -65,21 +56,20 @@ public class PreFactSetTester extends AbstractPrerequisiteTest implements Prereq
 				"PreFactSet.error", prereq.toString())); //$NON-NLS-1$
 		}
 
-		Map<String, Object> model = OutputDB.buildDataModel(aPC.getCharID());
-		Object m = model.get(locationElements[0].toLowerCase());
-		if (locationElements.length > 1)
+		String location = prereq.getCategoryName();
+		String[] locationElements  = location.split("\\.");
+		Iterable<Reducible> objModel =
+				(Iterable<Reducible>) OutputDB.getIterable(aPC.getCharID(),
+					locationElements);
+		if (objModel == null)
 		{
-			TemplateHashModel thm = (TemplateHashModel) m;
-			try
-			{
-				m = thm.get(locationElements[1]);
-			}
-			catch (TemplateModelException e)
-			{
-				throw new PrerequisiteException(e.getMessage());
-			}
+			throw new PrerequisiteException("Output System does not have model for: " + location);
 		}
-		Iterable<CDOMObject> objModel = (Iterable<CDOMObject>) m;
+
+		String test = prereq.getKey();
+		String[] factinfo = test.split("=");
+		String factid = factinfo[0];
+		String factval = factinfo[1];
 		FactSetKey<?> fk = FactSetKey.valueOf(factid);
 		
 		int runningTotal =
@@ -88,13 +78,13 @@ public class PreFactSetTester extends AbstractPrerequisiteTest implements Prereq
 	}
 
 	private <T> int getRunningTotal(final Prerequisite prereq, final int number,
-		Iterable<CDOMObject> objModel, String factval, FactSetKey<T> fk)
+		Iterable<Reducible> objModel, String factval, FactSetKey<T> fk)
 	{
-		T targetVal = fk.getFormatManager().convert(Globals.getContext(), factval);
+		T targetVal = fk.getFormatManager().convert(factval);
 		int runningTotal = 0;
-		CDO: for (CDOMObject cdo : objModel)
+		CDO: for (Reducible r : objModel)
 		{
-			List<ObjectContainer<T>> sets = cdo.getSetFor(fk);
+			List<ObjectContainer<T>> sets = r.getCDOMObject().getSetFor(fk);
 			for (ObjectContainer<T> container:sets)
 			{
 				if (container.contains(targetVal))

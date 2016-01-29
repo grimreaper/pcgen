@@ -18,7 +18,6 @@
 package pcgen.core.display;
 
 import java.awt.Rectangle;
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -31,6 +30,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import pcgen.base.formula.Formula;
+import pcgen.base.math.OrderedPair;
 import pcgen.base.util.NamedValue;
 import pcgen.cdom.base.CDOMList;
 import pcgen.cdom.base.CDOMObject;
@@ -45,10 +45,10 @@ import pcgen.cdom.enumeration.Handed;
 import pcgen.cdom.enumeration.IntegerKey;
 import pcgen.cdom.enumeration.ListKey;
 import pcgen.cdom.enumeration.ObjectKey;
+import pcgen.cdom.enumeration.PCStringKey;
 import pcgen.cdom.enumeration.RaceSubType;
 import pcgen.cdom.enumeration.RaceType;
 import pcgen.cdom.enumeration.SkillFilter;
-import pcgen.cdom.enumeration.StringKey;
 import pcgen.cdom.facet.ActiveSpellsFacet;
 import pcgen.cdom.facet.AutoLanguageGrantedFacet;
 import pcgen.cdom.facet.AutoLanguageUnconditionalFacet;
@@ -273,7 +273,7 @@ public class CharacterDisplay
 	 * @param key
 	 * @return a 'safe' String
 	 */
-	public String getSafeStringFor(StringKey key)
+	public String getSafeStringFor(PCStringKey key)
 	{
 		String s = factFacet.get(id, key);
 		if (s == null)
@@ -290,17 +290,7 @@ public class CharacterDisplay
 	 */
 	public String getBio()
 	{
-		return getSafeStringFor(StringKey.BIO);
-	}
-
-	/**
-	 * Get the birthday.
-	 * 
-	 * @return birthday
-	 */
-	public String getBirthday()
-	{
-		return getSafeStringFor(StringKey.BIRTHDAY);
+		return getSafeStringFor(PCStringKey.BIO);
 	}
 
 	/**
@@ -310,47 +300,7 @@ public class CharacterDisplay
 	 */
 	public String getCatchPhrase()
 	{
-		return getSafeStringFor(StringKey.CATCH_PHRASE);
-	}
-
-	/**
-	 * Get the description.
-	 * 
-	 * @return description
-	 */
-	public String getDescription()
-	{
-		return getSafeStringFor(StringKey.DESCRIPTION);
-	}
-
-	/**
-	 * Get the characters eye colour.
-	 * 
-	 * @return the colour of their eyes
-	 */
-	public String getEyeColor()
-	{
-		return getSafeStringFor(StringKey.EYE_COLOR);
-	}
-
-	/**
-	 * Gets the character's hair color.
-	 * 
-	 * @return A hair color string.
-	 */
-	public String getHairColor()
-	{
-		return getSafeStringFor(StringKey.HAIR_COLOR);
-	}
-
-	/**
-	 * Gets the character's hair style.
-	 * 
-	 * @return The character's hair style.
-	 */
-	public String getHairStyle()
-	{
-		return getSafeStringFor(StringKey.HAIR_STYLE);
+		return getSafeStringFor(PCStringKey.CATCHPHRASE);
 	}
 
 	/**
@@ -360,7 +310,7 @@ public class CharacterDisplay
 	 */
 	public String getHanded()
 	{
-		return getSafeStringFor(StringKey.HANDED);
+		return getSafeStringFor(PCStringKey.HANDED);
 	}
 
 	/**
@@ -370,7 +320,7 @@ public class CharacterDisplay
 	 */
 	public String getInterests()
 	{
-		return getSafeStringFor(StringKey.INTERESTS);
+		return getSafeStringFor(PCStringKey.INTERESTS);
 	}
 
 	/**
@@ -380,27 +330,7 @@ public class CharacterDisplay
 	 */
 	public String getLocation()
 	{
-		return getSafeStringFor(StringKey.LOCATION);
-	}
-
-	/**
-	 * Gets the phobia string for the character.
-	 * 
-	 * @return A phobia string.
-	 */
-	public String getPhobias()
-	{
-		return getSafeStringFor(StringKey.PHOBIAS);
-	}
-
-	/**
-	 * Get skin colour.
-	 * 
-	 * @return skin colour
-	 */
-	public String getSkinColor()
-	{
-		return getSafeStringFor(StringKey.SKIN_COLOR);
+		return getSafeStringFor(PCStringKey.LOCATION);
 	}
 
 	/**
@@ -410,7 +340,7 @@ public class CharacterDisplay
 	 */
 	public String getSpeechTendency()
 	{
-		return getSafeStringFor(StringKey.SPEECH_TENDENCY);
+		return getSafeStringFor(PCStringKey.SPEECHTENDENCY);
 	}
 
 	/**
@@ -420,7 +350,7 @@ public class CharacterDisplay
 	 */
 	public String getTabName()
 	{
-		return getSafeStringFor(StringKey.TAB_NAME);
+		return getSafeStringFor(PCStringKey.TABNAME);
 	}
 
 	/**
@@ -430,7 +360,7 @@ public class CharacterDisplay
 	 */
 	public String getTrait1()
 	{
-		return getSafeStringFor(StringKey.TRAIT1);
+		return getSafeStringFor(PCStringKey.PERSONALITY1);
 	}
 
 	/**
@@ -440,7 +370,7 @@ public class CharacterDisplay
 	 */
 	public String getTrait2()
 	{
-		return getSafeStringFor(StringKey.TRAIT2);
+		return getSafeStringFor(PCStringKey.PERSONALITY2);
 	}
 
 	/**
@@ -550,6 +480,7 @@ public class CharacterDisplay
 	 * 
 	 * @return The list of templates visible on output sheets.
 	 */
+	@Deprecated
 	public List<PCTemplate> getOutputVisibleTemplateList()
 	{
 		return getVisibleToTemplateList(View.VISIBLE_EXPORT);
@@ -639,11 +570,6 @@ public class CharacterDisplay
 		return ageFacet.getAge(id);
 	}
 
-	public String getBirthplace()
-	{
-		return getSafeStringFor(StringKey.BIRTHPLACE);
-	}
-
 	public int getBaseMovement(String moveType, Load load)
 	{
 		return moveResultFacet.getBaseMovement(id, moveType, load);
@@ -703,6 +629,7 @@ public class CharacterDisplay
 		return classFacet.getLevel(id, pcc);
 	}
 
+	@Deprecated
 	public SortedSet<PCClass> getFavoredClasses()
 	{
 		SortedSet<PCClass> favored = new TreeSet<PCClass>(CDOMObjectUtilities.CDOM_SORTER);
@@ -710,6 +637,7 @@ public class CharacterDisplay
 		return favored;
 	}
 
+	@Deprecated
 	public boolean hasAnyFavoredClass()
 	{
 		return hasAnyFavoredFacet.contains(id, Boolean.TRUE);
@@ -729,6 +657,7 @@ public class CharacterDisplay
 	 * Get a sorted list of the languages that this character knows.
 	 * @return a sorted list of language objects
 	 */
+	@Deprecated
 	public Set<Language> getSortedLanguageSet()
 	{
 		return new TreeSet<Language>(languageFacet.getSet(id));
@@ -749,9 +678,9 @@ public class CharacterDisplay
 		return handedFacet.getHanded(id);
 	}
 
-	public Point2D.Double getFace()
+	public OrderedPair getFace()
 	{
-		return faceFacet.getFace(id);
+		return faceFacet.get(id);
 	}
 
 	public SortedSet<WeaponProf> getSortedWeaponProfs()
@@ -764,9 +693,10 @@ public class CharacterDisplay
 		return sizeFacet.getSizeAbb(id);
 	}
 
+	@Deprecated
 	public String getResidence()
 	{
-		return getSafeStringFor(StringKey.RESIDENCE);
+		return getSafeStringFor(PCStringKey.RESIDENCE);
 	}
 
 	public Collection<RaceSubType> getRacialSubTypes()
@@ -781,7 +711,7 @@ public class CharacterDisplay
 
 	public String getPortraitPath()
 	{
-		return getSafeStringFor(StringKey.PORTRAIT_PATH);
+		return getSafeStringFor(PCStringKey.PORTRAIT_PATH);
 	}
 
 	public Rectangle getPortraitThumbnailRect()
@@ -792,17 +722,17 @@ public class CharacterDisplay
 
 	public String getName()
 	{
-		return getSafeStringFor(StringKey.NAME);
+		return getSafeStringFor(PCStringKey.NAME);
 	}
 
 	public String getFileName()
 	{
-		return getSafeStringFor(StringKey.FILE_NAME);
+		return getSafeStringFor(PCStringKey.FILE_NAME);
 	}
 
 	public String getPlayersName()
 	{
-		return getSafeStringFor(StringKey.PLAYERS_NAME);
+		return getSafeStringFor(PCStringKey.PLAYERSNAME);
 	}
 
 	public Integer calcCR()
@@ -897,7 +827,7 @@ public class CharacterDisplay
 	 */
 	public String getCurrentEquipSetName()
 	{
-		return getSafeStringFor(StringKey.CURRENT_EQUIP_SET_NAME);
+		return getSafeStringFor(PCStringKey.CURRENT_EQUIP_SET_NAME);
 	}
 
 	/**
@@ -1034,11 +964,13 @@ public class CharacterDisplay
 		return skillFacet.getSet(id);
 	}
 
+	@Deprecated
 	public List<SpecialAbility> getResolvedSpecialAbilities(CDOMObject cdo)
 	{
 		return specialAbilityFacet.getResolved(id, cdo);
 	}
 
+	@Deprecated
 	public List<SpecialAbility> getResolvedUserSpecialAbilities(CDOMObject cdo)
 	{
 		return userSpecialAbilityFacet.getResolved(id, cdo);
@@ -1051,7 +983,7 @@ public class CharacterDisplay
 	 */
 	public String getSpellBookNameToAutoAddKnown()
 	{
-		return getSafeStringFor(StringKey.SPELLBOOK_AUTO_ADD_KNOWN);
+		return getSafeStringFor(PCStringKey.SPELLBOOK_AUTO_ADD_KNOWN);
 	}
 
 	/**
@@ -1068,6 +1000,7 @@ public class CharacterDisplay
 	 * Accessor, Gets the sub-race of the character.
 	 * @return character subrace.
 	 */
+	@Deprecated
 	public String getSubRace()
 	{
 		return subRaceFacet.getSubRace(id);
@@ -1528,7 +1461,7 @@ public class CharacterDisplay
 	 */
 	public String getDisplayName()
 	{
-		final String custom = getSafeStringFor(StringKey.TAB_NAME);
+		final String custom = getSafeStringFor(PCStringKey.TABNAME);
 
 		if (!Constants.EMPTY_STRING.equals(custom))
 		{
@@ -1688,16 +1621,19 @@ public class CharacterDisplay
 		return 0.0;
 	}
 
+	@Deprecated
 	public String getCharacterHeightInchPart()
 	{
 		return Integer.toString(getHeight() % 12);
 	}
 
+	@Deprecated
 	public String getCharacterHeightFootPart()
 	{
 		return Integer.toString(getHeight() / 12);
 	}
 
+	@Deprecated
 	public String getHeightString()
 	{
 		String retString;
@@ -1718,6 +1654,7 @@ public class CharacterDisplay
 		return retString;
 	}
 
+	@Deprecated
 	public String getAlignmentDisplayString()
 	{
 		if (Globals.getGameModeAlignmentText().length() == 0)

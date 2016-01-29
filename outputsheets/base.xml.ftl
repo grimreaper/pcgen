@@ -44,6 +44,13 @@
 	  ====================================
 	  ====================================-->
 	<basics>
+		<rules>
+			<pfs>
+				<os>${pcstring('VAR.PFS_System.INTVAL')}</os>
+				<id_number>${pcstring('ABILITYALL.ANY.0.ASPECT=PFS_ID.ASPECT.PFS_ID')}</id_number>
+				<faction>${pcstring('ABILITYALL.ANY.0.TYPE=Society Faction.NAME')}</faction>
+			</pfs>
+		</rules>
 		<bonuses>${pcstring('BONUSLIST.STAT.STR')}</bonuses>
 		<bonuses>${pcstring('BONUSLIST.STAT.STR.TOTAL')}</bonuses>
 		<bonuses>${pcstring('BONUSLIST.CHECK.BASE')}</bonuses>
@@ -53,6 +60,7 @@
 		<playername>${pcstring('PLAYERNAME')}</playername>
 		<charactertype>${pcstring('CHARACTERTYPE')}</charactertype>
 		<hero_points>${pcstring('VAR.HEROPOINTS.INTVAL')}</hero_points>
+		<remaining_action_points>${pcstring('VAR.Action.INTVAL')}</remaining_action_points>
 		<age>${pcstring('AGE')}</age>
 		<alignment>
 			<long>${pcstring('ALIGNMENT')}</long>
@@ -344,6 +352,10 @@
 		<spell_failure>${pcstring('SPELLFAILURE')}</spell_failure>
 		<check_penalty>${pcstring('ACCHECK')}</check_penalty>
 		<spell_resistance>${pcstring('SR')}</spell_resistance>
+		<resistance>
+			<psionic/>
+			<spell/>
+		</resistance>
 	</armor_class>
 	<!--
 	  ====================================
@@ -359,6 +371,14 @@
 		<check_penalty>${pcstring('ACCHECK')}</check_penalty>
 		<spell_resistance>${pcstring('SR')}</spell_resistance>
 		<hero_points>${pcstring('VAR.HEROPOINTS.INTVAL')}</hero_points>
+		<resistances>
+			<acid>${pcstring('VAR.AcidResistanceBonus.INTVAL')}</acid>
+			<cold>${pcstring('VAR.ColdResistanceBonus.INTVAL')}</cold>
+			<electricity>${pcstring('VAR.ElectricityResistanceBonus.INTVAL')}</electricity>
+			<fire>${pcstring('VAR.FireResistanceBonus.INTVAL')}</fire>
+			<force/>
+			<sonic/>
+		</resistances>
 	</initiative>
 	<!--
 	  ====================================
@@ -421,21 +441,22 @@
 	<!-- Skills -->
 	</skills>
 	<!--
-	  ====================================
-	  ====================================
+	====================================
+	====================================
 			SAVING THROWS
-	  ====================================
-	  ====================================-->
+	====================================
+	====================================-->
 	<saving_throws>
 		<conditional_modifiers>
-		<@loop from=0 to=pcvar('countdistinct("ABILITIES","ASPECT=SaveBonus")-1') ; ability , ability_has_next>
-			<savebonus>
-				<description>${pcstring('ABILITYALL.ANY.${ability}.ASPECT=SaveBonus.ASPECT.SaveBonus')}</description>
-			</savebonus>
-		</@loop>
+			<@loop from=0 to=pcvar('countdistinct("ABILITIES","ASPECT=SaveBonus")-1') ; ability , ability_has_next>
+				<savebonus>
+					<description>${pcstring('ABILITYALL.ANY.${ability}.ASPECT=SaveBonus.ASPECT.SaveBonus')}</description>
+				</savebonus>
+			</@loop>
 		</conditional_modifiers>
-		<@loop from=0 to=pcvar('COUNT[CHECKS]-1') ; check , check_has_next>
-		<#assign checkName = pcstring('CHECK.${check}.NAME')?lower_case />
+		<#assign checknum = 0 />
+		<#list pc.checks as check>
+		<#assign checkName = pcstring('CHECK.${checknum}.NAME')?lower_case />
 		<#assign checkShortName = checkName />
 		<#if (checkName = 'reflex')>
 			<#assign checkShortName = checkName?substring(0,3) />
@@ -456,18 +477,19 @@
 			<#else>
 				<ability></ability>
 			</#if>
-			<total>${pcstring('CHECK.${check}.TOTAL')}</total>
-			<base>${pcstring('CHECK.${check}.BASE')}</base>
-			<abil_mod>${pcstring('CHECK.${check}.STATMOD')}</abil_mod>
-			<feats>${pcstring('CHECK.${check}.FEATS')}</feats>
-			<magic_mod>${pcstring('CHECK.${check}.MAGIC')}</magic_mod>
-			<misc_mod>${pcstring('CHECK.${check}.MISC.NOMAGIC.NOSTAT')}</misc_mod>
-			<misc_w_magic_mod>${pcstring('CHECK.${check}.MISC.NOSTAT')}</misc_w_magic_mod>
-			<race>${pcstring('CHECK.${check}.RACE')}</race>
-			<epic_mod>${pcstring('CHECK.${check}.EPIC')}</epic_mod>
+			<total>${pcstring('CHECK.${checknum}.TOTAL')}</total>
+			<base>${pcstring('CHECK.${checknum}.BASE')}</base>
+			<abil_mod>${pcstring('CHECK.${checknum}.STATMOD')}</abil_mod>
+			<feats>${pcstring('CHECK.${checknum}.FEATS')}</feats>
+			<magic_mod>${pcstring('CHECK.${checknum}.MAGIC')}</magic_mod>
+			<misc_mod>${pcstring('CHECK.${checknum}.MISC.NOMAGIC.NOSTAT')}</misc_mod>
+			<misc_w_magic_mod>${pcstring('CHECK.${checknum}.MISC.NOSTAT')}</misc_w_magic_mod>
+			<race>${pcstring('CHECK.${checknum}.RACE')}</race>
+			<epic_mod>${pcstring('CHECK.${checknum}.EPIC')}</epic_mod>
 			<temp_mod/>
 		</saving_throw>
-		</@loop>
+		<#assign checknum = checknum + 1 />
+		</#list>
 	</saving_throws>
 	<!--
 	  ====================================
@@ -738,7 +760,9 @@
 		</martialarts>
 		<#else>
 		<unarmed>
+			<flurry_level>${pcstring('VAR.MonkLVL.INTVAL')}</flurry_level>
 			<total>${pcstring('WEAPONH.TOTALHIT')}</total>
+			<to_hit>${pcstring('WEAPONH.TOTALHIT')}</to_hit>
 			<damage>${pcstring('WEAPONH.DAMAGE')}</damage>
 			<critical>${pcstring('WEAPONH.CRIT')}/x${pcstring('WEAPONH.MULT')}</critical>
 			<!-- Should be changed to a variable due to improved crit -->
@@ -1227,7 +1251,7 @@
 		</#if>
 		</#if>
 			<header>${pcstring('ABILITYALL.Special Ability.${ability}.ASPECT=CheckType')}</header>
-			<description>${pcstring('ABILITYALL.Special Ability.${ability}.ASPECT=CheckType.DESC')}</description>
+			<description>${pcstring('ABILITYALL.Special Ability.${ability}.ASPECT=CheckType.ASPECT.DESC')}</description>
 			<type>${pcstring('ABILITYALL.Special Ability.${ability}.ASPECT=CheckType.TYPE')}</type>
 			<source>${pcstring('ABILITYALL.Special Ability.VISIBLE.${ability}.ASPECT=CheckType.SOURCE')}</source>
 			<check_count>${pcstring('ABILITYALL.Special Ability.${ability}.ASPECT=CheckType.ASPECT.CheckCount.INTVAL')}</check_count>
@@ -2517,6 +2541,15 @@
 	<@abilityBlock category="Mutation" nature="ALL" hidden=false typeName="" nodeName="mutation" />
 	</mutations>
 
+	<!--
+	  ====================================
+	  ====================================
+			Prestige Awards
+	  ====================================
+	  ====================================-->
+	<prestige_awards>
+	<@abilityBlock category="Special Ability" nature="ALL" hidden=false typeName="Prestige Award Display" nodeName="prestige_award" />
+	</prestige_awards>
 
 
 
@@ -2541,6 +2574,51 @@
 	</traits>
 
 	<!--
+	====================================
+	====================================
+	MASTER ABILITY
+	====================================
+	====================================-->
+	<master_abilities>
+	<@loop from=0 to=pcvar('countdistinct("ABILITIES","CATEGORY=Special Ability","ASPECT=MasterAbility")-1') ; ability , ability_has_next>
+		<master_ability>
+			<#if (pcstring("ABILITYALL.Special Ability.${ability}.ASPECT=MasterAbility.TYPE") = "Extraordinary")>
+			<name>${pcstring('ABILITYALL.Special Ability.${ability}.ASPECT=MasterAbility')} (Ex)</name>
+			<#else>
+				<#if (pcstring("ABILITYALL.Special Ability.${ability}.ASPECT=MasterAbility.TYPE") = "Supernatural")>
+				<name>${pcstring('ABILITYALL.Special Ability.${ability}.ASPECT=MasterAbility')} (Su)</name>
+				<#else>
+					<#if (pcstring("ABILITYALL.Special Ability.${ability}.ASPECT=MasterAbility.TYPE") = "SpellLike")>
+					<name>${pcstring('ABILITYALL.Special Ability.${ability}.ASPECT=MasterAbility')} (Sp)</name>
+					<#else>
+					<name>${pcstring('ABILITYALL.Special Ability.${ability}.ASPECT=MasterAbility')}</name>
+					</#if>
+				</#if>
+			</#if>
+			<header>${pcstring('ABILITYALL.Special Ability.${ability}.ASPECT=MasterAbility')}</header>
+			<description>${pcstring('ABILITYALL.Special Ability.${ability}.ASPECT=MasterAbility.DESC')}</description>
+			<type>${pcstring('ABILITYALL.Special Ability.${ability}.ASPECT=MasterAbility.TYPE')}</type>
+			<source>${pcstring('ABILITYALL.Special Ability.VISIBLE.${ability}.ASPECT=MasterAbility.SOURCE')}</source>
+			<check_count>${pcstring('ABILITYALL.Special Ability.${ability}.ASPECT=MasterAbility.ASPECT.CheckCount.INTVAL')}</check_count>
+			<check_type>${pcstring('ABILITYALL.Special Ability.${ability}.ASPECT=MasterAbility.ASPECT.CheckType')}</check_type>
+
+			<#if (pcstring("ABILITYALL.Special Ability.${ability}.ASPECT=MasterAbility.HASASPECT.MasterAbility") = "Y")>
+				<@loop from=0 to=pcvar('countdistinct("ABILITIES","CATEGORY=Special Ability")-1') ; subability , subability_has_next>
+					<#if (pcstring("ABILITYALL.Special Ability.${subability}.ASPECT.ChildAbility") = pcstring("ABILITYALL.Special Ability.${ability}.ASPECT=MasterAbility.ASPECT.MasterAbility"))>
+					<subability>
+						<name>${pcstring('ABILITYALL.Special Ability.${subability}')}</name>
+						<description>${pcstring('ABILITYALL.Special Ability.${subability}.DESC')}</description>
+						<type>${pcstring('ABILITYALL.Special Ability.${subability}.TYPE')}</type>
+						<source>${pcstring('ABILITYALL.Special Ability.${subability}.SOURCE')}</source>
+					</subability>
+					</#if>
+				</@loop>
+			</#if>
+		</master_ability>
+	</@loop>
+	</master_abilities>
+
+		<!--
 	  ====================================
 	  ====================================
 			Afflictions
@@ -2952,6 +3030,7 @@
 		<racial_innate>
 			<@loop from=0 to=pcvar('COUNT[SPELLSINBOOK.${class}.${spellbook}.${level}]-1') ; spell , spell_has_next>
 			<spell>
+					<basecasterlevel>${pcstring('SPELLLISTCLASS.${class}.CASTERLEVEL')}</basecasterlevel>
 					<name>${pcstring('SPELLMEM.${class}.${spellbook}.${level}.${spell}.NAME')}</name>
 					<outputname>${pcstring('SPELLMEM.${class}.${spellbook}.${level}.${spell}.OUTPUTNAME')}</outputname>
 					<times_memorized>${pcstring('SPELLMEM.${class}.${spellbook}.${level}.${spell}.TIMES')}</times_memorized>
@@ -2995,6 +3074,7 @@
 			<spellbook number="${spellbook}" name="${pcstring('SPELLBOOKNAME.${spellbook}')}">
 			<@loop from=0 to=pcvar('COUNT[SPELLSINBOOK.${class}.${spellbook}.${level}]-1') ; spell , spell_has_next>
 				<spell>
+						<basecasterlevel>${pcstring('SPELLLISTCLASS.${class}.CASTERLEVEL')}</basecasterlevel>
 						<name>${pcstring('SPELLMEM.${class}.${spellbook}.${level}.${spell}.NAME')}</name>
 						<outputname>${pcstring('SPELLMEM.${class}.${spellbook}.${level}.${spell}.OUTPUTNAME')}</outputname>
 						<times_memorized>${pcstring('SPELLMEM.${class}.${spellbook}.${level}.${spell}.TIMES')}</times_memorized>
@@ -3048,6 +3128,7 @@
 			<#else>
 			<@loop from=0 to=pcvar('COUNT[SPELLSINBOOK.${class}.${spellbook}.${level}]-1') ; spell , spell_has_next>
 				<spell>
+						<basecasterlevel>${pcstring('SPELLLISTCLASS.${class}.CASTERLEVEL')}</basecasterlevel>
 						<name>${pcstring('SPELLMEM.${class}.${spellbook}.${level}.${spell}.NAME')}</name>
 						<outputname>${pcstring('SPELLMEM.${class}.${spellbook}.${level}.${spell}.OUTPUTNAME')}</outputname>
 						<times_memorized>${pcstring('SPELLMEM.${class}.${spellbook}.${level}.${spell}.TIMES')}</times_memorized>
@@ -3109,6 +3190,7 @@
 		<racial_innate_memorized>
 		  <@loop from=0 to=pcvar('COUNT[SPELLSINBOOK.${class}.${spellbook}.${level}]-1') ; spell , spell_has_next>
 			<spell>
+					<basecasterlevel>${pcstring('SPELLLISTCLASS.${class}.CASTERLEVEL')}</basecasterlevel>
 					<name>${pcstring('SPELLMEM.${class}.${spellbook}.${level}.${spell}.NAME')}</name>
 					<outputname>${pcstring('SPELLMEM.${class}.${spellbook}.${level}.${spell}.OUTPUTNAME')}</outputname>
 					<times_memorized>${pcstring('SPELLMEM.${class}.${spellbook}.${level}.${spell}.TIMES')}</times_memorized>
@@ -3153,6 +3235,7 @@
 			<spellbook number="${spellbook}" name="${pcstring('SPELLBOOKNAME.${spellbook}')}">
 			<@loop from=0 to=pcvar('COUNT[SPELLSINBOOK.${class}.${spellbook}.${level}]-1') ; spell , spell_has_next>
 				<spell>
+						<basecasterlevel>${pcstring('SPELLLISTCLASS.${class}.CASTERLEVEL')}</basecasterlevel>
 						<name>${pcstring('SPELLMEM.${class}.${spellbook}.${level}.${spell}.NAME')}</name>
 						<outputname>${pcstring('SPELLMEM.${class}.${spellbook}.${level}.${spell}.OUTPUTNAME')}</outputname>
 						<times_memorized>${pcstring('SPELLMEM.${class}.${spellbook}.${level}.${spell}.TIMES')}</times_memorized>
@@ -3212,6 +3295,7 @@
 				<level number="${level}" spellcount="${spelllevelcount}">
 				   <@loop from=0 to=pcvar('COUNT[SPELLSINBOOK.${class}.${spellbook}.${level}]-1') ; spell , spell_has_next>
 					<spell>
+							<basecasterlevel>${pcstring('SPELLLISTCLASS.${class}.CASTERLEVEL')}</basecasterlevel>
 							<name>${pcstring('SPELLMEM.${class}.${spellbook}.${level}.${spell}.NAME')}</name>
 							<outputname>${pcstring('SPELLMEM.${class}.${spellbook}.${level}.${spell}.OUTPUTNAME')}</outputname>
 							<times_memorized>${pcstring('SPELLMEM.${class}.${spellbook}.${level}.${spell}.TIMES')}</times_memorized>

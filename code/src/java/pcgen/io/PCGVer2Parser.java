@@ -60,6 +60,7 @@ import pcgen.cdom.enumeration.IntegerKey;
 import pcgen.cdom.enumeration.ListKey;
 import pcgen.cdom.enumeration.Nature;
 import pcgen.cdom.enumeration.ObjectKey;
+import pcgen.cdom.enumeration.PCStringKey;
 import pcgen.cdom.enumeration.Region;
 import pcgen.cdom.enumeration.SkillFilter;
 import pcgen.cdom.enumeration.SkillsOutputOrder;
@@ -124,13 +125,13 @@ import pcgen.core.character.SpellInfo;
 import pcgen.core.chooser.ChoiceManagerList;
 import pcgen.core.chooser.ChooserUtilities;
 import pcgen.core.display.BonusDisplay;
-import pcgen.facade.core.CampaignFacade;
-import pcgen.facade.core.SourceSelectionFacade;
 import pcgen.core.pclevelinfo.PCLevelInfo;
 import pcgen.core.spell.Spell;
 import pcgen.core.utils.CoreUtility;
 import pcgen.core.utils.MessageType;
 import pcgen.core.utils.ShowMessageDelegate;
+import pcgen.facade.core.CampaignFacade;
+import pcgen.facade.core.SourceSelectionFacade;
 import pcgen.io.migration.AbilityMigration;
 import pcgen.io.migration.AbilityMigration.CategorisedKey;
 import pcgen.io.migration.EquipSetMigration;
@@ -1500,13 +1501,13 @@ final class PCGVer2Parser implements PCGParser, IOConstants
 
 	private void parseCharacterAssetLine(final String line)
 	{
-		thePC.setStringFor(StringKey.MISC_ASSETS, EntityEncoder.decode(line
+		thePC.setStringFor(PCStringKey.ASSETS, EntityEncoder.decode(line
 			.substring(TAG_CHARACTERASSET.length() + 1)));
 	}
 
 	private void parseCharacterCompLine(final String line)
 	{
-		thePC.setStringFor(StringKey.MISC_COMPANIONS, EntityEncoder.decode(line
+		thePC.setStringFor(PCStringKey.COMPANIONS, EntityEncoder.decode(line
 			.substring(TAG_CHARACTERCOMP.length() + 1)));
 	}
 
@@ -1518,13 +1519,13 @@ final class PCGVer2Parser implements PCGParser, IOConstants
 
 	private void parseCharacterMagicLine(final String line)
 	{
-		thePC.setStringFor(StringKey.MISC_MAGIC, EntityEncoder.decode(line
+		thePC.setStringFor(PCStringKey.MAGIC, EntityEncoder.decode(line
 			.substring(TAG_CHARACTERMAGIC.length() + 1)));
 	}
 
 	private void parseCharacterDmNotesLine(final String line)
 	{
-		thePC.setStringFor(StringKey.MISC_GM, EntityEncoder.decode(line
+		thePC.setStringFor(PCStringKey.GMNOTES, EntityEncoder.decode(line
 			.substring(TAG_CHARACTERDMNOTES.length() + 1)));
 	}
 
@@ -5181,6 +5182,7 @@ final class PCGVer2Parser implements PCGParser, IOConstants
 							}
 							aEquip.setBase();
 							aEquip.load(customProperties, "$", "=", thePC); //$NON-NLS-1$ //$NON-NLS-2$
+							aEquip.setToCustomSize(thePC);
 						}
 						else
 						{
@@ -5212,6 +5214,7 @@ final class PCGVer2Parser implements PCGParser, IOConstants
 									aEquip.setBase();
 									aEquip.load(customProperties,
 										"$", "=", thePC); //$NON-NLS-1$//$NON-NLS-2$
+									aEquip.setToCustomSize(thePC);
 									aEquip.remove(StringKey.OUTPUT_NAME);
 									if (!aEquip.isType(Constants.TYPE_CUSTOM))
 									{

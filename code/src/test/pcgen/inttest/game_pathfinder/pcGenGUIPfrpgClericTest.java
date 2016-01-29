@@ -1,3 +1,6 @@
+/*
+ * pcGenGUIPfrpgClericTest.java
+ */
 package pcgen.inttest.game_pathfinder;
 
 import junit.framework.Test;
@@ -45,6 +48,6 @@ public class pcGenGUIPfrpgClericTest extends PcgenFtlTestCase
 	 */
 	public void testCode() throws Exception
 	{
-		runTest("PFRPGCleric", "Pathfinder_RPG");
+		runTest("pf_Cleric", "Pathfinder_RPG");
 	}
 }

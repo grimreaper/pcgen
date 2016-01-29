@@ -39,11 +39,13 @@ import pcgen.core.Campaign;
 import pcgen.core.prereq.Prerequisite;
 import pcgen.core.utils.ParsingSeparator;
 import pcgen.output.library.ObjectWrapperLibrary;
+import pcgen.output.wrapper.AgeSetWrapper;
 import pcgen.output.wrapper.CDOMObjectWrapper;
 import pcgen.output.wrapper.CDOMReferenceWrapper;
 import pcgen.output.wrapper.CNAbilitySelectionWrapper;
 import pcgen.output.wrapper.CategoryWrapper;
 import pcgen.output.wrapper.EnumWrapper;
+import pcgen.output.wrapper.OrderedPairWrapper;
 import pcgen.output.wrapper.TypeSafeConstantWrapper;
 import pcgen.persistence.PersistenceLayerException;
 import pcgen.persistence.lst.CampaignSourceEntry;
@@ -55,6 +57,7 @@ import pcgen.rules.persistence.token.CDOMToken;
 import pcgen.rules.persistence.token.DeferredToken;
 import pcgen.rules.persistence.token.ParseResult;
 import pcgen.rules.persistence.token.PostDeferredToken;
+import pcgen.rules.persistence.token.PostValidationToken;
 import pcgen.util.Logging;
 import freemarker.template.ObjectWrapper;
 
@@ -92,11 +95,13 @@ public abstract class LoadContextInst implements LoadContext
 		ObjectWrapperLibrary owl = ObjectWrapperLibrary.getInstance();
 		owl.add(ObjectWrapper.SIMPLE_WRAPPER);
 		owl.add(CDOMObjectWrapper.getInstance());
+		owl.add(new AgeSetWrapper());
 		owl.add(new CDOMReferenceWrapper());
 		owl.add(new TypeSafeConstantWrapper());
 		owl.add(new CNAbilitySelectionWrapper());
 		owl.add(new CategoryWrapper());
 		owl.add(new EnumWrapper());
+		owl.add(new OrderedPairWrapper());
 	}
 
 	public LoadContextInst(AbstractReferenceContext rc, AbstractListContext lc, AbstractObjectContext oc)
@@ -216,17 +221,20 @@ public abstract class LoadContextInst implements LoadContext
 	private <T extends Loadable> void processRes(DeferredToken<T> token)
 	{
 		Class<T> cl = token.getDeferredTokenClass();
-		Collection<? extends ReferenceManufacturer> mfgs = getReferenceContext()
+		Collection<? extends ReferenceManufacturer<?>> mfgs = getReferenceContext()
 				.getAllManufacturers();
-		for (ReferenceManufacturer<? extends T> rm : mfgs)
+		for (ReferenceManufacturer<?> rm : mfgs)
 		{
 			if (cl.isAssignableFrom(rm.getReferenceClass()))
 			{
-				for (T po : rm.getAllObjects())
+				@SuppressWarnings("unchecked")
+				ReferenceManufacturer<? extends T> trm =
+						(ReferenceManufacturer<? extends T>) rm;
+				for (T po : trm.getAllObjects())
 				{
 					token.process(this, po);
 				}
-				for (T po : rm.getDerivativeObjects())
+				for (T po : trm.getDerivativeObjects())
 				{
 					token.process(this, po);
 				}
@@ -237,7 +245,7 @@ public abstract class LoadContextInst implements LoadContext
 	@Override
 	public void resolvePostDeferredTokens()
 	{
-		Collection<? extends ReferenceManufacturer> mfgs = getReferenceContext()
+		Collection<? extends ReferenceManufacturer<?>> mfgs = getReferenceContext()
 				.getAllManufacturers();
 		for (PostDeferredToken<? extends Loadable> token : TokenLibrary.getPostDeferredTokens())
 		{
@@ -246,18 +254,46 @@ public abstract class LoadContextInst implements LoadContext
 	}
 
 	private <T extends Loadable> void processPostRes(PostDeferredToken<T> token,
-			Collection<? extends ReferenceManufacturer> mfgs)
+			Collection<? extends ReferenceManufacturer<?>> mfgs)
 	{
 		Class<T> cl = token.getDeferredTokenClass();
-		for (ReferenceManufacturer<? extends T> rm : mfgs)
+		for (ReferenceManufacturer<?> rm : mfgs)
 		{
 			if (cl.isAssignableFrom(rm.getReferenceClass()))
 			{
-				for (T po : rm.getAllObjects())
+				@SuppressWarnings("unchecked")
+				ReferenceManufacturer<? extends T> trm =
+						(ReferenceManufacturer<? extends T>) rm;
+				for (T po : trm.getAllObjects())
 				{
 					this.setSourceURI(po.getSourceURI());
 					token.process(this, po);
 				}
+			}
+		}
+	}
+
+	@Override
+	public void resolvePostValidationTokens()
+	{
+		Collection<? extends ReferenceManufacturer> mfgs = getReferenceContext()
+				.getAllManufacturers();
+		for (PostValidationToken<? extends Loadable> token : TokenLibrary.getPostValidationTokens())
+		{
+			processPostVal(token, mfgs);
+		}
+	}
+
+	private <T extends Loadable> void processPostVal(PostValidationToken<T> token,
+			Collection<? extends ReferenceManufacturer> mfgs)
+	{
+		Class<T> cl = token.getValidationTokenClass();
+		for (ReferenceManufacturer<? extends T> rm : mfgs)
+		{
+			if (cl.isAssignableFrom(rm.getReferenceClass()))
+			{
+				setSourceURI(null);
+				token.process(this, rm.getAllObjects());
 			}
 		}
 	}
@@ -493,7 +529,7 @@ public abstract class LoadContextInst implements LoadContext
 	}
 
 	@Override
-	public GroupDefinition<?> getGroup(Class<?> cl, String s)
+	public <T> GroupDefinition<T> getGroup(Class<T> cl, String s)
 	{
 		return support.getGroup(cl, s);
 	}

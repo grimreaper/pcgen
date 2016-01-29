@@ -36,6 +36,9 @@ import java.io.Writer;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import pcgen.base.format.StringManager;
+import pcgen.cdom.enumeration.FactKey;
+import pcgen.cdom.enumeration.FactSetKey;
 import pcgen.core.GameMode;
 import pcgen.core.Globals;
 import pcgen.core.SettingsHandler;
@@ -51,6 +54,8 @@ import pcgen.util.TestHelper;
  */
 public class PrerequisiteWriterTest extends TestCase
 {
+	private static final StringManager STR_MGR = new StringManager();
+
 	/**
 	 * Constructs a test case with the given name.
 	 * @param name
@@ -131,13 +136,13 @@ public class PrerequisiteWriterTest extends TestCase
 		"PREEQUIPTWOWEAPON:1,TYPE=Slashing",											"PREEQUIPTWOWEAPON:1,TYPE=Slashing",
 		"PREFACT:1,RACE,IsPC=TRUE",														"PREFACT:1,RACE,IsPC=TRUE",
 		"PREFACTSET:1,DEITY,PANTHEONS=Greek",											"PREFACTSET:1,DEITY,PANTHEONS=Greek",
-		"PREFEAT:1,Dodge,Combat Reflexes",												"PREFEAT:1,Dodge,Combat Reflexes",
-		"PREFEAT:2,CHECKMULT,Spell Focus",												"PREFEAT:2,CHECKMULT,Spell Focus",
-//		"PREFEAT:2,CHECKMULT,Spell Focus,[Spell Focus(Enchantment)]",					"PREFEAT:2,CHECKMULT,Spell Focus\t!PREFEAT:1,CHECKMULT,Spell Focus (Enchantment)",
-		"PREFEAT:2,Weapon Focus (TYPE=Bow),Weapon Focus (Longsword)",					"PREFEAT:2,Weapon Focus (TYPE=Bow),Weapon Focus (Longsword)",
-		"PREFEAT:2,CHECKMULT,Weapon Focus(TYPE=Sword)",									"PREFEAT:2,CHECKMULT,Weapon Focus (TYPE=Sword)",
-		"PREFEAT:2,Skill Focus (Spot),Skill Focus (Listen),Skill Focus (Search)",		"PREFEAT:2,Skill Focus (Spot),Skill Focus (Listen),Skill Focus (Search)",
-		"PREFEAT:2,TYPE=ItemCreation",													"PREFEAT:2,TYPE=ItemCreation",
+		"PREFEAT:1,Dodge,Combat Reflexes",												"PREABILITY:1,CATEGORY=FEAT,Dodge,Combat Reflexes",
+		"PREFEAT:2,CHECKMULT,Spell Focus",												"PREABILITY:2,CHECKMULT,CATEGORY=FEAT,Spell Focus",
+//		"PREFEAT:2,CHECKMULT,Spell Focus,[Spell Focus(Enchantment)]",					"PREABILITY:2,CATEGORY=FEAT,CHECKMULT,Spell Focus\t!PREABILITY:1,CATEGORY=FEAT,CHECKMULT,Spell Focus (Enchantment)",
+		"PREFEAT:2,Weapon Focus (TYPE=Bow),Weapon Focus (Longsword)",					"PREABILITY:2,CATEGORY=FEAT,Weapon Focus (TYPE=Bow),Weapon Focus (Longsword)",
+		"PREFEAT:2,CHECKMULT,Weapon Focus(TYPE=Sword)",									"PREABILITY:2,CHECKMULT,CATEGORY=FEAT,Weapon Focus (TYPE=Sword)",
+		"PREFEAT:2,Skill Focus (Spot),Skill Focus (Listen),Skill Focus (Search)",		"PREABILITY:2,CATEGORY=FEAT,Skill Focus (Spot),Skill Focus (Listen),Skill Focus (Search)",
+		"PREFEAT:2,TYPE=ItemCreation",													"PREABILITY:2,CATEGORY=FEAT,TYPE=ItemCreation",
 		"PREGENDER:M",																	"PREGENDER:M",
 		"PREHANDSGT:2",																	"PREHANDSGT:2",
 		"PREITEM:1,Sword (Long),Sword (Short)",											"PREITEM:1,Sword (Long),Sword (Short)",
@@ -162,7 +167,7 @@ public class PrerequisiteWriterTest extends TestCase
 		"PREMOVE:1,Walk=30,Fly=20",														"PREMOVE:1,Walk=30,Fly=20",
 		"PREMOVE:1,Swim=10",																"PREMOVE:1,Swim=10",
 		"PREMULT:1,[PRERACE:1,Gnome],[PRECLASS:1,Cleric=1]",								"PREMULT:1,[PRERACE:1,Gnome],[PRECLASS:1,Cleric=1]",
-		"PREMULT:1,[PRERACE:1,Gnome],[PREMULT:2,[PRESIZEGTEQ:M],[PREFEAT:1,Alertness]]",	"PREMULT:1,[PRERACE:1,Gnome],[PREMULT:2,[PRESIZEGTEQ:M],[PREFEAT:1,Alertness]]",
+		"PREMULT:1,[PRERACE:1,Gnome],[PREMULT:2,[PRESIZEGTEQ:M],[PREFEAT:1,Alertness]]",	"PREMULT:1,[PRERACE:1,Gnome],[PREMULT:2,[PRESIZEGTEQ:M],[PREABILITY:1,CATEGORY=FEAT,Alertness]]",
 		"PRERACE:1,Dwarf,Elf,Human",														"PRERACE:1,Dwarf,Elf,Human",
 		"PRERACE:1,Elf,[Elf (aquatic)]",													"PREMULT:2,[PRERACE:1,Elf],[!PRERACE:1,Elf (aquatic)]",
 		"PREREGION:Slithe",																"PREREGION:Slithe",
@@ -228,7 +233,7 @@ public class PrerequisiteWriterTest extends TestCase
 //
 // Just for good measure
 //
-		"PREMULT:1,[PREFEAT:1,CHECKMULT,Dodge],[PREFEAT:1,CHECKMULT,Combat Reflexes]",	"PREMULT:1,[PREFEAT:1,CHECKMULT,Dodge],[PREFEAT:1,CHECKMULT,Combat Reflexes]",
+		"PREMULT:1,[PREFEAT:1,CHECKMULT,Dodge],[PREFEAT:1,CHECKMULT,Combat Reflexes]",	"PREMULT:1,[PREABILITY:1,CHECKMULT,CATEGORY=FEAT,Dodge],[PREABILITY:1,CHECKMULT,CATEGORY=FEAT,Combat Reflexes]",
 		"PRERACE:1,Dwarf",																"PRERACE:1,Dwarf",
 		"PRESPELLDESCRIPTOR:4,Mind-Affecting=3",										"PRESPELLDESCRIPTOR:4,Mind-Affecting=3",
 		"PRESPELLDESCRIPTOR:4,Mind-Affecting=3,Fire=2",									"PRESPELLDESCRIPTOR:4,Mind-Affecting=3,Fire=2",
@@ -325,7 +330,7 @@ public class PrerequisiteWriterTest extends TestCase
 		"!PREVISION:1,Blindsight=ANY",													"!PREVISION:1,Blindsight=ANY",
 		"!PREPOINTBUYMETHOD:1,Standard",												"!PREPOINTBUYMETHOD:1,Standard",
 		"!PRESKILLTOT:Spot,Listen,Search=30",											"!PRESKILLTOT:Spot,Listen,Search=30",
-		"!PREFEAT:1,Dodge",																"!PREFEAT:1,Dodge",
+		"!PREFEAT:1,Dodge",																"!PREABILITY:1,CATEGORY=FEAT,Dodge",
 		"!PRESPELLDESCRIPTOR:4,Mind-Affecting=3",										"!PRESPELLDESCRIPTOR:4,Mind-Affecting=3",
 		"!PRESPELLSCHOOLSUB:3,Creation=2",												"!PRESPELLSCHOOLSUB:3,Creation=2",
 		"!PRESPELLSCHOOL:3,Necromancy=2",												"!PRESPELLSCHOOL:3,Necromancy=2",
@@ -399,6 +404,8 @@ public class PrerequisiteWriterTest extends TestCase
 		"PRESTAT:should_be_numeric,STR=18",												"PRESTAT:1,STR=18",
 		"PRESTAT:1,Strength=18",														"PRESTAT:1,Str=18",
 		"PREABILITY:1,CATEGORY=Special Ability,Dire Animal (Dire Rat)_Companion",		"PREABILITY:1,CATEGORY=Special Ability,Dire Animal (Dire Rat)_Companion",
+		"PREABILITY:1,CATEGORY=FEAT,[Surprise Strike]",									"PREABILITY:1,CATEGORY=FEAT,[Surprise Strike]",
+		"PREABILITY:1,CATEGORY=FEAT,Sneak Attack,[Alertness]",							"PREABILITY:1,CATEGORY=FEAT,Sneak Attack,[Alertness]",
 
 	//
 	// To cause exceptions
@@ -461,6 +468,9 @@ public class PrerequisiteWriterTest extends TestCase
 		SettingsHandler.setGame("3.5");
 		TestHelper.createAllAlignments();
 		TestHelper.makeSizeAdjustments();
+		FactKey.getConstant("IsPC", STR_MGR);
+		FactKey.getConstant("LEGS", STR_MGR);
+		FactSetKey.getConstant("PANTHEONS", STR_MGR);
 	}
 
 	/**
@@ -471,7 +481,7 @@ public class PrerequisiteWriterTest extends TestCase
 	{
 		Prerequisite prereq = null;
 		boolean bExceptionThrown = false;
-		boolean bExceptionExpected = (expectedOutput.length() == 0);
+		boolean bExceptionExpected = expectedOutput.isEmpty();
 		try
 		{
 			prereq = PreParserFactory.getInstance().parse(aPreString);

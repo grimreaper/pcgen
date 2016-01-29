@@ -47,7 +47,7 @@ import pcgen.cdom.content.ChallengeRating;
 import pcgen.cdom.content.HitDie;
 import pcgen.cdom.content.LevelCommandFactory;
 import pcgen.cdom.content.LevelExchange;
-import pcgen.cdom.content.Modifier;
+import pcgen.cdom.content.Processor;
 import pcgen.cdom.content.SpellResistance;
 import pcgen.cdom.helper.CNAbilitySelection;
 import pcgen.cdom.helper.Capacity;
@@ -178,7 +178,7 @@ public class ObjectKey<T>
 
 	public static final ObjectKey<Object> TOKEN_PARENT = new ObjectKey<Object>(null);
 
-	public static final ObjectKey<Modifier<HitDie>> HITDIE = new ObjectKey<Modifier<HitDie>>(null);
+	public static final ObjectKey<Processor<HitDie>> HITDIE = new ObjectKey<Processor<HitDie>>(null);
 
 	public static final ObjectKey<ChallengeRating> CHALLENGE_RATING = new ObjectKey<ChallengeRating>(ChallengeRating.ZERO);
 
@@ -325,6 +325,8 @@ public class ObjectKey<T>
 
 	public static final ObjectKey<Category<CompanionMod>> MOD_CATEGORY = new ObjectKey<Category<CompanionMod>>(null);
 
+	public static final ObjectKey<CDOMSingleRef<SizeAdjustment>> CUSTOMSIZE = new ObjectKey<CDOMSingleRef<SizeAdjustment>>(null);
+
 	/*
 	 * TODO Okay, this is a hack.
 	 */
@@ -341,7 +343,7 @@ public class ObjectKey<T>
 			}
 
 		};
-		map.put(BASESIZE.toString(), BASESIZE);
+		map.put("BASESIZE", BASESIZE);
 		SIZE = new ObjectKey<CDOMSingleRef<SizeAdjustment>>(null)
 		{
 			@Override
@@ -351,7 +353,7 @@ public class ObjectKey<T>
 			}
 
 		};
-		map.put(SIZE.toString(), SIZE);
+		map.put("SIZE", SIZE);
 	}
 
 	private final T defaultValue;

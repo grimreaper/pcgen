@@ -33,8 +33,8 @@ import pcgen.cdom.enumeration.CharID;
 import pcgen.cdom.enumeration.Gender;
 import pcgen.cdom.enumeration.Handed;
 import pcgen.cdom.enumeration.ObjectKey;
+import pcgen.cdom.enumeration.PCStringKey;
 import pcgen.cdom.enumeration.Region;
-import pcgen.cdom.enumeration.StringKey;
 import pcgen.cdom.enumeration.VariableKey;
 import pcgen.cdom.facet.DirectAbilityFacet;
 import pcgen.cdom.facet.FacetLibrary;
@@ -81,6 +81,7 @@ import pcgen.util.chooser.RandomChooser;
 import plugin.bonustokens.Feat;
 import plugin.lsttokens.testsupport.BuildUtilities;
 import plugin.lsttokens.testsupport.TokenRegistration;
+
 import compare.InequalityTesterInst;
 
 public abstract class AbstractSaveRestoreTest extends TestCase
@@ -168,6 +169,7 @@ public abstract class AbstractSaveRestoreTest extends TestCase
 		context.getReferenceContext().buildDerivedObjects();
 		context.resolveDeferredTokens();
 		assertTrue(context.getReferenceContext().resolveReferences(null));
+		context.resolvePostValidationTokens();
 		context.resolvePostDeferredTokens();
 		context.loadCampaignFacets();
 		pc = new PlayerCharacter();
@@ -305,16 +307,16 @@ public abstract class AbstractSaveRestoreTest extends TestCase
 		ref.importObject(wis);
 		ref.importObject(cha);
 
-		fine = BuildUtilities.createSize("Fine");
-		diminutive = BuildUtilities.createSize("Diminutive");
-		tiny = BuildUtilities.createSize("Tiny");
-		small = BuildUtilities.createSize("Small");
-		medium = BuildUtilities.createSize("Medium");
+		fine = BuildUtilities.createSize("Fine", 0);
+		diminutive = BuildUtilities.createSize("Diminutive", 1);
+		tiny = BuildUtilities.createSize("Tiny", 2);
+		small = BuildUtilities.createSize("Small", 3);
+		medium = BuildUtilities.createSize("Medium", 4);
 		medium.put(ObjectKey.IS_DEFAULT_SIZE, true);
-		large = BuildUtilities.createSize("Large");
-		huge = BuildUtilities.createSize("Huge");
-		gargantuan = BuildUtilities.createSize("Gargantuan");
-		colossal = BuildUtilities.createSize("Colossal");
+		large = BuildUtilities.createSize("Large", 5);
+		huge = BuildUtilities.createSize("Huge", 6);
+		gargantuan = BuildUtilities.createSize("Gargantuan", 7);
+		colossal = BuildUtilities.createSize("Colossal", 8);
 
 		context = Globals.getContext();
 		create(Language.class, "Common");
@@ -385,30 +387,30 @@ public abstract class AbstractSaveRestoreTest extends TestCase
 		pc.setXP(0);
 		pc.setRegion(Region.getConstant(Constants.NONE));
 
-		pc.setStringFor(StringKey.INTERESTS, "");
-		pc.setStringFor(StringKey.MISC_MAGIC, "");
-		pc.setStringFor(StringKey.PORTRAIT_PATH, "");
-		pc.setStringFor(StringKey.BIRTHDAY, "");
-		pc.setStringFor(StringKey.DESCRIPTION, "");
-		pc.setStringFor(StringKey.RESIDENCE, "");
-		pc.setStringFor(StringKey.TRAIT1, "");
-		pc.setStringFor(StringKey.EYE_COLOR, "");
-		pc.setStringFor(StringKey.PLAYERS_NAME, "");
-		pc.setStringFor(StringKey.HAIR_STYLE, "");
-		pc.setStringFor(StringKey.PHOBIAS, "");
-		pc.setStringFor(StringKey.LOCATION, "");
-		pc.setStringFor(StringKey.NAME, "");
-		pc.setStringFor(StringKey.MISC_COMPANIONS, "");
-		pc.setStringFor(StringKey.SKIN_COLOR, "");
-		pc.setStringFor(StringKey.CATCH_PHRASE, "");
-		pc.setStringFor(StringKey.BIO, "");
-		pc.setStringFor(StringKey.MISC_GM, "");
-		pc.setStringFor(StringKey.BIRTHPLACE, "");
-		pc.setStringFor(StringKey.MISC_ASSETS, "");
-		pc.setStringFor(StringKey.SPEECH_TENDENCY, "");
-		pc.setStringFor(StringKey.HAIR_COLOR, "");
-		pc.setStringFor(StringKey.TRAIT2, "");
-		pc.setStringFor(StringKey.TAB_NAME, "");
+		pc.setStringFor(PCStringKey.INTERESTS, "");
+		pc.setStringFor(PCStringKey.MAGIC, "");
+		pc.setStringFor(PCStringKey.PORTRAIT_PATH, "");
+		pc.setStringFor(PCStringKey.BIRTHDAY, "");
+		pc.setStringFor(PCStringKey.DESCRIPTION, "");
+		pc.setStringFor(PCStringKey.RESIDENCE, "");
+		pc.setStringFor(PCStringKey.PERSONALITY1, "");
+		pc.setStringFor(PCStringKey.EYECOLOR, "");
+		pc.setStringFor(PCStringKey.PLAYERSNAME, "");
+		pc.setStringFor(PCStringKey.HAIRSTYLE, "");
+		pc.setStringFor(PCStringKey.PHOBIAS, "");
+		pc.setStringFor(PCStringKey.LOCATION, "");
+		pc.setStringFor(PCStringKey.NAME, "");
+		pc.setStringFor(PCStringKey.COMPANIONS, "");
+		pc.setStringFor(PCStringKey.SKINCOLOR, "");
+		pc.setStringFor(PCStringKey.CATCHPHRASE, "");
+		pc.setStringFor(PCStringKey.BIO, "");
+		pc.setStringFor(PCStringKey.GMNOTES, "");
+		pc.setStringFor(PCStringKey.BIRTHPLACE, "");
+		pc.setStringFor(PCStringKey.ASSETS, "");
+		pc.setStringFor(PCStringKey.SPEECHTENDENCY, "");
+		pc.setStringFor(PCStringKey.HAIRCOLOR, "");
+		pc.setStringFor(PCStringKey.PERSONALITY2, "");
+		pc.setStringFor(PCStringKey.TABNAME, "");
 	}
 
 }

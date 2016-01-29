@@ -26,13 +26,11 @@ import java.util.TreeSet;
 import java.util.WeakHashMap;
 
 import pcgen.base.util.DoubleKeyMapToList;
-import pcgen.cdom.base.CDOMObject;
 import pcgen.cdom.base.CDOMReference;
-import pcgen.cdom.base.CategorizedCDOMObject;
+import pcgen.cdom.base.Categorized;
 import pcgen.cdom.base.Category;
 import pcgen.cdom.base.Loadable;
-import pcgen.cdom.reference.CDOMGroupRef;
-import pcgen.cdom.reference.CDOMSingleRef;
+import pcgen.cdom.reference.ManufacturableFactory;
 import pcgen.cdom.reference.ReferenceManufacturer;
 import pcgen.cdom.reference.UnconstructedEvent;
 import pcgen.cdom.reference.UnconstructedListener;
@@ -44,66 +42,17 @@ public class TrackingReferenceContext extends RuntimeReferenceContext implements
 
 	private final DoubleKeyMapToList<CDOMReference<?>, URI, String> track = new DoubleKeyMapToList<CDOMReference<?>, URI, String>(WeakHashMap.class, HashMap.class);
 
-	@Override
-	public <T extends CDOMObject & CategorizedCDOMObject<T>> CDOMSingleRef<T> getCDOMReference(
-			Class<T> c, Category<T> cat, String val)
-	{
-		CDOMSingleRef<T> ref = super.getCDOMReference(c, cat, val);
-		trackReference(ref);
-		return ref;
-	}
-
-	@Override
-	public <T extends Loadable> CDOMSingleRef<T> getCDOMReference(Class<T> c,
-			String val)
-	{
-		CDOMSingleRef<T> ref = super.getCDOMReference(c, val);
-		trackReference(ref);
-		return ref;
-	}
-
-	@Override
-	public <T extends CDOMObject & CategorizedCDOMObject<T>> CDOMGroupRef<T> getCDOMAllReference(
-			Class<T> c, Category<T> cat)
-	{
-		CDOMGroupRef<T> ref = super.getCDOMAllReference(c, cat);
-		trackReference(ref);
-		return ref;
-	}
-
-	@Override
-	public <T extends Loadable> CDOMGroupRef<T> getCDOMAllReference(Class<T> c)
-	{
-		CDOMGroupRef<T> ref = super.getCDOMAllReference(c);
-		trackReference(ref);
-		return ref;
-	}
-
-	@Override
-	public <T extends CDOMObject & CategorizedCDOMObject<T>> CDOMGroupRef<T> getCDOMTypeReference(
-			Class<T> c, Category<T> cat, String... val)
-	{
-		CDOMGroupRef<T> ref = super.getCDOMTypeReference(c, cat, val);
-		trackReference(ref);
-		return ref;
-	}
-
-	@Override
-	public <T extends Loadable> CDOMGroupRef<T> getCDOMTypeReference(
-			Class<T> c, String... val)
-	{
-		CDOMGroupRef<T> ref = super.getCDOMTypeReference(c, val);
-		trackReference(ref);
-		return ref;
-	}
-
 	private final Set<ReferenceManufacturer<?>> listening = new HashSet<ReferenceManufacturer<?>>();
 
 	@Override
-	public <T extends Loadable & CategorizedCDOMObject<T>> ReferenceManufacturer<T> getManufacturer(
+	public <T extends Categorized<T>> ReferenceManufacturer<T> getManufacturer(
 			Class<T> cl, Category<T> cat)
 	{
 		ReferenceManufacturer<T> mfg = super.getManufacturer(cl, cat);
+		if (mfg instanceof TrackingManufacturer)
+		{
+			return mfg;
+		}
 		if (!listening.contains(mfg))
 		{
 			mfg.addUnconstructedListener(this);
@@ -117,6 +66,27 @@ public class TrackingReferenceContext extends RuntimeReferenceContext implements
 			Class<T> cl)
 	{
 		ReferenceManufacturer<T> mfg = super.getManufacturer(cl);
+		if (mfg instanceof TrackingManufacturer)
+		{
+			return mfg;
+		}
+		if (!listening.contains(mfg))
+		{
+			mfg.addUnconstructedListener(this);
+			listening.add(mfg);
+		}
+		return new TrackingManufacturer<T>(this, mfg);
+	}
+
+	@Override
+	public <T extends Loadable> ReferenceManufacturer<T> getManufacturer(
+		ManufacturableFactory<T> factory)
+	{
+		ReferenceManufacturer<T> mfg = super.getManufacturer(factory);
+		if (mfg instanceof TrackingManufacturer)
+		{
+			return mfg;
+		}
 		if (!listening.contains(mfg))
 		{
 			mfg.addUnconstructedListener(this);
@@ -172,9 +142,9 @@ public class TrackingReferenceContext extends RuntimeReferenceContext implements
 		String src = getSource();
 		if (src == null)
 		{
-			src = "";
+			src = "?";
 		}
-		track.addToListFor(ref, getSourceURI(), getSource());
+		track.addToListFor(ref, getSourceURI(), src);
 	}
 
 }
