@@ -216,6 +216,8 @@ CLASS:Monk		STARTSKILLPTS:4
 #	The Special Ability then grants the actual feat as a virtual feat, See the rsrd_abilities_class.lst file to see how these are coded.
 # MonkBonusFeatLVL is used as a prerequisite for when a specific bonus feat can be taken
 ###Block:
+8	MODIFYOTHER:EQUIPMENT|Flurry Of Blows|MinAttackCount|SET|3
+11	MODIFYOTHER:EQUIPMENT|Flurry Of Blows|MinStableAttacks|SET|3
 
 
 # Class Name	Hit Dice	Type			Max Level	Ex Class			Source Page		Visible	Define													Combat bonus																Add domain number					Save bonus																																		Modify VAR																																																																																																																				Monster Role	FACT

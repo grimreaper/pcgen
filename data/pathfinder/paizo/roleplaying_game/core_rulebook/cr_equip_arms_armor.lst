@@ -4,6 +4,9 @@ SOURCELONG:Core Rulebook	SOURCESHORT:CR	SOURCEWEB:http://paizo.com/store/downloa
 # Pathfinder RPG Entry by: Stefan Radermacher
 # Incorporated 11/22/2011 errata (Stefan Radermacher)
 
+###Block:
+Flurry of Blows.MOD	MODIFY:MinAttackCount|SET|2	MODIFY:MinStableAttacks|SET|2
+
 
 ###BLOCK: Ammunition
 # Equipment Name				Unique Key					Type									Cost		Weight	Base Quantity	Modifier					Requires Modification?	Source Page		Weapon prop. bonus		Special Property

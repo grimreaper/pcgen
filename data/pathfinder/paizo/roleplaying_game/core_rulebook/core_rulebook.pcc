@@ -44,6 +44,13 @@ PCC:@/pathfinder/paizo/roleplaying_game/core_essentials/core_essentials.pcc
 
 # Fact/Factset & Formula System
 DATACONTROL:cr__datacontrols.lst
+#CODECONTROL:cr__codecontrols.lst	# Discussion
+#DYNAMIC:cr__dynamic.lst		# Discussion
+
+VARIABLE:cr__variables.lst
+GLOBALMODIFIER:cr__globalmodifiers.lst
+
+
 
 ### GM Moved
 ALIGNMENT:cr__align.lst

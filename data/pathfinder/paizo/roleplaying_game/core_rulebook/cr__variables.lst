@@ -1,0 +1,70 @@
+
+
+# Discussion
+#	LOCAL:VISION|NUMBER|Range
+#	LOCAL:MOVEMENT|NUMBER|Speed
+
+#
+GLOBAL:NUMBER=TL
+# We do not have STAT working, so making a fake STRSCORE for now.
+GLOBAL:NUMBER=STRSCORE
+
+# New Scope: STAT (Not Working)
+#	LOCAL:STAT|NUMBER=Mod
+
+
+# New Scope: CHECK (Not Working)
+#	LOCAL:CHECK|NUMBER=Save			EXPLANATION:D20 System - Sets a local Save for each check in the system (Check is PCGen term for a Saving Throw)
+#	LOCAL:CHECK|NUMBER|Save_Base		EXPLANATION:D20 System - Sets a local Save base for each check in the system (Base is modified by Classes)
+#	LOCAL:CHECK|NUMBER=Save_Stat		EXPLANATION:D20 System - Sets a local Save stat for each check in the system (Stat is the MOD value)
+#	LOCAL:CHECK|NUMBER=Save_Bonus		EXPLANATION:D20 System - Sets a local Save bonus for each check in the system (Anything else affecting the save)
+#	LOCAL:CHECK|NUMBER=Save_Racial	EXPLANATION:D20 System - Sets a local Save racial for each check in the system (Anything else affecting the save)
+
+
+LOCAL:SKILL|NUMBER=MaxRank
+LOCAL:SKILL|NUMBER=Rank
+LOCAL:SKILL|NUMBER=Bonus
+LOCAL:SKILL|NUMBER=Stat
+LOCAL:SKILL|NUMBER=MaxRank_MOD
+# EXPLANATION:Only the Highest Value is taken
+
+LOCAL:SKILL|NUMBER=MinRank
+
+# Global Vars
+GLOBAL:NUMBER=AC_Total			EXPLANATION:Total AC Display
+GLOBAL:NUMBER=AC_Flatfooted	
+GLOBAL:NUMBER=AC_Touch		
+GLOBAL:NUMBER=AC_Base		
+GLOBAL:NUMBER=AC_Ability		
+GLOBAL:NUMBER=AC_Size		
+GLOBAL:NUMBER=AC_ClassDefense	
+GLOBAL:NUMBER=AC_Misc		
+GLOBAL:NUMBER=Initiative
+GLOBAL:NUMBER=Initiative_Stat
+GLOBAL:NUMBER=Initiative_Mod
+
+#Skill_Bonus
+
+
+GLOBAL:NUMBER=Companion_NormalMount
+GLOBAL:NUMBER=Companion_NormalFollower
+GLOBAL:NUMBER=ENCUMBRANCE
+GLOBAL:NUMBER=Loadscore
+GLOBAL:NUMBER=LoadScoreSizeMod
+
+
+
+
+
+######
+#LOCAL:EQUIPMENT.PART|ARRAY[NUMBER]=Bab
+#LOCAL:EQUIPMENT.PART|ARRAY[NUMBER]=ToHit
+LOCAL:EQUIPMENT.PART|AttackCount
+LOCAL:EQUIPMENT|MinAttackCount
+LOCAL:EQUIPMENT|MinStableAttacks
+
+######
+# Requires ARRAY
+#LOCAL:EQUIPMENT|ARRAY[NUMBER]=Range
+
+

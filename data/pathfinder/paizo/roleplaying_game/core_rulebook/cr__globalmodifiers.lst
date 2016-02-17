@@ -1,0 +1,275 @@
+
+# ERROR: Cannot have multiple tags on a line, which means EXPLANATION does not work in GM file.
+
+# Game Mode Settings
+#MODIFYOTHER:CLASS|ALL|TL|ADD|classlevel()
+
+#MODIFYOTHER:STAT|Charisma|BaseValue|ADD|1
+
+MODIFY:Loadscore|SET|STRSCORE+LoadScoreSizeMod	
+
+
+# EXPLANATION:D20 System - Sets the Mod for all "Stats" to the Value of the stat/2-5.
+#	MODIFYOTHER:STAT|ALL|Mod|SET|(Value/2)-5
+
+#MODIFY:ABILITYPOOL=FEAT|SOLVE|value()+TL/3|PRIORITY=100	EXPLANATION:Set feat accrual.
+
+
+#MODIFYOTHER:EQUIPMENT.PART|NUMBER=ToHit_ModTotal|GROUP=WeaponMelee|SET|STR|PRIORITY=1000000	EXPLANATION:ModTotal for Melee weapons set to the Strength Modifier	
+#MODIFYOTHER:EQUIPMENT.PART|NUMBER=ToHit_ModTotal|GROUP=WeaponThrown|SET|STR|PRIORITY=1000000	EXPLANATION:ModTotal for Thrown weapons set to the Strength Modifier
+#MODIFYOTHER:EQUIPMENT.PART|NUMBER=ToHit_ModTotal|GROUP=WeaponRanged|SET|DEX|PRIORITY=1000000	EXPLANATION:ModTotal for Ranged weapons set to the Strength Modifier
+#
+## Tom hasn't decided how to handle DAMAGE:xdy+z / damage bonus yet.
+#MODIFYOTHER:EQUIPMENT.PART|NUMBER=Damage_Bonus|GROUP=WeaponMelee|SET|STR|PRIORITY=1000000		EXPLANATION:Bonus to Damage for Melee weapons set to the Strength modifier
+#MODIFYOTHER:EQUIPMENT.PART|NUMBER=Damage_Bonus|GROUP=WeaponThrown|SET|STR|PRIORITY=1000000		EXPLANATION:Bonus to Damage for Thrown weapons set to the Strength modifier
+#MODIFYOTHER:EQUIPMENT.PART|NUMBER=Damage_Bonus|GROUP=WeaponSplash|SET|-STR|PRIORITY=1000000		EXPLANATION:Bonus to Damage for Splash weapons set to remove the Strength modifier
+
+
+# GLOBAL RULES:
+
+#Straight conversion would be:
+
+
+# This is used by the Output system - consider redoing to OS=x
+#MODIFY:Weapon.DamageMult.Light|SOLVE|1
+#MODIFY:Weapon.DamageMult.OneHand|SOLVE|1
+#MODIFY:Weapon.DamageMult.TwoHand|SOLVE|1
+
+###Block: AC Universal Rules!
+#MODIFY:AC_Total|SET|AC_Base+AC_Ability+AC_Size+AC_ClassDefense+AC_Misc							EXPLANATION:Fantasy Craft - Total AC value
+#MODIFY:NUMBER=AC_Flatfooted|SET|AC_Total-AC_Ability													EXPLANATION:Fantasy Craft - Not Used	
+#MODIFY:NUMBER=AC_Touch|SOLVE|AC_Ability+AC_Size+AC_Misc													EXPLANATION:Fantasy Craft - Not Used
+#
+#
+## AC values:
+#MODIFY:AC_Base|SET|10|PRIORITY=1000000						EXPLANATION:D20 System - Default value is 10
+#MODIFY:AC_Attribute|SOLVE|min(AC_Stat,min(MaxDex,ModEquipMaxDex))		EXPLANATION:D20 System - Sets the actual attribute modifier to the lowest value of Dex Mod, or penalties for Armor "MaxDex" or "Encumbrance".
+#MODIFY:AC_Stat|SET|DEX|PRIORITY=1000000						EXPLANATION:D20 System - Sets the default AC_Stat to DEX mod, though this can be overriden using a PRIORITY >1000000
+#
+## Determing MaxDex based upon encumbrance
+#MODIFY:MaxDex|SOLVE|if(encumbrance==0,1000,value())				EXPLANATION:D20 System - Sets MaxDex to be 1000, if encumbrance value is 0
+#MODIFY:MaxDex|SOLVE|if(encumbrance==1,3,value())				EXPLANATION:D20 System - Sets MaxDex to be 3, if encumbrance value is 1
+#MODIFY:MaxDex|SOLVE|if(encumbrance==2,1,value())				EXPLANATION:D20 System - Sets MaxDex to be 1, if encumbrance value is 2
+
+# Interesting, looks like 'ModEquipMaxDex' was the value coming from equipment.
+
+MODIFY:Initiative|SET|Initiative_Stat+Initiative_Mod		
+
+# EXPLANATION:Initiative_Stat is the Modifier for Initiative based upon Dex Bonus
+#	MODIFY:Initiative_Stat|SET|DEX
+	
+
+#STATNAME:Strength
+MODIFY:LOADSCORE|SET|STRSCORE	
+
+
+#STATNAME:Dexterity
+#MODIFY:AC|SET|max(FightingDefensivelyAC,TotalDefenseAC)			EXPLANATION:D20 System - Adds to AC the values of either Fighting Defensively or Total Defense AC. This is turned on by activating a TEMPBONUS/TEMPMOD.
+
+# SET vs SOLVE
+
+#STATNAME:Constitution	
+
+#MODIFY:HP_WoundPoints|SET|CON|PRIORITY=1000000						
+#MODIFY:HP_AltHP|SET|CONSCORE*2
+
+#MODIFY:HP=HP|SET|value()+namespace("CLASS",HP)		EXPLANATION:Determines the value HP from all the Class HP totals.
+#MODIFYOTHER:CLASS|ALL|HP_Mod|SET|namespace("GLOBAL",CON)|PRIORITY=100
+
+#MODIFYOTHER:CLASS|ALL|HP|SOLVE|value()+HP_Class+HP_Mod*CL|PRIORITY=100	EXPLANATION:Sets local HP for Class to Class Level value time Con value + HP_Class value.
+# MODIFYOTHER:CLASS|ALL|HP_Class|DIVIDE|2		EXPLANATION:Isolates the HP of the Class, and sets it to half Value
+#STATNAME:Intelligence
+
+#MODIFY:Language_Race|SOLVE|max(INT,0)+Language_Additional			EXPLANATION:PC's have two pools for Languages - those gained from Race and high intelligence, the second is from the Linguistics Skill
+
+
+#MODIFY:Skill_Bonus|SET|INT
+# NOTE: We used this to avoid TEMP changes var("STAT.3.MOD.NOEQUIP.NOTEMP")
+# Also for the retroactive Bonus to Skill Pool, we used this "BonusRetroSkillPoints"
+
+#STATNAME:Wisdom
+
+
+#STATNAME:Charisma
+
+
+# Generic
+#MODIFY:RacialVision|SET|value()+if(context("FLAG",RacialVision),1,0)
+
+
+#GENERAL RULES
+MODIFY:Companion_NormalMount|SET|1
+MODIFY:Companion_NormalFollower|SET|1
+
+# AC_Attribute = Actual Display, and ultimate value from the Stat, whereas AC_Stat will be the MOD (Dex or CHA)
+
+
+# This globally applies the Class Skill Bonus to the SkillTotal of every skill (Pathfinder Core Rulebook, page 86, forth printing)
+# RULE QUOTE: "You gain a +3 bonus on all class skills that you put ranks into."
+#MODIFYOTHER:SKILL|ALL|SkillTotal|SOLVE|value()+if((Rank>=1)&&(Grantors>=1),3,0)|PRIORITY=1000
+
+# Rules to review for FLY skill:
+# "Creatures with a fly speed treat the Fly skill as a class skill."
+# "A creature with a natural fly speed receives a bonus (or penalty) on Fly skill checks depending on its maneuverability: Clumsy –8, Poor –4, Average +0, Good +4, Perfect +8. Creatures without a listed maneuverability rating are assumed to have average maneuverability.
+# "A creature larger or smaller than Medium takes a size bonus or penalty on Fly checks depending on its size category: Fine +8, Diminutive +6, Tiny +4, Small +2, Large –2, Huge –4, Gargantuan –6, Colossal –8."
+
+
+# This globally applies the Climb Bonus to the SkillTotal of the Climb skill (Pathfinder Core Rulebook, page 91, forth printing)
+# RULE QUOTE: "A creature with a climb speed has a +8 racial bonus on all Climb checks."
+#MODIFYOTHER:SKILL|Climb|SOLVE|value()+if(namespace("MOVE",Climb>=1,8,0)
+
+# This globally applies the Swin Bonus to the SkillTotal of the Situational Swim skill (Pathfinder Core Rulebook, page 91, forth printing)
+# RULE QUOTE: "A creature with a swim speed can move through water at its indicated speed without making Swim checks. It gains a +8 racial bonus on any Swim check to perform a special action or avoid a hazard."
+# TOM QUESTION: How do we bonus the SITUATION?
+#?MODIFYOTHER:SKILL|Swim=perform special action or avoid hazard|SOLVE|value()+if(namespace("MOVE",Swim>=1,8,0)
+
+#	BONUS:COMBAT|AC|min(CHA, min(MXDXEN,MODEQUIPMAXDEX))|TYPE=Ability|PREVAREQ:ACStatIsCha,1
+#	DEFINE:OversizeWeaponToHitBonus|0	
+
+# Redo to OS display
+# getLocalVar("STAT","Constitution",Mod)	EXPLANATION:An Alternate method to get a Local Var.
+# MODIFY:STR|SOLVE|stat("Strength")
+
+# EXPLANATION:D20 System - Sets the Encumbrance to the "Encumbrance" - ties into the Load.lst file
+#	MODIFY:ENCUMBRANCE|SET|encumbrance()
+
+
+
+# OS Flags - Need to deal with RULE.lst file:
+#MODIFY:NUMBER=UseAlternateDamage|SET|1							EXPLANATION:Fantasy Craft only uses Vitality and Wound Point rules.
+#MODIFY:NUMBER=UseCombatManueverBonus|SET|if(context("RULE",USE_CMB),1,0)
+
+
+
+#Global file:
+#MODIFYOTHER:EQUIPMENT_PART|ALL|AB_1|SOLVE|BaseAB
+#MODIFYOTHER:EQUIPMENT_PART|ALL|AB_2|SOLVE|BaseAB
+
+# No use for additional attack steps.
+#MODIFYOTHER:EQUIPMENT_PART|ALL|AB_3|SOLVE|max(0,BaseAB-2*BaseAB_Step)
+#MODIFYOTHER:EQUIPMENT_PART|ALL|AB_4|SOLVE|max(0,BaseAB-3*BaseAB_Step)
+#MODIFYOTHER:EQUIPMENT_PART|ALL|AB_5|SOLVE|max(0,BaseAB-4*BaseAB_Step)
+#//AB_6 and AB_7 default to zero
+#//Some other stuff to calculate ToHit_ModTotal correctly (stats, pluses, etc), content may appear elsewhere as well
+
+
+#//Set the default values of the ToHits to the ABs, can be overridden by equipment if necessary
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_1|SOLVE|AB_1
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_2|SOLVE|AB_2
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_3|SOLVE|AB_3
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_4|SOLVE|AB_4
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_5|SOLVE|AB_5
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_6|SOLVE|AB_6
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_7|SOLVE|AB_7
+#//ToHit_8 and ToHit_9 default to zero since they would not have been used.
+
+#//Make sure all ToHits get the mod total applied (close to last)
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_1|SOLVE|value()+ToHit_ModTotal|PRIORITY=1000000
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_2|SOLVE|value()+ToHit_ModTotal|PRIORITY=1000000
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_3|SOLVE|value()+ToHit_ModTotal|PRIORITY=1000000
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_4|SOLVE|value()+ToHit_ModTotal|PRIORITY=1000000
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_5|SOLVE|value()+ToHit_ModTotal|PRIORITY=1000000
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_6|SOLVE|value()+ToHit_ModTotal|PRIORITY=1000000
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_7|SOLVE|value()+ToHit_ModTotal|PRIORITY=1000000
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_8|SOLVE|value()+ToHit_ModTotal|PRIORITY=1000000
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_9|SOLVE|value()+ToHit_ModTotal|PRIORITY=1000000
+
+#For Flurry of Blows (SRD 3.5):
+#MODIFY:BaseAB_Step|SET|3|PRIORITY=1000
+
+#For Flurry of Blows (PF) [on the Equipment]:
+
+#For Haste/Speed (these need to be applied as the equivalent of today's TEMPBONUS)
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_1|SOLVE|AB_1|PRIORITY=1000
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_2|SOLVE|AB_1|PRIORITY=1000
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_3|SOLVE|AB_2|PRIORITY=1000
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_4|SOLVE|AB_3|PRIORITY=1000
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_5|SOLVE|AB_4|PRIORITY=1000
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_6|SOLVE|AB_5|PRIORITY=1000
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_7|SOLVE|AB_6|PRIORITY=1000
+#MODIFYOTHER:EQUIPMENT_PART|ALL|ToHit_8|SOLVE|AB_7|PRIORITY=1000
+
+
+# Clarify with Tom that this (see below) sets all Flags true IF an Archetype with GROUP:FighterWeaponMastery will activate the TRUE flag
+# Archetype Support
+#|!PREBOOL:context("FLAG",Subrace)
+#MODIFY:FLAG=Subrace|SET|True
+
+#		SCOPE:Ability=CATEGGORY	GROUP=Something from that Ability category
+#MODIFYOTHER:ABILITY=Archetype|GROUP=WizardBonusFeats|FLAG=WizardBonusFeats|SET|True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Then the other places also need to add to Grantors when they make something a class skill
+# they make something a class skill, so instead of a FLAG on the skill its a count.
+
+#CLASS:Fighter	MODIFYOTHER:SKILL|Ride|Grantors|ADD|1
+
+
+#<blah blah>if(getLocalVar("SKILL","Ride",Grantors>)=1,...stuff when a class skill...,...stuff when not a class skill...)
+#[20:39] Tom Parker: missed a ) after the s in Grantors
+#[20:39] Tom Parker: then in Skill Specialization, we need to do 2 things:
+
+#[20:40] Tom Parker: (1) Add to Grantors
+#[20:40] Tom Parker: MODIFYOTHER:SKILL|%LIST|Grantors|ADD|1
+#We can do this "innocently" as a readd because we actually WANT to count, the threshold is simply a test for >=1
+
+
+# Class Skill detection:
+#<blah blah>if(getLocalVar("SKILL","Ride",Grantors)>=1,...stuff when a class skill...,...stuff when not a class skill...)
+#is how class skill detection would be done in most places
+
+#MODIFYOTHER:SKILL|
+
+
+# For Cross Class Rank Difference:
+
+# Class Skills are 0 unless allowed by global rule change - then cost is 2 per rank
+MODIFYOTHER:SKILL|ALL|MaxRank_MOD|SET|3
+MODIFYOTHER:SKILL|ALL|MaxRank|SET|MaxRank_MOD+TL*MinRank|PRIORITY=100	
+
+
+
+#MODIFYOTHER:SKILL|ALL|MaxRank|TL+3	EXPLANATION:This sets MaxRank for all skills to Total Level +3 -- Assuming that Tom Parker redoes how the Gamemode Caps Rank and VISIBILITY.
+#BONUS:NUMBER|MaxRank|TL+12|TYPE=BASE	
+
+
+MODIFYOTHER:EQUIPMENT|ALL|MinAttackCount|SET|1
+MODIFYOTHER:EQUIPMENT|ALL|MinStableAttacks|SET|1
+MODIFYOTHER:EQUIPMENT.PART|ALL|StableAttacks|SET|MinStableAttacks
+MODIFYOTHER:EQUIPMENT.PART|ALL|AttackCount|SET|MinAttackCount
+
+#	MODIFYOTHER:EQUIPMENT.PART|ALL|Bab[2]|SET|if(StableAttacks>=2,Bab[1],Bab[1]-5)|PRIORITY=100
+#	MODIFYOTHER:EQUIPMENT.PART|ALL|Bab[3]|SET|if(StableAttacks>=3,Bab[2],Bab[2]-5)|PRIORITY=200
+# Bring all BAB across
+#	MODIFYOTHER:EQUIPMENT.PART|ALL|ToHit|SET|Bab
+# Truncate
+# Note, since AttackCount depends on Bab, don't risk trying to truncate Bab... (risk of circular dependency)
+#	MODIFYOTHER:EQUIPMENT.PART|ALL|ToHit|SETLENGTH|AttackCount|PRIORITY=100
+#	MODIFYOTHER:EQUIPMENT.PART|ALL|AttackCount|ADD|if(Bab[2]>0,1,0)|PRIORITY=1000
+#	MODIFYOTHER:EQUIPMENT.PART|ALL|AttackCount|ADD|if(Bab[3]>0,1,0)|PRIORITY=1000
+
+# Requires ARRAY
+#	MODIFYOTHER:EQUIPMENT.PART|ALL|ToHit|SETLENGTH|AttackCount|PRIORITY=100
+
+
+#...
+
+#At that point the relevant part of haste is:
+#	MODIFYOTHER:EQUIPMENT.PART|ALL|StableAttacks|ADD|1|PRIORITY=2000
+#	MODIFYOTHER:EQUIPMENT.PART|ALL|AttackCount|ADD|1|PRIORITY=2000
+
+
