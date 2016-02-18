@@ -60,15 +60,18 @@ LOCAL:EQUIPMENT|NUMBER=TestLocal2
 LOCAL:EQUIPMENT.PART|TestLocalPart
 LOCAL:EQUIPMENT.PART|NUMBER=TestLocalPart2
 
-
+# Intelligent Item Support
 LOCAL:EQUIPMENT|Item_Ego
 LOCAL:EQUIPMENT|Item_Int
 LOCAL:EQUIPMENT|Item_Wis
 LOCAL:EQUIPMENT|Item_Cha
+
+# Base Item Support - HP, Hardness are common, as is Illumination
 LOCAL:EQUIPMENT|Item_Hp
 LOCAL:EQUIPMENT|Item_Hardness
-LOCAL:EQUIPMENT|Item_Light
-
+LOCAL:EQUIPMENT|Item_BrightIllumination
+LOCAL:EQUIPMENT|Item_NormalIllumination
+LOCAL:EQUIPMENT|Item_ShadowyIllumination
 
 
 
