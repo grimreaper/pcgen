@@ -82,7 +82,7 @@ LOCAL:EQUIPMENT|Item_ShadowyIllumination
 LOCAL:EQUIPMENT.PART|AttackCount
 LOCAL:EQUIPMENT|MinAttackCount
 LOCAL:EQUIPMENT|MinStableAttacks
-
+LOCAL:EQUIPMENT.PART|StableAttacks
 ######
 # Requires ARRAY
 #LOCAL:EQUIPMENT|ARRAY[NUMBER]=Range
