@@ -15,22 +15,22 @@ GLOBAL:NUMBER=STRSCORE
 
 # New Scope: CHECK (Not Working)
 #	LOCAL:CHECK|NUMBER=Save			EXPLANATION:D20 System - Sets a local Save for each check in the system (Check is PCGen term for a Saving Throw)
-#	LOCAL:CHECK|NUMBER|Save_Base		EXPLANATION:D20 System - Sets a local Save base for each check in the system (Base is modified by Classes)
+#	LOCAL:CHECK|NUMBER=Save_Base		EXPLANATION:D20 System - Sets a local Save base for each check in the system (Base is modified by Classes)
 #	LOCAL:CHECK|NUMBER=Save_Stat		EXPLANATION:D20 System - Sets a local Save stat for each check in the system (Stat is the MOD value)
 #	LOCAL:CHECK|NUMBER=Save_Bonus		EXPLANATION:D20 System - Sets a local Save bonus for each check in the system (Anything else affecting the save)
 #	LOCAL:CHECK|NUMBER=Save_Racial	EXPLANATION:D20 System - Sets a local Save racial for each check in the system (Anything else affecting the save)
 
-
+# New Scope: Skill (each skill has these)
 LOCAL:SKILL|NUMBER=MaxRank
 LOCAL:SKILL|NUMBER=Rank
 LOCAL:SKILL|NUMBER=Bonus
 LOCAL:SKILL|NUMBER=Stat
-LOCAL:SKILL|MaxRank_MOD
+LOCAL:SKILL|NUMBER=MaxRank_MOD
 # EXPLANATION:Only the Highest Value is taken
 
 LOCAL:SKILL|NUMBER=MinRank
 
-# Global Vars
+# Global Vars - Consider using dynamic scope for AC
 GLOBAL:NUMBER=AC_Total			EXPLANATION:Total AC Display
 GLOBAL:NUMBER=AC_Flatfooted	
 GLOBAL:NUMBER=AC_Touch		
@@ -86,5 +86,11 @@ LOCAL:EQUIPMENT.PART|StableAttacks
 ######
 # Requires ARRAY
 #LOCAL:EQUIPMENT|ARRAY[NUMBER]=Range
+
+# Requires DYNAMICSCOPE
+#LOCAL:VISION|Range
+#LOCAL:MOVEMENT|Speed
+#LOCAL:AC|Value
+
 
 
