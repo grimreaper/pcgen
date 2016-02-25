@@ -53,6 +53,7 @@ import pcgen.cdom.enumeration.ObjectKey;
 import pcgen.cdom.enumeration.SourceFormat;
 import pcgen.cdom.enumeration.StringKey;
 import pcgen.cdom.enumeration.Type;
+import pcgen.cdom.inst.CodeControl;
 import pcgen.core.Ability;
 import pcgen.core.AbilityCategory;
 import pcgen.core.ArmorProf;
@@ -578,7 +579,7 @@ public class SourceFileLoader extends PCGenTask implements Observer
 
 		// Load using the new LstFileLoaders
 		List<CampaignSourceEntry> dataDefFileList = fileLists.getListFor(ListKey.FILE_DATACTRL);
-		addDefaultDataControlIfNeeded(dataDefFileList);
+		dataDefFileList = addDefaultDataControlIfNeeded(dataDefFileList);
 		dataControlLoader.loadLstFiles(context, dataDefFileList);
 		processFactDefinitions(context);
 
@@ -683,10 +684,17 @@ public class SourceFileLoader extends PCGenTask implements Observer
 
 	private void defineBuiltinVariables(LoadContext context)
 	{
-		VariableContext varContext = context.getVariableContext();
-		FormatManager<OrderedPair> opManager =
-				FormatManagerLibrary.getFormatManager(OrderedPair.class);
-		defineVariable(varContext, opManager, "Face");
+		CodeControl controller =
+				Globals.getContext().getReferenceContext().silentlyGetConstructedCDOMObject(
+					CodeControl.class, "Controller");
+		if (controller == null
+			|| (controller.get(ObjectKey.getKeyFor(String.class, "*FACE")) == null))
+		{
+			VariableContext varContext = context.getVariableContext();
+			FormatManager<OrderedPair> opManager =
+					FormatManagerLibrary.getFormatManager(OrderedPair.class);
+			defineVariable(varContext, opManager, "Face");
+		}
 	}
 
 	private void defineVariable(VariableContext varContext,
@@ -701,9 +709,13 @@ public class SourceFileLoader extends PCGenTask implements Observer
 	 * 
 	 * @param dataDefFileList The list of data control files.
 	 */
-	public static void addDefaultDataControlIfNeeded(
+	public static List<CampaignSourceEntry> addDefaultDataControlIfNeeded(
 		List<CampaignSourceEntry> dataDefFileList)
 	{
+		if (dataDefFileList == null)
+		{
+			dataDefFileList = new ArrayList<CampaignSourceEntry>();
+		}
 		if (dataDefFileList.isEmpty())
 		{
 			File gameModeDir =
@@ -716,6 +728,7 @@ public class SourceFileLoader extends PCGenTask implements Observer
 			CampaignSourceEntry cse = new CampaignSourceEntry(c, df.toURI());
 			dataDefFileList.add(cse);
 		}
+		return dataDefFileList;
 	}
 
 	public static void processFactDefinitions(LoadContext context)
