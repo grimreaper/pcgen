@@ -73,16 +73,30 @@ LOCAL:EQUIPMENT|Item_BrightIllumination
 LOCAL:EQUIPMENT|Item_NormalIllumination
 LOCAL:EQUIPMENT|Item_ShadowyIllumination
 
+# Equipment Values
+LOCAL:EQUIPMENT.PART|NUMBER=CritRange
+LOCAL:EQUIPMENT.PART|NUMBER=CritMult
+
+# Modifiers - These are what Feats act upon
+LOCAL:EQUIPMENT.PART|NUMBER=EqCritRange
+LOCAL:EQUIPMENT.PART|NUMBER=EqCritMult
 
 
-
-######
+### Equipment - Weapons Values
 #LOCAL:EQUIPMENT.PART|ARRAY[NUMBER]=Bab
 #LOCAL:EQUIPMENT.PART|ARRAY[NUMBER]=ToHit
-LOCAL:EQUIPMENT.PART|AttackCount
-LOCAL:EQUIPMENT|MinAttackCount
-LOCAL:EQUIPMENT|MinStableAttacks
-LOCAL:EQUIPMENT.PART|StableAttacks
+
+# Set to this for now, once Array is available swap.
+LOCAL:EQUIPMENT.PART|NUMBER=Bab	EXPLANATION:Bab is what we use to determine when a weapon gain an iterative attack
+LOCAL:EQUIPMENT.PART|NUMBER=ToHit	EXPLANATION:ToHit is the total value of the weapon to hit a target
+
+
+LOCAL:EQUIPMENT|MinAttackCount	EXPLANATION:Number of Attacks a weapon should have
+LOCAL:EQUIPMENT|MinStableAttacks	EXPLANATION:Number of Iterative Attacks vs. Non-Iterative Attacks (Such as Haste, Speed or other)
+
+
+LOCAL:EQUIPMENT.PART|AttackCount	EXPLANATION:Actual Attacks for the Head
+LOCAL:EQUIPMENT.PART|StableAttacks	EXPLANATION:Number of Iterative Attacks
 ######
 # Requires ARRAY
 #LOCAL:EQUIPMENT|ARRAY[NUMBER]=Range
