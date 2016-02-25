@@ -18,11 +18,11 @@ MODIFYOTHER:EQUIPMENT.PART|ALL|TestLocalPart2|ADD|1
 
 # Weapon Value Calculators - 
 #	CritRange (0 = 20; 1 = 19; 2 = 18, etc.)
-MODIFYOTHER:EQUIPMENT.PART|ALL|CritRange|SET|value()+EqCritRange
+MODIFYOTHER:EQUIPMENT.PART|ALL|CritRange|ADD|EqCritRange
 #	CritMult (x% with % being the value, Default is x2)
 MODIFYOTHER:EQUIPMENT.PART|ALL|CritMult|SET|2
 #	Calc CritMult if not default
-MODIFYOTHER:EQUIPMENT.PART|ALL|CritMult|SET|value()+EqCritMult
+MODIFYOTHER:EQUIPMENT.PART|ALL|CritMult|ADD|EqCritMult
 
 
 # EXPLANATION:D20 System - Sets the Mod for all "Stats" to the Value of the stat/2-5.

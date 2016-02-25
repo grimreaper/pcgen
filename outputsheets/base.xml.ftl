@@ -101,18 +101,18 @@
 			<!-- CLASSLIST is not extracted because we can derive it from the information above -->
 		</classes>
 		<deity>
-			<name>${pcstring('DEITY')}</name>
-			<alignment>${pcstring('DEITY.ALIGNMENT')}</alignment>
-			<description>${pcstring('DEITY.DESCRIPTION')}</description>
-			<domainlist>${pcstring('DEITY.DOMAINLIST')}</domainlist>
-			<favoredweapon>${pcstring('DEITY.FAVOREDWEAPON')}</favoredweapon>
-			<holyitem>${pcstring('DEITY.HOLYITEM')}</holyitem>
-			<pantheonlist>${pcstring('DEITY.PANTHEONLIST')}</pantheonlist>
-			<source>${pcstring('DEITY.SOURCE')}</source>
-			<special_abilities>${pcstring('DEITY.SA')}</special_abilities>
-			<appearance>${pcstring('DEITY.APPEARANCE')}</appearance>
-			<title>${pcstring('DEITY.TITLE')}</title>
-			<worshippers>${pcstring('DEITY.WORSHIPPERS')}</worshippers>
+			<name>${pc.deity!}</name>
+			<alignment>${pc.deity.alignment!}</alignment>
+			<description>${pc.deity.description!}</description>
+			<domainlist>${pc.deity.domainlist!}</domainlist>
+			<favoredweapon>${pc.deity.favoredweapon!}</favoredweapon>
+			<holyitem>${pc.deity.holyitem!}</holyitem>
+			<pantheonlist>${pc.deity.pantheonlist!}</pantheonlist>
+			<source>${pc.deity.source!}</source>
+			<special_abilities>${pc.deity.sa!}</special_abilities>
+			<appearance>${pc.deity.appearance!}</appearance>
+			<title>${pc.deity.title!}</title>
+			<worshippers>${pc.deity.worshippers!}</worshippers>
 		</deity>
 		<description>${pcstring('DESC')}</description>
 		<experience>
@@ -630,7 +630,7 @@
 				</name>
 				<category>${pcstring('WEAPON.${weap}.CATEGORY')}</category>
 				<critical>
-					<range>${pcstring('WEAPON.${weap}.CRIT')}</range>
+					<range>${pc.val.CritRange}</range>
 					<multiplier>${pcstring('WEAPON.${weap}.MULT')}</multiplier>
 				</critical>
 				<to_hit>
