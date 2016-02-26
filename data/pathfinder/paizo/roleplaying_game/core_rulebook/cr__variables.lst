@@ -1,4 +1,10 @@
 
+# Code Control Items
+GLOBAL:NUMBER=AltHp
+GLOBAL:ORDEREDPAIR=Face
+# CritRange already set on Equip
+
+
 
 # Discussion
 #	LOCAL:VISION|NUMBER|Range
@@ -6,11 +12,25 @@
 
 #
 GLOBAL:NUMBER=TL
-# We do not have STAT working, so making a fake STRSCORE for now.
-GLOBAL:NUMBER=STRSCORE
+# We do not have STAT working, so making a fake XxxScore STRSCORE for now.
+GLOBAL:NUMBER=StrScore
+GLOBAL:NUMBER=DexScore
+GLOBAL:NUMBER=ConScore
+GLOBAL:NUMBER=IntScore
+GLOBAL:NUMBER=WisScore
+GLOBAL:NUMBER=ChaScore
+
+
+
 
 # New Scope: STAT (Not Working)
 #	LOCAL:STAT|NUMBER=Mod
+#	LOCAL:STAT|NUMBER=StrScore
+#	LOCAL:STAT|NUMBER=DexScore
+#	LOCAL:STAT|NUMBER=ConScore
+#	LOCAL:STAT|NUMBER=IntScore
+#	LOCAL:STAT|NUMBER=WisScore
+#	LOCAL:STAT|NUMBER=ChaScore
 
 
 # New Scope: CHECK (Not Working)

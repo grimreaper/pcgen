@@ -1,5 +1,13 @@
 
 # ERROR: Cannot have multiple tags on a line, which means EXPLANATION does not work in GM file.
+MODIFY:StrScore|SET|10
+MODIFY:DexScore|SET|10
+MODIFY:ConScore|SET|10
+MODIFY:IntScore|SET|10
+MODIFY:WisScore|SET|10
+MODIFY:ChaScore|SET|10
+
+
 
 # Game Mode Settings
 #MODIFYOTHER:CLASS|ALL|TL|ADD|classlevel()

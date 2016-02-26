@@ -55,16 +55,16 @@
 		<bonuses>${pcstring('BONUSLIST.STAT.STR.TOTAL')}</bonuses>
 		<bonuses>${pcstring('BONUSLIST.CHECK.BASE')}</bonuses>
 		<bonuses>${pcstring('BONUSLIST.CHECK.BASE.TOTAL')}</bonuses>
-		<name>${pcstring('NAME')}</name>
+		<name>${pcstring('NAME')}</name>	<!-- Need the prefix for this export, pc. doesn't work	-->
 		<followerof>${pcstring('FOLLOWEROF')}</followerof>
 		<playername>${pcstring('PLAYERNAME')}</playername>
 		<charactertype>${pcstring('CHARACTERTYPE')}</charactertype>
 		<hero_points>${pcstring('VAR.HEROPOINTS.INTVAL')}</hero_points>
 		<remaining_action_points>${pcstring('VAR.Action.INTVAL')}</remaining_action_points>
-		<age>${pcstring('AGE')}</age>
+		<age>${pc.age}</age>
 		<alignment>
-			<long>${pcstring('ALIGNMENT')}</long>
-			<short>${pcstring('ALIGNMENT.SHORT')}</short>
+			<long>${pc.alignment}</long>
+			<short>${pcstring('ALIGNMENT.SHORT')}</short>	<!--	No short alignment output	-->
 		</alignment>
 		<archetypes>
 		<@loop from=0 to=pcvar('countdistinct("ABILITIES","CATEGORY=Archetype","TYPE=Archetype","VISIBILITY=DEFAULT[or]VISIBILITY=OUTPUT_ONLY")-1') ; trait , trait_has_next>
@@ -100,9 +100,11 @@
 			<#t></@loop></shortform>
 			<!-- CLASSLIST is not extracted because we can derive it from the information above -->
 		</classes>
+		<#if pc.deity?has_content>
 		<deity>
 			<name>${pc.deity!}</name>
-			<alignment>${pc.deity.alignment!}</alignment>
+			<!-- The '!' does not work with sub groups pc.group.subgroup!	-->
+		<#--	<alignment>${pc.deity.alignment!}</alignment>		
 			<description>${pc.deity.description!}</description>
 			<domainlist>${pc.deity.domainlist!}</domainlist>
 			<favoredweapon>${pc.deity.favoredweapon!}</favoredweapon>
@@ -112,8 +114,9 @@
 			<special_abilities>${pc.deity.sa!}</special_abilities>
 			<appearance>${pc.deity.appearance!}</appearance>
 			<title>${pc.deity.title!}</title>
-			<worshippers>${pc.deity.worshippers!}</worshippers>
+			<worshippers>${pc.deity.worshippers!}</worshippers>	-->
 		</deity>
+		</#if>
 		<description>${pcstring('DESC')}</description>
 		<experience>
 			<current>${pcstring('EXP.CURRENT')}</current>
@@ -133,7 +136,7 @@
 		</skin>
 		<cr>${pcstring('CR')}</cr>
 		<face>
-			<face>${pcstring('FACE')}</face>
+			<face>${pc.val.Face}</face>	<!-- Face will always have a value, no need to worry. In fact all "val" entries will be set to 0	-->
 			<short>${pcstring('FACE.SHORT')}</short>
 			<squares>${pcstring('FACE.SQUARES')}</squares>
 		</face>
@@ -300,7 +303,7 @@
 	<hit_points>
 		<usealternatedamage>${pcstring('VAR.UseAlternateDamage.INTVAL')}</usealternatedamage>
 		<points>${pcstring('HP')}</points>
-		<alternate>${pcstring('ALTHP')}</alternate>
+		<alternate>${pc.val.AltHp}</alternate>
 		<die>${pcstring('HITDICE')}</die>
 		<die_short>${pcstring('HITDICE.SHORT')}</die_short>
 		<current/>
@@ -630,8 +633,8 @@
 				</name>
 				<category>${pcstring('WEAPON.${weap}.CATEGORY')}</category>
 				<critical>
-					<range>${pc.val.CritRange}</range>
-					<multiplier>${pcstring('WEAPON.${weap}.MULT')}</multiplier>
+					<range>${pcstring('WEAPON.${weap}.CRITRANGE')}</range>
+					<multiplier>${pcstring('WEAPON.${weap}.CRITMULT')}</multiplier>
 				</critical>
 				<to_hit>
 					<hit>${pcstring('WEAPON.${weap}.HIT')}</hit>
