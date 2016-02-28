@@ -82,6 +82,8 @@ MODIFY:Initiative|SET|Initiative_Stat+Initiative_Mod
 # EXPLANATION:Initiative_Stat is the Modifier for Initiative based upon Dex Bonus
 #	MODIFY:Initiative_Stat|SET|DEX
 	
+#MODIFY:ConScore|SET|localVar("STAT","Constitution",score)
+#MODIFY:Con|SET| localVar("STAT","Constitution",mod)
 
 #STATNAME:Strength
 MODIFY:LOADSCORE|SET|STRSCORE	
