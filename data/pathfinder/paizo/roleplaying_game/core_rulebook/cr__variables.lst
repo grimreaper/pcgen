@@ -1,4 +1,6 @@
 
+GLOBAL:BOOLEAN=UseOs
+
 # Code Control Items
 GLOBAL:NUMBER=AltHp
 GLOBAL:ORDEREDPAIR=Face

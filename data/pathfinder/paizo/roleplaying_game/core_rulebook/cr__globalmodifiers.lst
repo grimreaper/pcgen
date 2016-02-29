@@ -1,4 +1,6 @@
 
+MODIFY:UseOs|SET|True
+
 # ERROR: Cannot have multiple tags on a line, which means EXPLANATION does not work in GM file.
 MODIFY:StrScore|SET|10
 MODIFY:DexScore|SET|10

@@ -136,7 +136,11 @@
 		</skin>
 		<cr>${pcstring('CR')}</cr>
 		<face>
-			<face>${pc.val.Face}</face>	<!-- Face will always have a value, no need to worry. In fact all "val" entries will be set to 0	-->
+			<#if ($pc.val.UseOs)!false = true>
+			<face><#if $pc.val.face[0] == $pc.val.face[1]>${pc.val.face[0]}<#else>${pc.val.face}</#if></face>
+			<#else>
+			<face>${pcstring('FACE')}</face>
+			</#if>
 			<short>${pcstring('FACE.SHORT')}</short>
 			<squares>${pcstring('FACE.SQUARES')}</squares>
 		</face>

@@ -45,7 +45,8 @@ PCC:@/pathfinder/paizo/roleplaying_game/core_essentials/core_essentials.pcc
 # Fact/Factset & Formula System
 DATACONTROL:cr__datacontrols.lst
 
-#DYNAMIC:cr__dynamic.lst		# Discussion
+#DYNAMIC:
+#EXTRAFILE:cr__dynamic.lst		# Discussion
 
 VARIABLE:cr__variables.lst
 GLOBALMODIFIER:cr__globalmodifiers.lst
@@ -56,6 +57,8 @@ GLOBALMODIFIER:cr__globalmodifiers.lst
 ALIGNMENT:cr__align.lst
 SAVE:cr__saves.lst
 STAT:cr__stats.lst
+#SIZE:
+#EXTRAFILE:cr__sizes.lst
 
 # Standard Files
 ABILITYCATEGORY:cr_abilitycategories.lst
