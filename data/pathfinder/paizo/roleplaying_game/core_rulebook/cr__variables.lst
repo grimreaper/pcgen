@@ -86,10 +86,10 @@ LOCAL:EQUIPMENT.PART|TestLocalPart
 LOCAL:EQUIPMENT.PART|NUMBER=TestLocalPart2
 
 # Intelligent Item Support
-LOCAL:EQUIPMENT|Item_Ego
-LOCAL:EQUIPMENT|Item_Int
-LOCAL:EQUIPMENT|Item_Wis
-LOCAL:EQUIPMENT|Item_Cha
+LOCAL:EQUIPMENT|Eq_Ego
+LOCAL:EQUIPMENT|Eq_Int
+LOCAL:EQUIPMENT|Eq_Wis
+LOCAL:EQUIPMENT|Eq_Cha
 
 # Base Item Support - HP, Hardness are common, as is Illumination
 LOCAL:EQUIPMENT|Item_Hp
@@ -133,3 +133,9 @@ LOCAL:EQUIPMENT.PART|StableAttacks	EXPLANATION:Number of Iterative Attacks
 
 
 
+###Block: Vars from abilities_class.lst
+	GLOBAL:NUMBER=Divine_Bond_Mount|0	
+	GLOBAL:NUMBER=Hunters_Bond_Animal_Companion|0	
+	GLOBAL:BOOLEAN=BypassClassAlignment_All_Class|0	
+	GLOBAL:BOOLEAN=BypassProhibitSpellAlignment_Restriction|0	
+	GLOBAL:NUMBER=Pool_Rage_Power|0	

@@ -1600,7 +1600,11 @@
 		<#else>
 			<name>${abilityName}</name>
 		</#if>
+		<#if ($pc.val.UseOs)!false = true>
+			<description>${pc.info.desc}</description>
+		<#else>
 			<description>${pcstring("${abilityExportToken}.DESC")}</description>
+		</#if>
 			<type>${pcstring("${abilityExportToken}.TYPE")}</type>
 			<associated>${pcstring("${abilityExportToken}.ASSOCIATED")}</associated>
 			<count>${pcstring("${abilityExportToken}.ASSOCIATEDCOUNT")}</count>
