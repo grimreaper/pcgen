@@ -134,8 +134,59 @@ LOCAL:EQUIPMENT.PART|StableAttacks	EXPLANATION:Number of Iterative Attacks
 
 
 ###Block: Vars from abilities_class.lst
-	GLOBAL:NUMBER=Divine_Bond_Mount|0	
-	GLOBAL:NUMBER=Hunters_Bond_Animal_Companion|0	
-	GLOBAL:BOOLEAN=BypassClassAlignment_All_Class|0	
-	GLOBAL:BOOLEAN=BypassProhibitSpellAlignment_Restriction|0	
-	GLOBAL:NUMBER=Pool_Rage_Power|0	
+GLOBAL:NUMBER=WeaponFocusToHit	
+GLOBAL:NUMBER=GreaterWeaponFocusToHit
+GLOBAL:NUMBER=NegatedAgePenalty
+GLOBAL:NUMBER=PhysicalStatAgeMod
+GLOBAL:NUMBER=MentalStatAgeMod
+
+
+
+
+
+GLOBAL:NUMBER=Divine_Bond_Mount|0	
+GLOBAL:NUMBER=Hunters_Bond_Animal_Companion|0	
+GLOBAL:NUMBER=Pool_Rage_Power|0	
+
+GLOBAL:BOOLEAN=BypassTraitRestriction	
+GLOBAL:BOOLEAN=BypassClassAlignment_All_Class|0	
+GLOBAL:BOOLEAN=BypassProhibitSpellAlignment_Restriction|0	
+
+# Shield Bash stuff, should be removed when the weapon block area is redone
+GLOBAL:NUMBER=ShieldBashingDieSizeStep	
+GLOBAL:NUMBER=NaturalShieldReach	
+GLOBAL:NUMBER=ShieldBashAttackBonus	
+GLOBAL:NUMBER=ShieldDamageDice	
+GLOBAL:NUMBER=ShieldDamageSize	
+GLOBAL:NUMBER=ShieldBashDamageBonus	
+GLOBAL:NUMBER=ShieldThreatRange	
+GLOBAL:NUMBER=ShieldBashAttackTotal	
+GLOBAL:NUMBER=InterativeAttack	
+GLOBAL:NUMBER=ShieldCritMult
+#/shield bash
+
+GLOBAL:NUMBER=NegLevels	EXPLANATION:This handles the negative levels variable
+GLOBAL:NUMBER=DomainNotAllowed
+
+
+GLOBAL:NUMBER=SizeIncrease	
+GLOBAL:NUMBER=InspireCourageBonus	
+GLOBAL:BOOLEAN=ActivateTempBonus	
+GLOBAL:BOOLEAN=InspireGreatnessActivate	
+GLOBAL:BOOLEAN=AuraOfResolveActivate	
+GLOBAL:BOOLEAN=AuraOfCourageActivate	
+GLOBAL:BOOLEAN=AuraOfJusticeActivate	
+GLOBAL:BOOLEAN=AuraOfRighteousnessActivate
+
+GLOBAL:BOOLEAN=BastardSwordExoticUse	
+GLOBAL:BOOLEAN=BypassSizeMods	
+GLOBAL:BOOLEAN=DwarvenWaraxeExoticUse	
+GLOBAL:BOOLEAN=ActivateEnlargePerson	
+GLOBAL:BOOLEAN=ActivateReducePerson	
+GLOBAL:BOOLEAN=IsPC
+
+# No good, we will need to figure out BONUS:ABILITYPOOL or the POOL tag
+GLOBAL:NUMBER=Pool_Temp_Feat
+GLOBAL:NUMBER=Pool_Traits	
+
+

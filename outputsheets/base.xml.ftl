@@ -100,23 +100,23 @@
 			<#t></@loop></shortform>
 			<!-- CLASSLIST is not extracted because we can derive it from the information above -->
 		</classes>
-		<#if pc.deity?has_content>
+		<#macro getarg object subvar><#if object?has_content>${object[subvar]}</#if></#macro>
+		
 		<deity>
 			<name>${pc.deity!}</name>
-			<!-- The '!' does not work with sub groups pc.group.subgroup!	-->
-		<#--	<alignment>${pc.deity.alignment!}</alignment>		
+			<alignment><@getarg pc.deity "alignment"/></alignment>		
 			<description>${pc.deity.description!}</description>
-			<domainlist>${pc.deity.domainlist!}</domainlist>
-			<favoredweapon>${pc.deity.favoredweapon!}</favoredweapon>
-			<holyitem>${pc.deity.holyitem!}</holyitem>
-			<pantheonlist>${pc.deity.pantheonlist!}</pantheonlist>
-			<source>${pc.deity.source!}</source>
-			<special_abilities>${pc.deity.sa!}</special_abilities>
-			<appearance>${pc.deity.appearance!}</appearance>
-			<title>${pc.deity.title!}</title>
-			<worshippers>${pc.deity.worshippers!}</worshippers>	-->
+			<domainlist><@getarg pc.deity "domainlist"/></domainlist>
+			<favoredweapon><@getarg pc.deity "favoredweapon"/></favoredweapon>
+			<holyitem><@getarg pc.deity "holyitem"/></holyitem>
+			<pantheonlist><@getarg pc.deity "pantheonlist"/></pantheonlist>
+			<source><@getarg pc.deity "source"/></source>
+			<special_abilities><@getarg pc.deity "sa"/></special_abilities>
+			<appearance><@getarg pc.deity "appearance"/></appearance>
+			<title><@getarg pc.deity "title"/></title>
+			<worshippers><@getarg pc.deity "worshippers"/></worshippers>	
 		</deity>
-		</#if>
+		
 		<description>${pcstring('DESC')}</description>
 		<experience>
 			<current>${pcstring('EXP.CURRENT')}</current>

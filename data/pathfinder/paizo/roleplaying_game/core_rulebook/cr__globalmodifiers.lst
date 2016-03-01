@@ -9,6 +9,15 @@ MODIFY:IntScore|SET|10
 MODIFY:WisScore|SET|10
 MODIFY:ChaScore|SET|10
 
+# AgeSet Changes
+#	MODIFYOTHER:Stat|Strength|Bonus|SUBTRACT|PhysicalStatAgeMod
+#	MODIFYOTHER:Stat|Dexterity|Bonus|SUBTRACT|PhysicalStatAgeMod
+#	MODIFYOTHER:Stat|Constitution|Bonus|SUBTRACT|PhysicalStatAgeMod
+#	MODIFYOTHER:Stat|Intelligence|Bonus|ADD|MentalStatAgeMod
+#	MODIFYOTHER:Stat|Wisdom|Bonus|ADD|MentalStatAgeMod
+#	MODIFYOTHER:Stat|Charisma|Bonus|ADD|MentalStatAgeMod
+
+
 
 
 # Game Mode Settings
