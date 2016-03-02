@@ -506,6 +506,14 @@
 	  ====================================-->
 	<attack>
 			<conditional_modifiers>
+				
+			<!--	Set up for list loop for combatBonus
+				<#list pc.info.combatbonus as cb>
+					<combatbonus>
+						<description>pc.info.${cb}.combatbonus</description>
+					</combatbonus>
+				
+				</#list>	-->
 				<@loop from=0 to=pcvar('countdistinct("ABILITIES","ASPECT=CombatBonus")-1') ; ability , ability_has_next>
 				<combatbonus>
 					<description>${pcstring('ABILITYALL.ANY.${ability}.ASPECT=CombatBonus.ASPECT.CombatBonus')}</description>

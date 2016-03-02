@@ -2,19 +2,24 @@
 SOURCELONG:Core Rulebook	SOURCESHORT:CR	SOURCEWEB:http://paizo.com/store/downloads/pathfinder/pathfinderRPG/v5748btpy88yj	SOURCEDATE:2009-08
 # Pathfinder RPG Entry by: Chris 'Barak' Chandler
 
+# @2016-03-01 Reviewed by Andrew Maitland:
+# All DESCs converted to INFO
+
+
 ###Block: Exotic Proficiencies
 # Ability Name			Category of Ability	Define																																					Ability																													Stat bonus						Modify VAR
-CATEGORY=Internal|Default.MOD					
-	ABILITY:Internal|AUTOMATIC|Temp Bonus ~ Enlarge Person|PREVAREQ:ActivateEnlargePerson,1	ABILITY:Internal|AUTOMATIC|Temp Bonus ~ Reduce Person|PREVAREQ:ActivateReducePerson,1								BONUS:VAR|BastardSwordExoticUse|1|PREABILITY:1,CATEGORY=FEAT,Exotic Weapon Proficiency (Sword (Bastard))	BONUS:VAR|DwarvenWaraxeExoticUse|1|PREABILITY:1,CATEGORY=FEAT,Exotic Weapon Proficiency (Waraxe (Dwarven))
+CATEGORY=Internal|Default.MOD		
+	ABILITY:Internal|AUTOMATIC|Temp Bonus ~ Enlarge Person|PREVAREQ:ActivateEnlargePerson,1
+	ABILITY:Internal|AUTOMATIC|Temp Bonus ~ Reduce Person|PREVAREQ:ActivateReducePerson,1
+	BONUS:VAR|BastardSwordExoticUse|1|PREABILITY:1,CATEGORY=FEAT,Exotic Weapon Proficiency (Sword (Bastard))
+	BONUS:VAR|DwarvenWaraxeExoticUse|1|PREABILITY:1,CATEGORY=FEAT,Exotic Weapon Proficiency (Waraxe (Dwarven))
 
 # Place this here for now, once the new formula system is enabled, move this to new file.
 # COMMENT: Mythic Support required - BONUS:WEAPONPROF only applies the best, so Mythic is ignoring the additional +1 and making it just +1. Using a variable to circumvent this limitation.
-CATEGORY=Internal|Default.MOD					
-MODIFY:WeaponFocusToHit|SET|1
-MODIFY:GreaterWeaponFocusToHit|SET|1
+CATEGORY=Internal|Default.MOD		MODIFY:WeaponFocusToHit|SET|1|PRIORITY=100	MODIFY:GreaterWeaponFocusToHit|SET|1|PRIORITY=100
 
-Negate Aging Penalties		CATEGORY:Internal		
-	MODIFY:PhysicalStatAgeMod|SET|0|PRIORITY=100500
+# This is called by any class that negates the Age Penalties, such as the Monk.
+Negate Aging Penalties		CATEGORY:Internal	MODIFY:PhysicalStatAgeMod|SET|0|PRIORITY=100500
 #	BONUS:STAT|STR,CON,DEX|NegatedAgePenalty
 #	BONUS:VAR|NegatedAgePenalty|1|TYPE=Base|PREAGESET:1,Middle-Aged
 #	BONUS:VAR|NegatedAgePenalty|3|TYPE=Base|PREAGESET:1,Old
@@ -25,7 +30,10 @@ Negate Aging Penalties		CATEGORY:Internal
 
 ###Block: Aspect Displays
 # Ability Name				Category of Ability	Aspects
+# Move this to the Mobility Feat
 Aspect Combat Bonus ~ Mobility	CATEGORY:Internal		ASPECT:CombatBonus|+4 dodge bonus to Armor Class against attacks of opportunity caused when you move out of or within a threatened area. A condition that makes you lose your Dexterity bonus to Armor Class (if any) also makes you lose dodge bonuses. Dodge bonuses stack with each other, unlike most types of bonuses.
+	INFO:CombatBonus|+4 dodge bonus to Armor Class against attacks of opportunity caused when you move out of or within a threatened area. A condition that makes you lose your Dexterity bonus to Armor Class (if any) also makes you lose dodge bonuses. Dodge bonuses stack with each other, unlike most types of bonuses.
+
 
 ###Block: Curses
 # Ability Name		Category of Ability	Type				Description																																										Cost		Source Page

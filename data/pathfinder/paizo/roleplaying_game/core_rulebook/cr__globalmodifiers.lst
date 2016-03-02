@@ -9,6 +9,12 @@ MODIFY:IntScore|SET|10
 MODIFY:WisScore|SET|10
 MODIFY:ChaScore|SET|10
 
+# We set the Local scope Mod to the formula of -10/2 for the final mod
+#	MODIFYOTHER:Stat|ALL|Mod|SET|d20Mod(Score)
+
+
+
+
 # AgeSet Changes
 #	MODIFYOTHER:Stat|Strength|Bonus|SUBTRACT|PhysicalStatAgeMod
 #	MODIFYOTHER:Stat|Dexterity|Bonus|SUBTRACT|PhysicalStatAgeMod
