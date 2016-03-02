@@ -1,13 +1,27 @@
 
 MODIFY:UseOs|SET|True
 
-# ERROR: Cannot have multiple tags on a line, which means EXPLANATION does not work in GM file.
-MODIFY:StrScore|SET|10
-MODIFY:DexScore|SET|10
-MODIFY:ConScore|SET|10
-MODIFY:IntScore|SET|10
-MODIFY:WisScore|SET|10
-MODIFY:ChaScore|SET|10
+#MODIFYOTHER:STAT|ALL|Mod|SET|d20Mod(Score)
+
+
+# Sets the Modifier
+#MODIFY:Str|SET|stat("Str", Mod)
+#MODIFY:Dex|SET|stat("Dex", Mod)
+#MODIFY:Con|SET|stat("Con", Mod)
+#MODIFY:Int|SET|stat("Int", Mod)
+#MODIFY:Wis|SET|stat("Wis", Mod)
+#MODIFY:Cha|SET|stat("Cha", Mod)
+#
+## Sets the Global Score
+#MODIFY:StrScore|SET|stat("Str", Score)
+#MODIFY:DexScore|SET|stat("Dex", Score)
+#MODIFY:ConScore|SET|stat("Con", Score)
+#MODIFY:IntScore|SET|stat("Int", Score)
+#MODIFY:WisScore|SET|stat("Wis", Score)
+#MODIFY:ChaScore|SET|stat("Cha", Score)
+
+
+
 
 
 

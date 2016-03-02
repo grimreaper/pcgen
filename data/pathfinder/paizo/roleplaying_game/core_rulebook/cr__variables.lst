@@ -15,7 +15,7 @@ GLOBAL:NUMBER=Reach
 
 #
 GLOBAL:NUMBER=TL
-# We do not have STAT working, so making a fake XxxScore STRSCORE for now.
+# 
 GLOBAL:NUMBER=StrScore
 GLOBAL:NUMBER=DexScore
 GLOBAL:NUMBER=ConScore
@@ -32,9 +32,9 @@ GLOBAL:NUMBER=Cha
 
 
 
-# New Scope: STAT (Not Working)
-#	LOCAL:STAT|NUMBER=Mod
-#	LOCAL:STAT|NUMBER=Score
+# New Scope: STAT
+LOCAL:STAT|NUMBER=Mod
+LOCAL:STAT|NUMBER=Score
 
 
 
