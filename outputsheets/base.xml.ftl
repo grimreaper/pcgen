@@ -110,7 +110,7 @@
 			<favoredweapon><@getarg pc.deity "favoredweapon"/></favoredweapon>
 			<holyitem><@getarg pc.deity "holyitem"/></holyitem>
 			<pantheonlist><@getarg pc.deity "pantheonlist"/></pantheonlist>
-			<source><@getarg pc.deity "source"/></source>
+			<source><#if pc.deity?has_content>${pc.deity.source.pubname} - ${pc.deity.source.long}<#if pc.deity.source.page?has_content>, ${pc.deity.source.page}</#if></#if></source>
 			<special_abilities><@getarg pc.deity "sa"/></special_abilities>
 			<appearance><@getarg pc.deity "appearance"/></appearance>
 			<title><@getarg pc.deity "title"/></title>
