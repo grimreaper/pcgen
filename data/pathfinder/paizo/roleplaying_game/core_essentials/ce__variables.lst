@@ -1,0 +1,37 @@
+
+LOCAL:VISION|NUMBER=Range
+
+
+# String or Variable?
+GLOBAL:NUMBER=Maneuverability
+
+
+GLOBAL:NUMBER=ArmorCheckPenalty
+GLOBAL:NUMBER=FireResistanceBonus
+GLOBAL:NUMBER=AcidResistanceBonus
+GLOBAL:NUMBER=ColdResistanceBonus
+GLOBAL:NUMBER=SonicResistanceBonus
+GLOBAL:NUMBER=ElectricityResistanceBonus
+GLOBAL:NUMBER=FastHealingRate
+GLOBAL:NUMBER=RegenerationRate
+
+
+GLOBAL:BOOLEAN=OverrideSubtypeLanguage
+GLOBAL:BOOLEAN=HasRacialVision
+GLOBAL:BOOLEAN=DefaultLanguageSetting
+
+
+
+
+
+GLOBAL:NUMBER=AnimalCompanionLVL
+GLOBAL:NUMBER=FamiliarLVL
+
+
+# Needs Stat Scope
+GLOBAL:NUMBER=PoisonSaveDC
+
+
+
+
+

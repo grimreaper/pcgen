@@ -1,0 +1,10 @@
+
+
+MODIFY:AnimalCompanionLVL|SET|AnimalCompanionMasterLVL
+MODIFY:FamiliarLVL|SET|FamiliarMasterLVL
+
+MODIFY:RegenerationType|SET|Normal|PRIORITY=1
+
+
+
+
