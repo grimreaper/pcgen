@@ -1,4 +1,10 @@
 
+GLOBAL:NUMBER=TL
+
+GLOBAL:NUMBER=MonsterLevel
+GLOBAL:NUMBER=ClassLevel
+
+
 LOCAL:VISION|NUMBER=Range
 
 
@@ -19,7 +25,8 @@ GLOBAL:NUMBER=RegenerationRate
 GLOBAL:BOOLEAN=OverrideSubtypeLanguage
 GLOBAL:BOOLEAN=HasRacialVision
 GLOBAL:BOOLEAN=DefaultLanguageSetting
-
+# Rules
+GLOBAL:BOOLEAN=DisplayFullAbility
 
 
 
@@ -32,6 +39,6 @@ GLOBAL:NUMBER=FamiliarLVL
 GLOBAL:NUMBER=PoisonSaveDC
 
 
-
-
+GLOBAL:NUMBER=FrightfulPresenceDC
+GLOBAL:NUMBER=FrightfulPresenceRange
 

@@ -1,10 +1,18 @@
 
+# HD is now MonsterLevel, does not include PC Class levels
+MODIFY:TL|SET|MonsterLevel+ClassLevel
+
+
+MODIFY:MonsterLevel|SET|TL-ClassLevel
+MODIFY:ClassLevel|SET|TL-MonsterLevel
+
+
 
 MODIFY:AnimalCompanionLVL|SET|AnimalCompanionMasterLVL
 MODIFY:FamiliarLVL|SET|FamiliarMasterLVL
 
 MODIFY:RegenerationType|SET|Normal|PRIORITY=1
 
-
+MODIFY:FrightfulPresenceDC|SET|10+(MonsterLevel/2)+CHA
 
 
