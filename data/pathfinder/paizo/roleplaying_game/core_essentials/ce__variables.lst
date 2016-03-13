@@ -42,3 +42,11 @@ GLOBAL:NUMBER=PoisonSaveDC
 GLOBAL:NUMBER=FrightfulPresenceDC
 GLOBAL:NUMBER=FrightfulPresenceRange
 
+
+
+# Crush
+GLOBAL:NUMBER=CrushDice
+GLOBAL:NUMBER=CrushDie
+GLOBAL:NUMBER=CrushBonusDamage
+GLOBAL:NUMBER=CrushDC
+

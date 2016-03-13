@@ -16,3 +16,13 @@ MODIFY:RegenerationType|SET|Normal|PRIORITY=1
 MODIFY:FrightfulPresenceDC|SET|10+(MonsterLevel/2)+CHA
 
 
+MODIFY:CrushBonusDamage|SET|STR*1.5
+MODIFY:CrushDC|SET|10+(HD/2)+CON
+MODIFY:CrushDC|ADD|if(ABILITY:1,CATEGORY=FEAT,Ability Focus (Crush)==True,2,0)
+MODIFY:CrushDice|ADD|2
+MODIFY:CrushDice|ADD|if(SIZE>=G,2,0)
+MODIFY:CrushDie|ADD|8
+MODIFY:CrushDie|ADD|if(SIZE==G,-2,0)
+
+
+
