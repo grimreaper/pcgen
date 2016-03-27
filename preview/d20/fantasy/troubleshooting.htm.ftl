@@ -5,17 +5,19 @@
 PCGen Character Sheet Template
 ==============================
 Author: Riccardo Bernori
-Email: iainuki@yahoo.com
-Modifications by: ?
-Email: 
-Revisions: ?  at 02/02/16
-Email: 
-Revisions: ? at 10/11/09
-Email: 
 
-$Revision: 1 $
-$Author: iainuki $
-$Date: 2016-02-01 14:11:00 +0100 (Mon, 01 Feb 2016) $
+Title: Troubleshooting Sheet
+Purpose: This sheet is meant for verifying changes are applied to any given character.
+The latest changes utilize the freemarker output and grabbing values from the new formula system.
+
+Original Entry: Unknown
+
+Modifications by: Ricardo
+Email: iainuki@yahoo.com
+
+Further modifications by: Andrew Maitland
+Email: drew0500
+
 -->
 <head>
 <meta http-equiv="content-type" content="text-html; charset=utf-8" />
@@ -59,8 +61,8 @@ ${pcstring('RACESUBTYPE.${racesubtype}')}
 <b>Multiclassing experience penalty</b> ${pcstring('EXP.PENALTY')}<br>
 <b>Favored Classes</b> ${pcstring('FAVOREDLIST')}<br>
 <b>Total Classes</b> ${pcvar('COUNT[CLASSES]')}<br>
-<b>Face</b> ${pcstring('FACE')}<br>
-<b>Reach</b> ${pcstring('REACH')}<br>
+<b>Face</b> <#if pc.val.os_size!false == true><#if pc.val.face?keep_before(",") == pc.val.face?keep_after(",")>${pc.val.face?keep_before(",")} ft.<#else>${pc.val.face?keep_before(",")} ft. by ${pc.val.face?keep_after(",")} ft.</#if><#else>${pcstring('FACE')}</#if><br>
+<b>Reach</b> <#if pc.val.os_size!false == true>${pc.val.reach} ft.<#else>${pcstring('REACH')}</#if><br>
 <b>Encumbrance Category:</b> ${pcstring('TOTAL.LOAD')}<br>
 
 <hr />
@@ -146,6 +148,10 @@ ${pcstring('CHECK.${check}.MISC.NOMAGIC.NOSTAT')}[MISC]
 <b>Attacks</b>
 <br>
 
+
+
+
+
 <@loop from=0 to=pcvar('COUNT[EQTYPE.Weapon]-1') ; weap , weap_has_next><#-- TODO: Loop was of early exit type 1 -->
 <b>${pcstring('WEAPON.${weap}.NAME.NOSTAR')} </b>
 <#assign weaponCategory>
@@ -163,6 +169,7 @@ Crit Multiplier: x${pcstring('WEAPON.${weap}.MULT')};
 Range Increment: ${pcstring('WEAPON.${weap}.RANGE')}
 <#else>
 Reach: ${pcstring('WEAPON.${weap}.REACH')} ft.
+or new ${pcstring('WEAPON.${weap}.val.reach')} ft.
 </#if>
 <blockquote>
 <#if (weaponCategory?contains('ranged'))>
@@ -235,42 +242,42 @@ ${pcstring('WEAPON.${weap}.MISC')}[MISC]
 </@loop>
 </blockquote>
 
-<#if (pcvar('COUNT[FEATSALL.VISIBLE]') != 0)>
+<#if (pcvar('COUNT[FEATALL.VISIBLE]') != 0)>
 <hr />
 </#if>
 
-<#if (pcvar('COUNT[FEATS.VISIBLE]') != 0)>
+<#if (pcvar('COUNT[FEAT.VISIBLE]') != 0)>
 <b>Feats</b>
 </#if>
 <blockquote>
-<@loop from=0 to=pcvar('COUNT[FEATS.VISIBLE]-1') ; feat , feat_has_next>
+<@loop from=0 to=pcvar('COUNT[FEAT.VISIBLE]-1') ; feat , feat_has_next>
 <b>${pcstring('FEAT.VISIBLE.${feat}')}</b> [<i>${pcstring('FEAT.VISIBLE.${feat}.SOURCE')}</i>]<br>
 </@loop>
 </blockquote>
 
-<#if (pcvar('COUNT[FEATSAUTO.VISIBLE]') != 0)>
+<#if (pcvar('COUNT[FEATAUTO.VISIBLE]') != 0)>
 <b>Feats (Automatic)</b>
 </#if>
 <blockquote>
-<@loop from=0 to=pcvar('COUNT[FEATSAUTO.VISIBLE]-1') ; feat , feat_has_next>
+<@loop from=0 to=pcvar('COUNT[FEATAUTO.VISIBLE]-1') ; feat , feat_has_next>
 <b>${pcstring('FEATAUTO.VISIBLE.${feat}')}</b> [<i>${pcstring('FEATAUTO.VISIBLE.${feat}.SOURCE')}</i>]<br>
 </@loop>
 </blockquote>
 
-<#if (pcvar('COUNT[VFEATS.VISIBLE]') != 0)>
+<#if (pcvar('COUNT[VFEAT.VISIBLE]') != 0)>
 <b>Feats (Virtual)</b>
 </#if>
 <blockquote>
-<@loop from=0 to=pcvar('COUNT[VFEATS.VISIBLE]-1') ; feat , feat_has_next>
-<b>${pcstring('VFEATS.VISIBLE.${feat}')}</b> [<i>${pcstring('VFEATS.VISIBLE.${feat}.SOURCE')}</i>]<br>
+<@loop from=0 to=pcvar('COUNT[VFEAT.VISIBLE]-1') ; feat , feat_has_next>
+<b>${pcstring('VFEAT.VISIBLE.${feat}')}</b> [<i>${pcstring('VFEAT.VISIBLE.${feat}.SOURCE')}</i>]<br>
 </@loop>
 </blockquote>
 
-<#if (pcvar('COUNT[FEATSALL.HIDDEN]') != 0)>
+<#if (pcvar('COUNT[FEATALL.HIDDEN]') != 0)>
 <hr />
 </#if>
 
-<#if (pcvar('COUNT[FEATS.HIDDEN]') != 0)>
+<#if (pcvar('COUNT[FEAT.HIDDEN]') != 0)>
 <b>Feats (Hidden)</b>
 </#if>
 <blockquote>
@@ -279,21 +286,21 @@ ${pcstring('WEAPON.${weap}.MISC')}[MISC]
 </@loop>
 </blockquote>
 
-<#if (pcvar('COUNT[FEATSAUTO.HIDDEN]') != 0)>
+<#if (pcvar('COUNT[FEATAUTO.HIDDEN]') != 0)>
 <b>Feats (Hidden Automatic)</b>
 </#if>
 <blockquote>
-<@loop from=0 to=pcvar('COUNT[FEATSAUTO.HIDDEN]-1') ; feat , feat_has_next>
-<b>${pcstring('FEATSAUTO.HIDDEN.${feat}')}</b> [<i>${pcstring('FEATSAUTO.HIDDEN.${feat}.SOURCE')}</i>]<br>
+<@loop from=0 to=pcvar('COUNT[FEATAUTO.HIDDEN]-1') ; feat , feat_has_next>
+<b>${pcstring('FEATAUTO.HIDDEN.${feat}')}</b> [<i>${pcstring('FEATAUTO.HIDDEN.${feat}.SOURCE')}</i>]<br>
 </@loop>
 </blockquote>
 
-<#if (pcvar('COUNT[VFEATS.HIDDEN]') != 0)>
+<#if (pcvar('COUNT[VFEAT.HIDDEN]') != 0)>
 <b>Feats (Hidden Virtual)</b>
 </#if>
 <blockquote>
-<@loop from=0 to=pcvar('COUNT[VFEATS.VISIBLE]-1') ; feat , feat_has_next>
-<b>${pcstring('VFEATS.HIDDEN.${feat}')}</b> [<i>${pcstring('VFEATS.HIDDEN.${feat}.SOURCE')}</i>]<br>
+<@loop from=0 to=pcvar('COUNT[VFEAT.VISIBLE]-1') ; feat , feat_has_next>
+<b>${pcstring('VFEAT.HIDDEN.${feat}')}</b> [<i>${pcstring('VFEAT.HIDDEN.${feat}.SOURCE')}</i>]<br>
 </@loop>
 </blockquote>
 
@@ -518,7 +525,6 @@ ${pcstring('WEAPON.${weap}.MISC')}[MISC]
   </#if>
 </@loop>
 </p>
-
 
 <font size="-2">Created using PCGen ${pcstring('EXPORT.VERSION')} on ${pcstring('EXPORT.DATE')} </font>
 
