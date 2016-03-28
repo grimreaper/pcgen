@@ -46,6 +46,7 @@ DATACONTROL:ce__datacontrols.lst
 DYNAMIC:ce__dynamic.lst
 GLOBALMODIFIER:ce__globalmodifiers.lst
 VARIABLE:ce__variables.lst
+SIZE:ce__sizes.lst
 
 ###Block: Standard Files
 ABILITY:ce_abilities.lst
