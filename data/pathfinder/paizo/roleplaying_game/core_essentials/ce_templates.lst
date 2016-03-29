@@ -1,4 +1,4 @@
-# CVS $Revision: 21407 $ $Author: evilmynex $ -- Wed Feb  3 13:47:16 2016 -- reformated by PCGen PrettyLST v6.06.00
+# CVS $Revision: 21407 $ $Author: evilmynex $ -- Tue Mar 29 13:04:19 2016 -- reformated by PCGen PrettyLST v6.06.00
 SOURCELONG:Bestiary	SOURCESHORT:B1	SOURCEWEB:http://paizo.com/store/downloads/pathfinder/pathfinderRPG/v5748btpy8auu	SOURCEDATE:2009-10
 
 ###Block: Builder templates
@@ -842,24 +842,20 @@ Sorcerer Cleric Spells.MOD			SPELLLEVEL:CLASS|Sorcerer=0|Bleed,Create Water,Dete
 # This is an incomplete solution to the problem of creatures who can cast Cleric spells as Arccane Sorcerer spells.
 # The SPELLLEVEL tag does not override spells which are both Cleric and Sorcerer but at different levels,
 # the spell will not be available at the new Cleric level but at the standard Sorcerer level.
-###Block: Size Mods for Automatic Changes
-# Template
 ###Block:
-# This is having Issues in PF.
-Dragon Size Tracker	SIZE:DragonSizeTracker			VISIBLE:NO
-#ABILITY:Internal|AUTOMATIC|Dragon (Tiny)|PRESIZEEQ:T	ABILITY:Internal|AUTOMATIC|Dragon (Small)|PRESIZEEQ:S	ABILITY:Internal|AUTOMATIC|Dragon (Medium)|PRESIZEEQ:M	ABILITY:Internal|AUTOMATIC|Dragon (Large)|PRESIZEEQ:L	ABILITY:Internal|AUTOMATIC|Dragon (Huge)|PRESIZEEQ:H	ABILITY:Internal|AUTOMATIC|Dragon (Gargantuan)|PRESIZEEQ:G	ABILITY:Internal|AUTOMATIC|Dragon (Colossal)|PRESIZEEQ:C
+# Template Name		Size				Visible
+Dragon Size Tracker	SIZE:DragonSizeTracker	VISIBLE:NO
 ###Block:
-# Template Name	Size		Visible
-SIZE_F		SIZE:F	VISIBLE:NO
-SIZE_D		SIZE:D	VISIBLE:NO
-SIZE_T		SIZE:T	VISIBLE:NO
-SIZE_S		SIZE:S	VISIBLE:NO
-SIZE_M		SIZE:M	VISIBLE:NO
-SIZE_L		SIZE:L	VISIBLE:NO
-SIZE_H		SIZE:H	VISIBLE:NO
-SIZE_G		SIZE:G	VISIBLE:NO
-SIZE_C		SIZE:C	VISIBLE:NO
-SIZE_C+		SIZE:P	VISIBLE:NO
+
+# Template Name	Reach		Required Var. value
+Large (Tall)	REACH:10	PREVAREQ:SizeIsLongNotTall,0
+Large (Long)	REACH:5	PREVAREQ:SizeIsLongNotTall,1
+Huge (Tall)		REACH:15	PREVAREQ:SizeIsLongNotTall,0
+Huge (Long)		REACH:10	PREVAREQ:SizeIsLongNotTall,1
+Gargantuan (Tall)	REACH:20	PREVAREQ:SizeIsLongNotTall,0
+Gargantuan (Long)	REACH:15	PREVAREQ:SizeIsLongNotTall,1
+Colossal (Tall)	REACH:30	PREVAREQ:SizeIsLongNotTall,0
+Colossal (Long)	REACH:20	PREVAREQ:SizeIsLongNotTall,1
 
 ###Block: Dragon Age
 # Template Name	Visible	Removable?		Subrace
@@ -912,7 +908,7 @@ Dragon Attacks HD (8)	HD:8-9:TEMPLATE:Dragon Attacks (Small)	HD:10-11:TEMPLATE:D
 #	12	+22+
 
 ###Block: Dragon Size templates
-# Template Name			Face/Space	Reach		Visible	Natural Attacks
+# Template Name			Size		Reach		Visible	Natural Attacks
 Dragon (Tiny)			SIZE:T
 #BONUS:WEAPONPROF=Bite|REACH|5		VISIBLE:YES	DEFINE:Maneuverability|0	BONUS:VAR|Maneuverability|3			BONUS:VAR|BreathWeaponCone|15	BONUS:VAR|BreathWeaponLine|30															BONUS:WEAPONPROF=Bite|DAMAGE|max(0,STR/2)								ABILITY:Special Ability|AUTOMATIC|Flight Maneuverability							MOVE:Fly,100	NATURALATTACKS:Bite,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning.Piercing.Slashing,*1,1d4	NATURALATTACKS:Claw,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Piercing.Slashing,*2,1d3
 Dragon (Small)			SIZE:S
@@ -929,13 +925,13 @@ Dragon (Colossal)			SIZE:C
 #BONUS:WEAPONPROF=Bite|REACH|10	VISIBLE:YES	DEFINE:Maneuverability|0	BONUS:VAR|Maneuverability|1			BONUS:VAR|BreathWeaponCone|70	BONUS:VAR|BreathWeaponLine|140	BONUS:VAR|CrushDie|8		BONUS:WEAPONPROF=Bite|DAMAGE|max(0,STR/2)	BONUS:WEAPONPROF=Tail Slap|DAMAGE|STR	ABILITY:Special Ability|AUTOMATIC|Crush ~ Dragon|Flight Maneuverability|Tail Sweep ~ Dragon	MOVE:Fly,250	NATURALATTACKS:Bite,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning.Piercing.Slashing,*1,4d8	NATURALATTACKS:Claw,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Piercing.Slashing,*2,4d6|Wings,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning.Piercing.Slashing,*2,2d8|Tail Slap,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning.Piercing.Slashing,*1,4d6
 
 
-Dragon Attacks (Tiny)		REACH:0				VISIBLE:NO	NATURALATTACKS:Bite,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning.Piercing.Slashing,*1,1d4	NATURALATTACKS:Claws,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Piercing.Slashing,*2,1d3
-Dragon Attacks (Small)		REACH:5				VISIBLE:NO	NATURALATTACKS:Bite,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning.Piercing.Slashing,*1,1d6	NATURALATTACKS:Claws,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Piercing.Slashing,*2,1d4
-Dragon Attacks (Medium)		REACH:5				VISIBLE:NO	NATURALATTACKS:Bite,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning.Piercing.Slashing,*1,1d8	NATURALATTACKS:Claws,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Piercing.Slashing,*2,1d6|Wings,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning,*2,1d4
-Dragon Attacks (Large)		REACH:5				VISIBLE:NO	NATURALATTACKS:Bite,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning.Piercing.Slashing,*1,2d6	NATURALATTACKS:Claws,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Piercing.Slashing,*2,1d8|Wings,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning,*2,1d6|Tail Slap,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning,*1,1d8
-Dragon Attacks (Huge)		REACH:10				VISIBLE:NO	NATURALATTACKS:Bite,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning.Piercing.Slashing,*1,2d8	NATURALATTACKS:Claws,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Piercing.Slashing,*2,2d6|Wings,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning,*2,1d8|Tail Slap,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning,*1,2d6
-Dragon Attacks (Gargantuan)	REACH:15				VISIBLE:NO	NATURALATTACKS:Bite,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning.Piercing.Slashing,*1,4d6	NATURALATTACKS:Claws,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Piercing.Slashing,*2,2d8|Wings,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning,*2,2d6|Tail Slap,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning,*1,2d8
-Dragon Attacks (Colossal)	REACH:20				VISIBLE:NO	NATURALATTACKS:Bite,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning.Piercing.Slashing,*1,4d8	NATURALATTACKS:Claws,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Piercing.Slashing,*2,4d6|Wings,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning,*2,2d8|Tail Slap,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning,*1,4d6
+Dragon Attacks (Tiny)				REACH:0	VISIBLE:NO	NATURALATTACKS:Bite,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning.Piercing.Slashing,*1,1d4	NATURALATTACKS:Claws,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Piercing.Slashing,*2,1d3
+Dragon Attacks (Small)				REACH:5	VISIBLE:NO	NATURALATTACKS:Bite,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning.Piercing.Slashing,*1,1d6	NATURALATTACKS:Claws,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Piercing.Slashing,*2,1d4
+Dragon Attacks (Medium)				REACH:5	VISIBLE:NO	NATURALATTACKS:Bite,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning.Piercing.Slashing,*1,1d8	NATURALATTACKS:Claws,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Piercing.Slashing,*2,1d6|Wings,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning,*2,1d4
+Dragon Attacks (Large)				REACH:5	VISIBLE:NO	NATURALATTACKS:Bite,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning.Piercing.Slashing,*1,2d6	NATURALATTACKS:Claws,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Piercing.Slashing,*2,1d8|Wings,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning,*2,1d6|Tail Slap,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning,*1,1d8
+Dragon Attacks (Huge)				REACH:10	VISIBLE:NO	NATURALATTACKS:Bite,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning.Piercing.Slashing,*1,2d8	NATURALATTACKS:Claws,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Piercing.Slashing,*2,2d6|Wings,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning,*2,1d8|Tail Slap,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning,*1,2d6
+Dragon Attacks (Gargantuan)			REACH:15	VISIBLE:NO	NATURALATTACKS:Bite,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning.Piercing.Slashing,*1,4d6	NATURALATTACKS:Claws,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Piercing.Slashing,*2,2d8|Wings,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning,*2,2d6|Tail Slap,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning,*1,2d8
+Dragon Attacks (Colossal)			REACH:20	VISIBLE:NO	NATURALATTACKS:Bite,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning.Piercing.Slashing,*1,4d8	NATURALATTACKS:Claws,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Piercing.Slashing,*2,4d6|Wings,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning,*2,2d8|Tail Slap,Weapon.Natural.Weapon Group Natural.Melee.Finesseable.Bludgeoning,*1,4d6
 
 
 SOURCELONG:Bestiary	SOURCESHORT:B1	SOURCEWEB:http://paizo.com/store/downloads/pathfinder/pathfinderRPG/v5748btpy8auu	SOURCEDATE:2009-10

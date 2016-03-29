@@ -1,4 +1,4 @@
-# CVS $Revision: $ $Author: $ -- Tue Dec 15 01:48:08 2015 -- reformated by PCGen PrettyLST v6.06.00
+# CVS $Revision: $ $Author: $ -- Tue Mar 29 13:04:19 2016 -- reformated by PCGen PrettyLST v6.06.00
 # Created January, 2015 Tom Parker
 # This file represents a conversion mechanism for items that were previously
 # stand-alone tokens, but are now handled internally as FACT or FACTSET.
@@ -760,8 +760,8 @@ FACTDEF:ABILITY|Wizard_CF_BonusFeat20				DATAFORMAT:BOOLEAN	REQUIRED:NO	SELECTAB
 #FACTDEF:ABILITY|DwarfWeaponFamiliarity			DATAFORMAT:BOOLEAN	VISIBLE:YES	SELECTABLE:NO	REQUIRED:NO	DISPLAYNAME:WeaponFamiliarity								EXPLANATION:Remove WeaponFamiliarity
 
 ###Block: Saves File
-# Name			Dataformat		Required	Selectable		Visible	Displayname			Explanation
-FACTDEF:CHECK|MainStat	DATAFORMAT:STRING												EXPLANATION:Output the Stat a save uses to the OS
+# Name						Dataformat		Required	Selectable		Visible	Displayname			Explanation
+FACTDEF:CHECK|MainStat				DATAFORMAT:STRING												EXPLANATION:Output the Stat a save uses to the OS
 
 
 #############################
@@ -771,7 +771,7 @@ FACTDEF:CHECK|MainStat	DATAFORMAT:STRING												EXPLANATION:Output the Stat 
 
 # Subdomain / Domain Support
 
-FACTDEF:DOMAIN|Domain	DATAFORMAT:STRING	REQUIRED:NO	SELECTABLE:NO	VISIBLE:NO	DISPLAYNAME:Domain	EXPLANATION:Makes referencing the domain easier
+FACTDEF:DOMAIN|Domain				DATAFORMAT:STRING	REQUIRED:NO	SELECTABLE:NO	VISIBLE:NO	DISPLAYNAME:Domain	EXPLANATION:Makes referencing the domain easier
 
 
 DEFAULTVARIABLEVALUE:ORDEREDPAIR|0,0
