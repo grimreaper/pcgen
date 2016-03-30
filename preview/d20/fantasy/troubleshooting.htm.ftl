@@ -59,8 +59,13 @@ ${pcstring('RACESUBTYPE.${racesubtype}')}
 <b>Multiclassing experience penalty</b> ${pcstring('EXP.PENALTY')}<br>
 <b>Favored Classes</b> ${pcstring('FAVOREDLIST')}<br>
 <b>Total Classes</b> ${pcvar('COUNT[CLASSES]')}<br>
-<b>Face</b> <#if pc.val.os_size!false == true><#if pc.val.face[0] == pc.val.face[1]>${pc.val.face[0]} ft.<#else>${pc.val.face[0]} ft. by ${pc.val.face[1]} ft.</#if><#else>${pcstring('FACE')}</#if><br>
-<b>Reach</b> <#if pc.val.os_size!false == true> ${pc.val.reach} ft.<#else>${pcstring('REACH')}</#if><br>
+<b>Face</b> ${pcstring('FACE')}<br>
+<b>Reach</b> ${pcstring('REACH')}<br>
+
+<#-- Error msg - Null or Missing. Tom Notified (evening 11pm on 3/29/16)
+<b>Face</b> <#if (gamemode.cc.face?has_content)!false == True><#if pc.val.face[0] == pc.val.face[1]>${pc.val.face[0]} ft.<#else>${pc.val.face[0]} ft. by ${pc.val.face[1]} ft.</#if><#else>${pcstring('FACE')}</#if><br>
+<b>Reach</b> <#if gamemode.cc.pcreach?has_content!false == True> ${pc.val.reach} ft.<#else>${pcstring('REACH')}</#if><br>
+-->
 <b>Encumbrance Category:</b> ${pcstring('TOTAL.LOAD')}<br>
 
 <hr />
