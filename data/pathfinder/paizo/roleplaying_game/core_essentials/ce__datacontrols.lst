@@ -1,4 +1,9 @@
 # CVS $Revision: $ $Author: $ -- Tue Mar 29 13:04:19 2016 -- reformated by PCGen PrettyLST v6.06.00
 
 #	DYNAMICSCOPE:Vision
-#	DYNAMICSCOPE:VISION
+#	DYNAMICSCOPE:Movement
+DYNAMICSCOPE:CreatureSubType
+
+
+
+

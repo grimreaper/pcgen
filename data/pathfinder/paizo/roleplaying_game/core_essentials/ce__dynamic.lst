@@ -1,0 +1,13 @@
+
+#	VISION:Darkvision
+#	VISION:Low-Light Vision
+#	VISION:Blindsense
+#	VISION:Blindsight
+#	VISION:Tremorsense
+#	VISION:See Etheral
+#	VISION:See Invisibility
+
+# A swarm Subtype has a Space Value of 10,10 regardless on the individual creature sizes that make up the swarm.
+CREATURESUBTYPE:Swarm		MODIFY:FACE|SET|10,10|PRIORITY=200
+
+

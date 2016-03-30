@@ -45,6 +45,7 @@ PUBNAMELONG:Paizo Inc.
 DATACONTROL:ce__datacontrols.lst
 DYNAMIC:ce__dynamic.lst
 GLOBALMODIFIER:ce__globalmodifiers.lst
+SIZE:ce__sizes.lst
 VARIABLE:ce__variables.lst
 SIZE:ce__sizes.lst
 
