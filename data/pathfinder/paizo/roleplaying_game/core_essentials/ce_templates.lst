@@ -846,16 +846,38 @@ Sorcerer Cleric Spells.MOD			SPELLLEVEL:CLASS|Sorcerer=0|Bleed,Create Water,Dete
 # Template Name		Size				Visible
 Dragon Size Tracker	SIZE:DragonSizeTracker	VISIBLE:NO
 ###Block:
+SIZE_F	SIZE:F
+SIZE_D	SIZE:D
+SIZE_T	SIZE:T
+SIZE_S	SIZE:S
+SIZE_M	SIZE:M
+SIZE_L	SIZE:L
+SIZE_H	SIZE:H
+SIZE_G	SIZE:G
+SIZE_C	SIZE:C
 
+
+
+
+Reach is 0	REACH:0
+Reach is 5	REACH:5
+Reach is 10	REACH:10
+Reach is 15	REACH:15
+Reach is 20	REACH:20
+Reach is 30	REACH:30
+
+Tiny			TEMPLATE:Reach is 0
+Small			TEMPLATE:Reach is 0
+Medium		TEMPLATE:Reach is 0
 # Template Name	Reach		Required Var. value
-Large (Tall)	REACH:10	PREVAREQ:SizeIsLongNotTall,0
-Large (Long)	REACH:5	PREVAREQ:SizeIsLongNotTall,1
-Huge (Tall)		REACH:15	PREVAREQ:SizeIsLongNotTall,0
-Huge (Long)		REACH:10	PREVAREQ:SizeIsLongNotTall,1
-Gargantuan (Tall)	REACH:20	PREVAREQ:SizeIsLongNotTall,0
-Gargantuan (Long)	REACH:15	PREVAREQ:SizeIsLongNotTall,1
-Colossal (Tall)	REACH:30	PREVAREQ:SizeIsLongNotTall,0
-Colossal (Long)	REACH:20	PREVAREQ:SizeIsLongNotTall,1
+Large (Tall)	TEMPLATE:Reach is 10	PREVAREQ:SizeIsLongNotTall,0
+Large (Long)	TEMPLATE:Reach is 5	PREVAREQ:SizeIsLongNotTall,1
+Huge (Tall)		TEMPLATE:Reach is 15	PREVAREQ:SizeIsLongNotTall,0
+Huge (Long)		TEMPLATE:Reach is 10	PREVAREQ:SizeIsLongNotTall,1
+Gargantuan (Tall)	TEMPLATE:Reach is 20	PREVAREQ:SizeIsLongNotTall,0
+Gargantuan (Long)	TEMPLATE:Reach is 15	PREVAREQ:SizeIsLongNotTall,1
+Colossal (Tall)	TEMPLATE:Reach is 30	PREVAREQ:SizeIsLongNotTall,0
+Colossal (Long)	TEMPLATE:Reach is 20	PREVAREQ:SizeIsLongNotTall,1
 
 ###Block: Dragon Age
 # Template Name	Visible	Removable?		Subrace

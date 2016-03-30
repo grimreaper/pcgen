@@ -1,5 +1,6 @@
 
-# Size Scope
+# Size Scope - Face, Reach (PC and Equipment)
 FACE:Face
-REACH:Reach
+EQREACH:EqReach
+PCREACH:Reach
 

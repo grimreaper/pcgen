@@ -2,10 +2,12 @@
 
 
 # Variable Name
-GLOBAL:NUMBER=Reach
-GLOBAL:ORDEREDPAIR=Face
+GLOBAL:NUMBER=Reach			EXPLANATION:Sets the PC reach (Based upon Race)
+GLOBAL:ORDEREDPAIR=Face			EXPLANATION:Sets the Space of the Creature
 
-GLOBAL:BOOLEAN=SizeIsLongNotTall
+GLOBAL:BOOLEAN=SizeIsLongNotTall	EXPLANATION:Sets whether the Race is Long (True) or Tall (False)
 
 
-GLOBAL:BOOLEAN=OS_Size
+GLOBAL:BOOLEAN=OS_Size			EXPLANATION:Temp Switch till Tom enables direct access to Code Controls
+
+LOCAL:EQUIPMENT|NUMBER=EqReach	EXPLANATION:Sets the Equipment Reach
