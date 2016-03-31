@@ -12,9 +12,6 @@ CATEGORY=Internal|Default.MOD	DEFINE:Caster_Level_Bonus|0
 # Combined to get Highest Arcane or Divine caster level
 CATEGORY=Internal|Default.MOD								BONUS:VAR|Caster_Level_Highest|max(Caster_Level_Highest__Arcane,Caster_Level_Highest__Divine)
 
-###Block: Temp Patch - Allows Races to continue using the Old System, with the new Size File set up.
-CATEGORY=Internal|Default.MOD	DEFINE:SizeIsLongNotTall|0
-
 
 ###Block: Age Adjustments
 # Ability Name			Define									Stat bonus
