@@ -5,7 +5,7 @@ SOURCELONG:Halflings of Golarion	SOURCESHORT:HAOG	SOURCEWEB:http://paizo.com/pro
 
 # Weapon Name	Type														Nb Hands
 Sling (Stiched)	TYPE:Exotic.Light.Melee.Bludgeoning.MeleeBludgeoning
-Sling (Double)	TYPE:Exotic.Ranged.TwoHanded.DoubleWeapon.Bludgeoning.RangedBludgeoning.Halfling	HANDS:2
+Sling (Double)	TYPE:Exotic.Ranged.TwoHanded.DoubleWeapon.Bludgeoning.RangedBludgeoning.Halfling	MODIFY:Hands|SET|2|PRIORITY=200	HANDS:2
 
 
 # Weapon Groups

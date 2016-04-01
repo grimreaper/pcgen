@@ -1,4 +1,4 @@
-
-CREATUREHANDS:Hands
+# Multiple PREHANDS entries prevent progress.
+#CREATUREHANDS:Hands
 
 
