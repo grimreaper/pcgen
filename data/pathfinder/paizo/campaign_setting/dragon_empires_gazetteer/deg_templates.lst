@@ -14,11 +14,11 @@ Human Ethnicity (Tian-Sing)	NAMEISPI:YES	VISIBLE:NO	SOURCEPAGE:p.6	AUTO:LANG|Min
 
 ###BLOCK: Race Templates
 # Template Name			Visible	Auto Language		Bonus Languages																		Race Subtype				Vision
-Kitsune				VISIBLE:NO																									RACESUBTYPE:Kitsune|Shapechanger	VISION:Low-Light Vision
-Nagaji				VISIBLE:NO																									RACESUBTYPE:Reptilian			VISION:Low-Light Vision
-Samsaran				VISIBLE:NO																									RACESUBTYPE:Samsaran			VISION:Low-Light Vision
-Tengu					VISIBLE:NO																									RACESUBTYPE:Tengu				VISION:Low-Light Vision
-Wayang				VISIBLE:NO																									RACESUBTYPE:Wayang			VISION:Darkvision (60')
+Kitsune				VISIBLE:NO																									RACESUBTYPE:Kitsune|Shapechanger	GRANT:VISION|Low-Light Vision
+Nagaji				VISIBLE:NO																									RACESUBTYPE:Reptilian			GRANT:VISION|Low-Light Vision
+Samsaran				VISIBLE:NO																									RACESUBTYPE:Samsaran			GRANT:VISION|Low-Light Vision
+Tengu					VISIBLE:NO																									RACESUBTYPE:Tengu				GRANT:VISION|Low-Light Vision
+Wayang				VISIBLE:NO																									RACESUBTYPE:Wayang			MODIFYOTHER:VISION|Darkvision|Range|SET|60|PRIORITY=200	GRANT:VISION|Darkvision
 
 Dragon Empire ~ Kitsune		VISIBLE:NO	AUTO:LANG|Tien|Senzar	LANGBONUS:Aklo,Celestial,Elven,Gnome,Nagaji,Samsaran,Tengu,Wayang,TYPE=HumanRegional
 Dragon Empire ~ Nagaji		VISIBLE:NO	AUTO:LANG|Nagaji|Tien	LANGBONUS:Abyssal,Aklo,Celestial,Draconic,Giant,Infernal,Samsaran,Senzar,Sylvan,Tengu,Wayang,TYPE=HumanRegional

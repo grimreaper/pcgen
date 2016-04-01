@@ -24,9 +24,9 @@ Half-Construct	VISIBLE:YES	SOURCEPAGE:p.16	RACESUBTYPE:Half-Construct
 
 ###Block: Failed Transformation templates (where needed)
 # Template Name			Size		Visible	Ability								Move			Vision
-Failed Transformation Blue	SIZE:S	VISIBLE:NO													VISION:Darkvision (60')
-Failed Transformation Duergar			VISIBLE:NO	ABILITY:Special Ability|AUTOMATIC|DuergarDSP ~ Steady	MOVE:Walk,20	VISION:Darkvision (60')
-Failed Transformation Dwarf			VISIBLE:NO	ABILITY:Special Ability|AUTOMATIC|Dwarf ~ Steady	MOVE:Walk,20	VISION:Darkvision (60')
+Failed Transformation Blue	SIZE:S	VISIBLE:NO													MODIFYOTHER:VISION|Darkvision|Range|SET|60|PRIORITY=200	GRANT:VISION|Darkvision
+Failed Transformation Duergar			VISIBLE:NO	ABILITY:Special Ability|AUTOMATIC|DuergarDSP ~ Steady	MOVE:Walk,20	MODIFYOTHER:VISION|Darkvision|Range|SET|60|PRIORITY=200	GRANT:VISION|Darkvision
+Failed Transformation Dwarf			VISIBLE:NO	ABILITY:Special Ability|AUTOMATIC|Dwarf ~ Steady	MOVE:Walk,20	MODIFYOTHER:VISION|Darkvision|Range|SET|60|PRIORITY=200	GRANT:VISION|Darkvision
 
 
 ###Block: Activate Advanced Construct abilities

@@ -44,7 +44,7 @@ Circlet of Mindsight			TYPE:Magic.Wondrous.Head								COST:22000	WT:0.01							
 Decemvirate Helm				TYPE:Magic.Wondrous.Artifact.Minor							COST:0	WT:3								SOURCEPAGE:p.51
 
 Dweomer's Essence				TYPE:Magic.Wondrous									COST:500	WT:0.01							SOURCEPAGE:p.52
-Eyes of the Owl				TYPE:Magic.Wondrous.Eyes								COST:4000	WT:0.01							SOURCEPAGE:p.52	VISION:Low-Light Vision																															BONUS:VAR|HasLowLightVision|1
+Eyes of the Owl				TYPE:Magic.Wondrous.Eyes								COST:4000	WT:0.01							SOURCEPAGE:p.52	GRANT:VISION|Low-Light Vision																															BONUS:VAR|HasLowLightVision|1
 Field Scrivener's Desk			TYPE:Magic.Wondrous									COST:5400	WT:2								SOURCEPAGE:p.52
 Fortifying Stone				TYPE:Magic.Wondrous									COST:1000	WT:0.01							SOURCEPAGE:p.52
 Fortunate Charm				TYPE:Magic.Wondrous.Neck								COST:3000	WT:0.01							SOURCEPAGE:p.52

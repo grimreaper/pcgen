@@ -10,7 +10,7 @@ Starting Gold PoW ~ Maximum			VISIBLE:NO																																								
 Starting Gold PoW ~ Average			VISIBLE:NO																																												KIT:1|Starting Gold PoW ~ Average
 
 Umbral Blade ~ Darkvision			VISIBLE:NO				TEMPLATE:CHOOSE:Umbral Blade ~ Gain Darkvision|Umbral Blade ~ Improve Darkvision
-Umbral Blade ~ Gain Darkvision		VISIBLE:NO																																																									VISION:Darkvision (60')
+Umbral Blade ~ Gain Darkvision		VISIBLE:NO																																																									MODIFYOTHER:VISION|Darkvision|Range|SET|60|PRIORITY=200	GRANT:VISION|Darkvision
 Umbral Blade ~ Improve Darkvision		VISIBLE:NO																														BONUS:VISION|Darkvision|30
 
 Umbral Blade One with the Dark		VISIBLE:NO	DR:10/silver																		BONUS:VAR|ColdResistanceBonus|10|TYPE=Resistance						ABILITY:Special Ability|AUTOMATIC|Resistance to Cold							RACETYPE:Outsider	RACESUBTYPE:Native
