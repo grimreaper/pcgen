@@ -21,10 +21,10 @@ Wrenching				KEY:WRNCH		TYPE:Weapon.Ranged	PLUS:2			VISIBLE:QUALIFY	SOURCEPAGE:p
 
 ###Block: Armor/Shield equipment modifiers
 # Modifier Name	Unique Key			Type		Plus		Visible		Source Page		Required Type				Bonus Armor Mods													Special Property										Change Armor Type
-Fusing		KEY:FUSE_ARMR_HVY		TYPE:Armor	PLUS:2	VISIBLE:QUALIFY	SOURCEPAGE:p.207	PRETYPE:3,Enhancement,Armor,Heavy	BONUS:EQMARMOR|ACCHECK|1	BONUS:EQMARMOR|MAXDEX|1	BONUS:EQMARMOR|SPELLFAILURE|-10	SPROP:Armor Check reduced, Max Dex increased, one category lighter	ARMORTYPE:Heavy|Medium
-Fusing		KEY:FUSE_ARMR_LT		TYPE:Armor	PLUS:2	VISIBLE:QUALIFY	SOURCEPAGE:p.207	PRETYPE:3,Enhancement,Armor,Light	BONUS:EQMARMOR|ACCHECK|1	BONUS:EQMARMOR|MAXDEX|1	BONUS:EQMARMOR|SPELLFAILURE|-10	SPROP:Armor Check reduced, Max Dex increased, one category lighter	ARMORTYPE:Heavy|Medium
-Fusing		KEY:FUSE_ARMR_MED		TYPE:Armor	PLUS:2	VISIBLE:QUALIFY	SOURCEPAGE:p.207	PRETYPE:3,Enhancement,Armor,Medium	BONUS:EQMARMOR|ACCHECK|1	BONUS:EQMARMOR|MAXDEX|1	BONUS:EQMARMOR|SPELLFAILURE|-10	SPROP:Armor Check reduced, Max Dex increased, one category lighter	ARMORTYPE:Medium|Light	ARMORTYPE:Heavy|Medium
-Fusing		KEY:FUSE_ARMR_SHLD	TYPE:Shield	PLUS:2	VISIBLE:QUALIFY	SOURCEPAGE:p.207	PRETYPE:3,Enhancement,Shield		BONUS:EQMARMOR|ACCHECK|1	BONUS:EQMARMOR|MAXDEX|1	BONUS:EQMARMOR|SPELLFAILURE|-10	SPROP:Armor Check reduced, Max Dex increased, one category lighter	ARMORTYPE:Heavy|Medium
+Fusing		KEY:FUSE_ARMR_HVY		TYPE:Armor	PLUS:2	VISIBLE:QUALIFY	SOURCEPAGE:p.207	PRETYPE:3,Enhancement,Armor,Heavy	BONUS:EQMARMOR|ACCHECK|1	MODIFY:MaxDex|ADD|1	BONUS:EQMARMOR|SPELLFAILURE|-10	SPROP:Armor Check reduced, Max Dex increased, one category lighter	ARMORTYPE:Heavy|Medium
+Fusing		KEY:FUSE_ARMR_LT		TYPE:Armor	PLUS:2	VISIBLE:QUALIFY	SOURCEPAGE:p.207	PRETYPE:3,Enhancement,Armor,Light	BONUS:EQMARMOR|ACCHECK|1	MODIFY:MaxDex|ADD|1	BONUS:EQMARMOR|SPELLFAILURE|-10	SPROP:Armor Check reduced, Max Dex increased, one category lighter	ARMORTYPE:Heavy|Medium
+Fusing		KEY:FUSE_ARMR_MED		TYPE:Armor	PLUS:2	VISIBLE:QUALIFY	SOURCEPAGE:p.207	PRETYPE:3,Enhancement,Armor,Medium	BONUS:EQMARMOR|ACCHECK|1	MODIFY:MaxDex|ADD|1	BONUS:EQMARMOR|SPELLFAILURE|-10	SPROP:Armor Check reduced, Max Dex increased, one category lighter	ARMORTYPE:Medium|Light	ARMORTYPE:Heavy|Medium
+Fusing		KEY:FUSE_ARMR_SHLD	TYPE:Shield	PLUS:2	VISIBLE:QUALIFY	SOURCEPAGE:p.207	PRETYPE:3,Enhancement,Shield		BONUS:EQMARMOR|ACCHECK|1	MODIFY:MaxDex|ADD|1	BONUS:EQMARMOR|SPELLFAILURE|-10	SPROP:Armor Check reduced, Max Dex increased, one category lighter	ARMORTYPE:Heavy|Medium
 
 #
 # End
