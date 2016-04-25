@@ -619,8 +619,8 @@ Wand of Mending					TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPEL
 Wand of Message					TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Message]SPELLLEVEL[0]CASTERLEVEL[1]CHARGES[50]						SOURCEPAGE:p.496	SPROP:You can whisper messages and receive whispered replies.
 Wand of Open/Close				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Open/Close]SPELLLEVEL[0]CASTERLEVEL[1]CHARGES[50]					SOURCEPAGE:p.496	SPROP:You can open or close (your choice) a door, chest, box, window, bag, pouch, bottle, barrel, or other container.
 Wand of Prestidigitation			TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Prestidigitation]SPELLLEVEL[0]CASTERLEVEL[1]CHARGES[50]				SOURCEPAGE:p.496	SPROP:Prestidigitations are minor tricks that novice spellcasters use for practice.
-Wand of Purify Food and Drink			TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Purify Food and Drink]SPELLLEVEL[0]CASTERLEVEL[1]CHARGES[50]			SOURCEPAGE:p.496	SPROP:This spell makes spoiled, rotten, diseased, poisonous, or otherwise contaminated food and water pure and suitable for eating and drinking.
-Wand of Ray of Frost				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Ray of Frost]SPELLLEVEL[0]CASTERLEVEL[1]CHARGES[50]					SOURCEPAGE:p.496	SPROP:A ray of freezing air and ice projects from your pointing finger dealing 1d3 points of cold damage.
+Wand of Purify Food and Drink			TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Purify Food And Drink]SPELLLEVEL[0]CASTERLEVEL[1]CHARGES[50]			SOURCEPAGE:p.496	SPROP:This spell makes spoiled, rotten, diseased, poisonous, or otherwise contaminated food and water pure and suitable for eating and drinking.
+Wand of Ray of Frost				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Ray Of Frost]SPELLLEVEL[0]CASTERLEVEL[1]CHARGES[50]					SOURCEPAGE:p.496	SPROP:A ray of freezing air and ice projects from your pointing finger dealing 1d3 points of cold damage.
 Wand of Read Magic				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Read Magic]SPELLLEVEL[0]CASTERLEVEL[1]CHARGES[50]					SOURCEPAGE:p.496	SPROP:You can decipher magical inscriptions on objects--books, scrolls, weapons, and the like--that would otherwise be unintelligible.
 Wand of Resistance				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Resistance]SPELLLEVEL[0]CASTERLEVEL[1]CHARGES[50]					SOURCEPAGE:p.496	SPROP:You imbue the subject with magical energy that protects it from harm, granting it a +1 resistance bonus on saves.
 Wand of Stabilize					TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Stabilize]SPELLLEVEL[0]CASTERLEVEL[1]CHARGES[50]					SOURCEPAGE:p.496	SPROP:Upon casting this spell, you target a living creature that has -1 or fewer hit points.
@@ -650,7 +650,7 @@ Wand of Detect Evil				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|S
 Wand of Detect Good				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Detect Good]SPELLLEVEL[1]CASTERLEVEL[1]CHARGES[50]					SOURCEPAGE:p.496	SPROP:You can sense the presence of good.
 Wand of Detect Law				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Detect Law]SPELLLEVEL[1]CASTERLEVEL[1]CHARGES[50]					SOURCEPAGE:p.496	SPROP:You can sense the auras of lawful creatures.
 Wand of Detect Secret Doors			TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Detect Secret Doors]SPELLLEVEL[1]CASTERLEVEL[1]CHARGES[50]				SOURCEPAGE:p.496	SPROP:You can detect secret doors, compartments, caches, and so forth.
-Wand of Detect Snares and Pits		TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Detect Snares and Pits]SPELLLEVEL[1]CASTERLEVEL[1]CHARGES[50]			SOURCEPAGE:p.496	SPROP:You can detect simple pits, deadfalls, and snares as well as mechanical traps constructed of natural materials.
+Wand of Detect Snares And Pits		TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Detect Snares And Pits]SPELLLEVEL[1]CASTERLEVEL[1]CHARGES[50]			SOURCEPAGE:p.496	SPROP:You can detect simple pits, deadfalls, and snares as well as mechanical traps constructed of natural materials.
 Wand of Detect Undead				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Detect Undead]SPELLLEVEL[1]CASTERLEVEL[1]CHARGES[50]					SOURCEPAGE:p.496	SPROP:You can detect the aura that surrounds undead creatures.
 Wand of Disguise Self				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Disguise Self]SPELLLEVEL[1]CASTERLEVEL[1]CHARGES[50]					SOURCEPAGE:p.496	SPROP:You make yourself--including clothing, armor, weapons, and equipment--look different.
 Wand of Divine Favor				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Divine Favor]SPELLLEVEL[1]CASTERLEVEL[1]CHARGES[50]					SOURCEPAGE:p.496	SPROP:Calling upon the strength and wisdom of a deity, you gain a +1 to +3 luck bonus on attack and weapon damage rolls.
@@ -793,7 +793,7 @@ Wand of Blink					TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLN
 Wand of Call Lightning				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Call Lightning]SPELLLEVEL[3]CASTERLEVEL[5]CHARGES[50]				SOURCEPAGE:p.496
 Wand of Clairaudience/Clairvoyance		TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Clairaudience/Clairvoyance]SPELLLEVEL[3]CASTERLEVEL[5]CHARGES[50]		SOURCEPAGE:p.496
 Wand of Contagion					TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Contagion]SPELLLEVEL[3]CASTERLEVEL[5]CHARGES[50]					SOURCEPAGE:p.496
-Wand of Create Food and Water			TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Create Food and Water]SPELLLEVEL[3]CASTERLEVEL[5]CHARGES[50]			SOURCEPAGE:p.496
+Wand of Create Food And Water			TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Create Food And Water]SPELLLEVEL[3]CASTERLEVEL[5]CHARGES[50]			SOURCEPAGE:p.496
 Wand of Cure Serious Wounds			TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Cure Serious Wounds]SPELLLEVEL[3]CASTERLEVEL[5]CHARGES[50]				SOURCEPAGE:p.496
 Wand of Daylight					TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Daylight]SPELLLEVEL[3]CASTERLEVEL[5]CHARGES[50]					SOURCEPAGE:p.496
 Wand of Deep Slumber				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Deep Slumber]SPELLLEVEL[3]CASTERLEVEL[5]CHARGES[50]					SOURCEPAGE:p.496
@@ -837,7 +837,7 @@ Wand of Searing Light				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG
 Wand of Sleet Storm				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Sleet Storm]SPELLLEVEL[3]CASTERLEVEL[5]CHARGES[50]					SOURCEPAGE:p.496
 Wand of Slow					TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Slow]SPELLLEVEL[3]CASTERLEVEL[5]CHARGES[50]						SOURCEPAGE:p.496
 Wand of Snare					TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Snare]SPELLLEVEL[3]CASTERLEVEL[5]CHARGES[50]						SOURCEPAGE:p.496
-Wand of Speak with Dead				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Speak with Dead]SPELLLEVEL[3]CASTERLEVEL[5]CHARGES[50]				SOURCEPAGE:p.496
+Wand of Speak With Dead				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Speak With Dead]SPELLLEVEL[3]CASTERLEVEL[5]CHARGES[50]				SOURCEPAGE:p.496
 Wand of Speak with Plants			TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Speak with Plants]SPELLLEVEL[3]CASTERLEVEL[5]CHARGES[50]				SOURCEPAGE:p.496
 Wand of Spike Growth				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Spike Growth]SPELLLEVEL[3]CASTERLEVEL[5]CHARGES[50]					SOURCEPAGE:p.496
 Wand of Stinking Cloud				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Stinking Cloud]SPELLLEVEL[3]CASTERLEVEL[5]CHARGES[50]				SOURCEPAGE:p.496
@@ -889,7 +889,7 @@ Wand of Holy Smite				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SP
 Wand of Holy Sword				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Holy Sword]SPELLLEVEL[4]CASTERLEVEL[7]CHARGES[50]					SOURCEPAGE:p.496
 Wand of Ice Storm					TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Ice Storm]SPELLLEVEL[4]CASTERLEVEL[7]CHARGES[50]					SOURCEPAGE:p.496
 Wand of Illusory Wall				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Illusory Wall]SPELLLEVEL[4]CASTERLEVEL[7]CHARGES[50]					SOURCEPAGE:p.496
-Wand of Imbue with Spell Ability		TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Imbue with Spell Ability]SPELLLEVEL[4]CASTERLEVEL[7]CHARGES[50]			SOURCEPAGE:p.496
+Wand of Imbue With Spell Ability		TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Imbue With Spell Ability]SPELLLEVEL[4]CASTERLEVEL[7]CHARGES[50]			SOURCEPAGE:p.496
 Wand of Inflict Critical Wounds		TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Inflict Critical Wounds]SPELLLEVEL[4]CASTERLEVEL[7]CHARGES[50]			SOURCEPAGE:p.496
 Wand of Invisibility (Greater)		TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Invisibility (Greater)]SPELLLEVEL[4]CASTERLEVEL[7]CHARGES[50]			SOURCEPAGE:p.496
 Wand of Legend Lore				TYPE:Magic.Wand	WT:0.0625	BASEITEM:Wand		EQMOD:SPL_CHRG|SPELLNAME[Legend Lore]SPELLLEVEL[4]CASTERLEVEL[7]CHARGES[50]					SOURCEPAGE:p.496
@@ -1119,7 +1119,7 @@ Scroll (Fear)														TYPE:Magic.Scroll.Arcane.Consumable	COST:700	WT:0.01	
 Scroll (Fire Shield)													TYPE:Magic.Scroll.Arcane.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
 Scroll (Fire Trap)													TYPE:Magic.Scroll.Arcane.Consumable	COST:725	WT:0.01	SOURCEPAGE:p.490
 Scroll (Geas (Lesser))													TYPE:Magic.Scroll.Arcane.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
-Scroll (Globe of Invulnerability (Lesser))									TYPE:Magic.Scroll.Arcane.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
+Scroll (Globe Of Invulnerability (Lesser))									TYPE:Magic.Scroll.Arcane.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
 Scroll (Hallucinatory Terrain)											TYPE:Magic.Scroll.Arcane.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
 Scroll (Ice Storm)													TYPE:Magic.Scroll.Arcane.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
 Scroll (Illusory Wall)													TYPE:Magic.Scroll.Arcane.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
@@ -1134,14 +1134,14 @@ Scroll (Solid Fog)													TYPE:Magic.Scroll.Arcane.Consumable	COST:700	WT:0
 Scroll (Stone Shape/Arcane)				OUTPUTNAME:Scroll (Stone Shape)			TYPE:Magic.Scroll.Arcane.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
 Scroll (Stoneskin)													TYPE:Magic.Scroll.Arcane.Consumable	COST:950	WT:0.01	SOURCEPAGE:p.490
 Scroll (Summon Monster IV/Arcane)			OUTPUTNAME:Scroll (Summon Monster IV)		TYPE:Magic.Scroll.Arcane.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
-Scroll (Wall of Fire)													TYPE:Magic.Scroll.Arcane.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
-Scroll (Wall of Ice)													TYPE:Magic.Scroll.Arcane.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
+Scroll (Wall Of Fire)													TYPE:Magic.Scroll.Arcane.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
+Scroll (Wall Of Ice)													TYPE:Magic.Scroll.Arcane.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
 Scroll (Animal Growth)													TYPE:Magic.Scroll.Arcane.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
 Scroll (Baleful Polymorph)												TYPE:Magic.Scroll.Arcane.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
 Scroll (Beast Shape III)												TYPE:Magic.Scroll.Arcane.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
 Scroll (Break Enchantment/Arcane)			OUTPUTNAME:Scroll (Break Enchantment)		TYPE:Magic.Scroll.Arcane.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
 Scroll (Cloudkill)													TYPE:Magic.Scroll.Arcane.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
-Scroll (Cone of Cold)													TYPE:Magic.Scroll.Arcane.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
+Scroll (Cone Of Cold)													TYPE:Magic.Scroll.Arcane.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
 Scroll (Contact Other Plane)												TYPE:Magic.Scroll.Arcane.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
 Scroll (Dismissal/Arcane)				OUTPUTNAME:Scroll (Dismissal)				TYPE:Magic.Scroll.Arcane.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
 Scroll (Dominate Person)												TYPE:Magic.Scroll.Arcane.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
@@ -1160,9 +1160,9 @@ Scroll (Sending/Arcane)					OUTPUTNAME:Scroll (Sending)				TYPE:Magic.Scroll.Arc
 Scroll (Summon Monster V/Arcane)			OUTPUTNAME:Scroll (Summon Monster V)		TYPE:Magic.Scroll.Arcane.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
 Scroll (Telepathic Bond)												TYPE:Magic.Scroll.Arcane.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
 Scroll (Teleport)														TYPE:Magic.Scroll.Arcane.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
-Scroll (Wall of Force)													TYPE:Magic.Scroll.Arcane.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
-Scroll (Wall of Stone/Arcane)				OUTPUTNAME:Scroll (Wall of Stone)			TYPE:Magic.Scroll.Arcane.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
-Scroll (Waves of Fatigue)												TYPE:Magic.Scroll.Arcane.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
+Scroll (Wall Of Force)													TYPE:Magic.Scroll.Arcane.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
+Scroll (Wall Of Stone/Arcane)				OUTPUTNAME:Scroll (Wall Of Stone)			TYPE:Magic.Scroll.Arcane.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
+Scroll (Waves Of Fatigue)												TYPE:Magic.Scroll.Arcane.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
 Scroll (Acid Fog)														TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Analyze Dweomer)												TYPE:Magic.Scroll.Arcane.Consumable	COST:3150	WT:0.01	SOURCEPAGE:p.490
 Scroll (Bear's Endurance (Mass)/Arcane)		OUTPUTNAME:Scroll (Bear's Endurance (Mass))	TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
@@ -1170,18 +1170,18 @@ Scroll (Beast Shape IV)													TYPE:Magic.Scroll.Arcane.Consumable	COST:165
 Scroll (Bull's Strength (Mass)/Arcane)		OUTPUTNAME:Scroll (Bull's Strength (Mass))	TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Cat's Grace (Mass))												TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Chain Lightning)												TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
-Scroll (Circle of Death)												TYPE:Magic.Scroll.Arcane.Consumable	COST:2150	WT:0.01	SOURCEPAGE:p.490
+Scroll (Circle Of Death)												TYPE:Magic.Scroll.Arcane.Consumable	COST:2150	WT:0.01	SOURCEPAGE:p.490
 Scroll (Contingency)													TYPE:Magic.Scroll.Arcane.Consumable	COST:3150	WT:0.01	SOURCEPAGE:p.490
 Scroll (Disintegrate)													TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Dispel Magic (Greater)/Arcane)		OUTPUTNAME:Scroll (Dispel Magic (Greater))	TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Eagle's Splendor (Mass)/Arcane)		OUTPUTNAME:Scroll (Eagle's Splendor (Mass))	TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Elemental Body III)												TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Eyebite)														TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
-Scroll (Flesh to Stone)													TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
-Scroll (Form of the Dragon I)												TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
+Scroll (Flesh To Stone)													TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
+Scroll (Form Of The Dragon I)												TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Fox's Cunning (Mass)/Arcane)		OUTPUTNAME:Scroll (Fox's Cunning (Mass))		TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Geas/Quest/Arcane)				OUTPUTNAME:Scroll (Geas/Quest)			TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
-Scroll (Globe of Invulnerability)											TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
+Scroll (Globe Of Invulnerability)											TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Heroism (Greater))												TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Legend Lore)													TYPE:Magic.Scroll.Arcane.Consumable	COST:2100	WT:0.01	SOURCEPAGE:p.490
 Scroll (Mislead)														TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
@@ -1192,20 +1192,20 @@ Scroll (Plant Shape II)													TYPE:Magic.Scroll.Arcane.Consumable	COST:165
 Scroll (Programmed Image)												TYPE:Magic.Scroll.Arcane.Consumable	COST:1675	WT:0.01	SOURCEPAGE:p.490
 Scroll (Repulsion/Arcane)				OUTPUTNAME:Scroll (Repulsion)				TYPE:Magic.Scroll.Arcane.Consumable	COST:1700	WT:0.01	SOURCEPAGE:p.490
 Scroll (Shadow Walk)													TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
-Scroll (Stone to Flesh)													TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
+Scroll (Stone To Flesh)													TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Suggestion (Mass))												TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Summon Monster VI/Arcane)			OUTPUTNAME:Scroll (Summon Monster VI)		TYPE:Magic.Scroll.Arcane.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (True Seeing/Arcane)				OUTPUTNAME:Scroll (True Seeing)			TYPE:Magic.Scroll.Arcane.Consumable	COST:1900	WT:0.01	SOURCEPAGE:p.490
-Scroll (Undeath to Death/Arcane)			OUTPUTNAME:Scroll (Undeath to Death)		TYPE:Magic.Scroll.Arcane.Consumable	COST:2150	WT:0.01	SOURCEPAGE:p.490
+Scroll (Undeath To Death/Arcane)			OUTPUTNAME:Scroll (Undeath To Death)		TYPE:Magic.Scroll.Arcane.Consumable	COST:2150	WT:0.01	SOURCEPAGE:p.490
 Scroll (Arcane Sight (Greater))											TYPE:Magic.Scroll.Arcane.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
 Scroll (Banishment/Arcane)				OUTPUTNAME:Scroll (Banishment)			TYPE:Magic.Scroll.Arcane.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
 Scroll (Control Undead)													TYPE:Magic.Scroll.Arcane.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
 Scroll (Control Weather/Arcane)			OUTPUTNAME:Scroll (Control Weather)			TYPE:Magic.Scroll.Arcane.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
 Scroll (Delayed Blast Fireball)											TYPE:Magic.Scroll.Arcane.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
 Scroll (Elemental Body IV)												TYPE:Magic.Scroll.Arcane.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
-Scroll (Finger of Death)												TYPE:Magic.Scroll.Arcane.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
+Scroll (Finger Of Death)												TYPE:Magic.Scroll.Arcane.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
 Scroll (Forcecage)													TYPE:Magic.Scroll.Arcane.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
-Scroll (Form of the Dragon II)											TYPE:Magic.Scroll.Arcane.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
+Scroll (Form Of The Dragon II)											TYPE:Magic.Scroll.Arcane.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
 Scroll (Giant Form I)													TYPE:Magic.Scroll.Arcane.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
 Scroll (Hold Person (Mass))												TYPE:Magic.Scroll.Arcane.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
 Scroll (Insanity)														TYPE:Magic.Scroll.Arcane.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
@@ -1227,19 +1227,19 @@ Scroll (Summon Monster VII/Arcane)			OUTPUTNAME:Scroll (Summon Monster VII)		TYP
 Scroll (Teleport (Greater))												TYPE:Magic.Scroll.Arcane.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
 Scroll (Teleport Object)												TYPE:Magic.Scroll.Arcane.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
 Scroll (Vision)														TYPE:Magic.Scroll.Arcane.Consumable	COST:2725	WT:0.01	SOURCEPAGE:p.490
-Scroll (Waves of Exhaustion)												TYPE:Magic.Scroll.Arcane.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
+Scroll (Waves Of Exhaustion)												TYPE:Magic.Scroll.Arcane.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
 Scroll (Charm Monster (Mass))												TYPE:Magic.Scroll.Arcane.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
 Scroll (Demand)														TYPE:Magic.Scroll.Arcane.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
 Scroll (Dimensional Lock/Arcane)			OUTPUTNAME:Scroll (Dimensional Lock)		TYPE:Magic.Scroll.Arcane.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
 Scroll (Discern Location/Arcane)			OUTPUTNAME:Scroll (Discern Location)		TYPE:Magic.Scroll.Arcane.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
-Scroll (Form of the Dragon III)											TYPE:Magic.Scroll.Arcane.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
+Scroll (Form Of The Dragon III)											TYPE:Magic.Scroll.Arcane.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
 Scroll (Giant Form II)													TYPE:Magic.Scroll.Arcane.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
 Scroll (Horrid Wilting)													TYPE:Magic.Scroll.Arcane.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
 Scroll (Incendiary Cloud)												TYPE:Magic.Scroll.Arcane.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
 Scroll (Irresistible Dance)												TYPE:Magic.Scroll.Arcane.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
 Scroll (Maze)														TYPE:Magic.Scroll.Arcane.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
 Scroll (Mind Blank)													TYPE:Magic.Scroll.Arcane.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
-Scroll (Moment of Prescience)												TYPE:Magic.Scroll.Arcane.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
+Scroll (Moment Of Prescience)												TYPE:Magic.Scroll.Arcane.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
 Scroll (Polar Ray)													TYPE:Magic.Scroll.Arcane.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
 Scroll (Power Word Stun)												TYPE:Magic.Scroll.Arcane.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
 Scroll (Prismatic Wall)													TYPE:Magic.Scroll.Arcane.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
@@ -1266,7 +1266,7 @@ Scroll (Soul Bind/Arcane)				OUTPUTNAME:Scroll (Soul Bind)				TYPE:Magic.Scroll.
 Scroll (Summon Monster IX/Arcane)			OUTPUTNAME:Scroll (Summon Monster IX)		TYPE:Magic.Scroll.Arcane.Consumable	COST:3825	WT:0.01	SOURCEPAGE:p.490
 Scroll (Teleportation Circle)												TYPE:Magic.Scroll.Arcane.Consumable	COST:4825	WT:0.01	SOURCEPAGE:p.490
 Scroll (Time Stop)													TYPE:Magic.Scroll.Arcane.Consumable	COST:3825	WT:0.01	SOURCEPAGE:p.490
-Scroll (Wail of the Banshee)												TYPE:Magic.Scroll.Arcane.Consumable	COST:3825	WT:0.01	SOURCEPAGE:p.490
+Scroll (Wail Of The Banshee)												TYPE:Magic.Scroll.Arcane.Consumable	COST:3825	WT:0.01	SOURCEPAGE:p.490
 Scroll (Weird)														TYPE:Magic.Scroll.Arcane.Consumable	COST:3825	WT:0.01	SOURCEPAGE:p.490
 Scroll (Wish)														TYPE:Magic.Scroll.Arcane.Consumable	COST:28825	WT:0.01	SOURCEPAGE:p.490
 Scroll (Bleed/Divine)					OUTPUTNAME:Scroll (Bleed)				TYPE:Magic.Scroll.Divine.Consumable	COST:12.5	WT:0.01	SOURCEPAGE:p.490
@@ -1310,7 +1310,7 @@ Scroll (Protection from Good/Divine)		OUTPUTNAME:Scroll (Protection from Good)		
 Scroll (Protection from Law/Divine)			OUTPUTNAME:Scroll (Protection from Law)		TYPE:Magic.Scroll.Divine.Consumable	COST:25	WT:0.01	SOURCEPAGE:p.490
 Scroll (Remove Fear)													TYPE:Magic.Scroll.Divine.Consumable	COST:25	WT:0.01	SOURCEPAGE:p.490
 Scroll (Sanctuary)													TYPE:Magic.Scroll.Divine.Consumable	COST:25	WT:0.01	SOURCEPAGE:p.490
-Scroll (Shield of Faith)												TYPE:Magic.Scroll.Divine.Consumable	COST:25	WT:0.01	SOURCEPAGE:p.490
+Scroll (Shield Of Faith)												TYPE:Magic.Scroll.Divine.Consumable	COST:25	WT:0.01	SOURCEPAGE:p.490
 Scroll (Summon Monster I/Divine)			OUTPUTNAME:Scroll (Summon Monster I)		TYPE:Magic.Scroll.Divine.Consumable	COST:25	WT:0.01	SOURCEPAGE:p.490
 Scroll (Aid)														TYPE:Magic.Scroll.Divine.Consumable	COST:150	WT:0.01	SOURCEPAGE:p.490
 Scroll (Align Weapon)													TYPE:Magic.Scroll.Divine.Consumable	COST:150	WT:0.01	SOURCEPAGE:p.490
@@ -1341,13 +1341,13 @@ Scroll (Spiritual Weapon)												TYPE:Magic.Scroll.Divine.Consumable	COST:15
 Scroll (Status)														TYPE:Magic.Scroll.Divine.Consumable	COST:150	WT:0.01	SOURCEPAGE:p.490
 Scroll (Summon Monster II/Divine)			OUTPUTNAME:Scroll (Summon Monster II)		TYPE:Magic.Scroll.Divine.Consumable	COST:150	WT:0.01	SOURCEPAGE:p.490
 Scroll (Undetectable Alignment)											TYPE:Magic.Scroll.Divine.Consumable	COST:150	WT:0.01	SOURCEPAGE:p.490
-Scroll (Zone of Truth)													TYPE:Magic.Scroll.Divine.Consumable	COST:150	WT:0.01	SOURCEPAGE:p.490
+Scroll (Zone Of Truth)													TYPE:Magic.Scroll.Divine.Consumable	COST:150	WT:0.01	SOURCEPAGE:p.490
 Scroll (Animate Dead/Divine)				OUTPUTNAME:Scroll (Animate Dead)			TYPE:Magic.Scroll.Divine.Consumable	COST:375	WT:0.01	SOURCEPAGE:p.490
 Scroll (Bestow Curse/Divine)				OUTPUTNAME:Scroll (Bestow Curse)			TYPE:Magic.Scroll.Divine.Consumable	COST:375	WT:0.01	SOURCEPAGE:p.490
 Scroll (Blindness/Deafness/Divine)			OUTPUTNAME:Scroll (Blindness/Deafness)		TYPE:Magic.Scroll.Divine.Consumable	COST:375	WT:0.01	SOURCEPAGE:p.490
 Scroll (Contagion/Divine)				OUTPUTNAME:Scroll (Contagion)				TYPE:Magic.Scroll.Divine.Consumable	COST:375	WT:0.01	SOURCEPAGE:p.490
 Scroll (Continual Flame/Divine)			OUTPUTNAME:Scroll (Continual Flame)			TYPE:Magic.Scroll.Divine.Consumable	COST:425	WT:0.01	SOURCEPAGE:p.490
-Scroll (Create Food and Water)											TYPE:Magic.Scroll.Divine.Consumable	COST:375	WT:0.01	SOURCEPAGE:p.490
+Scroll (Create Food And Water)											TYPE:Magic.Scroll.Divine.Consumable	COST:375	WT:0.01	SOURCEPAGE:p.490
 Scroll (Cure Serious Wounds)												TYPE:Magic.Scroll.Divine.Consumable	COST:375	WT:0.01	SOURCEPAGE:p.490
 Scroll (Daylight/Divine)				OUTPUTNAME:Scroll (Daylight)				TYPE:Magic.Scroll.Divine.Consumable	COST:375	WT:0.01	SOURCEPAGE:p.490
 Scroll (Deeper Darkness)												TYPE:Magic.Scroll.Divine.Consumable	COST:375	WT:0.01	SOURCEPAGE:p.490
@@ -1368,7 +1368,7 @@ Scroll (Remove Blindness/Deafness)											TYPE:Magic.Scroll.Divine.Consumable
 Scroll (Remove Curse/Divine)				OUTPUTNAME:Scroll (Remove Curse)			TYPE:Magic.Scroll.Divine.Consumable	COST:375	WT:0.01	SOURCEPAGE:p.490
 Scroll (Remove Disease)													TYPE:Magic.Scroll.Divine.Consumable	COST:375	WT:0.01	SOURCEPAGE:p.490
 Scroll (Searing Light)													TYPE:Magic.Scroll.Divine.Consumable	COST:375	WT:0.01	SOURCEPAGE:p.490
-Scroll (Speak with Dead)												TYPE:Magic.Scroll.Divine.Consumable	COST:375	WT:0.01	SOURCEPAGE:p.490
+Scroll (Speak With Dead)												TYPE:Magic.Scroll.Divine.Consumable	COST:375	WT:0.01	SOURCEPAGE:p.490
 Scroll (Stone Shape/Divine)				OUTPUTNAME:Scroll (Stone Shape)			TYPE:Magic.Scroll.Divine.Consumable	COST:375	WT:0.01	SOURCEPAGE:p.490
 Scroll (Summon Monster III/Divine)			OUTPUTNAME:Scroll (Summon Monster III)		TYPE:Magic.Scroll.Divine.Consumable	COST:375	WT:0.01	SOURCEPAGE:p.490
 Scroll (Water Breathing/Divine)			OUTPUTNAME:Scroll (Water Breathing)			TYPE:Magic.Scroll.Divine.Consumable	COST:375	WT:0.01	SOURCEPAGE:p.490
@@ -1383,9 +1383,9 @@ Scroll (Discern Lies)													TYPE:Magic.Scroll.Divine.Consumable	COST:700	W
 Scroll (Dismissal/Divine)				OUTPUTNAME:Scroll (Dismissal)				TYPE:Magic.Scroll.Divine.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
 Scroll (Divination)													TYPE:Magic.Scroll.Divine.Consumable	COST:725	WT:0.01	SOURCEPAGE:p.490
 Scroll (Divine Power)													TYPE:Magic.Scroll.Divine.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
-Scroll (Freedom of Movement)												TYPE:Magic.Scroll.Divine.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
+Scroll (Freedom Of Movement)												TYPE:Magic.Scroll.Divine.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
 Scroll (Holy Smite)													TYPE:Magic.Scroll.Divine.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
-Scroll (Imbue with Spell Ability)											TYPE:Magic.Scroll.Divine.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
+Scroll (Imbue With Spell Ability)											TYPE:Magic.Scroll.Divine.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
 Scroll (Inflict Critical Wounds)											TYPE:Magic.Scroll.Divine.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
 Scroll (Magic Weapon (Greater)/Divine)		OUTPUTNAME:Scroll (Magic Weapon (Greater))	TYPE:Magic.Scroll.Divine.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
 Scroll (Neutralize Poison)												TYPE:Magic.Scroll.Divine.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
@@ -1398,7 +1398,7 @@ Scroll (Summon Monster IV/Divine)			OUTPUTNAME:Scroll (Summon Monster IV)		TYPE:
 Scroll (Tongues/Divine)					OUTPUTNAME:Scroll (Tongues)				TYPE:Magic.Scroll.Divine.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
 Scroll (Unholy Blight)													TYPE:Magic.Scroll.Divine.Consumable	COST:700	WT:0.01	SOURCEPAGE:p.490
 Scroll (Break Enchantment/Divine)			OUTPUTNAME:Scroll (Break Enchantment)		TYPE:Magic.Scroll.Divine.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
-Scroll (Breath of Life)													TYPE:Magic.Scroll.Divine.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
+Scroll (Breath Of Life)													TYPE:Magic.Scroll.Divine.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
 Scroll (Command (Greater))												TYPE:Magic.Scroll.Divine.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
 Scroll (Commune)														TYPE:Magic.Scroll.Divine.Consumable	COST:1625	WT:0.01	SOURCEPAGE:p.490
 Scroll (Cure Light Wounds (Mass))											TYPE:Magic.Scroll.Divine.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
@@ -1410,7 +1410,7 @@ Scroll (Disrupting Weapon)												TYPE:Magic.Scroll.Divine.Consumable	COST:1
 Scroll (Flame Strike)													TYPE:Magic.Scroll.Divine.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
 Scroll (Inflict Light Wounds (Mass))										TYPE:Magic.Scroll.Divine.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
 Scroll (Insect Plague)													TYPE:Magic.Scroll.Divine.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
-Scroll (Mark of Justice)												TYPE:Magic.Scroll.Divine.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
+Scroll (Mark Of Justice)												TYPE:Magic.Scroll.Divine.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
 Scroll (Plane Shift/Divine)				OUTPUTNAME:Scroll (Plane Shift)			TYPE:Magic.Scroll.Divine.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
 Scroll (Raise Dead)													TYPE:Magic.Scroll.Divine.Consumable	COST:6125	WT:0.01	SOURCEPAGE:p.490
 Scroll (Righteous Might)												TYPE:Magic.Scroll.Divine.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
@@ -1419,7 +1419,7 @@ Scroll (Slay Living)													TYPE:Magic.Scroll.Divine.Consumable	COST:1125	W
 Scroll (Spell Resistance)												TYPE:Magic.Scroll.Divine.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
 Scroll (Summon Monster V/Divine)			OUTPUTNAME:Scroll (Summon Monster V)		TYPE:Magic.Scroll.Divine.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
 Scroll (True Seeing/Divine)				OUTPUTNAME:Scroll (True Seeing)			TYPE:Magic.Scroll.Divine.Consumable	COST:1375	WT:0.01	SOURCEPAGE:p.490
-Scroll (Wall of Stone/Divine)				OUTPUTNAME:Scroll (Wall of Stone)			TYPE:Magic.Scroll.Divine.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
+Scroll (Wall Of Stone/Divine)				OUTPUTNAME:Scroll (Wall Of Stone)			TYPE:Magic.Scroll.Divine.Consumable	COST:1125	WT:0.01	SOURCEPAGE:p.490
 Scroll (Antilife Shell)													TYPE:Magic.Scroll.Divine.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Banishment/Divine)				OUTPUTNAME:Scroll (Banishment)			TYPE:Magic.Scroll.Divine.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Bear's Endurance (Mass)/Divine)		OUTPUTNAME:Scroll (Bear's Endurance (Mass))	TYPE:Magic.Scroll.Divine.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
@@ -1428,7 +1428,7 @@ Scroll (Bull's Strength (Mass)/Divine)		OUTPUTNAME:Scroll (Bull's Strength (Mass
 Scroll (Cure Moderate Wounds (Mass))										TYPE:Magic.Scroll.Divine.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Dispel Magic (Greater)/Divine)		OUTPUTNAME:Scroll (Dispel Magic (Greater))	TYPE:Magic.Scroll.Divine.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Eagle's Splendor (Mass)/Divine)		OUTPUTNAME:Scroll (Eagle's Splendor (Mass))	TYPE:Magic.Scroll.Divine.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
-Scroll (Find the Path)													TYPE:Magic.Scroll.Divine.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
+Scroll (Find The Path)													TYPE:Magic.Scroll.Divine.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Geas/Quest/Divine)				OUTPUTNAME:Scroll (Geas/Quest)			TYPE:Magic.Scroll.Divine.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Harm)														TYPE:Magic.Scroll.Divine.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Heal)														TYPE:Magic.Scroll.Divine.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
@@ -1436,9 +1436,9 @@ Scroll (Heroes' Feast)													TYPE:Magic.Scroll.Divine.Consumable	COST:1650
 Scroll (Inflict Moderate Wounds (Mass))										TYPE:Magic.Scroll.Divine.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Owl's Wisdom (Mass)/Divine)			OUTPUTNAME:Scroll (Owl's Wisdom (Mass))		TYPE:Magic.Scroll.Divine.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Summon Monster VI/Divine)			OUTPUTNAME:Scroll (Summon Monster VI)		TYPE:Magic.Scroll.Divine.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
-Scroll (Undeath to Death/Divine)			OUTPUTNAME:Scroll (Undeath to Death)		TYPE:Magic.Scroll.Divine.Consumable	COST:2150	WT:0.01	SOURCEPAGE:p.490
+Scroll (Undeath To Death/Divine)			OUTPUTNAME:Scroll (Undeath To Death)		TYPE:Magic.Scroll.Divine.Consumable	COST:2150	WT:0.01	SOURCEPAGE:p.490
 Scroll (Wind Walk)													TYPE:Magic.Scroll.Divine.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
-Scroll (Word of Recall)													TYPE:Magic.Scroll.Divine.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
+Scroll (Word Of Recall)													TYPE:Magic.Scroll.Divine.Consumable	COST:1650	WT:0.01	SOURCEPAGE:p.490
 Scroll (Control Weather/Divine)			OUTPUTNAME:Scroll (Control Weather)			TYPE:Magic.Scroll.Divine.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
 Scroll (Cure Serious Wounds (Mass))											TYPE:Magic.Scroll.Divine.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
 Scroll (Destruction)													TYPE:Magic.Scroll.Divine.Consumable	COST:2775	WT:0.01	SOURCEPAGE:p.490
@@ -1450,14 +1450,14 @@ Scroll (Restoration (Greater))											TYPE:Magic.Scroll.Divine.Consumable	COS
 Scroll (Resurrection)													TYPE:Magic.Scroll.Divine.Consumable	COST:12275	WT:0.01	SOURCEPAGE:p.490
 Scroll (Scrying (Greater)/Divine)			OUTPUTNAME:Scroll (Scrying (Greater))		TYPE:Magic.Scroll.Divine.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
 Scroll (Summon Monster VII/Divine)			OUTPUTNAME:Scroll (Summon Monster VII)		TYPE:Magic.Scroll.Divine.Consumable	COST:2275	WT:0.01	SOURCEPAGE:p.490
-Scroll (Cloak of Chaos)													TYPE:Magic.Scroll.Divine.Consumable	COST:3500	WT:0.01	SOURCEPAGE:p.490
+Scroll (Cloak Of Chaos)													TYPE:Magic.Scroll.Divine.Consumable	COST:3500	WT:0.01	SOURCEPAGE:p.490
 Scroll (Cure Critical Wounds (Mass))										TYPE:Magic.Scroll.Divine.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
 Scroll (Dimensional Lock/Divine)			OUTPUTNAME:Scroll (Dimensional Lock)		TYPE:Magic.Scroll.Divine.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
 Scroll (Discern Location/Divine)			OUTPUTNAME:Scroll (Discern Location)		TYPE:Magic.Scroll.Divine.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
 Scroll (Fire Storm)													TYPE:Magic.Scroll.Divine.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
 Scroll (Holy Aura)													TYPE:Magic.Scroll.Divine.Consumable	COST:3500	WT:0.01	SOURCEPAGE:p.490
 Scroll (Inflict Critical Wounds (Mass))										TYPE:Magic.Scroll.Divine.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
-Scroll (Shield of Law)													TYPE:Magic.Scroll.Divine.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
+Scroll (Shield Of Law)													TYPE:Magic.Scroll.Divine.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
 Scroll (Spell Immunity (Greater))											TYPE:Magic.Scroll.Divine.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
 Scroll (Summon Monster VIII/Divine)			OUTPUTNAME:Scroll (Summon Monster VIII)		TYPE:Magic.Scroll.Divine.Consumable	COST:3000	WT:0.01	SOURCEPAGE:p.490
 Scroll (Unholy Aura)													TYPE:Magic.Scroll.Divine.Consumable	COST:3500	WT:0.01	SOURCEPAGE:p.490
@@ -1466,7 +1466,7 @@ Scroll (Heal (Mass))													TYPE:Magic.Scroll.Divine.Consumable	COST:3825	W
 Scroll (Implosion)													TYPE:Magic.Scroll.Divine.Consumable	COST:3825	WT:0.01	SOURCEPAGE:p.490
 Scroll (Miracle)														TYPE:Magic.Scroll.Divine.Consumable	COST:3825	WT:0.01	SOURCEPAGE:p.490
 Scroll (Soul Bind/Divine)				OUTPUTNAME:Scroll (Soul Bind)				TYPE:Magic.Scroll.Divine.Consumable	COST:3825	WT:0.01	SOURCEPAGE:p.490
-Scroll (Storm of Vengeance)												TYPE:Magic.Scroll.Divine.Consumable	COST:3825	WT:0.01	SOURCEPAGE:p.490
+Scroll (Storm Of Vengeance)												TYPE:Magic.Scroll.Divine.Consumable	COST:3825	WT:0.01	SOURCEPAGE:p.490
 Scroll (Summon Monster IX/Divine)			OUTPUTNAME:Scroll (Summon Monster IX)		TYPE:Magic.Scroll.Divine.Consumable	COST:3825	WT:0.01	SOURCEPAGE:p.490
 Scroll (True Resurrection)												TYPE:Magic.Scroll.Divine.Consumable	COST:28825	WT:0.01	SOURCEPAGE:p.490
 
