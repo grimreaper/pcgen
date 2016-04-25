@@ -4056,8 +4056,8 @@ BIO
 						<bonusspell></bonusspell>
 					</spell>
 					<spell>
-						<name>Horn of Pursuit</name>
-						<outputname>Horn of Pursuit</outputname>
+						<name>Horn Of Pursuit</name>
+						<outputname>Horn Of Pursuit</outputname>
 						<times_memorized>1</times_memorized>
 						<range>Personal</range>
 						<components>S</components>
@@ -4114,8 +4114,8 @@ BIO
 						<bonusspell></bonusspell>
 					</spell>
 					<spell>
-						<name>Know the Enemy</name>
-						<outputname>Know the Enemy</outputname>
+						<name>Know The Enemy</name>
+						<outputname>Know The Enemy</outputname>
 						<times_memorized>1</times_memorized>
 						<range>Personal</range>
 						<components>V, S, DF</components>
@@ -4172,8 +4172,8 @@ BIO
 						<bonusspell></bonusspell>
 					</spell>
 					<spell>
-						<name>Litany of Sloth</name>
-						<outputname>Litany of Sloth</outputname>
+						<name>Litany Of Sloth</name>
+						<outputname>Litany Of Sloth</outputname>
 						<times_memorized>1</times_memorized>
 						<range>Close (30 ft.)</range>
 						<components>V, S, DF</components>
@@ -4259,8 +4259,8 @@ BIO
 						<bonusspell></bonusspell>
 					</spell>
 					<spell>
-						<name>Protection from Chaos</name>
-						<outputname>Protection from Chaos</outputname>
+						<name>Protection From Chaos</name>
+						<outputname>Protection From Chaos</outputname>
 						<times_memorized>1</times_memorized>
 						<range>Touch</range>
 						<components>V, S, M/DF</components>
@@ -4288,8 +4288,8 @@ BIO
 						<bonusspell></bonusspell>
 					</spell>
 					<spell>
-						<name>Protection from Evil</name>
-						<outputname>Protection from Evil</outputname>
+						<name>Protection From Evil</name>
+						<outputname>Protection From Evil</outputname>
 						<times_memorized>1</times_memorized>
 						<range>Touch</range>
 						<components>V, S, M/DF</components>
@@ -4520,8 +4520,8 @@ BIO
 						<bonusspell></bonusspell>
 					</spell>
 					<spell>
-						<name>Veil of Positive Energy</name>
-						<outputname>Veil of Positive Energy</outputname>
+						<name>Veil Of Positive Energy</name>
+						<outputname>Veil Of Positive Energy</outputname>
 						<times_memorized>1</times_memorized>
 						<range>Personal or 5 ft.; see text</range>
 						<components>V, S, DF</components>
@@ -4607,8 +4607,8 @@ BIO
 						<bonusspell></bonusspell>
 					</spell>
 					<spell>
-						<name>Word of Resolve</name>
-						<outputname>Word of Resolve</outputname>
+						<name>Word Of Resolve</name>
+						<outputname>Word Of Resolve</outputname>
 						<times_memorized>1</times_memorized>
 						<range>Close (30 ft.)</range>
 						<components>V, DF</components>

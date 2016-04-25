@@ -2811,8 +2811,8 @@ BIO
 						<bonusspell></bonusspell>
 					</spell>
 					<spell>
-						<name>Purify Food and Drink</name>
-						<outputname>Purify Food and Drink</outputname>
+						<name>Purify Food And Drink</name>
+						<outputname>Purify Food And Drink</outputname>
 						<times_memorized>1</times_memorized>
 						<range>10 ft.</range>
 						<components>V, S</components>
@@ -3567,8 +3567,8 @@ BIO
 						<bonusspell></bonusspell>
 					</spell>
 					<spell>
-						<name>Hide from Undead</name>
-						<outputname>Hide from Undead</outputname>
+						<name>Hide From Undead</name>
+						<outputname>Hide From Undead</outputname>
 						<times_memorized>1</times_memorized>
 						<range>Touch</range>
 						<components>V, S, DF</components>
@@ -3712,8 +3712,8 @@ BIO
 						<bonusspell></bonusspell>
 					</spell>
 					<spell>
-						<name>Protection from Chaos</name>
-						<outputname>Protection from Chaos</outputname>
+						<name>Protection From Chaos</name>
+						<outputname>Protection From Chaos</outputname>
 						<times_memorized>1</times_memorized>
 						<range>Touch</range>
 						<components>V, S, M/DF</components>
@@ -3741,8 +3741,8 @@ BIO
 						<bonusspell></bonusspell>
 					</spell>
 					<spell>
-						<name>Protection from Evil</name>
-						<outputname>Protection from Evil</outputname>
+						<name>Protection From Evil</name>
+						<outputname>Protection From Evil</outputname>
 						<times_memorized>1</times_memorized>
 						<range>Touch</range>
 						<components>V, S, M/DF</components>
@@ -3770,8 +3770,8 @@ BIO
 						<bonusspell></bonusspell>
 					</spell>
 					<spell>
-						<name>Protection from Law</name>
-						<outputname>Protection from Law</outputname>
+						<name>Protection From Law</name>
+						<outputname>Protection From Law</outputname>
 						<times_memorized>1</times_memorized>
 						<range>Touch</range>
 						<components>V, S, M/DF</components>
@@ -3857,8 +3857,8 @@ BIO
 						<bonusspell></bonusspell>
 					</spell>
 					<spell>
-						<name>Shield of Faith</name>
-						<outputname>Shield of Faith</outputname>
+						<name>Shield Of Faith</name>
+						<outputname>Shield Of Faith</outputname>
 						<times_memorized>1</times_memorized>
 						<range>Touch</range>
 						<components>V, S, M</components>
@@ -3886,8 +3886,8 @@ BIO
 						<bonusspell>**</bonusspell>
 					</spell>
 					<spell>
-						<name>Shield of Faith</name>
-						<outputname>Shield of Faith</outputname>
+						<name>Shield Of Faith</name>
+						<outputname>Shield Of Faith</outputname>
 						<times_memorized>1</times_memorized>
 						<range>Touch</range>
 						<components>V, S, M</components>
@@ -4091,8 +4091,8 @@ BIO
 						<bonusspell>*</bonusspell>
 					</spell>
 					<spell>
-						<name>Blessing of Courage and Life</name>
-						<outputname>Blessing of Courage and Life</outputname>
+						<name>Blessing Of Courage And Life</name>
+						<outputname>Blessing Of Courage And Life</outputname>
 						<times_memorized>1</times_memorized>
 						<range>Close (30 ft.)</range>
 						<components>V, S, DF</components>
@@ -4990,8 +4990,8 @@ BIO
 						<bonusspell></bonusspell>
 					</spell>
 					<spell>
-						<name>Weapon of Awe</name>
-						<outputname>Weapon of Awe</outputname>
+						<name>Weapon Of Awe</name>
+						<outputname>Weapon Of Awe</outputname>
 						<times_memorized>1</times_memorized>
 						<range>Touch</range>
 						<components>V, S, DF</components>
@@ -5019,8 +5019,8 @@ BIO
 						<bonusspell></bonusspell>
 					</spell>
 					<spell>
-						<name>Zone of Truth</name>
-						<outputname>Zone of Truth</outputname>
+						<name>Zone Of Truth</name>
+						<outputname>Zone Of Truth</outputname>
 						<times_memorized>1</times_memorized>
 						<range>Close (30 ft.)</range>
 						<components>V, S, DF</components>
