@@ -909,7 +909,7 @@ STAT:STR=10|DEX=11|CON=10|INT=10|WIS=11|CHA=11
 #SKILL:Sense Motive		RANK:10
 #SKILL:Spellcraft			RANK:8
 #SKILL:Stealth			RANK:16
-#ABILITY:CATEGORY=FEAT|Ability Focus (Aura of Doom)
+#ABILITY:CATEGORY=FEAT|Ability Focus (Aura Of Doom)
 #ABILITY:CATEGORY=FEAT|Combat Casting
 #ABILITY:CATEGORY=FEAT|Weapon Finesse
 GEAR:Sword (Short)	LOCATION:Equipped
@@ -995,7 +995,7 @@ STAT:STR=11|DEX=10|CON=11|INT=11|WIS=10|CHA=10
 #ABILITY:CATEGORY=FEAT|Lightning Reflexes
 #ABILITY:CATEGORY=FEAT|Multiattack
 #ABILITY:CATEGORY=FEAT|Power Attack
-#ABILITY:CATEGORY=FEAT|Quicken Spell-Like Ability ~ Spell (Ray of Enfeeblement)
+#ABILITY:CATEGORY=FEAT|Quicken Spell-Like Ability ~ Spell (Ray Of Enfeeblement)
 GEAR:Morningstar	LOCATION:Primary Hand	EQMOD:PLUS2W.UNHOLY
 
 
@@ -3471,7 +3471,7 @@ SPELLS:SPELLBOOK=Known Spells|CLASS=Sorcerer|Feeblemind
 SPELLS:SPELLBOOK=Known Spells|CLASS=Sorcerer|Mind Fog
 SPELLS:SPELLBOOK=Known Spells|CLASS=Sorcerer|Charm Monster
 SPELLS:SPELLBOOK=Known Spells|CLASS=Sorcerer|Dimension Door
-SPELLS:SPELLBOOK=Known Spells|CLASS=Sorcerer|Globe of Invulnerability (Lesser)
+SPELLS:SPELLBOOK=Known Spells|CLASS=Sorcerer|Globe Of Invulnerability (Lesser)
 SPELLS:SPELLBOOK=Known Spells|CLASS=Sorcerer|Scrying
 SPELLS:SPELLBOOK=Known Spells|CLASS=Sorcerer|Dispel Magic
 SPELLS:SPELLBOOK=Known Spells|CLASS=Sorcerer|Nondetection
