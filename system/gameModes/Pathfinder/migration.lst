@@ -10,14 +10,16 @@
 # SOURCE:JDTEST	MAXVER:6.4.00	NEWKEY:Paizo - Pathfinder Roleplaying Game Core Rulebook	MAXDEVVER:6.1.1
 # EQUIPMENT:JDTEST	MAXVER:6.4.00	NEWKEY:Outfit (Explorer's)	MAXVER:6.0.01	MAXVER:6.4.00	MAXDEVVER:6.1.2
 # NEWCATEGORY:Spell-like Ability
+# SPELL
 
+SPELL:Globe of Invulnerability	MAXVER:6.06.00	NEWKEY:Globe Of Invulnerability
+SPELL:Horn of Pursuit			MAXVER:6.06.00	NEWKEY:Horn Of Pursuit
+SPELL:Guards and Wards			MAXVER:6.06.00	NEWKEY:Guards And Wards
+SPELL:Purify Food and Drink		MAXVER:6.06.00	NEWKEY:Purify Food And Drink
 
-
-
-
-ABILITY:Special Ability|Order of the Blue Rose ~ Cavalier Order				MAXVER:6.06.01	NEWKEY:Cavalier Order ~ Order of the Blue Rose
-ABILITY:Special Ability|Order of the Seal ~ Cavalier Order					MAXVER:6.06.01	NEWKEY:Cavalier Order ~ Order of the Seal
-ABILITY:Special Ability|Order of the Tome ~ Cavalier Order					MAXVER:6.06.01	NEWKEY:Cavalier Order ~ Order of the Tome
+ABILITY:Special Ability|Order of the Blue Rose ~ Cavalier Order				MAXVER:6.06.00	NEWKEY:Cavalier Order ~ Order of the Blue Rose
+ABILITY:Special Ability|Order of the Seal ~ Cavalier Order					MAXVER:6.06.00	NEWKEY:Cavalier Order ~ Order of the Seal
+ABILITY:Special Ability|Order of the Tome ~ Cavalier Order					MAXVER:6.06.00	NEWKEY:Cavalier Order ~ Order of the Tome
 
 
 
