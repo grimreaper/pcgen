@@ -1606,7 +1606,7 @@
 		<#else>
 			<name>${abilityName}</name>
 		</#if>
-			<description>${pcstring("${abilityExportToken}.DESC")}</description>
+			<description>${pcstring("${abilityExportToken}.DESC")} INFO TEST:${pc.abilities.info.desc}</description>
 			<type>${pcstring("${abilityExportToken}.TYPE")}</type>
 			<associated>${pcstring("${abilityExportToken}.ASSOCIATED")}</associated>
 			<count>${pcstring("${abilityExportToken}.ASSOCIATEDCOUNT")}</count>
