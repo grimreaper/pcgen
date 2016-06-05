@@ -476,6 +476,24 @@ ${pcstring('WEAPON.${weap}.MISC')}[MISC]
 </@loop>
 </blockquote>
 
+<b>CNAS Abilities</b>
+
+<blockquote>
+	<#list pc.abilities as cnas>
+			 
+	<b>Hi my name is: ${cnas.ability}</b>	 ${cnas.nature}?
+
+	 
+	 <br>
+		</#list>
+</blockquote>
+
+
+
+
+
+
+
 <!-- START Template Table -->
 <#if (pcvar("COUNT[TEMPLATES]") > 0) >
    <table width="100%" cellspacing="0" cellpadding="3" summary="Template Table">
