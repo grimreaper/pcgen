@@ -482,7 +482,7 @@ ${pcstring('WEAPON.${weap}.MISC')}[MISC]
 	<#list pc.abilities as cnas>
 			 
 	<b>Hi my name is: ${cnas.ability}</b>	 ${cnas.nature}?
-
+	 ${cnas.ability.info.desc}
 	 
 	 <br>
 		</#list>
