@@ -100,19 +100,20 @@
 			<#t></@loop></shortform>
 			<!-- CLASSLIST is not extracted because we can derive it from the information above -->
 		</classes>
+<#macro getarg object subvar><#if object?has_content>${object[subvar]}</#if></#macro>
 		<deity>
-			<name>${pcstring('DEITY')}</name>
-			<alignment>${pcstring('DEITY.ALIGNMENT')}</alignment>
-			<description>${pcstring('DEITY.DESCRIPTION')}</description>
-			<domainlist>${pcstring('DEITY.DOMAINLIST')}</domainlist>
-			<favoredweapon>${pcstring('DEITY.FAVOREDWEAPON')}</favoredweapon>
-			<holyitem>${pcstring('DEITY.HOLYITEM')}</holyitem>
-			<pantheonlist>${pcstring('DEITY.PANTHEONLIST')}</pantheonlist>
-			<source>${pcstring('DEITY.SOURCE')}</source>
-			<special_abilities>${pcstring('DEITY.SA')}</special_abilities>
-			<appearance>${pcstring('DEITY.APPEARANCE')}</appearance>
-			<title>${pcstring('DEITY.TITLE')}</title>
-			<worshippers>${pcstring('DEITY.WORSHIPPERS')}</worshippers>
+			<name>${pc.deity!}</name>
+			<alignment><@pcstring tag="DEITY.ALIGNMENT"/></alignment>
+			<description><@pcstring tag="DEITY.DESCRIPTION"/></description>
+			<domainlist><@pcstring tag="DEITY.DOMAINLIST"/></domainlist>
+			<favoredweapon><@pcstring tag="DEITY.FAVOREDWEAPON"/></favoredweapon>
+			<holyitem><@getarg pc.deity "symbol"/></holyitem>
+			<pantheonlist><#if pc.deity?has_content>${pc.deity.pantheon!?join(", ")}</#if></pantheonlist>
+			<source><#if pc.deity?has_content>${pc.deity.source.pubname} - ${pc.deity.source.long}, ${pc.deity.source.page}</#if></source>
+			<special_abilities><@pcstring tag="DEITY.SA"/></special_abilities>
+			<appearance><@getarg pc.deity "appearance"/></appearance>
+			<title><@getarg pc.deity "title"/></title>
+			<worshippers><@getarg pc.deity "worshippers"/></worshippers>
 		</deity>
 		<description>${pcstring('DESC')}</description>
 		<experience>
@@ -1606,7 +1607,7 @@
 		<#else>
 			<name>${abilityName}</name>
 		</#if>
-			<description>${pcstring("${abilityExportToken}.DESC")} INFO TEST:${pc.abilities.info.desc}</description>
+			<description>${pcstring("${abilityExportToken}.DESC")}</description>
 			<type>${pcstring("${abilityExportToken}.TYPE")}</type>
 			<associated>${pcstring("${abilityExportToken}.ASSOCIATED")}</associated>
 			<count>${pcstring("${abilityExportToken}.ASSOCIATEDCOUNT")}</count>

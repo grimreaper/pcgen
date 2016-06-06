@@ -476,18 +476,38 @@ ${pcstring('WEAPON.${weap}.MISC')}[MISC]
 </@loop>
 </blockquote>
 
+<#macro getarg object subvar><#if object?has_content>${object[subvar]}</#if></#macro>
+
 <b>CNAS Abilities</b>
 
 <blockquote>
 	<#list pc.abilities as cnas>
 			 
-	<b>Hi my name is: ${cnas.ability}</b>	 ${cnas.nature}?
+	<b>Hi my name is: ${cnas.ability}</b>	 ${cnas.nature}	
+	
+	<@getarg cnas "category"/> [OR] ${cnas.category}
+	${cnas.ability.info.desc}
 
-	 
 	 <br>
 		</#list>
 </blockquote>
 
+	<!-- Issues obtaining the following:
+		Info
+		Desc
+		Benefit
+		other tags	<@getarg cnas.ability.info "desc"/>
+
+	-->
+
+
+			<name>${pc.deity!}</name>
+			<holyitem><@getarg pc.deity "symbol"/></holyitem>
+			<pantheonlist><#if pc.deity?has_content>${pc.deity.pantheon!?join(", ")}</#if></pantheonlist>
+			<source><#if pc.deity?has_content>${pc.deity.source.pubname} - ${pc.deity.source.long}, ${pc.deity.source.page}</#if></source>
+			<appearance><@getarg pc.deity "appearance"/></appearance>
+			<title><@getarg pc.deity "title"/></title>
+			<worshippers><@getarg pc.deity "worshippers"/></worshippers>
 
 
 
