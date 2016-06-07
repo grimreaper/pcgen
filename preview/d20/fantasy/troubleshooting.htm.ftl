@@ -99,6 +99,7 @@ ${pcstring('AC.Shield.SIGN')}[SHIELD] ${pcstring('EQ.IS.SHIELD.0.NAME')}
 <b>
 ${pcstring('STAT.${stat}.NAME')}
 ${pcvar('STAT.${stat}')}
+
 </b>
 &nbsp;(${pcstring('STAT.${stat}.MOD')}) = 
 <!-- Report User Values -->
@@ -108,6 +109,13 @@ ${pcstring('STAT.${stat}.LEVEL.1.NOPOST.NOEQUIP.NOTEMP-(STAT.${stat}.BASE-(STAT.
 
 <br>
 </@loop>
+
+SECONDARY TEST for FACT:
+	
+	<#list pc.stats as stat>
+		If this works: <#if stat.myabbreviation?has_content>${stat.myabbreviation}<#else></#if>	<br>
+	</#list>
+	
 </blockquote>
 
 <hr />
@@ -486,17 +494,24 @@ ${pcstring('WEAPON.${weap}.MISC')}[MISC]
 	<b>Hi my name is: ${cnas.ability}</b>	 ${cnas.nature}	
 	
 	<@getarg cnas "category"/> [OR] ${cnas.category}
-	${cnas.ability.info.desc}
+	${cnas.ability.info.desc!}
 
 	 <br>
 		</#list>
+
+	RACE TEST
+	${pc.race.info.desc}
+	${pc.race.info.vartest}	<#--	-->
+
 </blockquote>
+
+
 
 	<!-- Issues obtaining the following:
 		Info
 		Desc
 		Benefit
-		other tags	<@getarg cnas.ability.info "desc"/>
+		other tags	
 
 	-->
 

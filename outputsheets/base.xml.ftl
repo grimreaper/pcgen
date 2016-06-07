@@ -271,7 +271,7 @@
 		<ability>
 			<name>
 				<long>${pcstring('STAT.${stat}.LONGNAME')}</long>
-				<short>${pcstring('STAT.${stat}.NAME')}</short>
+				<short>${pcstring('STAT.${stat}.MyAbbreviation')}</short>
 			</name>
 			<score>${pcstring('STAT.${stat}')}</score>
 			<modifier>${pcstring('STAT.${stat}.MOD')}</modifier>

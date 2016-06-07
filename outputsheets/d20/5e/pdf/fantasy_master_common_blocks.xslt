@@ -436,7 +436,7 @@
 			<xsl:apply-templates select="spells"/>	
 			<xsl:apply-templates select="basics" mode="bio"/>
 			<xsl:apply-templates select="basics/notes" mode="bio"/>	
-			<xsl:apply-templates select="basics" mode="campaign_histories"/>
+			<xsl:apply-templates select="basics/campaign_histories" mode="notes"/>
 
 		</fo:root>
 	</xsl:template>

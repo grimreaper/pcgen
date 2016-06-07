@@ -278,21 +278,29 @@
 	TEMPLATE - Campaign History
 ====================================
 ====================================-->
-	<xsl:template match="campaign_histories" mode="bio">
+	<xsl:template match="campaign_histories" mode="notes">
 		<!-- BEGIN Campaign History Pages -->
 		<xsl:if test="count(.//campaign_history) &gt; 0">
-			<fo:page-sequence master-reference="Portrait 2 Column">
-				<xsl:call-template name="page.footer"/>
+			<fo:page-sequence master-reference="Portrait">
+				<xsl:call-template name="attrib"><xsl:with-param name="attribute" select="'protection.border'"/></xsl:call-template>
 				<fo:flow flow-name="body" font-size="8pt">
 					<xsl:for-each select="campaign_history">
+							<xsl:variable name="shade">
+							<xsl:choose>
+								<xsl:when test="position() mod 2 = 0">darkline</xsl:when>
+								<xsl:otherwise>lightline</xsl:otherwise>
+							</xsl:choose>
+							</xsl:variable>
+						<xsl:call-template name="attrib"><xsl:with-param name="attribute" select="concat('campaign_histories.', $shade)"/></xsl:call-template>
+
+						<fo:block font-size="14pt" space-after.optimum="2mm" space-before.optimum="5mm">
+							<xsl:value-of select="campaign"/> / <xsl:value-of select="adventure"/>
+						</fo:block>
 						<fo:block font-size="12pt" space-after.optimum="2mm" space-before.optimum="5mm">
-							<xsl:value-of select="campaign"/>:
-							<xsl:value-of select="adventure"/>:
-							<xsl:value-of select="party"/>:
-							<xsl:value-of select="date"/>:
-							<xsl:value-of select="xp"/>:
-							<xsl:value-of select="gm"/>:
-							<xsl:value-of select="text"/>:
+							Party: <xsl:value-of select="party"/>; DATE: <xsl:value-of select="date"/>; XP: <xsl:value-of select="xp"/>; GM: <xsl:value-of select="gm"/>
+						</fo:block>
+						<fo:block font-size="12pt" space-after.optimum="2mm" space-before.optimum="5mm">
+							Information: <xsl:value-of select="text"/>
 						</fo:block>
 					</xsl:for-each>
 				</fo:flow>

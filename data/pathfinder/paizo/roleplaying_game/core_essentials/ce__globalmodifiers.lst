@@ -25,3 +25,4 @@ MODIFY:CrushDie|ADD|8
 #MODIFY:CrushDie|ADD|if(SIZE==G,-2,0)
 
 
+MODIFY:VarTest|ADD|15

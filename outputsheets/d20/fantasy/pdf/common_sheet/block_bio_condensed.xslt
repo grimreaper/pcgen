@@ -278,7 +278,7 @@
 	TEMPLATE - Campaign History
 ====================================
 ====================================-->
-	<xsl:template match="campaign_histories" mode="bio">
+	<xsl:template match="campaign_histories" mode="notes">
 		<!-- BEGIN Campaign History Pages -->
 		<xsl:if test="count(.//campaign_history) &gt; 0">
 			<fo:page-sequence master-reference="Portrait 2 Column">

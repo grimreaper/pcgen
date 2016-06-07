@@ -756,6 +756,7 @@ FACTDEF:ABILITY|Wizard_CF_BonusFeat20				DATAFORMAT:BOOLEAN	REQUIRED:NO	SELECTAB
 # Name			Dataformat		Required	Selectable		Visible	Displayname			Explanation
 FACTDEF:CHECK|MainStat	DATAFORMAT:STRING												EXPLANATION:Output the Stat a save uses to the OS
 
+FACTDEF:STAT|MyAbbreviation	DATAFORMAT:STRING						VISIBLE:YES					EXPLANATION:Output the STAT Abbreviation
 
 #############################
 #	Formula Parser
@@ -771,5 +772,7 @@ DEFAULTVARIABLEVALUE:ORDEREDPAIR|0,0
 DEFAULTVARIABLEVALUE:NUMBER|0
 DEFAULTVARIABLEVALUE:STRING|
 DEFAULTVARIABLEVALUE:BOOLEAN|False
+
+
 
 
