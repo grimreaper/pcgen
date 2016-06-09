@@ -495,6 +495,7 @@ ${pcstring('WEAPON.${weap}.MISC')}[MISC]
 	
 	<@getarg cnas "category"/> [OR] ${cnas.category}
 	${cnas.ability.info.desc!}
+	<br>DESC: ${cnas.ability.desc}
 
 	 <br>
 		</#list>
