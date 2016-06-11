@@ -248,31 +248,26 @@
 	  ====================================
 	  ====================================-->
 	<abilities>
-	<@loop from=0 to=pcvar('COUNT[STATS]-1') ; stat , stat_has_next>
+	<#assign statnum = -1 />
+	<#list pc.stats as stat>
+	<#assign statnum = statnum + 1 />
 		<ability>
 			<name>
-				<long>${pcstring('STAT.${stat}.LONGNAME')}</long>
-				<short>${pcstring('STAT.${stat}.NAME')}</short>
+				<long>${stat}</long>
+				<short>${stat.abb}</short>	<#-- Fact -->
 			</name>
-			<score>${pcstring('STAT.${stat}')}</score>
-			<modifier>${pcstring('STAT.${stat}.MOD')}</modifier>
-		<!--
-		Old BASE tag does not give stats with racial, and other permentant adjustments.
-		Use NOTEMP.NOEQUIP instead of BASE gives the correct results.
-
-			<base>${pcstring('STAT.${stat}.BASE')}</base>
-			<basemod>${pcstring('STAT.${stat}.BASEMOD')}</basemod>
-		-->
-			<base>${pcstring('STAT.${stat}.NOTEMP.NOEQUIP')}</base>
-			<basemod>${pcstring('STAT.${stat}.MOD.NOTEMP.NOEQUIP')}</basemod>
-
-			<noequip>${pcstring('STAT.${stat}.NOEQUIP')}</noequip>
-			<noequip_mod>${pcstring('STAT.${stat}.MOD.NOEQUIP')}</noequip_mod>
-			<no_temp_score>${pcstring('STAT.${stat}.NOTEMP')}</no_temp_score>
-			<no_temp_modifier>${pcstring('STAT.${stat}.MOD.NOTEMP')}</no_temp_modifier>
+			<score>${pcstring('STAT.${statnum}')}</score>
+			<modifier>${pcstring('STAT.${statnum}.MOD')}</modifier>
+			<base>${pcstring('STAT.${statnum}.NOTEMP.NOEQUIP')}</base>
+			<basemod>${pcstring('STAT.${statnum}.MOD.NOTEMP.NOEQUIP')}</basemod>
+			<noequip>${pcstring('STAT.${statnum}.NOEQUIP')}</noequip>
+			<noequip_mod>${pcstring('STAT.${statnum}.MOD.NOEQUIP')}</noequip_mod>
+			<no_temp_score>${pcstring('STAT.${statnum}.NOTEMP')}</no_temp_score>
+			<no_temp_modifier>${pcstring('STAT.${statnum}.MOD.NOTEMP')}</no_temp_modifier>
 		</ability>
-	</@loop>
+	</#list>
 	</abilities>
+
 	<!--
 	  ====================================
 	  ====================================
@@ -393,6 +388,24 @@
 			</savebonus>
 		</@loop>
 		</conditional_modifiers>
+
+	<#-- TO DO: Change to new LIST format	
+			<#assign savenum = -1 />
+		<#list pc.checks as check>
+		  <#assign savenum = savenum + 1 />
+		  <saving_throw>  
+		    <ability>${check.mainstat}</ability>
+		    <total>${pcstring('CHECK.${savenum}.TOTAL')}</total>
+		  </saving_throw>
+		</#list>
+	
+	
+	-->
+
+
+
+
+
 		<@loop from=0 to=pcvar('COUNT[CHECKS]-1') ; check , check_has_next>
 		<#assign checkName = pcstring('CHECK.${check}.NAME')?lower_case />
 		<#assign checkShortName = checkName />

@@ -754,9 +754,10 @@ FACTDEF:ABILITY|Wizard_CF_BonusFeat20				DATAFORMAT:BOOLEAN	REQUIRED:NO	SELECTAB
 
 ###Block: Saves File
 # Name			Dataformat		Required	Selectable		Visible	Displayname			Explanation
-FACTDEF:CHECK|MainStat	DATAFORMAT:STRING												EXPLANATION:Output the Stat a save uses to the OS
+FACTDEF:CHECK|MainStat	DATAFORMAT:STRING		VISIBLE:YES											
+FACTDEF:CHECK|Abb		DATAFORMAT:STRING		VISIBLE:YES											
 
-FACTDEF:STAT|MyAbbreviation	DATAFORMAT:STRING						VISIBLE:YES					EXPLANATION:Output the STAT Abbreviation
+FACTDEF:STAT|Abb	DATAFORMAT:STRING						VISIBLE:YES					EXPLANATION:Output the STAT Abbreviation
 
 #############################
 #	Formula Parser

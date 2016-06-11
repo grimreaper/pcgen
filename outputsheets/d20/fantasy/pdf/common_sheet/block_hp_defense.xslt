@@ -10,6 +10,11 @@
 	<xsl:import href="../../../../xsltsl-1.1/stdlib.xsl"/>
 	<xsl:import href="../inc_pagedimensions.xslt"/>
 
+<!-- Has
+	HP Block
+	AC Table
+	Resistance Table
+	Saves Table	-->
 
 	<!--
 ====================================
