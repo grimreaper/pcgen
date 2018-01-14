@@ -1,0 +1,40 @@
+# CVS $Revision$ $Author$ -- Fri Jun 17 21:51:56 2016 -- reformated by PCGen PrettyLST v6.06.00
+CAMPAIGN:Formula 6.08 Test
+GAMEMODE:Pathfinder|35e|ZFormula
+TYPE:TEST
+RANK:1
+GENRE:Fantasy
+BOOKTYPE:Supplement
+SETTING:Test
+
+# Game Specific
+ALIGNMENT:f__align.lst
+DATACONTROL:f__datacontrols.lst
+DATATABLE:f__datatables.lst
+DYNAMIC:f__dynamic.lst
+GLOBALMODIFIER:f__globalmodifiers.lst
+SAVE:f__saves.lst
+SIZE:f__sizes.lst
+STAT:f__stats.lst
+VARIABLE:f__variables.lst
+
+# File Types
+ABILITY:f_abilities.lst
+ABILITYCATEGORY:f_abilitycategories.lst
+#BIOSETTING:f_biosettings.lst
+CLASS:f_classes.lst
+COMPANIONMOD:f_companionmods.lst
+DEITY:f_deities.lst
+DOMAIN:f_domains.lst
+EQUIPMENT:f_equip.lst
+EQUIPMOD:f_equipmods.lst
+KIT:f_kits.lst
+LANGUAGE:f_languages.lst
+RACE:f_races.lst
+ARMORPROF:f_profs_armor.lst
+SHIELDPROF:f_profs_shield.lst
+WEAPONPROF:f_profs_weapon.lst
+SKILL:f_skills.lst
+SPELL:f_spells.lst
+TEMPLATE:f_templates.lst
+

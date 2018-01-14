@@ -1,0 +1,41 @@
+
+# Vision has Range (or present if Low-Light)
+VISION:Darkvision
+VISION:Low-Light Vision
+VISION:Blindsense
+VISION:Blindsight
+VISION:Blind
+
+
+# Movement has Speed, Manueverability (if Fly), Run Speed -- Ground/Walk are never called out specifically, just listed as "SPEED: x ft."
+MOVEMENT:Ground
+MOVEMENT:Walk
+MOVEMENT:Fly
+MOVEMENT:Swim
+MOVEMENT:Climb
+MOVEMENT:Burrow
+
+
+# Languages can be Spoken, Read/Write, Understood
+LANGUAGE:Abyssal	
+LANGUAGE:Aklo		
+LANGUAGE:Aquan		
+LANGUAGE:Auran		
+LANGUAGE:Celestial	
+LANGUAGE:Common	
+LANGUAGE:Draconic	
+LANGUAGE:Druidic	
+LANGUAGE:Dwarven	
+LANGUAGE:Elven		
+LANGUAGE:Giant		
+LANGUAGE:Gnoll		
+LANGUAGE:Gnome		
+LANGUAGE:Goblin	
+LANGUAGE:Halfling	
+LANGUAGE:Ignan		
+LANGUAGE:Infernal	
+LANGUAGE:Orc		
+LANGUAGE:Sylvan	
+LANGUAGE:Terran	
+LANGUAGE:Undercommon	
+LANGUAGE:Read Lips	
