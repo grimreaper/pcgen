@@ -21,7 +21,7 @@ VARIABLE:f__variables.lst
 # File Types
 ABILITY:f_abilities.lst
 ABILITYCATEGORY:f_abilitycategories.lst
-#BIOSETTING:f_biosettings.lst
+BIOSET:f_biosettings.lst
 CLASS:f_classes.lst
 COMPANIONMOD:f_companionmods.lst
 DEITY:f_deities.lst
