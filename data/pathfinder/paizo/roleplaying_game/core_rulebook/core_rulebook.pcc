@@ -45,12 +45,16 @@ PCC:@/pathfinder/paizo/roleplaying_game/core_essentials/core_essentials.pcc
 
 
 # Fact/Factset & Formula System
-DATACONTROL:cr__datacontrols.lst
-
-### GM Moved
 ALIGNMENT:cr__align.lst
+DATACONTROL:cr__datacontrols.lst
+DATATABLE:cr__datatables.lst
+DYNAMIC:cr__dynamic.lst
 SAVE:cr__saves.lst
 STAT:cr__stats.lst
+VARIABLE:cr__variables.lst
+
+
+### GM Moved
 
 # Standard Files
 ABILITYCATEGORY:cr_abilitycategories.lst

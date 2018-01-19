@@ -13,32 +13,32 @@ Astral Juggernaut	PROFICIENCY:ARMOR|Astral Suit	TYPE:Armor.Heavy.ArmorProfHeavy.
 
 ###Block: Astral suit weapons
 # Equipment Name			Output Name		Required Weapon Proficiency				Type								Cost		Weight	Crit Mult	Crit Range	Damage	Range		Source Page
-Astral Suit Ranged Attack				PROFICIENCY:WEAPON|Astral Suit Ranged Attack	TYPE:Weapon.Ranged.Standard.Piercing.Projectile	COST:0	WT:0		CRITMULT:x2	CRITRANGE:1	DAMAGE:1d8	RANGE:30	SOURCEPAGE:p.32
-Astral Suit Ram 1			OUTPUTNAME:Ram	PROFICIENCY:WEAPON|Astral Suit Ram			TYPE:Weapon.Melee.Standard.Bludgeoning.Ram	COST:0	WT:0		CRITMULT:x2	CRITRANGE:1	DAMAGE:2d6			SOURCEPAGE:p.34
-Astral Suit Ram 2			OUTPUTNAME:Ram	PROFICIENCY:WEAPON|Astral Suit Ram			TYPE:Weapon.Melee.Standard.Bludgeoning.Ram	COST:0	WT:0		CRITMULT:x2	CRITRANGE:1	DAMAGE:3d6			SOURCEPAGE:p.34
-Astral Suit Ram 3			OUTPUTNAME:Ram	PROFICIENCY:WEAPON|Astral Suit Ram			TYPE:Weapon.Melee.Standard.Bludgeoning.Ram	COST:0	WT:0		CRITMULT:x2	CRITRANGE:1	DAMAGE:4d6			SOURCEPAGE:p.34
-Astral Suit Ram 4			OUTPUTNAME:Ram	PROFICIENCY:WEAPON|Astral Suit Ram			TYPE:Weapon.Melee.Standard.Bludgeoning.Ram	COST:0	WT:0		CRITMULT:x2	CRITRANGE:1	DAMAGE:5d6			SOURCEPAGE:p.34
+Astral Suit Ranged Attack				PROFICIENCY:WEAPON|Astral Suit Ranged Attack	TYPE:Weapon.Ranged.Standard.Piercing.Projectile	COST:0	WT:0			CRITRANGE:1	DAMAGE:1d8	RANGE:30	SOURCEPAGE:p.32
+Astral Suit Ram 1			OUTPUTNAME:Ram	PROFICIENCY:WEAPON|Astral Suit Ram			TYPE:Weapon.Melee.Standard.Bludgeoning.Ram	COST:0	WT:0			CRITRANGE:1	DAMAGE:2d6			SOURCEPAGE:p.34
+Astral Suit Ram 2			OUTPUTNAME:Ram	PROFICIENCY:WEAPON|Astral Suit Ram			TYPE:Weapon.Melee.Standard.Bludgeoning.Ram	COST:0	WT:0			CRITRANGE:1	DAMAGE:3d6			SOURCEPAGE:p.34
+Astral Suit Ram 3			OUTPUTNAME:Ram	PROFICIENCY:WEAPON|Astral Suit Ram			TYPE:Weapon.Melee.Standard.Bludgeoning.Ram	COST:0	WT:0			CRITRANGE:1	DAMAGE:4d6			SOURCEPAGE:p.34
+Astral Suit Ram 4			OUTPUTNAME:Ram	PROFICIENCY:WEAPON|Astral Suit Ram			TYPE:Weapon.Melee.Standard.Bludgeoning.Ram	COST:0	WT:0			CRITRANGE:1	DAMAGE:5d6			SOURCEPAGE:p.34
 
 ###Block: Deadly Fist
 # Equipment Name	Required Weapon Proficiency		Type															Cost		Weight	Crit Mult	Crit Range	Damage	Wield Category	Size		Source Page
-Deadly Fist		PROFICIENCY:WEAPON|Deadly Fist	TYPE:Weapon.Melee.Special.Unarmed.Monk.Bludgeoning.Piercing.Slashing.Finesseable.Close	COST:0	WT:0		CRITMULT:x2	CRITRANGE:1	DAMAGE:1d6	WIELD:Light		SIZE:M	SOURCEPAGE:p.8
+Deadly Fist		PROFICIENCY:WEAPON|Deadly Fist	TYPE:Weapon.Melee.Special.Unarmed.Monk.Bludgeoning.Piercing.Slashing.Finesseable.Close	COST:0	WT:0			CRITRANGE:1	DAMAGE:1d6	WIELD:Light		SIZE:M	SOURCEPAGE:p.8
 
 ###Block: The Soul Archer's Mind Arrow
 # COMMENT: Necessary free hand simulated by requiring 1 hand "slot".
 # Equipment Name	Required Weapon Proficiency	Type									Cost		Weight	Slot Needed	Crit Mult	Crit Range	Damage	Modifier		Range		Size		Source Page		Weapon prop. bonus
-Mind Arrow		PROFICIENCY:WEAPON|Mind Blade	TYPE:Weapon.Ranged.Projectile.Piercing.MindArrow	COST:0	WT:0		SLOTS:1	CRITMULT:x3	CRITRANGE:1	DAMAGE:1d8	EQMOD:Special Ability ~ Psionic Blade ~ Weapon	RANGE:110	SIZE:M	SOURCEPAGE:p.46	BONUS:WEAPON|DAMAGE|WIS
+Mind Arrow		PROFICIENCY:WEAPON|Mind Blade	TYPE:Weapon.Ranged.Projectile.Piercing.MindArrow	COST:0	WT:0		SLOTS:1	PART:1|MODIFY:CritMult|SET|3|PRIORITY=100	CRITRANGE:1	DAMAGE:1d8	EQMOD:Special Ability ~ Psionic Blade ~ Weapon	RANGE:110	SIZE:M	SOURCEPAGE:p.46	BONUS:WEAPON|DAMAGE|WIS
 
 ###Block: Mind bolts
 # Equipment Name					Output Name							Required Weapon Proficiency	Type									Cost		Weight	Slot Needed	Crit Mult	Crit Range	Damage	Modifier		Range		Size		Source Page
-Mind Bolt (Long Range Bludgeoning)		OUTPUTNAME:Mind Bolt, Long Range Bludgeoning	PROFICIENCY:WEAPON|Mind Bolt	TYPE:Weapon.Ranged.Projectile.Bludgeoning.MindBolt	COST:0	WT:0		SLOTS:0	CRITMULT:x2	CRITRANGE:2	DAMAGE:1d6	EQMOD:Special Ability ~ Psionic Blade ~ Weapon	RANGE:100	SIZE:M	SOURCEPAGE:p.8
-Mind Bolt (Long Range Piercing)		OUTPUTNAME:Mind Bolt, Long Range Piercing		PROFICIENCY:WEAPON|Mind Bolt	TYPE:Weapon.Ranged.Projectile.Piercing.MindBolt		COST:0	WT:0		SLOTS:0	CRITMULT:x2	CRITRANGE:2	DAMAGE:1d6	EQMOD:Special Ability ~ Psionic Blade ~ Weapon	RANGE:100	SIZE:M	SOURCEPAGE:p.8
-Mind Bolt (Long Range Slashing)		OUTPUTNAME:Mind Bolt, Long Range Slashing		PROFICIENCY:WEAPON|Mind Bolt	TYPE:Weapon.Ranged.Projectile.Slashing.MindBolt		COST:0	WT:0		SLOTS:0	CRITMULT:x2	CRITRANGE:2	DAMAGE:1d6	EQMOD:Special Ability ~ Psionic Blade ~ Weapon	RANGE:100	SIZE:M	SOURCEPAGE:p.8
-Mind Bolt (Medium Range Bludgeoning)	OUTPUTNAME:Mind Bolt, Medium Range Bludgeoning	PROFICIENCY:WEAPON|Mind Bolt	TYPE:Weapon.Ranged.Projectile.Bludgeoning.MindBolt	COST:0	WT:0		SLOTS:1	CRITMULT:x2	CRITRANGE:2	DAMAGE:1d8	EQMOD:Special Ability ~ Psionic Blade ~ Weapon	RANGE:60	SIZE:M	SOURCEPAGE:p.8
-Mind Bolt (Medium Range Piercing)		OUTPUTNAME:Mind Bolt, Medium Range Piercing	PROFICIENCY:WEAPON|Mind Bolt	TYPE:Weapon.Ranged.Projectile.Piercing.MindBolt		COST:0	WT:0		SLOTS:1	CRITMULT:x2	CRITRANGE:2	DAMAGE:1d8	EQMOD:Special Ability ~ Psionic Blade ~ Weapon	RANGE:60	SIZE:M	SOURCEPAGE:p.8
-Mind Bolt (Medium Range Slashing)		OUTPUTNAME:Mind Bolt, Medium Range Slashing	PROFICIENCY:WEAPON|Mind Bolt	TYPE:Weapon.Ranged.Projectile.Slashing.MindBolt		COST:0	WT:0		SLOTS:1	CRITMULT:x2	CRITRANGE:2	DAMAGE:1d8	EQMOD:Special Ability ~ Psionic Blade ~ Weapon	RANGE:60	SIZE:M	SOURCEPAGE:p.8
-Mind Bolt (Short Range Bludgeoning)		OUTPUTNAME:Mind Bolt, Short Range Bludgeoning	PROFICIENCY:WEAPON|Mind Bolt	TYPE:Weapon.Ranged.Projectile.Bludgeoning.MindBolt	COST:0	WT:0		SLOTS:2	CRITMULT:x2	CRITRANGE:2	DAMAGE:1d10	EQMOD:Special Ability ~ Psionic Blade ~ Weapon	RANGE:20	SIZE:M	SOURCEPAGE:p.8
-Mind Bolt (Short Range Piercing)		OUTPUTNAME:Mind Bolt, Short Range Piercing	PROFICIENCY:WEAPON|Mind Bolt	TYPE:Weapon.Ranged.Projectile.Piercing.MindBolt		COST:0	WT:0		SLOTS:2	CRITMULT:x2	CRITRANGE:2	DAMAGE:1d10	EQMOD:Special Ability ~ Psionic Blade ~ Weapon	RANGE:20	SIZE:M	SOURCEPAGE:p.8
-Mind Bolt (Short Range Slashing)		OUTPUTNAME:Mind Bolt, Short Range Slashing	PROFICIENCY:WEAPON|Mind Bolt	TYPE:Weapon.Ranged.Projectile.Slashing.MindBolt		COST:0	WT:0		SLOTS:2	CRITMULT:x2	CRITRANGE:2	DAMAGE:1d10	EQMOD:Special Ability ~ Psionic Blade ~ Weapon	RANGE:20	SIZE:M	SOURCEPAGE:p.8
+Mind Bolt (Long Range Bludgeoning)		OUTPUTNAME:Mind Bolt, Long Range Bludgeoning	PROFICIENCY:WEAPON|Mind Bolt	TYPE:Weapon.Ranged.Projectile.Bludgeoning.MindBolt	COST:0	WT:0		SLOTS:0		CRITRANGE:2	DAMAGE:1d6	EQMOD:Special Ability ~ Psionic Blade ~ Weapon	RANGE:100	SIZE:M	SOURCEPAGE:p.8
+Mind Bolt (Long Range Piercing)		OUTPUTNAME:Mind Bolt, Long Range Piercing		PROFICIENCY:WEAPON|Mind Bolt	TYPE:Weapon.Ranged.Projectile.Piercing.MindBolt		COST:0	WT:0		SLOTS:0		CRITRANGE:2	DAMAGE:1d6	EQMOD:Special Ability ~ Psionic Blade ~ Weapon	RANGE:100	SIZE:M	SOURCEPAGE:p.8
+Mind Bolt (Long Range Slashing)		OUTPUTNAME:Mind Bolt, Long Range Slashing		PROFICIENCY:WEAPON|Mind Bolt	TYPE:Weapon.Ranged.Projectile.Slashing.MindBolt		COST:0	WT:0		SLOTS:0		CRITRANGE:2	DAMAGE:1d6	EQMOD:Special Ability ~ Psionic Blade ~ Weapon	RANGE:100	SIZE:M	SOURCEPAGE:p.8
+Mind Bolt (Medium Range Bludgeoning)	OUTPUTNAME:Mind Bolt, Medium Range Bludgeoning	PROFICIENCY:WEAPON|Mind Bolt	TYPE:Weapon.Ranged.Projectile.Bludgeoning.MindBolt	COST:0	WT:0		SLOTS:1		CRITRANGE:2	DAMAGE:1d8	EQMOD:Special Ability ~ Psionic Blade ~ Weapon	RANGE:60	SIZE:M	SOURCEPAGE:p.8
+Mind Bolt (Medium Range Piercing)		OUTPUTNAME:Mind Bolt, Medium Range Piercing	PROFICIENCY:WEAPON|Mind Bolt	TYPE:Weapon.Ranged.Projectile.Piercing.MindBolt		COST:0	WT:0		SLOTS:1		CRITRANGE:2	DAMAGE:1d8	EQMOD:Special Ability ~ Psionic Blade ~ Weapon	RANGE:60	SIZE:M	SOURCEPAGE:p.8
+Mind Bolt (Medium Range Slashing)		OUTPUTNAME:Mind Bolt, Medium Range Slashing	PROFICIENCY:WEAPON|Mind Bolt	TYPE:Weapon.Ranged.Projectile.Slashing.MindBolt		COST:0	WT:0		SLOTS:1		CRITRANGE:2	DAMAGE:1d8	EQMOD:Special Ability ~ Psionic Blade ~ Weapon	RANGE:60	SIZE:M	SOURCEPAGE:p.8
+Mind Bolt (Short Range Bludgeoning)		OUTPUTNAME:Mind Bolt, Short Range Bludgeoning	PROFICIENCY:WEAPON|Mind Bolt	TYPE:Weapon.Ranged.Projectile.Bludgeoning.MindBolt	COST:0	WT:0		SLOTS:2		CRITRANGE:2	DAMAGE:1d10	EQMOD:Special Ability ~ Psionic Blade ~ Weapon	RANGE:20	SIZE:M	SOURCEPAGE:p.8
+Mind Bolt (Short Range Piercing)		OUTPUTNAME:Mind Bolt, Short Range Piercing	PROFICIENCY:WEAPON|Mind Bolt	TYPE:Weapon.Ranged.Projectile.Piercing.MindBolt		COST:0	WT:0		SLOTS:2		CRITRANGE:2	DAMAGE:1d10	EQMOD:Special Ability ~ Psionic Blade ~ Weapon	RANGE:20	SIZE:M	SOURCEPAGE:p.8
+Mind Bolt (Short Range Slashing)		OUTPUTNAME:Mind Bolt, Short Range Slashing	PROFICIENCY:WEAPON|Mind Bolt	TYPE:Weapon.Ranged.Projectile.Slashing.MindBolt		COST:0	WT:0		SLOTS:2		CRITRANGE:2	DAMAGE:1d10	EQMOD:Special Ability ~ Psionic Blade ~ Weapon	RANGE:20	SIZE:M	SOURCEPAGE:p.8
 
 ###Block: Mind armor
 # Equipment Name			Required Armor Proficiency			Type										Cost		Weight	Slot Needed	AC Penalty Check	Maximum DEX Bonus	Source Page		% of Spell Failure	Combat bonus
@@ -52,27 +52,27 @@ Improved Mind Armor (Heavy)	PROFICIENCY:ARMOR|Improved Mind Armor	TYPE:Armor.Hea
 
 ###Block: Mind shield
 # Equipment Name		Required Shield Proficiency		Type						Cost		Weight	Slot Needed	AC Penalty Check	Crit Mult	Crit Range	Damage	Wield Category	Maximum DEX Bonus	Size		Source Page		% of Spell Failure	Combat bonus			Special Property
-Mind Shield (Heavy)	PROFICIENCY:SHIELD|Mind Shield	TYPE:Shield.Heavy.Standard.Close	COST:0	WT:0		SLOTS:1	ACCHECK:0		CRITMULT:x2	CRITRANGE:1	DAMAGE:1d4	WIELD:OneHanded				SIZE:M	SOURCEPAGE:p.8					BONUS:COMBAT|AC|2|TYPE=Shield
+Mind Shield (Heavy)	PROFICIENCY:SHIELD|Mind Shield	TYPE:Shield.Heavy.Standard.Close	COST:0	WT:0		SLOTS:1	ACCHECK:0			CRITRANGE:1	DAMAGE:1d4	WIELD:OneHanded				SIZE:M	SOURCEPAGE:p.8					BONUS:COMBAT|AC|2|TYPE=Shield
 Mind Shield (Tower)	PROFICIENCY:SHIELD|Mind Shield	TYPE:Shield.Tower.Standard.Close	COST:0	WT:0		SLOTS:1	ACCHECK:-9											MAXDEX:2		SIZE:M	SOURCEPAGE:p.8	SPELLFAILURE:50		BONUS:COMBAT|AC|4|TYPE=Shield	SPROP:can grant full cover
 
 ###Block: Flurry weapons
 # Equipment Name	Required Weapon Proficiency		Type												Cost		Weight	Crit Mult	Crit Range	Damage	Wield Category	Requires Modification?	Size		Source Page		Weapon prop. bonus
-Flurry of Fists	PROFICIENCY:WEAPON|Unarmed Strike	TYPE:Weapon.Melee.Special.Unarmed.Monk.Bludgeoning.Finesseable.Close	COST:0	WT:0		CRITMULT:x2	CRITRANGE:1	DAMAGE:1d3	WIELD:Light		MODS:NO			SIZE:M	SOURCEPAGE:p.57	BONUS:WEAPON|ATTACKS|FlurryOfFistsExtraAttacks	BONUS:WEAPON|TOHIT|-2
-Flurry of Strikes	PROFICIENCY:WEAPON|Unarmed Strike	TYPE:Weapon.Melee.Special.Unarmed.Monk.Bludgeoning.Finesseable.Close	COST:0	WT:0		CRITMULT:x2	CRITRANGE:1	DAMAGE:1d3	WIELD:Light		MODS:NO			SIZE:M	SOURCEPAGE:p.19	BONUS:WEAPON|WEAPONBAB|MeditantFlurryBABBonus	BONUS:WEAPON|ATTACKS|MeditantFlurryExtraAttacks	BONUS:WEAPON|TOHIT|-2
+Flurry of Fists	PROFICIENCY:WEAPON|Unarmed Strike	TYPE:Weapon.Melee.Special.Unarmed.Monk.Bludgeoning.Finesseable.Close	COST:0	WT:0			CRITRANGE:1	DAMAGE:1d3	WIELD:Light		MODS:NO			SIZE:M	SOURCEPAGE:p.57	BONUS:WEAPON|ATTACKS|FlurryOfFistsExtraAttacks	BONUS:WEAPON|TOHIT|-2
+Flurry of Strikes	PROFICIENCY:WEAPON|Unarmed Strike	TYPE:Weapon.Melee.Special.Unarmed.Monk.Bludgeoning.Finesseable.Close	COST:0	WT:0			CRITRANGE:1	DAMAGE:1d3	WIELD:Light		MODS:NO			SIZE:M	SOURCEPAGE:p.19	BONUS:WEAPON|WEAPONBAB|MeditantFlurryBABBonus	BONUS:WEAPON|ATTACKS|MeditantFlurryExtraAttacks	BONUS:WEAPON|TOHIT|-2
 
 ###Block: Astral Warrior weapons
 # Equipment Name				Required Weapon Proficiency			Type											Cost		Weight	Crit Mult	Crit Range	Damage	Modifier		Wield Category	Size		Source Page
-Astral Warrior Weapon (Bludgeoning)	PROFICIENCY:WEAPON|Astral Warrior Weapon	TYPE:Weapon.Melee.OneHanded.Finesseable.Standard.Bludgeoning	COST:0	WT:0		CRITMULT:x2	CRITRANGE:1	DAMAGE:1d8	EQMOD:Special Quality ~ Masterwork ~ Weapon	WIELD:OneHanded	SIZE:M	SOURCEPAGE:p.66
-Astral Warrior Weapon (Piercing)	PROFICIENCY:WEAPON|Astral Warrior Weapon	TYPE:Weapon.Melee.OneHanded.Finesseable.Standard.Piercing		COST:0	WT:0		CRITMULT:x2	CRITRANGE:1	DAMAGE:1d8	EQMOD:Special Quality ~ Masterwork ~ Weapon	WIELD:OneHanded	SIZE:M	SOURCEPAGE:p.66
-Astral Warrior Weapon (Slashing)	PROFICIENCY:WEAPON|Astral Warrior Weapon	TYPE:Weapon.Melee.OneHanded.Finesseable.Standard.Slashing		COST:0	WT:0		CRITMULT:x2	CRITRANGE:1	DAMAGE:1d8	EQMOD:Special Quality ~ Masterwork ~ Weapon	WIELD:OneHanded	SIZE:M	SOURCEPAGE:p.66
+Astral Warrior Weapon (Bludgeoning)	PROFICIENCY:WEAPON|Astral Warrior Weapon	TYPE:Weapon.Melee.OneHanded.Finesseable.Standard.Bludgeoning	COST:0	WT:0			CRITRANGE:1	DAMAGE:1d8	EQMOD:Special Quality ~ Masterwork ~ Weapon	WIELD:OneHanded	SIZE:M	SOURCEPAGE:p.66
+Astral Warrior Weapon (Piercing)	PROFICIENCY:WEAPON|Astral Warrior Weapon	TYPE:Weapon.Melee.OneHanded.Finesseable.Standard.Piercing		COST:0	WT:0			CRITRANGE:1	DAMAGE:1d8	EQMOD:Special Quality ~ Masterwork ~ Weapon	WIELD:OneHanded	SIZE:M	SOURCEPAGE:p.66
+Astral Warrior Weapon (Slashing)	PROFICIENCY:WEAPON|Astral Warrior Weapon	TYPE:Weapon.Melee.OneHanded.Finesseable.Standard.Slashing		COST:0	WT:0			CRITRANGE:1	DAMAGE:1d8	EQMOD:Special Quality ~ Masterwork ~ Weapon	WIELD:OneHanded	SIZE:M	SOURCEPAGE:p.66
 
 ###Block: Crystal Shard from Metacreative Talent trait
 # Equipment Name	Required Weapon Proficiency		Type								Cost		Weight	Crit Mult	Crit Range	Damage	Range		Source Page
-Crystal Shard	PROFICIENCY:WEAPON|Crystal Shard	TYPE:Weapon.Ranged.Standard.Slashing.Thrown	COST:0	WT:0		CRITMULT:x2	CRITRANGE:1	DAMAGE:1d2	RANGE:10	SOURCEPAGE:p.35
+Crystal Shard	PROFICIENCY:WEAPON|Crystal Shard	TYPE:Weapon.Ranged.Standard.Slashing.Thrown	COST:0	WT:0			CRITRANGE:1	DAMAGE:1d2	RANGE:10	SOURCEPAGE:p.35
 
 ###Block: Mundane items
 # Equipment Name	Required Weapon Proficiency		Type																Cost		Weight	Crit Mult	Crit Range	Damage	Source Page
-Xephyr Knife	PROFICIENCY:WEAPON|Xephyr Knife	TYPE:Weapon.Melee.Light.Finesseable.Ranged.Thrown.Exotic.Standard.Piercing.Slashing.BladeLight	COST:15	WT:1		CRITMULT:x2	CRITRANGE:3	DAMAGE:1d6	SOURCEPAGE:p.20
+Xephyr Knife	PROFICIENCY:WEAPON|Xephyr Knife	TYPE:Weapon.Melee.Light.Finesseable.Ranged.Thrown.Exotic.Standard.Piercing.Slashing.BladeLight	COST:15	WT:1			CRITRANGE:3	DAMAGE:1d6	SOURCEPAGE:p.20
 
 
 ###Block: Universal psionic items

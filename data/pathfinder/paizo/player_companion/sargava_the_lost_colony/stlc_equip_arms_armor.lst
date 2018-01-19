@@ -9,4 +9,4 @@ Mwangi Spirit Shield (Bear's Endurance)	NAMEISPI:YES	OUTPUTNAME:Mwangi Spirit Sh
 
 ###Block: Weapons
 # Equipment Name		Required Weapon Proficiency		Type												Cost		Weight	Crit Mult	Crit Range	Damage	Modifier										Wield Category	Size		Source Page		Special Property
-Machete of Clearing	PROFICIENCY:WEAPON|Sword (Short)	TYPE:Weapon.Resizable.Melee.Light.Finesseable.Martial.Specific.Piercing	COST:10	WT:2		CRITMULT:x2	CRITRANGE:2	DAMAGE:1d6	EQMOD:Special Ability ~ Enhancement Cost|3240.Special Ability ~ +1 ~ Weapon.Material ~ Steel.Special Ability ~ Uses per Day / 1|CHARGES[1]	WIELD:Light		SIZE:M	SOURCEPAGE:p.29	SPROP:Once per day, cast Defoliate to clear vegetation.
+Machete of Clearing	PROFICIENCY:WEAPON|Sword (Short)	TYPE:Weapon.Resizable.Melee.Light.Finesseable.Martial.Specific.Piercing	COST:10	WT:2			CRITRANGE:2	DAMAGE:1d6	EQMOD:Special Ability ~ Enhancement Cost|3240.Special Ability ~ +1 ~ Weapon.Material ~ Steel.Special Ability ~ Uses per Day / 1|CHARGES[1]	WIELD:Light		SIZE:M	SOURCEPAGE:p.29	SPROP:Once per day, cast Defoliate to clear vegetation.

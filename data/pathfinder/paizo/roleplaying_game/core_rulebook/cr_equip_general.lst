@@ -150,7 +150,7 @@ Manacles (Masterwork/Large)							TYPE:Goods.General.Masterwork														COS
 Manacles (Masterwork/Huge)							TYPE:Goods.General.Masterwork														COST:5000	WT:32		SOURCEPAGE:p.156
 Mirror (Small/Steel)								TYPE:Goods.General															COST:10	WT:0.5	SOURCEPAGE:p.158
 Mug or Tankard (Clay)								TYPE:Goods.Container.General				CONTAINS:1|Liquid								COST:0.02	WT:1		SOURCEPAGE:p.158
-Oil (1 Pint Flask)				PROFICIENCY:WEAPON|Splash Weapon	TYPE:Goods.General.Liquid.Flask.Consumable.Weapon.Ranged.Thrown.Fire.Splash	CRITMULT:x2	CRITRANGE:1	DAMAGE:1d6	RANGE:10	SIZE:M	COST:0.1	WT:1	SOURCEPAGE:p.157	SPROP:Thrown splash weapon see p.202, full-round action to prepare, 50% chance to ignite
+Oil (1 Pint Flask)				PROFICIENCY:WEAPON|Splash Weapon	TYPE:Goods.General.Liquid.Flask.Consumable.Weapon.Ranged.Thrown.Fire.Splash		CRITRANGE:1	DAMAGE:1d6	RANGE:10	SIZE:M	COST:0.1	WT:1	SOURCEPAGE:p.157	SPROP:Thrown splash weapon see p.202, full-round action to prepare, 50% chance to ignite
 Paper (Sheet)									TYPE:Goods.General.Writing.Documents												COST:0.4			SOURCEPAGE:p.158
 Parchment (Sheet)									TYPE:Goods.General.Writing.Documents												COST:0.2			SOURCEPAGE:p.158
 Pick (Miner's)									TYPE:Goods.General															COST:3	WT:10		SOURCEPAGE:p.157
@@ -182,11 +182,11 @@ Whetstone										TYPE:Goods.General															COST:0.02	WT:1		SOURCEPAGE:p
 
 ###Block: Special Substances and Items
 # Equipment Name		Proficiency				Type																		Cost		Weight	Source Page		Quality and value															Special Property
-Acid (Flask)			PROFICIENCY:WEAPON|Splash Weapon	TYPE:Goods.Alchemical.Flask.Consumable.Weapon.Ranged.Thrown.Acid.Splash	CRITMULT:x2	CRITRANGE:1	DAMAGE:1d6	RANGE:10	SIZE:M	COST:10		WT:1	SOURCEPAGE:p.160																		SPROP:Thrown splash weapon see p.202
-Alchemist's Fire (Flask)	PROFICIENCY:WEAPON|Splash Weapon	TYPE:Goods.Alchemical.Flask.Consumable.Weapon.Ranged.Thrown.Fire.Splash	CRITMULT:x2	CRITRANGE:1	DAMAGE:1d6	RANGE:10	SIZE:M	COST:20		WT:1	SOURCEPAGE:p.160																		SPROP:Thrown splash weapon see p.202
+Acid (Flask)			PROFICIENCY:WEAPON|Splash Weapon	TYPE:Goods.Alchemical.Flask.Consumable.Weapon.Ranged.Thrown.Acid.Splash		CRITRANGE:1	DAMAGE:1d6	RANGE:10	SIZE:M	COST:10		WT:1	SOURCEPAGE:p.160																		SPROP:Thrown splash weapon see p.202
+Alchemist's Fire (Flask)	PROFICIENCY:WEAPON|Splash Weapon	TYPE:Goods.Alchemical.Flask.Consumable.Weapon.Ranged.Thrown.Fire.Splash		CRITRANGE:1	DAMAGE:1d6	RANGE:10	SIZE:M	COST:20		WT:1	SOURCEPAGE:p.160																		SPROP:Thrown splash weapon see p.202
 Antitoxin (Vial)							TYPE:Goods.Alchemical.Vial.Consumable														COST:50			SOURCEPAGE:p.160																		SPROP:+5 alchemical bonus to Fortitude saves against poison for 1 hour
 Everburning Torch							TYPE:Goods.Magic.LightSource															COST:110	WT:1	SOURCEPAGE:p.160	QUALITY:Bright Illumination|20 ft.	QUALITY:Shadowy Illumination|40 ft.	QUALITY:Duration|Permanent
-Holy Water (Flask)		PROFICIENCY:WEAPON|Splash Weapon	TYPE:Goods.Flask.Consumable.Weapon.Ranged.Thrown.Splash	CRITMULT:x2			CRITRANGE:1	DAMAGE:1d6	RANGE:10	SIZE:M	COST:25		WT:1	SOURCEPAGE:p.160																		SPROP:thown splash weapon see p.202
+Holy Water (Flask)		PROFICIENCY:WEAPON|Splash Weapon	TYPE:Goods.Flask.Consumable.Weapon.Ranged.Thrown.Splash				CRITRANGE:1	DAMAGE:1d6	RANGE:10	SIZE:M	COST:25		WT:1	SOURCEPAGE:p.160																		SPROP:thown splash weapon see p.202
 Smokestick								TYPE:Goods.Alchemical.Consumable														COST:20		WT:0.5	SOURCEPAGE:p.160																		SPROP:creates 10ft cube of smoke as per fog cloud
 Sunrod									TYPE:Goods.Alchemical.Consumable.LightSource													COST:2		WT:1	SOURCEPAGE:p.160	QUALITY:Bright Illumination|30 ft.	QUALITY:Shadowy Illumination|60 ft.	QUALITY:Duration|6 hr.
 Tanglefoot Bag			PROFICIENCY:WEAPON|Splash Weapon	TYPE:Goods.Alchemical.Consumable.Weapon.Ranged.Thrown.Splash								RANGE:10	SIZE:M	COST:50		WT:4	SOURCEPAGE:p.160																		SPROP:Ranged Touch attack entangles up to large creatures DC15 reflex
