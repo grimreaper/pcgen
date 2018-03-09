@@ -1,0 +1,41 @@
+
+
+STARTTABLE:Arcanist Cast Table,
+Level,1,2,3,4,5,6,7,8,9
+NUMBER,NUMBER,NUMBER,NUMBER,NUMBER,NUMBER,NUMBER,NUMBER,NUMBER,NUMBER
+1,2
+2,3
+3,4
+4,4,2
+5,4,3
+6,4,4,2
+7,4,4,3
+8,4,4,4,2
+9,4,4,4,3
+10,4,4,4,4,2
+11,4,4,4,4,3
+12,4,4,4,4,4,2
+13,4,4,4,4,4,3
+14,4,4,4,4,4,4,2
+15,4,4,4,4,4,4,3
+16,4,4,4,4,4,4,4,2
+17,4,4,4,4,4,4,4,3
+18,4,4,4,4,4,4,4,4,2
+19,4,4,4,4,4,4,4,4,3
+20,4,4,4,4,4,4,4,4,4
+ENDTABLE:Arcanist Cast Table,
+
+STARTTABLE:Ordinal Converter,
+Converted
+STRING
+0th
+1st
+2nd
+3rd
+4th
+5th
+6th
+7th
+8th
+9th
+ENDTABLE:Ordinal Converter,
