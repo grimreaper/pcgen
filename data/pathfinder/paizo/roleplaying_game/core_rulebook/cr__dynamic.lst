@@ -1,7 +1,21 @@
 
-
+# Track Armor Types
 ARMORTYPE:Light
-ARMORTYPE:Medium	MODIFY:SpeedType|SET|"Reduced"
-ARMORTYPE:Heavy	MODIFY:SpeedType|SET|"Reduced"
+ARMORTYPE:Medium	MODIFY:MovementReducedByArmor|SET|true
+ARMORTYPE:Heavy	MODIFY:MovementReducedByArmor|SET|true
 
+# Track Vision Modes
+VISION:Normal
+VISION:Low-Light
+VISION:Darkvision
+VISION:Blindsense
+VISION:Blindsight
+VISION:Truesight
+
+# Track Movement Modes
+MOVEMENT:Walk
+MOVEMENT:Climb
+MOVEMENT:Fly
+MOVEMENT:Swim
+MOVEMENT:Burrow
 

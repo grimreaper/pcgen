@@ -6,6 +6,17 @@ DEFAULTVARIABLEVALUE:BOOLEAN|False
 DEFAULTVARIABLEVALUE:STRING|
 DEFAULTVARIABLEVALUE:ALIGNMENT|None
 
+# User Defined Scopes
+# EXPLANATION:Tracks ArmorTypes (Light, Medium, Heavy)
+DYNAMICSCOPE:ARMORTYPE			
+# EXPLANATION:Tracks Visions Modes and Range
+DYNAMICSCOPE:VISION		
+# EXPLANATION:Tracks Movement Types and Speed
+DYNAMICSCOPE:MOVEMENT		
+
+# User Defined Functions
+FUNCTION:d20Mod	VALUE:floor((arg(0)-10)/2)	EXPLANATION:For Ability Score Calculation of Bonus
+
 
 
 ###Block: Required Facts
@@ -31,5 +42,4 @@ FACTSETDEF:DEITY|Colors	DATAFORMAT:String	VISIBLE:YES	EXPLANATION:The deity's sa
 
 
 
-DYNAMICSCOPE:Vision
 
