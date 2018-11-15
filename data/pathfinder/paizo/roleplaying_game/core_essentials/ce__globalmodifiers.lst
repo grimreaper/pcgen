@@ -1,2 +1,7 @@
 
 MODIFY:Face|SET|5,0|PRIORITY=5
+
+# MODIFY:BaseSize|SET|lookup("Number to Size",BaseSizeNumber,"Size")
+
+
+

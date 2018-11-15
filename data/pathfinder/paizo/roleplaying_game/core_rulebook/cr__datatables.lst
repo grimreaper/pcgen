@@ -1,6 +1,15 @@
 
-
-
+### Monk Unarmed Damage
+# STARTTABLE:Monk Unarmed Damage,
+# Level,F,D,T,S,M,L,H,G,C,P
+# NUMBER,DICE,DICE,DICE,DICE,DICE,DICE,DICE,DICE,DICE
+# 1,1d1,1d2,1d3,1d4,1d6,1d8,2d6,3d6,4d6,4d6
+# 4,1d2,1d3,1d4,1d6,1d8,2d6,3d6,4d6,6d6,6d6
+# 8,1d3,1d4,1d6,1d8,1d10,2d8,3d8,4d8,6d8,6d8
+# 12,1d4,1d6,1d8,1d10,2d6,3d6,4d6,6d6,8d6,8d6
+# 16,1d6,1d8,1d10,2d6,2d8,3d8,4d8,6d8,8d8,8d8
+# 20,1d8,1d10,2d6,2d8,2d10,4d8,6d8,8d8,12d8,12d8
+# ENDTABLE:Monk Unarmed Damage,
 
 
 

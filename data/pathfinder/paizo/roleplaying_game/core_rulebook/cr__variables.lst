@@ -88,3 +88,10 @@ LOCAL:PC.EQUIPMENT|NUMBER=ACCHECK
 
 # Vision Modes
 
+### Unarmed and Size Discussions
+# GLOBAL:NUMBER=MonkUnarmedDamageLevel
+# 
+# GLOBAL:SIZEADJUSTMENT=BaseSize		EXPLANATION:Starting Size
+# GLOBAL:SIZEADJUSTMENT=PCSize		EXPLANATION:Probably change this to CurrentSize, maybe...
+
+
