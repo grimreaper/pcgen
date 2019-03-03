@@ -39,6 +39,7 @@ import pcgen.facade.util.DefaultListFacade;
 import pcgen.facade.util.ListFacade;
 import pcgen.facade.util.ReferenceFacade;
 import pcgen.facade.util.SortedListFacade;
+import pcgen.facade.util.WriteableListFacade;
 import pcgen.facade.util.event.ReferenceEvent;
 import pcgen.facade.util.event.ReferenceListener;
 import pcgen.gui2.tools.CharacterSelectionListener;
@@ -49,6 +50,24 @@ import pcgen.system.FacadeFactory;
 import pcgen.system.LanguageBundle;
 import pcgen.util.Comparators;
 import pcgen.util.Logging;
+
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.text.DefaultEditorKit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.util.Objects;
+import java.util.logging.Level;
+
+import com.thizzer.jtouchbar.JTouchBar;
+import com.thizzer.jtouchbar.item.TouchBarItem;
+import com.thizzer.jtouchbar.item.view.TouchBarButton;
+import com.thizzer.jtouchbar.javafx.JTouchBarJavaFX;
 
 /**
  * The menu bar that is displayed in PCGen's main window.
@@ -63,6 +82,7 @@ public final class PCGenMenuBar extends JMenuBar implements CharacterSelectionLi
 	private final PCGenFrame frame;
 	private final PCGenActionMap actionMap;
 	private final TempBonusMenu tempMenu;
+	private final JTouchBar jTouchBar;
 	private CharacterFacade character;
 
 	public PCGenMenuBar(PCGenFrame frame, UIContext uiContext)
@@ -71,7 +91,34 @@ public final class PCGenMenuBar extends JMenuBar implements CharacterSelectionLi
 		this.frame = frame;
 		this.actionMap = frame.getActionMap();
 		this.tempMenu = new TempBonusMenu();
+		jTouchBar = new JTouchBar();
+		Logging.errorPrint("hi - I got here first");
 		initComponents();
+		initTouchbar();
+	}
+
+	private void initTouchbar() {
+		jTouchBar.setCustomizationIdentifier("PCGenTouchbar");
+		Logging.errorPrint("hi - I got here second");
+//		jTouchBar.
+
+		TouchBarButton newButton = new TouchBarButton();
+		JTouchBarJavaFX.show(jTouchBar, this);
+//		newButton.setTitle("New");
+//		newButton.setAction(view -> {
+//			Action action = actionMap.get(PCGenActionMap.NEW_COMMAND);
+//			ActionEvent actionEvent =
+//					new ActionEvent(jTouchBar, ActionEvent.ACTION_PERFORMED, PCGenActionMap.NEW_COMMAND);
+//			action.actionPerformed(actionEvent);
+//		});
+		jTouchBar.addItem(new TouchBarItem("Foo_New", newButton, true));
+//
+//		TouchBarTextField touchBarTextField = new TouchBarTextField();
+//		touchBarTextField.setStringValue("TextField 1");
+//		jTouchBar.addItem(new TouchBarItem("TextField_1", touchBarTextField, true));
+//
+		jTouchBar.show(frame);
+
 	}
 
 	private void initComponents()
@@ -330,7 +377,7 @@ public final class PCGenMenuBar extends JMenuBar implements CharacterSelectionLi
 		public LoggingLevelMenu()
 		{
 			super(actionMap.get(PCGenActionMap.LOGGING_LEVEL_COMMAND));
-			DefaultListFacade<LoggingLevelWrapper> levels = new DefaultListFacade<>();
+			WriteableListFacade<LoggingLevelWrapper> levels = new DefaultListFacade<>();
 			Level currentLvl = Logging.getCurrentLoggingLevel();
 			LoggingLevelWrapper current = null;
 			for (Level level : Logging.getLoggingLevels())
@@ -363,11 +410,11 @@ public final class PCGenMenuBar extends JMenuBar implements CharacterSelectionLi
 	 * The Class {@code LoggingLevelWrapper} provides a display wrapper
 	 * around a Level. 
 	 */
-	private static class LoggingLevelWrapper
+	private static final class LoggingLevelWrapper
 	{
 		private final Level level;
 
-		public LoggingLevelWrapper(Level level)
+		private LoggingLevelWrapper(Level level)
 		{
 			this.level = level;
 		}
