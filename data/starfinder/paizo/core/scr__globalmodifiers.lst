@@ -7,10 +7,6 @@ MODIFY:Face|SET|5,5|PRIORITY=5
 MODIFY:Race_Hands|SET|if(RaceType_Humanoid,2,0)|PRIORITY=5
 MODIFY:Race_Legs|SET|if(RaceType_Humanoid,2,0)|PRIORITY=5
 
-<<<<<<< HEAD
 MODIFYOTHER:PC.RACE|ALL|RaceSize|SET|getFact("RACE",target(),"BaseSize")
-=======
-MODIFYOTHER:RACE|ALL|RaceSize|SET|getFact("RACE",target(),"BaseSize")
->>>>>>> 9f62a3eccac3dba259f3511c014ba56b08e2763c
 # remember target() is a "magical" function inside of MODIFYOTHER that is "the object where I was applied"
 
