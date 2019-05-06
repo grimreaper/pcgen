@@ -1,6 +1,11 @@
 
-Sapling		SIZE:S		VISIBLE:NO		SUBRACE:Sapling
-Oakling		SIZE:M		VISIBLE:NO		SUBRACE:Oakling
+<<<<<<< HEAD
+Sapling		MODIFY:RaceSize|SET|S|PRIORITY=100		VISIBLE:NO		SUBRACE:Sapling
+Oakling		MODIFY:RaceSize|SET|M|PRIORITY=100		VISIBLE:NO		SUBRACE:Oakling
+=======
+Sapling		MODIFY:PCSize|SET|S|PRIORITY=100		VISIBLE:NO		SUBRACE:Sapling
+Oakling		MODIFY:PCSize|SET|M|PRIORITY=100		VISIBLE:NO		SUBRACE:Oakling
+>>>>>>> 9f62a3eccac3dba259f3511c014ba56b08e2763c
 Blind Vlaka					VISIBLE:NO
 Deaf Vlaka					VISIBLE:NO
 Hearing and Sighted Vlaka		VISIBLE:NO
