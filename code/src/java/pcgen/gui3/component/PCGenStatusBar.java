@@ -33,6 +33,7 @@ import javafx.scene.text.Text;
 
 /**
  * Reusuable status bar. Displays a message + Progress Bar.
+ * TODO: implement "status" eleemnt
  */
 public final class PCGenStatusBar extends HBox
 {
@@ -76,6 +77,7 @@ public final class PCGenStatusBar extends HBox
 	{
 		setProgress(message, progress, String.format("%.0f%%", progress * 100));
 	}
+
 
 	public void setProgress(String message, double progress, String progressText)
 	{

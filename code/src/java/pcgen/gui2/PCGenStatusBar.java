@@ -18,14 +18,14 @@
  */
 package pcgen.gui2;
 
+import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.logging.LogRecord;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JProgressBar;
 import javax.swing.SwingWorker;
 
 import pcgen.gui2.tools.CursorControlUtilities;
@@ -37,7 +37,9 @@ import pcgen.system.PCGenTask;
 import pcgen.util.Logging;
 
 import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
@@ -48,49 +50,48 @@ import javafx.scene.image.ImageView;
  * It will show source loading progress and a corresponding error icon
  * (if there are errors)
  * TODO: add support for concurrent task execution
+ * TODO: separate "task control" from "UI"
  */
 public final class PCGenStatusBar extends JPanel
 {
 	private final PCGenFrame frame;
-	private final JLabel messageLabel;
-	private final JProgressBar progressBar;
-	private final Button loadStatusButton;
+	private final JLabel loadStatusLabel;
+	private final pcgen.gui3.component.PCGenStatusBar internalStatusBar;
+	private final JFXPanel internalPanel;
 
-	PCGenStatusBar(PCGenFrame frame)
+	PCGenStatusBar(PCGenFrame frame) throws IOException
 	{
 		this.frame = frame;
-		this.messageLabel = new JLabel();
-		this.progressBar = new JProgressBar();
-		this.loadStatusButton = new Button();
+
+		this.loadStatusLabel = new JLabel();
+		internalPanel = new JFXPanel();
+		internalStatusBar = new pcgen.gui3.component.PCGenStatusBar();
+		Platform.runLater(() -> {
+			Scene scene = new Scene(internalStatusBar);
+			internalPanel.setScene(scene);
+		});
 		initComponents();
 	}
 
 	private void initComponents()
 	{
-		setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
-		add(messageLabel);
-		add(Box.createHorizontalGlue());
-		progressBar.setStringPainted(true);
-		progressBar.setVisible(false);
-		add(progressBar);
-		add(Box.createHorizontalGlue());
-		add(GuiUtility.wrapParentAsJFXPanel(loadStatusButton));
-		loadStatusButton.setOnAction(this::loadStatusLabelAction);
+		add(CompletableFuture.supplyAsync(() -> internalPanel, Platform::runLater).join());
+		Platform.runLater(() -> internalPanel.addMouseListener(new LoadStatusMouseAdapter()));
 	}
 
-	public void setContextMessage(String message)
+	public void setProgress(String message, double progress)
 	{
-		messageLabel.setText(message);
+		internalStatusBar.setProgress(message, progress);
 	}
 
-	public String getContextMessage()
+
+	public void setProgress(String message, double progress, String progressText)
 	{
-		return messageLabel.getText();
+		internalStatusBar.setProgress(message, progress, progressText);
 	}
 
-	public JProgressBar getProgressBar()
+	PCGenStatusBar getProgressBar()
 	{
-		return progressBar;
 	}
 
 	void setSourceLoadErrors(List<LogRecord> errors)
@@ -169,13 +170,17 @@ public final class PCGenStatusBar extends JPanel
 			// Do nothing if called during startup or shutdown
 			return;
 		}
-		setVisible(true);
+		if (indeterminate)
+		{
+			getProgressBar().setProgress(msg, -1);
+		}
+		else
+		{
+			getProgressBar().setProgress(msg, 0);
+		}
+
+		internalPanel.setVisible(true);
 		CursorControlUtilities.startWaitCursor(this);
-		setContextMessage(msg);
-		getProgressBar().setVisible(true);
-		getProgressBar().setIndeterminate(indeterminate);
-		getProgressBar().setStringPainted(true);
-		getProgressBar().setString(msg);
 	}
 
 	/**
@@ -183,9 +188,8 @@ public final class PCGenStatusBar extends JPanel
 	 */
 	public void endShowingProgress()
 	{
+		internalPanel.setVisible(false);
 		CursorControlUtilities.stopWaitCursor(this);
-		setContextMessage(null);
-		getProgressBar().setString(null);
 		getProgressBar().setVisible(false);
 	}
 
@@ -195,5 +199,10 @@ public final class PCGenStatusBar extends JPanel
 	private void loadStatusLabelAction(final ActionEvent actionEvent)
 	{
 		frame.getActionMap().get(PCGenActionMap.LOG_COMMAND).actionPerformed(null);
+		@Override
+		public void mouseClicked(MouseEvent arg0)
+		{
+			frame.getActionMap().get(PCGenActionMap.LOG_COMMAND).actionPerformed(null);
+		}
 	}
 }

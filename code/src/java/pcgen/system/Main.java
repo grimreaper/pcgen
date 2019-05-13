@@ -23,6 +23,7 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
 import java.io.File;
+import java.io.IOError;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.logging.Level;
@@ -220,7 +221,15 @@ public final class Main
 		executor.run();
 		splash.getController().setProgress(LanguageBundle.getString("in_taskInitUi"), 1.0d);
 		FacadeFactory.initialize();
-		PCGenUIManager.initializeGUI();
+		try
+		{
+			PCGenUIManager.initializeGUI();
+		}
+		catch (IOException e)
+		{
+			Logging.errorPrint("Failed to initialize GUI", e);
+			return;
+		}
 		splash.done();
 		PCGenUIManager.startGUI();
 	}

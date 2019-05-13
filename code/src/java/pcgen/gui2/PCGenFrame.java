@@ -148,7 +148,7 @@ public final class PCGenFrame extends JFrame implements UIDelegate, CharacterSel
 	 */
 	private Window javaFXStage;
 
-	public PCGenFrame(UIContext uiContext)
+	public PCGenFrame(UIContext uiContext) throws IOException
 	{
 		this.uiContext = Objects.requireNonNull(uiContext);
 		Globals.setRootFrame(this);
@@ -1158,40 +1158,33 @@ public final class PCGenFrame extends JFrame implements UIDelegate, CharacterSel
 	private void loadSourcesThenCharacter(final File pcgFile)
 	{
 		new Thread(() -> {
-			try
-			{
-				sourceLoader.join();
-				SwingUtilities.invokeAndWait(() -> {
-					final String msg =
-							LanguageBundle.getFormattedString("in_loadPcLoadingFile", pcgFile.getName());
-					statusBar.startShowingProgress(msg, false);
-					statusBar.getProgressBar().getModel().setRangeProperties(0, 1, 0, 2, false);
-					statusBar.getProgressBar().setString(LanguageBundle.getString("in_loadPcOpening"));
-				});
-				SwingUtilities.invokeLater(() -> {
-					try
-					{
-						CharacterManager.openCharacter(pcgFile, PCGenFrame.this, currentDataSetRef.get());
-						statusBar.getProgressBar().getModel().setRangeProperties(1, 1, 0, 2, false);
-					}
-					catch (Exception e)
-					{
-						Logging.errorPrint("Error loading character: " + pcgFile.getName(), e);
-					}
-					finally
-					{
-						statusBar.endShowingProgress();
-					}
-				});
-			}
-			catch (InterruptedException ex)
-			{
-				//Do nothing
-			}
-			catch (InvocationTargetException e1)
-			{
-				Logging.errorPrint("Error showing progress bar.", e1);
-			}
+				try
+				{
+					sourceLoader.join();
+					SwingUtilities.invokeAndWait(() -> {
+						final String msg =
+								LanguageBundle.getFormattedString("in_loadPcLoadingFile", pcgFile.getName());
+						statusBar.startShowingProgress(msg, false);
+						statusBar.getProgressBar().getModel().setRangeProperties(0, 1, 0, 2, false);
+						statusBar.getProgressBar().setString(LanguageBundle.getString("in_loadPcOpening"));
+					});
+					SwingUtilities.invokeLater(() -> {
+						try
+						{
+							CharacterManager.openCharacter(pcgFile, PCGenFrame.this, currentDataSetRef.get());
+							statusBar.getProgressBar().getModel().setRangeProperties(1, 1, 0, 2, false);
+						}
+						catch (Exception e)
+						{
+							Logging.errorPrint("Error loading character: " + pcgFile.getName(), e);
+						}
+						finally
+						{
+							statusBar.endShowingProgress();
+						}
+					});
+				}
+
 		}).start();
 	}
 

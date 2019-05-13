@@ -30,7 +30,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.LogRecord;
 
-import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 
 import pcgen.gui2.PCGenStatusBar;
@@ -72,13 +71,7 @@ public class StatusWorker extends SwingWorker<List<LogRecord>, List<LogRecord>> 
 	{
 		if (!dirty)
 		{
-			dirty = true;
-			SwingUtilities.invokeLater(() -> {
-				statusBar.getProgressBar().getModel().setRangeProperties(task.getProgress(), 1, 0,
-					task.getMaximum(), true);
-				statusBar.getProgressBar().setString(task.getMessage());
-				dirty = false;
-			});
+			statusBar.setProgress(task.getMessage(), task.getProgress());
 		}
 	}
 
@@ -99,9 +92,8 @@ public class StatusWorker extends SwingWorker<List<LogRecord>, List<LogRecord>> 
 	@Override
 	protected List<LogRecord> doInBackground()
 	{
-		final String oldMessage = statusBar.getContextMessage();
 		statusBar.startShowingProgress(statusMsg, false);
-		statusBar.getProgressBar().getModel().setRangeProperties(task.getProgress(), 1, 0, task.getMaximum(), true);
+		statusBar.setProgress(task.getMessage(), task.getProgress());
 
 		task.addPCGenTaskListener(this);
 
@@ -116,7 +108,6 @@ public class StatusWorker extends SwingWorker<List<LogRecord>, List<LogRecord>> 
 
 		task.removePCGenTaskListener(this);
 
-		SwingUtilities.invokeLater(() -> statusBar.setContextMessage(oldMessage));
 		return Collections.unmodifiableList(errors);
 	}
 }

@@ -17,6 +17,8 @@
  */
 package pcgen.gui2;
 
+import java.io.IOException;
+
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -47,7 +49,7 @@ public final class PCGenUIManager
 	{
 	}
 
-	public static void initializeGUI()
+	public static void initializeGUI() throws IOException
 	{
 		DesktopHandler.initialize();
 		pcgenFrame = new PCGenFrame(new UIContext());
