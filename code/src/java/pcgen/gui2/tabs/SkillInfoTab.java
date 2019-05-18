@@ -101,9 +101,9 @@ public class SkillInfoTab extends FlippingSplitPane implements CharacterInfoTab,
 
 	private final JComboBox<SkillFilter> skillFilterBox;
 	private final JFXPanelFromResource<SimpleHtmlPanelController> htmlPane;
+
 	SkillInfoTab()
 	{
-		super();
 		this.skillTable = new FilteredTreeViewTable<>();
 		this.skillpointTable = new JTable();
 		this.infoPane = new InfoPane();
@@ -158,11 +158,10 @@ public class SkillInfoTab extends FlippingSplitPane implements CharacterInfoTab,
 
 		skillFilterBox.setRenderer(new DefaultListCellRenderer());
 
-		JScrollPane selScrollPane = new JScrollPane(htmlPane);
 		JPanel skillPanel = new JPanel(new BorderLayout());
 		skillPanel.add(skillFilterBox, BorderLayout.NORTH);
-		skillPanel.add(selScrollPane, BorderLayout.CENTER);
-		selScrollPane.setPreferredSize(new Dimension(530, 300));
+		htmlPane.setPreferredSize(new Dimension(530, 300));
+		skillPanel.add(htmlPane, BorderLayout.CENTER);
 
 		FlippingSplitPane topPane =
 				new FlippingSplitPane(JSplitPane.HORIZONTAL_SPLIT, true, availPanel, skillPanel);

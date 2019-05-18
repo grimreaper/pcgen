@@ -35,10 +35,6 @@ import pcgen.cdom.enumeration.ObjectKey;
 import pcgen.cdom.reference.CDOMSingleRef;
 import pcgen.core.bonus.BonusObj;
 
-/**
- * {@code Skill}.
- * 
- */
 public final class Skill extends PObject implements ChooseDriver, VarScoped
 {
 	public String getKeyStatAbb()

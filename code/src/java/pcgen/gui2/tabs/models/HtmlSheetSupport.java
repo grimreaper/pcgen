@@ -32,7 +32,6 @@ import java.util.concurrent.ThreadFactory;
 
 import javax.swing.SwingUtilities;
 
-import pcgen.base.lang.UnreachableError;
 import pcgen.facade.core.CharacterFacade;
 import pcgen.gui3.JFXPanelFromResource;
 import pcgen.gui3.SimpleHtmlPanelController;
@@ -61,13 +60,13 @@ public final class HtmlSheetSupport
 
 	public HtmlSheetSupport(JFXPanelFromResource<SimpleHtmlPanelController> htmlPane, String infoSheetFile)
 	{
-		if (!StringUtils.isEmpty(infoSheetFile))
+		if (StringUtils.isEmpty(infoSheetFile))
 		{
-			templateFile = new File(infoSheetFile);
+			templateFile = null;
 		}
 		else
 		{
-			templateFile = null;
+			templateFile = new File(infoSheetFile);
 		}
 		this.htmlPane = htmlPane;
 	}
@@ -138,15 +137,10 @@ public final class HtmlSheetSupport
 				final String doc = get();
 				SwingUtilities.invokeAndWait(() -> htmlPane.getController().setHtml(doc));
 			}
-			catch (InvocationTargetException ex)
-			{
-				throw new UnreachableError(ex);
-			}
-			catch (InterruptedException | ExecutionException ex)
+			catch (InterruptedException | ExecutionException | InvocationTargetException ex)
 			{
 				Logging.errorPrint(templateFile.getName(), ex);
 			}
-
 		}
 
 	}
