@@ -25,7 +25,7 @@ import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationTargetException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.ThreadFactory;
@@ -41,7 +41,7 @@ import pcgen.util.Logging;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class HtmlSheetSupport
+public final class HtmlSheetSupport
 {
 
 	private static final ThreadFactory THREAD_FACTORY = r -> {
@@ -50,7 +50,7 @@ public class HtmlSheetSupport
 		thread.setName("html-sheet-thread");
 		return thread;
 	};
-	private ExecutorService executor = Executors.newSingleThreadExecutor(THREAD_FACTORY);
+	private final Executor executor = Executors.newSingleThreadExecutor(THREAD_FACTORY);
 
 	private WeakReference<CharacterFacade> characterRef;
 	private final File templateFile;
