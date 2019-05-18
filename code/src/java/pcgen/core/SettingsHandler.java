@@ -38,6 +38,8 @@ import pcgen.cdom.enumeration.SourceFormat;
 import pcgen.core.utils.CoreUtility;
 import pcgen.core.utils.SortedProperties;
 import pcgen.persistence.PersistenceManager;
+import pcgen.preferences.BooleanPCGenPreference;
+import pcgen.preferences.PCGenPreference;
 import pcgen.system.ConfigurationSettings;
 import pcgen.system.LanguageBundle;
 import pcgen.util.Logging;
@@ -60,7 +62,6 @@ import org.apache.commons.lang3.SystemUtils;
  **/
 public final class SettingsHandler
 {
-
 	//
 	// For EqBuilder
 	//
