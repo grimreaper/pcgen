@@ -18,6 +18,7 @@
  */
 package pcgen.gui2;
 
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
@@ -679,7 +680,8 @@ public final class PCGenActionMap extends ActionMap
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			PCGenUIManager.closePCGen();
+			Desktop desktop = Desktop.getDesktop().
+			PCGenUIManager.closePCGen(null);
 		}
 
 	}

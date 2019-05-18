@@ -24,6 +24,7 @@ import java.awt.desktop.AboutEvent;
 import java.awt.desktop.PreferencesEvent;
 import java.awt.desktop.QuitEvent;
 import java.awt.desktop.QuitResponse;
+import java.awt.desktop.QuitStrategy;
 
 import pcgen.gui2.PCGenUIManager;
 
@@ -40,7 +41,7 @@ public final class DesktopHandler
 
 	/**
 	 * Initialize the Mac-specific properties.
-	 * Create an ApplicationAdapter to listen for Help, Prefs, and Quit.
+	 * Create listeners for Help, Prefs, and Quit.
 	 */
 	public static void initialize()
 	{
@@ -68,6 +69,19 @@ public final class DesktopHandler
 		{
 			theDesktop.setQuitHandler(new QuitHandler());
 		}
+//		theDesktop.setQuitStrategy(QuitStrategy.NORMAL_EXIT);
+//		TODO theDesktop.setDefaultMenuBar();
+//		theDesktop.setOpenFileHandler();
+//		theDesktop.setPrintFileHandler();
+//		theDesktop.setOpenFileHandler();
+//		theDesktop.setOpenURIHandler();
+//		theDesktop.addAppEventListener(e -> {
+//
+//		});
+//		theDesktop.disableSuddenTermination();
+//		theDesktop.edit()
+//		theDesktop
+
 	}
 
 	private static class AboutHandler implements java.awt.desktop.AboutHandler
@@ -93,7 +107,7 @@ public final class DesktopHandler
 		@Override
 		public void handleQuitRequestWith(final QuitEvent quitEvent, final QuitResponse quitResponse)
 		{
-			PCGenUIManager.closePCGen();
+			PCGenUIManager.closePCGen(quitResponse);
 		}
 	}
 }

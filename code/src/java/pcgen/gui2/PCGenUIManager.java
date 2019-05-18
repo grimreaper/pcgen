@@ -17,6 +17,8 @@
  */
 package pcgen.gui2;
 
+import java.awt.desktop.QuitResponse;
+
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -82,7 +84,7 @@ public final class PCGenUIManager
 		PCGenFrame.showAboutDialog();
 	}
 
-	public static void closePCGen()
+	public static void closePCGen(QuitResponse quitResponse)
 	{
 		if (pcgenFrame != null)
 		{

@@ -204,7 +204,7 @@ public final class PCGenFrame extends JFrame implements UIDelegate, CharacterSel
 			@Override
 			public void windowClosing(WindowEvent e)
 			{
-				PCGenUIManager.closePCGen();
+				PCGenUIManager.closePCGen(null);
 			}
 
 		});
