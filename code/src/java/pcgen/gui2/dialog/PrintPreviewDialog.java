@@ -29,8 +29,6 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.print.Pageable;
-import java.awt.print.PrinterException;
-import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -68,6 +66,7 @@ import pcgen.util.fop.FopTask;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.JFXPanel;
+import javafx.embed.swing.SwingNode;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -210,22 +209,27 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 
 	private void onPrintCommand(javafx.event.ActionEvent event)
 	{
-		PrinterJob printerJob = PrinterJob.getPrinterJob();
-		printerJob.setPageable(pageable);
-		if (printerJob.printDialog())
+		javafx.print.PrinterJob newPrint = javafx.print.PrinterJob.createPrinterJob();
+		// todo: use a better window
+		boolean doPrint = newPrint.showPrintDialog(printButton.getScene().getWindow());
+		if (doPrint)
 		{
-			try
+			// todo: get away from swing render
+			SwingNode nodeToPrint = new SwingNode();
+			nodeToPrint.setContent(previewPanel);
+			boolean success = newPrint.printPage(nodeToPrint);
+			if (success)
 			{
-				printerJob.print();
-				dispose();
+				newPrint.endJob();
 			}
-			catch (PrinterException ex)
+			else
 			{
-				String message = "Could not print " + character.getNameRef().get();
-				Logging.errorPrint(message, ex);
-				frame.showErrorMessage(Constants.APPLICATION_NAME, message);
+				// maybe handle this better
+				Logging.errorPrint(newPrint.getJobStatus().toString());
+				frame.showErrorMessage("failed to print", newPrint.getJobStatus().toString());
 			}
 		}
+
 	}
 
 	@Override
@@ -251,7 +255,7 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 			gbc.insets = new Insets(8, 2, 8, 6);
 			gbc.weightx = 1;
 			bar.add(sheetBox, gbc);
-			pane.add(bar, BorderLayout.NORTH);
+			pane.add(bar, BorderLayout.PAGE_START);
 		}
 		{
 			Box vbox = Box.createVerticalBox();
@@ -275,7 +279,7 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 			hbox.getChildren().add(printButton);
 			hbox.getChildren().add(cancelButton);
 			JFXPanel outerHbox = GuiUtility.wrapParentAsJFXPanel(hbox);
-			pane.add(outerHbox, BorderLayout.SOUTH);
+			pane.add(outerHbox, BorderLayout.PAGE_END);
 		}
 	}
 
