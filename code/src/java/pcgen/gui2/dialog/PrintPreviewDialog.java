@@ -37,7 +37,6 @@ import java.io.IOException;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 import java.net.URI;
-import java.text.NumberFormat;
 import java.util.Collection;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
@@ -46,11 +45,9 @@ import java.util.stream.IntStream;
 import javax.swing.Box;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.SwingWorker;
@@ -75,9 +72,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextFormatter;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.util.StringConverter;
-import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.PercentageStringConverter;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.FileFilterUtils;
@@ -87,7 +83,6 @@ import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.fop.apps.FOUserAgent;
 import org.apache.fop.render.awt.AWTRenderer;
 import org.apache.fop.render.awt.viewer.PreviewPanel;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Dialog to allow the preview of character export.
@@ -103,12 +98,6 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 	}
 
 	private static final String SHEET_COMMAND = "sheet";
-	private static final String PAGE_COMMAND = "page";
-	private static final String ZOOM_COMMAND = "zoom";
-	private static final String ZOOM_IN_COMMAND = "zoomin";
-	private static final String ZOOM_OUT_COMMAND = "zoomout";
-	private static final String PRINT_COMMAND = "print";
-	private static final String CANCEL_COMMAND = "cancel";
 	private static final double ZOOM_MULTIPLIER = StrictMath.pow(2, 0.125);
 	private final CharacterFacade character;
 	private final JComboBox<Object> sheetBox;
@@ -150,24 +139,23 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 		sheetBox.setActionCommand(SHEET_COMMAND);
 		sheetBox.addActionListener(this);
 		pageBox.getItems().add("0 of 0");
-		pageBox.setActionCommand(PAGE_COMMAND);
+		pageBox.setOnAction(this::onPageCommand);
 		ObservableList<Double> zoomList = FXCollections.observableArrayList(0.25, 0.50, 0.75, 1.0);
 		zoomBox.setItems(zoomList);
 		zoomBox.getSelectionModel().selectLast();
 		zoomBox.setEditable(true);
-		NumberFormat yolo = NumberFormat.getPercentInstance();
 		zoomBox.getEditor().setTextFormatter(new TextFormatter<>(new PercentageStringConverter()));
-		zoomBox.setActionCommand(ZOOM_COMMAND);
-		zoomInButton.setIcon(Icons.ZoomIn16.getImageIcon());
-		zoomInButton.setActionCommand(ZOOM_IN_COMMAND);
-		zoomOutButton.setIcon(Icons.ZoomOut16.getImageIcon());
-		zoomOutButton.setActionCommand(ZOOM_OUT_COMMAND);
+		zoomBox.setOnAction(this::onZoomCommand);
+		zoomInButton.setGraphic(new ImageView(Icons.ZoomIn16.getAsJavaFXImage()));
+		zoomInButton.setOnAction(this::onZoomInCommand);
+		zoomOutButton.setGraphic(new ImageView(Icons.ZoomOut16.getAsJavaFXImage()));
+		zoomOutButton.setOnAction(this::onZoomOutCommand);
 
 		printButton.setText("Print");
-		printButton.setActionCommand(PRINT_COMMAND);
+		printButton.setOnAction(this::onPrintCommand);
 
 		cancelButton.setText("Cancel");
-		cancelButton.setActionCommand(CANCEL_COMMAND);
+		cancelButton.setOnAction(this::onCancelCommand);
 
 		enableEditGroup(false);
 
@@ -192,54 +180,60 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 		previewPanel.reload();
 	}
 
+	private void onPageCommand(javafx.event.ActionEvent event)
+	{
+		previewPanel.setPage(pageBox.getSelectionModel().getSelectedIndex());
+	}
+
+	private void onZoomOutCommand(javafx.event.ActionEvent event)
+	{
+		Double zoom = zoomBox.getSelectionModel().getSelectedItem();
+		zoomBox.getSelectionModel().select(zoom / ZOOM_MULTIPLIER);
+	}
+
+	private void onZoomInCommand(javafx.event.ActionEvent event)
+	{
+		Double zoom = zoomBox.getSelectionModel().getSelectedItem();
+		zoomBox.getSelectionModel().select(zoom * ZOOM_MULTIPLIER);
+	}
+
+	private void onZoomCommand(javafx.event.ActionEvent event)
+	{
+		Double zoom = zoomBox.getSelectionModel().getSelectedItem();
+		previewPanel.setScaleFactor(zoom);
+	}
+
+	private void onCancelCommand(javafx.event.ActionEvent event)
+	{
+		this.dispose();
+	}
+
+	private void onPrintCommand(javafx.event.ActionEvent event)
+	{
+		PrinterJob printerJob = PrinterJob.getPrinterJob();
+		printerJob.setPageable(pageable);
+		if (printerJob.printDialog())
+		{
+			try
+			{
+				printerJob.print();
+				dispose();
+			}
+			catch (PrinterException ex)
+			{
+				String message = "Could not print " + character.getNameRef().get();
+				Logging.errorPrint(message, ex);
+				frame.showErrorMessage(Constants.APPLICATION_NAME, message);
+			}
+		}
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
 		if (SHEET_COMMAND.equals(e.getActionCommand()))
 		{
 			new PreviewLoader((URI) sheetBox.getSelectedItem()).execute();
-		}
-		else if (PAGE_COMMAND.equals(e.getActionCommand()))
-		{
-			previewPanel.setPage(pageBox.getSelectionModel().getSelectedIndex());
-		}
-		else if (ZOOM_COMMAND.equals(e.getActionCommand()))
-		{
-			Double zoom = zoomBox.getSelectionModel().getSelectedItem();
-			previewPanel.setScaleFactor(zoom);
-		}
-		else if (ZOOM_IN_COMMAND.equals(e.getActionCommand()))
-		{
-			Double zoom = zoomBox.getSelectionModel().getSelectedItem();
-			zoomBox.getSelectionModel().select(zoom * ZOOM_MULTIPLIER);
-		}
-		else if (ZOOM_OUT_COMMAND.equals(e.getActionCommand()))
-		{
-			Double zoom = zoomBox.getSelectionModel().getSelectedItem();
-			zoomBox.getSelectionModel().select(zoom / ZOOM_MULTIPLIER);
-		}
-		else if (PRINT_COMMAND.equals(e.getActionCommand()))
-		{
-			PrinterJob printerJob = PrinterJob.getPrinterJob();
-			printerJob.setPageable(pageable);
-			if (printerJob.printDialog())
-			{
-				try
-				{
-					printerJob.print();
-					dispose();
-				}
-				catch (PrinterException ex)
-				{
-					String message = "Could not print " + character.getNameRef().get();
-					Logging.errorPrint(message, ex);
-					frame.showErrorMessage(Constants.APPLICATION_NAME, message);
-				}
-			}
-		}
-		else if (CANCEL_COMMAND.equals(e.getActionCommand()))
-		{
-			dispose();
 		}
 	}
 
