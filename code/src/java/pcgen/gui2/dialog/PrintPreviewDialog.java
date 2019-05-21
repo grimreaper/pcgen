@@ -31,8 +31,6 @@ import java.awt.event.ActionListener;
 import java.awt.print.Pageable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -42,17 +40,15 @@ import java.net.URI;
 import java.text.NumberFormat;
 import java.util.Collection;
 import java.util.concurrent.ExecutionException;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-import javax.swing.BorderFactory;
 import javax.swing.Box;
-import javax.swing.ComboBoxEditor;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -65,12 +61,24 @@ import pcgen.facade.core.UIDelegate;
 import pcgen.gui2.PCGenFrame;
 import pcgen.gui2.tools.Icons;
 import pcgen.gui2.tools.Utility;
+import pcgen.gui3.GuiUtility;
 import pcgen.io.ExportException;
 import pcgen.system.BatchExporter;
 import pcgen.system.ConfigurationSettings;
 import pcgen.util.Logging;
 import pcgen.util.fop.FopTask;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextFormatter;
+import javafx.scene.layout.HBox;
+import javafx.util.StringConverter;
+import javafx.util.converter.IntegerStringConverter;
+import javafx.util.converter.PercentageStringConverter;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.apache.commons.io.filefilter.IOFileFilter;
@@ -101,15 +109,15 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 	private static final String ZOOM_OUT_COMMAND = "zoomout";
 	private static final String PRINT_COMMAND = "print";
 	private static final String CANCEL_COMMAND = "cancel";
-	private static final double ZOOM_MULTIPLIER = Math.pow(2, 0.125);
+	private static final double ZOOM_MULTIPLIER = StrictMath.pow(2, 0.125);
 	private final CharacterFacade character;
 	private final JComboBox<Object> sheetBox;
-	private final JComboBox<String> pageBox;
-	private final JComboBox<Double> zoomBox;
-	private final JButton zoomInButton;
-	private final JButton zoomOutButton;
-	private final JButton printButton;
-	private final JButton cancelButton;
+	private final ComboBox<String> pageBox;
+	private final ComboBox<Double> zoomBox;
+	private final Button zoomInButton;
+	private final Button zoomOutButton;
+	private final Button printButton;
+	private final Button cancelButton;
 	private final JPanel previewPanelParent;
 	private PreviewPanel previewPanel;
 	private final JProgressBar progressBar;
@@ -124,12 +132,12 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 		this.previewPanelParent = new JPanel(new GridLayout(1, 1));
 		this.sheetBox = new JComboBox<>();
 		this.progressBar = new JProgressBar();
-		this.pageBox = new JComboBox<>();
-		this.zoomBox = new JComboBox<>();
-		this.zoomInButton = new JButton();
-		this.zoomOutButton = new JButton();
-		this.printButton = new JButton();
-		this.cancelButton = new JButton();
+		this.pageBox = new ComboBox<>();
+		this.zoomBox = new ComboBox<>();
+		this.zoomInButton = new Button();
+		this.zoomOutButton = new Button();
+		this.printButton = new Button();
+		this.cancelButton = new Button();
 		initComponents();
 		initLayout();
 		pack();
@@ -141,46 +149,25 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 		setTitle("Print Preview");
 		sheetBox.setActionCommand(SHEET_COMMAND);
 		sheetBox.addActionListener(this);
-		pageBox.addItem("0 of 0");
+		pageBox.getItems().add("0 of 0");
 		pageBox.setActionCommand(PAGE_COMMAND);
-		pageBox.addActionListener(this);
-		zoomBox.addItem(0.25);
-		zoomBox.addItem(0.50);
-
-		zoomBox.addItem(0.75);
-		zoomBox.addItem(1.00);
-		zoomBox.setSelectedItem(0.75);
-		zoomBox.setRenderer(new DefaultListCellRenderer()
-		{
-
-			@Override
-			public Component getListCellRendererComponent(JList<? extends Object> list, Object value, int index,
-				boolean isSelected, boolean cellHasFocus)
-			{
-				NumberFormat format = NumberFormat.getPercentInstance();
-				String formattedValue = format.format(value);
-				return super.getListCellRendererComponent(list, formattedValue, index, isSelected, cellHasFocus);
-			}
-
-		});
+		ObservableList<Double> zoomList = FXCollections.observableArrayList(0.25, 0.50, 0.75, 1.0);
+		zoomBox.setItems(zoomList);
+		zoomBox.getSelectionModel().selectLast();
 		zoomBox.setEditable(true);
-		zoomBox.setEditor(new PercentEditor());
+		NumberFormat yolo = NumberFormat.getPercentInstance();
+		zoomBox.getEditor().setTextFormatter(new TextFormatter<>(new PercentageStringConverter()));
 		zoomBox.setActionCommand(ZOOM_COMMAND);
-		zoomBox.addActionListener(this);
 		zoomInButton.setIcon(Icons.ZoomIn16.getImageIcon());
 		zoomInButton.setActionCommand(ZOOM_IN_COMMAND);
-		zoomInButton.addActionListener(this);
 		zoomOutButton.setIcon(Icons.ZoomOut16.getImageIcon());
 		zoomOutButton.setActionCommand(ZOOM_OUT_COMMAND);
-		zoomOutButton.addActionListener(this);
 
 		printButton.setText("Print");
 		printButton.setActionCommand(PRINT_COMMAND);
-		printButton.addActionListener(this);
 
 		cancelButton.setText("Cancel");
 		cancelButton.setActionCommand(CANCEL_COMMAND);
-		cancelButton.addActionListener(this);
 
 		enableEditGroup(false);
 
@@ -189,11 +176,12 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 
 	private void enableEditGroup(boolean enable)
 	{
-		pageBox.setEnabled(enable);
-		zoomBox.setEnabled(enable);
-		zoomInButton.setEnabled(enable);
-		zoomOutButton.setEnabled(enable);
-		printButton.setEnabled(enable);
+		pageBox.setDisable(!enable);
+		pageBox.setDisable(!enable);
+		zoomBox.setDisable(!enable);
+		zoomInButton.setDisable(!enable);
+		zoomOutButton.setDisable(!enable);
+		printButton.setDisable(!enable);
 	}
 
 	private void setPreviewPanel(PreviewPanel previewPanel)
@@ -213,22 +201,22 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 		}
 		else if (PAGE_COMMAND.equals(e.getActionCommand()))
 		{
-			previewPanel.setPage(pageBox.getSelectedIndex());
+			previewPanel.setPage(pageBox.getSelectionModel().getSelectedIndex());
 		}
 		else if (ZOOM_COMMAND.equals(e.getActionCommand()))
 		{
-			Double zoom = (Double) zoomBox.getSelectedItem();
+			Double zoom = zoomBox.getSelectionModel().getSelectedItem();
 			previewPanel.setScaleFactor(zoom);
 		}
 		else if (ZOOM_IN_COMMAND.equals(e.getActionCommand()))
 		{
-			Double zoom = (Double) zoomBox.getSelectedItem();
-			zoomBox.setSelectedItem(zoom * ZOOM_MULTIPLIER);
+			Double zoom = zoomBox.getSelectionModel().getSelectedItem();
+			zoomBox.getSelectionModel().select(zoom * ZOOM_MULTIPLIER);
 		}
 		else if (ZOOM_OUT_COMMAND.equals(e.getActionCommand()))
 		{
-			Double zoom = (Double) zoomBox.getSelectedItem();
-			zoomBox.setSelectedItem(zoom / ZOOM_MULTIPLIER);
+			Double zoom = zoomBox.getSelectionModel().getSelectedItem();
+			zoomBox.getSelectionModel().select(zoom / ZOOM_MULTIPLIER);
 		}
 		else if (PRINT_COMMAND.equals(e.getActionCommand()))
 		{
@@ -279,63 +267,22 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 			pane.add(vbox, BorderLayout.CENTER);
 		}
 		{
-			Box hbox = Box.createHorizontalBox();
-			hbox.add(new JLabel("Page:"));
-			hbox.add(Box.createHorizontalStrut(4));
-			hbox.add(pageBox);
-			hbox.add(Box.createHorizontalStrut(10));
-			hbox.add(new JLabel("Zoom:"));
-			hbox.add(Box.createHorizontalStrut(4));
-			hbox.add(zoomBox);
-			hbox.add(Box.createHorizontalStrut(5));
-			hbox.add(zoomInButton);
-			hbox.add(Box.createHorizontalStrut(5));
-			hbox.add(zoomOutButton);
-			hbox.add(Box.createHorizontalGlue());
-			hbox.add(printButton);
-			hbox.add(Box.createHorizontalStrut(5));
-			hbox.add(cancelButton);
-			hbox.setBorder(BorderFactory.createEmptyBorder(8, 5, 8, 5));
-			pane.add(hbox, BorderLayout.SOUTH);
+			HBox hbox = new HBox();
+			Label pageLabel = new Label("Page:");
+			pageLabel.setLabelFor(pageBox);
+			hbox.getChildren().add(pageLabel);
+			hbox.getChildren().add(pageBox);
+			Label zoomLabel = new Label("Zoom:");
+			zoomLabel.setLabelFor(pageBox);
+			hbox.getChildren().add(zoomLabel);
+			hbox.getChildren().add(zoomBox);
+			hbox.getChildren().add(zoomInButton);
+			hbox.getChildren().add(zoomOutButton);
+			hbox.getChildren().add(printButton);
+			hbox.getChildren().add(cancelButton);
+			JFXPanel outerHbox = GuiUtility.wrapParentAsJFXPanel(hbox);
+			pane.add(outerHbox, BorderLayout.SOUTH);
 		}
-	}
-
-	/**
-	 * A JFormattedTextField that edits percentages.
-	 */
-	private static final class PercentEditor extends JFormattedTextField implements ComboBoxEditor, PropertyChangeListener
-	{
-
-		private PercentEditor()
-		{
-			super(NumberFormat.getPercentInstance());
-			addPropertyChangeListener("value", this);
-		}
-
-		@Override
-		public Component getEditorComponent()
-		{
-			return this;
-		}
-
-		@Override
-		public void setItem(Object anObject)
-		{
-			setValue(anObject);
-		}
-
-		@Override
-		public Object getItem()
-		{
-			return getValue();
-		}
-
-		@Override
-		public void propertyChange(PropertyChangeEvent evt)
-		{
-			fireActionPerformed();
-		}
-
 	}
 
 	private class PreviewLoader extends SwingWorker<AWTRenderer, Object>
@@ -388,7 +335,7 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 				AWTRenderer renderer = get();
 				pageable = renderer;
 				setPreviewPanel(new PreviewPanel(renderer.getUserAgent(), null, renderer));
-				pageBox.setModel(createPagesModel(renderer.getNumberOfPages()));
+				pageBox.setItems(createPagesModel(renderer.getNumberOfPages()));
 			}
 			catch (InterruptedException | ExecutionException ex)
 			{
@@ -398,21 +345,18 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 
 	}
 
-	private static ComboBoxModel<String> createPagesModel(int pages)
+	private static ObservableList<String> createPagesModel(int pages)
 	{
-		String[] pageNumbers = new String[pages];
-		for (int i = 0; i < pages; i++)
-		{
-			pageNumbers[i] = (i + 1) + " of " + pages;
-		}
-		return new DefaultComboBoxModel<>(pageNumbers);
+		return IntStream.range(1, pages + 1)
+		         .mapToObj(i -> i + " of " + pages)
+		         .collect(Collectors.toCollection(FXCollections::observableArrayList));
 	}
 
 	private class SheetLoader extends SwingWorker<Object[], Object> implements FilenameFilter
 	{
 
 		@Override
-		public boolean accept(@NotNull File dir, @NotNull String name)
+		public boolean accept(File dir, String name)
 		{
 			return dir.getName().equalsIgnoreCase("pdf");
 		}
