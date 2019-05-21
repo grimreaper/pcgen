@@ -51,7 +51,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -165,7 +164,7 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 
 		});
 		zoomBox.setEditable(true);
-		zoomBox.setEditor(new PercentEditor(zoomBox));
+		zoomBox.setEditor(new PercentEditor());
 		zoomBox.setActionCommand(ZOOM_COMMAND);
 		zoomBox.addActionListener(this);
 		zoomInButton.setIcon(Icons.ZoomIn16.getImageIcon());
@@ -304,16 +303,13 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 	/**
 	 * A JFormattedTextField that edits percentages.
 	 */
-	private static class PercentEditor extends JFormattedTextField implements ComboBoxEditor, PropertyChangeListener
+	private static final class PercentEditor extends JFormattedTextField implements ComboBoxEditor, PropertyChangeListener
 	{
 
-		public PercentEditor(JComboBox<Double> comboBox)
+		private PercentEditor()
 		{
 			super(NumberFormat.getPercentInstance());
 			addPropertyChangeListener("value", this);
-			//We steal the border from the LAF's editor
-			JComponent oldEditor = (JComponent) comboBox.getEditor().getEditorComponent();
-			setBorder(oldEditor.getBorder());
 		}
 
 		@Override
