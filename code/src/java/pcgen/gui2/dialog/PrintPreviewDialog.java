@@ -61,6 +61,7 @@ import javax.swing.SwingWorker;
 
 import pcgen.cdom.base.Constants;
 import pcgen.facade.core.CharacterFacade;
+import pcgen.facade.core.UIDelegate;
 import pcgen.gui2.PCGenFrame;
 import pcgen.gui2.tools.Icons;
 import pcgen.gui2.tools.Utility;
@@ -83,7 +84,6 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Dialog to allow the preview of character export.
  */
-@SuppressWarnings("serial")
 public final class PrintPreviewDialog extends JDialog implements ActionListener
 {
 
@@ -113,7 +113,7 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 	private final JPanel previewPanelParent;
 	private PreviewPanel previewPanel;
 	private final JProgressBar progressBar;
-	private final PCGenFrame frame;
+	private final UIDelegate frame;
 	private Pageable pageable;
 
 	private PrintPreviewDialog(PCGenFrame frame)
