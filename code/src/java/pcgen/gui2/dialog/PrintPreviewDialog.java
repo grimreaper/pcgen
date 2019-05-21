@@ -28,9 +28,7 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.print.Pageable;
 import java.io.File;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
@@ -110,7 +108,6 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 	private PreviewPanel previewPanel;
 	private final JProgressBar progressBar;
 	private final UIDelegate frame;
-	private Pageable pageable;
 
 	private PrintPreviewDialog(PCGenFrame frame)
 	{
@@ -217,6 +214,7 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 			// todo: get away from swing render
 			SwingNode nodeToPrint = new SwingNode();
 			nodeToPrint.setContent(previewPanel);
+			// todo: this prints empty content
 			boolean success = newPrint.printPage(nodeToPrint);
 			if (success)
 			{
@@ -331,7 +329,6 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 			try
 			{
 				AWTRenderer renderer = get();
-				pageable = renderer;
 				setPreviewPanel(new PreviewPanel(renderer.getUserAgent(), null, renderer));
 				pageBox.setItems(createPagesModel(renderer.getNumberOfPages()));
 			}
@@ -350,19 +347,13 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 		         .collect(Collectors.toCollection(FXCollections::observableArrayList));
 	}
 
-	private class SheetLoader extends SwingWorker<Object[], Object> implements FilenameFilter
+	private class SheetLoader extends SwingWorker<Object[], Object>
 	{
-
-		@Override
-		public boolean accept(File dir, String name)
-		{
-			return dir.getName().equalsIgnoreCase("pdf");
-		}
 
 		@Override
 		protected Object[] doInBackground()
 		{
-			IOFileFilter pdfFilter = FileFilterUtils.asFileFilter(this);
+			IOFileFilter pdfFilter = FileFilterUtils.asFileFilter((dir) -> dir.getName().equalsIgnoreCase("pdf"));
 			IOFileFilter suffixFilter = FileFilterUtils.notFileFilter(new SuffixFileFilter(".fo"));
 			IOFileFilter sheetFilter = FileFilterUtils.prefixFileFilter(Constants.CHARACTER_TEMPLATE_PREFIX);
 			IOFileFilter fileFilter = FileFilterUtils.and(pdfFilter, suffixFilter, sheetFilter);
