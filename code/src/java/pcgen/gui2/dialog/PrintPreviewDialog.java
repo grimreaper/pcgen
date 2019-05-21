@@ -140,22 +140,6 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 	private <E> void initComponents()
 	{
 		setTitle("Print Preview");
-		sheetBox.setRenderer(new DefaultListCellRenderer()
-		{
-
-			@Override
-			public Component getListCellRendererComponent(JList<? extends Object> list, Object value, int index,
-				boolean isSelected, boolean cellHasFocus)
-			{
-				super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-				if (value != null)
-				{
-					setToolTipText(value.toString());
-				}
-				return this;
-			}
-
-		});
 		sheetBox.setActionCommand(SHEET_COMMAND);
 		sheetBox.addActionListener(this);
 		pageBox.addItem("0 of 0");
