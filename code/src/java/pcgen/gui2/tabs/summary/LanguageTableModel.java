@@ -48,6 +48,8 @@ import pcgen.gui2.dialog.LanguageChooserDialog;
 import pcgen.gui2.tabs.Utilities;
 import pcgen.gui2.util.SignIcon.Sign;
 import pcgen.gui2.util.table.TableCellUtilities;
+import pcgen.gui3.JFXPanelFromResource;
+import pcgen.gui3.dialog.LanguageChooserDialogController;
 import pcgen.gui3.utilty.ColorUtilty;
 import pcgen.system.LanguageBundle;
 
@@ -259,8 +261,11 @@ public class LanguageTableModel extends AbstractTableModel implements ListListen
 				Frame frame = JOptionPane.getFrameForComponent(table);
 				LanguageChooserFacade chooser = choosers.getElementAt(table.getEditingRow() - languages.getSize());
 				LanguageChooserDialog dialog = new LanguageChooserDialog(frame, chooser);
-				dialog.setLocationRelativeTo(frame);
-				dialog.setVisible(true);
+				JFXPanelFromResource<LanguageChooserDialogController> jfxPanel = new JFXPanelFromResource<>(
+						LanguageChooserDialogController.class,
+						"LanguageChooserDialog.fxml"
+				);
+				jfxPanel.showAndBlock(chooser.getName());
 			}
 			else
 			{

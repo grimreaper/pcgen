@@ -18,40 +18,18 @@
  */
 package pcgen.gui2.dialog;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.Frame;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.WindowConstants;
-
 import pcgen.core.Language;
-import pcgen.facade.core.LanguageChooserFacade;
 import pcgen.facade.util.DefaultListFacade;
 import pcgen.facade.util.DelegatingListFacade;
 import pcgen.facade.util.ListFacade;
-import pcgen.facade.util.event.ReferenceEvent;
 import pcgen.facade.util.event.ReferenceListener;
-import pcgen.gui2.tools.Icons;
-import pcgen.gui2.tools.Utility;
-import pcgen.gui2.util.FacadeListModel;
-import pcgen.gui2.util.JListEx;
-import pcgen.gui2.util.JTreeViewTable;
 import pcgen.gui2.util.treeview.DataView;
 import pcgen.gui2.util.treeview.DataViewColumn;
 import pcgen.gui2.util.treeview.TreeView;
@@ -61,23 +39,23 @@ import pcgen.gui3.GuiUtility;
 import pcgen.gui3.component.OKCloseButtonBar;
 import pcgen.system.LanguageBundle;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TreeSortMode;
+import javafx.scene.control.TreeTableView;
+import javafx.scene.layout.Pane;
 
-public final class LanguageChooserDialog extends JDialog implements ReferenceListener<Integer>
+public final class LanguageChooserDialog implements ActionListener, ReferenceListener<Integer>
 {
 
 	private final LanguageChooserFacade chooser;
-	private final JTreeViewTable<Language> availTable;
+	private final TreeTableView<Language> availTable;
 	private final JLabel remainingLabel;
 	private final LangTreeViewModel treeViewModel;
 	private final FacadeListModel<Language> listModel;
-	private final JListEx<Language> list;
+	private final ListView<Language> list;
 
 	public LanguageChooserDialog(Frame frame, LanguageChooserFacade chooser)
 	{
-		super(frame, true);
 		this.chooser = chooser;
 		this.availTable = new JTreeViewTable<>();
 		this.remainingLabel = new JLabel();
@@ -89,14 +67,10 @@ public final class LanguageChooserDialog extends JDialog implements ReferenceLis
 		listModel.setListFacade(chooser.getSelectedList());
 		chooser.getRemainingSelections().addReferenceListener(this);
 		initComponents();
-		pack();
-		Utility.installEscapeCloseOperation(this);
 	}
 
 	private void initComponents()
 	{
-		setTitle(chooser.getName());
-		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		addWindowListener(new WindowAdapter()
 		{
 
@@ -110,16 +84,15 @@ public final class LanguageChooserDialog extends JDialog implements ReferenceLis
 			}
 
 		});
-		Container pane = getContentPane();
+		Pane pane = new Pane();
 		pane.setLayout(new BorderLayout());
 
 		JSplitPane split = new JSplitPane();
 		JPanel leftPane = new JPanel(new BorderLayout());
 		//leftPane.add(new JLabel("Available Languages"), BorderLayout.NORTH);
-		availTable.setAutoCreateRowSorter(true);
+
+		availTable.setSortMode(TreeSortMode.ALL_DESCENDANTS);
 		availTable.setTreeViewModel(treeViewModel);
-		availTable.getRowSorter().toggleSortOrder(0);
-		availTable.addActionListener(new DoubleClickActionListener());
 		leftPane.add(new JScrollPane(availTable), BorderLayout.CENTER);
 
 		Button addButton = new Button(LanguageBundle.getString("in_sumLangAddLanguage"));
@@ -304,8 +277,12 @@ public final class LanguageChooserDialog extends JDialog implements ReferenceLis
 			                    .collect(Collectors.toUnmodifiableList());
 				default:
 					throw new InternalError();
-			}
-		}
-
+					for (String type : getTypes(pobj))
+					{
+						paths.add(new TreeViewPath<>(pobj, type));
+					}
+					return paths;
+				default:
+					throw new InternalError();
 	}
 }
