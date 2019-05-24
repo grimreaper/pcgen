@@ -180,7 +180,10 @@ public final class PCGenFrame extends JFrame implements UIDelegate, CharacterSel
 		root.setInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT, createInputMap(actionMap));
 
 		characterTabs.add(new InfoGuidePane(this, uiContext));
-
+		if (Desktop.getDesktop().isSupported(Desktop.Action.APP_MENU_BAR))
+		{
+			Desktop.getDesktop().setDefaultMenuBar(pcGenMenuBar);
+		}
 		setJMenuBar(pcGenMenuBar);
 		PCGenToolBar pcGenToolBar = new PCGenToolBar(this);
 		ToolBar toolBar = pcGenToolBar.buildMenu();
