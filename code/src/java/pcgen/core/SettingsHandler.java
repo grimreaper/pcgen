@@ -18,7 +18,6 @@
 package pcgen.core;
 
 import java.awt.Color;
-import java.awt.SystemColor;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -97,7 +96,6 @@ public final class SettingsHandler
 	private static boolean createPcgBackup = true;
 
 	private static File gmgenPluginDir = new File(Globals.getDefaultPath() + File.separator + "plugins"); //$NON-NLS-1$
-	private static int prereqQualifyColor = Constants.DEFAULT_PREREQ_QUALIFY_COLOUR;
 	private static int prereqFailColor = Constants.DEFAULT_PREREQ_FAIL_COLOUR;
 
 	/////////////////////////////////////////////////
@@ -529,7 +527,6 @@ public final class SettingsHandler
 		setPostExportCommandStandard(getPCGenOption("postExportCommandStandard", "")); //$NON-NLS-1$ //$NON-NLS-2$
 		setPostExportCommandPDF(getPCGenOption("postExportCommandPDF", "")); //$NON-NLS-1$ //$NON-NLS-2$
 		setPrereqFailColor(getPCGenOption("prereqFailColor", Color.red.getRGB())); //$NON-NLS-1$
-		setPrereqQualifyColor(getPCGenOption("prereqQualifyColor", SystemColor.text.getRGB())); //$NON-NLS-1$
 		setSaveCustomInLst(getPCGenOption("saveCustomInLst", false)); //$NON-NLS-1$
 		setSaveOutputSheetWithPC(getPCGenOption("saveOutputSheetWithPC", false)); //$NON-NLS-1$
 		setPrintSpellsWithPC(getPCGenOption("printSpellsWithPC", true)); //$NON-NLS-1$
@@ -691,8 +688,6 @@ public final class SettingsHandler
 		setPCGenOption("postExportCommandStandard", SettingsHandler.getPostExportCommandStandard()); //$NON-NLS-1$
 		setPCGenOption("postExportCommandPDF", SettingsHandler.getPostExportCommandPDF()); //$NON-NLS-1$
 		setPCGenOption("prereqFailColor", "0x" + Integer.toHexString(getPrereqFailColor())); //$NON-NLS-1$ //$NON-NLS-2$
-		setPCGenOption("prereqQualifyColor", "0x" //$NON-NLS-1$ //$NON-NLS-2$
-						+ Integer.toHexString(getPrereqQualifyColor()));
 		setPCGenOption("saveCustomInLst", isSaveCustomInLst()); //$NON-NLS-1$
 		setPCGenOption("saveOutputSheetWithPC", getSaveOutputSheetWithPC()); //$NON-NLS-1$
 		setPCGenOption("printSpellsWithPC", getPrintSpellsWithPC()); //$NON-NLS-1$
@@ -797,16 +792,6 @@ public final class SettingsHandler
 	public static String getPrereqFailColorAsHtmlEnd()
 	{
 		return "</font>"; //$NON-NLS-1$
-	}
-
-	public static void setPrereqQualifyColor(final int newColor)
-	{
-		prereqQualifyColor = newColor & 0x00FFFFFF;
-	}
-
-	public static int getPrereqQualifyColor()
-	{
-		return prereqQualifyColor;
 	}
 
 	/**
