@@ -785,7 +785,7 @@ public class Gui2InfoFactory implements InfoFactory
 				? LanguageBundle.getString("in_igInfoLabelTextYes") //$NON-NLS-1$
 				: (SettingsHandler.getPrereqFailColorAsHtmlStart()
 						+ LanguageBundle.getString("in_igInfoLabelTextNo") //$NON-NLS-1$
-						+ SettingsHandler.getPrereqFailColorAsHtmlEnd());
+						+ "</font>");
 			b.appendI18nElement("in_igInfoLabelTextProficient", value); //$NON-NLS-1$
 		}
 

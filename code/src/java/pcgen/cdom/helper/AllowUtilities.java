@@ -82,8 +82,7 @@ public final class AllowUtilities
 				sb.append(HtmlUtils.htmlEscape(tempBuffer.toString()));
 				if (!passes)
 				{
-					sb.append("</i>");
-					sb.append(SettingsHandler.getPrereqFailColorAsHtmlEnd());
+					sb.append("</i></font>");
 				}
 			}
 		}

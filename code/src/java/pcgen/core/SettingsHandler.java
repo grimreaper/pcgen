@@ -733,11 +733,6 @@ public final class SettingsHandler
 		return rString.toString();
 	}
 
-	public static String getPrereqFailColorAsHtmlEnd()
-	{
-		return "</font>"; //$NON-NLS-1$
-	}
-
 	/**
 	 * Output spells on standard PC output sheet?
 	 * @param arg

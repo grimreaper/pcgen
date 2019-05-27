@@ -144,8 +144,7 @@ public final class PrerequisiteUtilities
 
 			if (!passes)
 			{
-				pString.append("</i>");
-				pString.append(SettingsHandler.getPrereqFailColorAsHtmlEnd());
+				pString.append("</i></font>");
 			}
 		}
 
