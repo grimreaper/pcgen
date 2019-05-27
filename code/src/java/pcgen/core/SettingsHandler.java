@@ -92,7 +92,6 @@ public final class SettingsHandler
 	private static final SortedProperties OPTIONS = new SortedProperties();
 	private static final Properties FILEPATHS = new Properties();
 	private static final String FILE_LOCATION = Globals.getFilepathsPath();
-	private static File backupPcgPath = null;
 
 	private static File gmgenPluginDir = new File(Globals.getDefaultPath() + File.separator + "plugins"); //$NON-NLS-1$
 	private static int prereqFailColor = Constants.DEFAULT_PREREQ_FAIL_COLOUR;
@@ -147,26 +146,6 @@ public final class SettingsHandler
 	public static String getDefaultOSType()
 	{
 		return defaultOSType;
-	}
-
-	/**
-	 * Sets the path to the backup directory for character files.
-	 *
-	 * @param  path  the {@code File} representing the path
-	 */
-	public static void setBackupPcgPath(final File path)
-	{
-		backupPcgPath = path;
-	}
-
-	/**
-	 * Returns the path to the backup directory for character files.
-	 *
-	 * @return    the {@code backupPcgPath} property
-	 */
-	public static File getBackupPcgPath()
-	{
-		return backupPcgPath;
 	}
 
 	public static String getFilePaths()
@@ -500,8 +479,6 @@ public final class SettingsHandler
 		setGmgenPluginDir(
 			new File(expandRelativePath(getOptions().getProperty("gmgen.files.gmgenPluginDir", //$NON-NLS-1$
 			System.getProperty("user.dir") + File.separator + "plugins")))); //$NON-NLS-1$ //$NON-NLS-2$
-		setBackupPcgPath(
-			new File(expandRelativePath(getOptions().getProperty("pcgen.files.characters.backup", "")))); //$NON-NLS-1$
 		setPostExportCommandStandard(getPCGenOption("postExportCommandStandard", "")); //$NON-NLS-1$ //$NON-NLS-2$
 		setPostExportCommandPDF(getPCGenOption("postExportCommandPDF", "")); //$NON-NLS-1$ //$NON-NLS-2$
 		setPrereqFailColor(getPCGenOption("prereqFailColor", Color.red.getRGB())); //$NON-NLS-1$
@@ -575,16 +552,6 @@ public final class SettingsHandler
 
 	public static void setOptionsProperties(final PlayerCharacter aPC)
 	{
-		if (getBackupPcgPath() != null && !getBackupPcgPath().getPath().equals(""))
-		{
-			getOptions().setProperty("pcgen.files.characters.backup", //$NON-NLS-1$
-				retractRelativePath(getBackupPcgPath().getAbsolutePath()));
-		}
-		else
-		{
-			getOptions().setProperty("pcgen.files.characters.backup", ""); //$NON-NLS-1$
-		}
-
 		getOptions().setProperty(
 			"pcgen.files.selectedSpellOutputSheet", retractRelativePath(getSelectedSpellSheet())); //$NON-NLS-1$
 		getOptions().setProperty("pcgen.files.selectedCharacterHTMLOutputSheet", //$NON-NLS-1$
