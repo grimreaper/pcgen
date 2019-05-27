@@ -93,7 +93,6 @@ public final class SettingsHandler
 	private static final Properties FILEPATHS = new Properties();
 	private static final String FILE_LOCATION = Globals.getFilepathsPath();
 	private static File backupPcgPath = null;
-	private static boolean createPcgBackup = true;
 
 	private static File gmgenPluginDir = new File(Globals.getDefaultPath() + File.separator + "plugins"); //$NON-NLS-1$
 	private static int prereqFailColor = Constants.DEFAULT_PREREQ_FAIL_COLOUR;
@@ -168,26 +167,6 @@ public final class SettingsHandler
 	public static File getBackupPcgPath()
 	{
 		return backupPcgPath;
-	}
-
-	/**
-	 * Sets the flag to determine whether PCGen should backup pcg files before saving
-	 *
-	 * @param  argCreatePcgBackup  the {@code flag}
-	 */
-	public static void setCreatePcgBackup(final boolean argCreatePcgBackup)
-	{
-		createPcgBackup = argCreatePcgBackup;
-	}
-
-	/**
-	 * Returns the flag to determine whether PCGen should backup pcg files before saving
-	 *
-	 * @return    the {@code createPcgBackup} property
-	 */
-	public static boolean getCreatePcgBackup()
-	{
-		return createPcgBackup;
 	}
 
 	public static String getFilePaths()
@@ -501,7 +480,6 @@ public final class SettingsHandler
 			SourceFormat.values()[getPCGenOption("sourceDisplay", SourceFormat.LONG.ordinal())]); //$NON-NLS-1$
 
 		setAlwaysOverwrite(getPCGenOption("alwaysOverwrite", false)); //$NON-NLS-1$
-		setCreatePcgBackup(getPCGenOption("createPcgBackup", true));
 		setDefaultOSType(getPCGenOption("defaultOSType", null)); //$NON-NLS-1$
 		setGearTab_AllowDebt(getPCGenOption("GearTab.allowDebt", false)); //$NON-NLS-1$
 		setGearTab_BuyRate(buyRate);
@@ -666,7 +644,6 @@ public final class SettingsHandler
 		setRuleChecksInOptions("ruleChecks"); //$NON-NLS-1$
 
 		setPCGenOption("alwaysOverwrite", getAlwaysOverwrite()); //$NON-NLS-1$
-		setPCGenOption("createPcgBackup", getCreatePcgBackup()); //$NON-NLS-1$
 		setPCGenOption("defaultOSType", getDefaultOSType()); //$NON-NLS-1$
 		setPCGenOption("GearTab.allowDebt", getGearTab_AllowDebt()); //$NON-NLS-1$
 		setPCGenOption("GearTab.buyRate", getGearTab_BuyRate()); //$NON-NLS-1$
