@@ -605,7 +605,7 @@ public final class SettingsHandler
 			setPCGenOption("gameMode." + gameModeKey + ".characterType", gameMode.getDefaultCharacterType());
 		}
 
-		setRuleChecksInOptions("ruleChecks"); //$NON-NLS-1$
+		setRuleChecksInOptions(); //$NON-NLS-1$
 
 		setPCGenOption("alwaysOverwrite", getAlwaysOverwrite()); //$NON-NLS-1$
 		setPCGenOption("defaultOSType", getDefaultOSType()); //$NON-NLS-1$
@@ -1119,29 +1119,24 @@ public final class SettingsHandler
 
 	/**
 	 * Set's the RuleChecks in the options.ini file
-	 * @param optionName
 	 **/
-	private static void setRuleChecksInOptions(final String optionName)
+	private static void setRuleChecksInOptions()
 	{
-		String value = ""; //$NON-NLS-1$
+		StringBuilder value = new StringBuilder(); //$NON-NLS-1$
 
-		for (final Map.Entry<String, String> entry : ruleCheckMap.entrySet())
-		{
-			final String aKey = entry.getKey();
-			final String aVal = entry.getValue();
+		ruleCheckMap.forEach((aKey, aVal) -> {
 
-			if (value.isEmpty())
+			if (value.length() == 0)
 			{
-				value = aKey + "|" + aVal; //$NON-NLS-1$
+				value.append(aKey).append('|').append(aVal); //$NON-NLS-1$
 			}
 			else
 			{
-				value += ("," + aKey + "|" + aVal); //$NON-NLS-1$ //$NON-NLS-2$
+				value.append(',').append(aKey).append('|').append(aVal); //$NON-NLS-1$ //$NON-NLS-2$
 			}
-		}
+		});
 
-		//setPCGenOption(optionName, value);
-		getOptions().setProperty("pcgen.options." + optionName, value); //$NON-NLS-1$
+		getOptions().setProperty("pcgen.options.ruleChecks", value.toString()); //$NON-NLS-1$
 	}
 
 	private static String getTmpPath()
