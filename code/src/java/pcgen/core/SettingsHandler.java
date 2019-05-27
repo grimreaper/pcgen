@@ -96,8 +96,6 @@ public final class SettingsHandler
 	private static File gmgenPluginDir = new File(Globals.getDefaultPath() + File.separator + "plugins"); //$NON-NLS-1$
 	private static int prereqFailColor = Constants.DEFAULT_PREREQ_FAIL_COLOUR;
 
-	/////////////////////////////////////////////////
-	private static boolean saveCustomInLst = false;
 	private static String selectedCharacterHTMLOutputSheet = ""; //$NON-NLS-1$
 	private static String selectedCharacterPDFOutputSheet = ""; //$NON-NLS-1$
 	private static boolean saveOutputSheetWithPC = false;
@@ -482,7 +480,6 @@ public final class SettingsHandler
 		setPostExportCommandStandard(getPCGenOption("postExportCommandStandard", "")); //$NON-NLS-1$ //$NON-NLS-2$
 		setPostExportCommandPDF(getPCGenOption("postExportCommandPDF", "")); //$NON-NLS-1$ //$NON-NLS-2$
 		setPrereqFailColor(getPCGenOption("prereqFailColor", Color.red.getRGB())); //$NON-NLS-1$
-		setSaveCustomInLst(getPCGenOption("saveCustomInLst", false)); //$NON-NLS-1$
 		setSaveOutputSheetWithPC(getPCGenOption("saveOutputSheetWithPC", false)); //$NON-NLS-1$
 		setPrintSpellsWithPC(getPCGenOption("printSpellsWithPC", true)); //$NON-NLS-1$
 		setSelectedSpellSheet(
@@ -632,7 +629,6 @@ public final class SettingsHandler
 		setPCGenOption("postExportCommandStandard", SettingsHandler.getPostExportCommandStandard()); //$NON-NLS-1$
 		setPCGenOption("postExportCommandPDF", SettingsHandler.getPostExportCommandPDF()); //$NON-NLS-1$
 		setPCGenOption("prereqFailColor", "0x" + Integer.toHexString(getPrereqFailColor())); //$NON-NLS-1$ //$NON-NLS-2$
-		setPCGenOption("saveCustomInLst", isSaveCustomInLst()); //$NON-NLS-1$
 		setPCGenOption("saveOutputSheetWithPC", getSaveOutputSheetWithPC()); //$NON-NLS-1$
 		setPCGenOption("printSpellsWithPC", getPrintSpellsWithPC()); //$NON-NLS-1$
 		setPCGenOption("showHPDialogAtLevelUp", getShowHPDialogAtLevelUp()); //$NON-NLS-1$
@@ -1146,16 +1142,6 @@ public final class SettingsHandler
 
 		//setPCGenOption(optionName, value);
 		getOptions().setProperty("pcgen.options." + optionName, value); //$NON-NLS-1$
-	}
-
-	private static void setSaveCustomInLst(final boolean aBool)
-	{
-		saveCustomInLst = aBool;
-	}
-
-	private static boolean isSaveCustomInLst()
-	{
-		return saveCustomInLst;
 	}
 
 	private static String getTmpPath()
