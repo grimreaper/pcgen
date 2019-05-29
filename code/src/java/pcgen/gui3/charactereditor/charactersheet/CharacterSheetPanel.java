@@ -1,5 +1,5 @@
 /*
- * Copyright 2008 Connor Petty <cpmeister@users.sourceforge.net>
+ * Copyright 2019 (C) Eitan Adler <lists@eitanadler.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -14,9 +14,8 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
  */
-package pcgen.gui2.csheet;
+package pcgen.gui3.charactereditor.charactersheet;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -38,8 +37,7 @@ import pcgen.system.LanguageBundle;
 import pcgen.util.Logging;
 
 import javafx.application.Platform;
-import javafx.embed.swing.JFXPanel;
-import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.scene.web.WebView;
 
 /**
@@ -49,7 +47,7 @@ import javafx.scene.web.WebView;
  * We'll need a more developed sense of how to correctly handle this,
  * but it exists for now to force us to deal with the dual-platform tech.
  */
-public final class CharacterSheetPanel extends JFXPanel implements CharacterSelectionListener
+public final class CharacterSheetPanel extends Pane implements CharacterSelectionListener
 {
 	private WebView browser;
 	private CharacterFacade character;
@@ -59,13 +57,11 @@ public final class CharacterSheetPanel extends JFXPanel implements CharacterSele
 
 	public CharacterSheetPanel()
 	{
-		GuiAssertions.assertIsNotJavaFXThread();
-		Platform.runLater(() -> {
-			browser = new WebView();
-			browser.setContextMenuEnabled(true);
-			browser.getEngine().setJavaScriptEnabled(true);
-			this.setScene(new Scene(browser));
-		});
+		GuiAssertions.assertIsJavaFXThread();
+		browser = new WebView();
+		browser.setContextMenuEnabled(true);
+		browser.getEngine().setJavaScriptEnabled(true);
+		this.getChildren().add(browser);
 	}
 
 	public void setCharacterSheet(File sheet)

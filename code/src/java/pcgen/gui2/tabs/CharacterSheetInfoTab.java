@@ -42,7 +42,7 @@ import pcgen.facade.util.event.ListEvent;
 import pcgen.facade.util.event.ListListener;
 import pcgen.facade.util.event.ReferenceEvent;
 import pcgen.facade.util.event.ReferenceListener;
-import pcgen.gui2.csheet.CharacterSheetPanel;
+import pcgen.gui3.charactereditor.charactersheet.CharacterSheetPanel;
 import pcgen.gui2.filter.Filter;
 import pcgen.gui2.filter.FilteredListFacadeTableModel;
 import pcgen.gui2.tools.FlippingSplitPane;
@@ -58,6 +58,7 @@ import pcgen.util.enumeration.Tab;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
 import javafx.util.StringConverter;
@@ -81,10 +82,9 @@ public class CharacterSheetInfoTab extends FlippingSplitPane implements Characte
 	/**
 	 * Create a new instance of CharacterSheetInfoTab
 	 */
-	@SuppressWarnings("serial")
-	public CharacterSheetInfoTab()
+	CharacterSheetInfoTab()
 	{
-		this.csheet = new CharacterSheetPanel();
+		this.csheet = GuiUtility.runOnJavaFXThreadNow(CharacterSheetPanel::new);
 		this.sheetBox = new ComboBox<>();
 		this.equipSetTable = TableUtils.createDefaultTable();
 		this.equipSetRowTable = TableUtils.createDefaultTable();
@@ -138,9 +138,9 @@ public class CharacterSheetInfoTab extends FlippingSplitPane implements Characte
 		panel.add(subPane, BorderLayout.CENTER);
 		panel.setPreferredSize(panel.getMinimumSize());
 		setLeftComponent(panel);
-
-		csheet.setPreferredSize(new Dimension(600, 300));
-		setRightComponent(csheet);
+		JFXPanel wrappedCsheet = GuiUtility.wrapParentAsJFXPanel(this.csheet);
+		wrappedCsheet.setPreferredSize(new Dimension(600, 300));
+		setRightComponent(wrappedCsheet);
 
 	}
 
