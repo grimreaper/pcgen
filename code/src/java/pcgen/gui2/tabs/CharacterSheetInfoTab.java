@@ -27,6 +27,7 @@ import java.util.Locale;
 import java.util.stream.Collectors;
 
 import javax.swing.Box;
+import javax.swing.ComboBoxModel;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -70,6 +71,7 @@ public class CharacterSheetInfoTab extends FlippingSplitPane implements Characte
 	private final TabTitle tabTitle = new TabTitle(Tab.CHARACTERSHEET);
 	private final CharacterSheetPanel csheet;
 	private final ComboBox<File> sheetBox;
+	private final ObservableList<File> sheetBoxItems;
 	private final JTable equipSetTable;
 	private final JTable tempBonusTable;
 	private final JTable tempBonusRowTable;
@@ -118,7 +120,9 @@ public class CharacterSheetInfoTab extends FlippingSplitPane implements Characte
 			}
 		});
 
+		sheetBoxItems = FXCollections.observableArrayList();
 		box.add(GuiUtility.wrapParentAsJFXPanel(sheetBox));
+
 		panel.add(box, BorderLayout.NORTH);
 		FlippingSplitPane subPane = new FlippingSplitPane();
 		subPane.setOrientation(VERTICAL_SPLIT);
