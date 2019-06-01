@@ -186,9 +186,9 @@ public class DomainInfoTab extends FlippingSplitPane implements CharacterInfoTab
 		setResizeWeight(0.65);
 	}
 
-	private DynamicTableColumnModel createDomainColumnModel()
+	private static DynamicTableColumnModel createDomainColumnModel()
 	{
-		DefaultDynamicTableColumnModel model = new DefaultDynamicTableColumnModel(1);
+		DynamicTableColumnModel model = new DefaultDynamicTableColumnModel(1);
 		TableColumn column = new TableColumn(0);
 		column.setHeaderValue(LanguageBundle.getString("in_domains")); //$NON-NLS-1$
 		column.setPreferredWidth(150);
