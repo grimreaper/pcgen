@@ -79,7 +79,6 @@ public class CharacterSheetInfoTab extends FlippingSplitPane implements Characte
 	/**
 	 * Create a new instance of CharacterSheetInfoTab
 	 */
-	@SuppressWarnings("serial")
 	public CharacterSheetInfoTab()
 	{
 		this.csheet = new CharacterSheetPanel();
@@ -330,11 +329,6 @@ public class CharacterSheetInfoTab extends FlippingSplitPane implements Characte
 			implements Filter<CharacterFacade, TempBonusFacade>
 	{
 
-		/**
-		 * Version for serialisation.
-		 */
-		private static final long serialVersionUID = -2157540968522498242L;
-
 		private final ListListener<TempBonusFacade> listener = new ListListener<>()
 		{
 
@@ -438,12 +432,6 @@ public class CharacterSheetInfoTab extends FlippingSplitPane implements Characte
 	private class EquipSetTableModel extends FilteredListFacadeTableModel<EquipmentSetFacade>
 			implements ReferenceListener<EquipmentSetFacade>, Filter<CharacterFacade, EquipmentSetFacade>
 	{
-
-		/**
-		 * Version for serialisation.
-		 */
-		private static final long serialVersionUID = 5028006226606996671L;
-
 		public EquipSetTableModel(CharacterFacade character)
 		{
 			super(character);

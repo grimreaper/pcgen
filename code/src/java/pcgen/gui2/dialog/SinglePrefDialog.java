@@ -33,8 +33,6 @@ import javafx.scene.control.ButtonBar;
 /**
  * The Class {@code SinglePrefDialog} displays a single
  * preference panel to the user.
- *
- * 
  */
 public final class SinglePrefDialog extends JDialog
 {

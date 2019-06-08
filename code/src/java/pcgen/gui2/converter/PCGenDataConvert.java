@@ -46,8 +46,6 @@ import org.apache.commons.lang3.SystemUtils;
 
 public final class PCGenDataConvert extends JFrame
 {
-	private static final long serialVersionUID = 3921586726890440663L;
-
 	private static PropertyContextFactory configFactory;
 
 	private PCGenDataConvert()

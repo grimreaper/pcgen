@@ -730,7 +730,6 @@ public final class PurchaseModeFrame extends JDialog
 
 	private final class PurchaseModel extends AbstractTableModel
 	{
-		private static final long serialVersionUID = 8257526994109828957L;
 		private final boolean[] canEdit = {false, true};
 		private final String[] columnHeaders = {LanguageBundle.getString("in_Prefs_abScore"), //$NON-NLS-1$
 			LanguageBundle.getString("in_Prefs_cost")}; //$NON-NLS-1$

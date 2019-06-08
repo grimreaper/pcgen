@@ -82,7 +82,6 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Dialog to allow the preview of character export.
  */
-@SuppressWarnings("serial")
 public final class PrintPreviewDialog extends JDialog implements ActionListener
 {
 

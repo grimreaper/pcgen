@@ -31,8 +31,6 @@ import java.text.DecimalFormatSymbols;
 public final class PrettyIntegerFormat extends DecimalFormat
 {
 
-	private static final long serialVersionUID = 2551454019393922738L;
-
 	/**
 	 * It is usually better to use {@link #getFormat()} to use a single instance of the formatter in the whole program.
 	 */

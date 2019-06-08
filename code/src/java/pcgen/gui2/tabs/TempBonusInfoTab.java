@@ -72,12 +72,6 @@ import pcgen.util.enumeration.Tab;
  */
 public class TempBonusInfoTab extends FlippingSplitPane implements CharacterInfoTab
 {
-
-	/**
-	 * Version for serialisation.
-	 */
-	private static final long serialVersionUID = 4521237435574462482L;
-
 	private final TabTitle tabTitle = new TabTitle(Tab.TEMPBONUS);
 	private final FilteredTreeViewTable<CharacterFacade, TempBonusFacade> availableTable;
 	private final FilteredTreeViewTable<CharacterFacade, TempBonusFacade> selectedTable;
@@ -184,22 +178,16 @@ public class TempBonusInfoTab extends FlippingSplitPane implements CharacterInfo
 
 	private static class TempBonusRenderer extends CharacterTreeCellRenderer
 	{
-
-		/**
-		 * Version for serialisation.
-		 */
-		private static final long serialVersionUID = -9006249573217208478L;
-
 		@Override
 		public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded,
-			boolean leaf, int row, boolean focus)
+			boolean leaf, int row, boolean hasFocus)
 		{
 			Object obj = ((DefaultMutableTreeNode) value).getUserObject();
 			if ("".equals(obj)) //$NON-NLS-1$
 			{
 				obj = LanguageBundle.getString("in_none"); //$NON-NLS-1$
 			}
-			super.getTreeCellRendererComponent(tree, obj, sel, expanded, leaf, row, focus);
+			super.getTreeCellRendererComponent(tree, obj, sel, expanded, leaf, row, hasFocus);
 			if (value instanceof TempBonusFacade && !character.isQualifiedFor((TempBonusFacade) value))
 			{
 				setForeground(ColorUtilty.colorToAWTColor(UIPropertyContext.getNotQualifiedColor()));

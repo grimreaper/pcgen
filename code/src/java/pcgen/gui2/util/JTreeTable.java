@@ -65,7 +65,6 @@ import pcgen.util.Logging;
 public class JTreeTable extends JTableEx
 {
 
-	private static final long serialVersionUID = -3571248405124682593L;
 	/** A subclass of JTree. */
 	private TreeTableCellRenderer tree;
 	private TreeTableModelAdapter adapter;
@@ -607,7 +606,6 @@ public class JTreeTable extends JTableEx
 	private final class ListToTreeSelectionModelWrapper extends DefaultTreeSelectionModel
 	{
 
-		static final long serialVersionUID = -3571248405124682593L;
 		// Set to true when we are updating the ListSelectionModel
 		private boolean updatingListSelectionModel;
 

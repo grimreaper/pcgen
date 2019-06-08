@@ -17,7 +17,6 @@
  */
 package pcgen.core;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -45,13 +44,10 @@ import pcgen.system.PCGenSettings;
  * This is the base class for several objects in the PCGen database.
  */
 public class PObject extends CDOMObject
-		implements Cloneable, Serializable, Comparable<Object>, KeyedListContainer, QualifyingObject
+		implements Cloneable, Comparable<Object>, KeyedListContainer, QualifyingObject
 {
 
 	private HiddenTypeFacet hiddenTypeFacet = FacetLibrary.getFacet(HiddenTypeFacet.class);
-
-	/** Standard serialVersionUID for Serializable objects */
-	private static final long serialVersionUID = 1;
 
 	private final Class<?> myClass = getClass();
 

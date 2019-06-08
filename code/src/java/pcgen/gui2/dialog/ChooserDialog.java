@@ -85,8 +85,6 @@ import org.apache.commons.lang3.StringUtils;
  * chooser is generally displayed via a call to UIDelgate.showGeneralChooser.
  * <p>
  * This class is based heavily on Connor Petty's LanguageChooserDialog class.
- *
- * 
  */
 public class ChooserDialog extends JDialog implements ActionListener, ReferenceListener<Integer>, ListSelectionListener
 {

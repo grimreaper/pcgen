@@ -27,10 +27,6 @@ import java.util.EventObject;
  */
 public class ChangeEvent extends EventObject
 {
-
-	/** ID for serialization. */
-	private static final long serialVersionUID = 4689320734592481155L;
-
 	/**
 	 * Create a new instance of ChangeEvent
 	 * @param source The object being changed

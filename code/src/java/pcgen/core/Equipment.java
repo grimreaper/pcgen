@@ -19,7 +19,6 @@ package pcgen.core;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.util.ArrayList;
@@ -102,11 +101,8 @@ import org.apache.commons.lang3.StringUtils;
  * Represents Equipment for a PC.
  */
 public final class Equipment extends PObject
-		implements Serializable, Comparable<Object>, VariableContainer, EquipmentFacade, PCGenScoped
+		implements Comparable<Object>, VariableContainer, EquipmentFacade, PCGenScoped
 {
-
-	private static final long serialVersionUID = 1;
-
 	private static final String EQMOD_WEIGHT = "_WEIGHTADD";
 
 	private static final String EQMOD_DAMAGE = "_DAMAGE";

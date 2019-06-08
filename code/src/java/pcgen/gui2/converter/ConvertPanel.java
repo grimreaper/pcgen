@@ -47,8 +47,6 @@ import pcgen.gui2.tools.Utility;
 
 public class ConvertPanel extends JPanel
 {
-	private static final long serialVersionUID = 1686411319132380251L;
-
 	private final JPanel basePanel = new JPanel();
 
 	private final JButton finishButton;

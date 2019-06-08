@@ -58,11 +58,8 @@ import org.apache.commons.lang3.mutable.MutableInt;
 
 /**
  * The Class {@code PostLevelUpDialog} provides a display of the results
- * of levelling up a character. 
- *
- * 
+ * of levelling up a character.
  */
-@SuppressWarnings("serial")
 public final class PostLevelUpDialog extends JDialog implements ActionListener
 {
 
