@@ -394,9 +394,6 @@ public final class CharacterStatsPanel extends PCGenPrefsPanel
 		}
 	}
 
-	/**
-	 * Handler for the Purchase Mode Config button.
-	 */
 	private void PurchaseModeButtonPressed(ActionEvent actionEvent)
 	{
 		showPurchaseModeConfiguration();
