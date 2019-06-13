@@ -29,7 +29,7 @@ import pcgen.util.Logging;
 
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.ScrollPane;
 
 public final class ConvertedJavaFXPanel<T extends ResettableController> extends PCGenPrefsPanel
 {
@@ -39,22 +39,25 @@ public final class ConvertedJavaFXPanel<T extends ResettableController> extends 
 
 	public ConvertedJavaFXPanel(Class<T> klass, String resourceName, String titleTextKey)
 	{
-		GuiAssertions.assertIsJavaFXThread();
+		GuiAssertions.assertIsNotJavaFXThread();
 		this.titleTextKey = titleTextKey;
 		URL resource = klass.getResource(resourceName);
 		Logging.debugPrint(String.format("location for %s (%s) is %s", resourceName, klass, resource));
 
 		fxmlLoader.setLocation(resource);
 		fxmlLoader.setResources(LanguageBundle.getBundle());
-		try
-		{
-			VBox vbox = fxmlLoader.load();
-			this.getChildren().add(vbox);
-		} catch (IOException e)
-		{
-			Logging.errorPrint(String.format("failed to load stream fxml (%s/%s/%s)",
-					resourceName, klass, resource), e);
-		}
+		Platform.runLater(() -> {
+			try
+			{
+				ScrollPane pane = fxmlLoader.load();
+				this.getChildren().add(pane);
+			} catch (IOException e)
+			{
+				Logging.errorPrint(String.format("failed to load stream fxml (%s/%s/%s)",
+						resourceName, klass, resource
+				), e);
+			}
+		});
 	}
 
 	@Override

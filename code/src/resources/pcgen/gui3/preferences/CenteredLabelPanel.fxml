@@ -18,9 +18,9 @@
   * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
   -->
 
-<?import javafx.scene.layout.BorderPane?><?import javafx.scene.layout.VBox?><?import javafx.scene.Scene?><?import javafx.scene.text.Text?>
-<Scene xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pcgen.gui3.preferences.CenteredLabelPanelController">
+<?import javafx.scene.control.ScrollPane?><?import javafx.scene.layout.BorderPane?><?import javafx.scene.text.Text?><?import javafx.scene.layout.VBox?>
+<ScrollPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pcgen.gui3.preferences.CenteredLabelPanelController">
     <VBox>
         <Text fx:id="label" BorderPane.alignment="CENTER"/>
     </VBox>
-</Scene>
+</ScrollPane>

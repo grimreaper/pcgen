@@ -58,7 +58,7 @@ public final class SinglePrefDialog extends JDialog
 		);
 
 		this.getContentPane().setLayout(new BorderLayout());
-		this.getContentPane().add(prefsPanel, BorderLayout.CENTER);
+		this.getContentPane().add(GuiUtility.wrapParentAsJFXPanel(prefsPanel));
 		this.getContentPane().add(GuiUtility.wrapParentAsJFXPanel(controlPanel), BorderLayout.PAGE_END);
 		prefsPanel.applyOptionValuesToControls();
 		pack();

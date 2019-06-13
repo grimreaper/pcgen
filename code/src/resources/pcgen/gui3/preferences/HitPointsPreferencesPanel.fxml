@@ -18,10 +18,10 @@
   * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
   -->
 
-<?import javafx.scene.control.RadioButton?><?import javafx.scene.control.Spinner?><?import javafx.scene.control.ToggleGroup?><?import javafx.scene.layout.VBox?><?import javafx.scene.Scene?><?import javafx.scene.text.Text?><?import java.lang.Integer?><?import javafx.scene.control.CheckBox?>
-<Scene xmlns="http://javafx.com/javafx"
-       xmlns:fx="http://javafx.com/fxml"
-       fx:controller="pcgen.gui3.preferences.HitPointsPreferencesController">
+<?import pcgen.cdom.base.Constants?><?import javafx.scene.control.CheckBox?><?import javafx.scene.control.RadioButton?><?import javafx.scene.control.ScrollPane?><?import javafx.scene.control.Spinner?><?import javafx.scene.control.ToggleGroup?><?import javafx.scene.layout.VBox?><?import javafx.scene.text.Text?>
+<ScrollPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="pcgen.gui3.preferences.HitPointsPreferencesController">
     <fx:define>
         <ToggleGroup fx:id="hpModeGroup" />
     </fx:define>
@@ -61,4 +61,4 @@
         <CheckBox fx:id="maxHpAtFirstLevel" text="%in_Prefs_hpMaxAtFirst"/>
         <CheckBox fx:id="maxHpAtFirstClassLevel" text="%in_Prefs_hpMaxAtFirstClass"/>
     </VBox>
-</Scene>
+</ScrollPane>

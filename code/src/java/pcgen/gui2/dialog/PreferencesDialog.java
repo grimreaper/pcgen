@@ -25,7 +25,6 @@ import java.util.function.Consumer;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
 
@@ -113,8 +112,7 @@ public final class PreferencesDialog extends AbstractDialog
 				SwingUtilities.invokeLater(() -> {
 					Logging.debugPrint("new preference tree value is " + newValue);
 					PCGenPrefsPanel value = newValue.getValue();
-					JScrollPane scrollableSettings = new JScrollPane(value);
-					splitPane.setRightComponent(scrollableSettings);
+					splitPane.setRightComponent(GuiUtility.wrapParentAsJFXPanel(value));
 				});
 			});
 			settingsTree.getSelectionModel().select(1);

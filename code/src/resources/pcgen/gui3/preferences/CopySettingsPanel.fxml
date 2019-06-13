@@ -21,7 +21,7 @@
   -->
 
 <?import javafx.scene.text.Text?>
-<Scene xmlns="http://javafx.com/javafx"
+<ScrollPane xmlns="http://javafx.com/javafx"
        xmlns:fx="http://javafx.com/fxml"
        fx:controller="pcgen.gui3.preferences.CopySettingsPanelController">
     <VBox>
@@ -33,4 +33,4 @@
 
         <Text text="%in_Prefs_copyDesc" />
     </VBox>
-</Scene>
+</ScrollPane>

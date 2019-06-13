@@ -20,7 +20,7 @@
   * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
   -->
 
-<Scene xmlns="http://javafx.com/javafx"
+<ScrollPane xmlns="http://javafx.com/javafx"
        xmlns:fx="http://javafx.com/fxml"
        fx:controller="pcgen.gui3.preferences.DisplayOptionsPreferencesPanelController">
     <VBox>
@@ -32,4 +32,4 @@
         <Label labelFor="$cmbChoiceMethods" text="%in_Prefs_singleChoiceOption"/>
         <ComboBox fx:id="cmbChoiceMethods"/>
     </VBox>
-</Scene>
+</ScrollPane>

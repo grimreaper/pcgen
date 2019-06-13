@@ -18,10 +18,10 @@
   * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
   -->
 
-<?import javafx.scene.control.ComboBox?><?import javafx.scene.control.Label?><?import javafx.scene.layout.VBox?><?import javafx.scene.Scene?>
-<Scene xmlns="http://javafx.com/javafx"
-       xmlns:fx="http://javafx.com/fxml"
-       fx:controller="pcgen.gui3.preferences.DefaultsPreferencesPanelController">
+<?import javafx.scene.control.ComboBox?><?import javafx.scene.control.Label?><?import javafx.scene.control.ScrollPane?><?import javafx.scene.layout.VBox?>
+<ScrollPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="pcgen.gui3.preferences.DefaultsPreferencesPanelController">
     <VBox>
         <Label text="%in_Prefs_xpTable" labelFor="$xpTableCombo"/>
         <ComboBox fx:id="xpTableCombo"/>
@@ -32,4 +32,4 @@
         <Label text="%in_Prefs_previewSheet" labelFor="$previewSheetCombo"/>
         <ComboBox fx:id="previewSheetCombo"/>
     </VBox>
-</Scene>
+</ScrollPane>
