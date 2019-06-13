@@ -25,11 +25,11 @@ import pcgen.gui2.prefs.LanguagePanel;
 import pcgen.gui2.prefs.LocationPanel;
 import pcgen.gui2.prefs.OutputPanel;
 import pcgen.gui2.prefs.PCGenPrefsPanel;
-import pcgen.gui3.JFXPanelFromResource;
+import pcgen.gui3.PaneFromResource;
 import pcgen.system.LanguageBundle;
 
-import javafx.embed.swing.JFXPanel;
 import javafx.scene.control.TreeItem;
+import javafx.scene.layout.Pane;
 
 public final class PCGenPreferencesModel
 {
@@ -39,17 +39,17 @@ public final class PCGenPreferencesModel
 	}
 
 	/**
-	 * A wrapper for a JFXPanel to pretend to be a PCGenPrefsPanel
+	 * A wrapper for a Panel to pretend to be a PCGenPrefsPanel
 	 * TODO: move this to a better place or figure out a way not to need this
 	 */
 	private static final class EmptyPrefPanel extends PCGenPrefsPanel
 	{
 		private final String title;
 
-		public EmptyPrefPanel(String title, JFXPanel innerPanel)
+		public EmptyPrefPanel(String title, Pane innerPanel)
 		{
 			this.title = title;
-			this.add(innerPanel);
+			this.getChildren().add(innerPanel);
 		}
 
 		@Override
@@ -78,7 +78,7 @@ public final class PCGenPreferencesModel
 	static TreeItem<PCGenPrefsPanel> buildEmptyPanel(String title, String messageText)
 	{
 		final var panel =
-				new JFXPanelFromResource<>(
+				new PaneFromResource<>(
 						CenteredLabelPanelController.class,
 						"CenteredLabelPanel.fxml"
 				);

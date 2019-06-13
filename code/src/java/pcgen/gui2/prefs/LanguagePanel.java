@@ -25,7 +25,6 @@ import java.util.stream.Collectors;
 import pcgen.core.SettingsHandler;
 import pcgen.core.UnitSet;
 import pcgen.gui3.GuiAssertions;
-import pcgen.gui3.GuiUtility;
 import pcgen.system.ConfigurationSettings;
 import pcgen.system.LanguageBundle;
 
@@ -139,7 +138,7 @@ public final class LanguagePanel extends PCGenPrefsPanel
 		Node restartInfo = new Text(LanguageBundle.getString("in_Prefs_restartInfo"));
 		vbox.getChildren().add(restartInfo);
 
-		this.add(GuiUtility.wrapParentAsJFXPanel(vbox));
+		this.getChildren().add(vbox);
 	}
 
 

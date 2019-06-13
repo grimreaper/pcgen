@@ -17,7 +17,6 @@
  */
 package pcgen.gui2.prefs;
 
-import java.awt.BorderLayout;
 import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,7 +25,6 @@ import java.util.Map;
 import pcgen.core.GameMode;
 import pcgen.core.RuleCheck;
 import pcgen.core.SettingsHandler;
-import pcgen.gui3.GuiUtility;
 import pcgen.system.LanguageBundle;
 
 import javafx.scene.control.ButtonBase;
@@ -54,7 +52,6 @@ public final class HouseRulesPanel extends PCGenPrefsPanel
 	 */
 	public HouseRulesPanel()
 	{
-		setLayout(new BorderLayout());
 		VBox mainPanel = new VBox();
 
 		GameMode gameMode = SettingsHandler.getGameAsProperty().get();
@@ -106,7 +103,7 @@ public final class HouseRulesPanel extends PCGenPrefsPanel
 
 		}
 
-		add(GuiUtility.wrapParentAsJFXPanel(mainPanel));
+		this.getChildren().add(mainPanel);
 
 	}
 

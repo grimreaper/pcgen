@@ -27,7 +27,6 @@ import pcgen.cdom.content.RollMethod;
 import pcgen.core.GameMode;
 import pcgen.core.PointBuyMethod;
 import pcgen.core.SettingsHandler;
-import pcgen.gui3.GuiUtility;
 import pcgen.system.LanguageBundle;
 
 import javafx.application.Platform;
@@ -151,7 +150,7 @@ public final class CharacterStatsPanel extends PCGenPrefsPanel
 		Button purchaseModeButton = new Button(LanguageBundle.getString("in_Prefs_purchaseModeConfig"));
 		vBox.getChildren().add(purchaseModeButton);
 		purchaseModeButton.setOnAction(this::PurchaseModeButtonPressed);
-		this.add(GuiUtility.wrapParentAsJFXPanel(vBox));
+		this.getChildren().add(vBox);
 	}
 
 	@Override

@@ -204,7 +204,7 @@ public final class OutputPanel extends PCGenPrefsPanel
 
 		++row;
 		outerPanel.add(generateTempFileWithPdf, 0, row);
-		this.add(GuiUtility.wrapParentAsJFXPanel(outerPanel));
+		this.getChildren().add(outerPanel);
 	}
 
 	@Override

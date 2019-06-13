@@ -17,13 +17,13 @@
  */
 package pcgen.gui2.prefs;
 
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 
 /**
  * The abstract class {@code PCGenPrefsPanel} defines the
  * interface for a panel in the Preferences dialog.
  */
-public abstract class PCGenPrefsPanel extends JPanel
+public abstract class PCGenPrefsPanel extends Pane
 {
 
 	/**

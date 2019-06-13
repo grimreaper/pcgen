@@ -18,29 +18,43 @@
 
 package pcgen.gui3.preferences;
 
+import java.io.IOException;
+import java.net.URL;
+
 import pcgen.gui2.prefs.PCGenPrefsPanel;
 import pcgen.gui3.GuiAssertions;
-import pcgen.gui3.JFXPanelFromResource;
 import pcgen.gui3.ResettableController;
 import pcgen.system.LanguageBundle;
+import pcgen.util.Logging;
 
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.VBox;
 
 public final class ConvertedJavaFXPanel<T extends ResettableController> extends PCGenPrefsPanel
 {
 	private final String titleTextKey;
-	private final JFXPanelFromResource<T> panel;
+	private final FXMLLoader fxmlLoader = new FXMLLoader();
 
-	public ConvertedJavaFXPanel(Class<T> klass, String resource, String titleTextKey)
+
+	public ConvertedJavaFXPanel(Class<T> klass, String resourceName, String titleTextKey)
 	{
+		GuiAssertions.assertIsJavaFXThread();
 		this.titleTextKey = titleTextKey;
-		this.panel =
-				new JFXPanelFromResource<>(
-						klass,
-						resource
-				);
-		this.add(panel);
+		URL resource = klass.getResource(resourceName);
+		Logging.debugPrint(String.format("location for %s (%s) is %s", resourceName, klass, resource));
 
+		fxmlLoader.setLocation(resource);
+		fxmlLoader.setResources(LanguageBundle.getBundle());
+		try
+		{
+			VBox vbox = fxmlLoader.load();
+			this.getChildren().add(vbox);
+		} catch (IOException e)
+		{
+			Logging.errorPrint(String.format("failed to load stream fxml (%s/%s/%s)",
+					resourceName, klass, resource), e);
+		}
 	}
 
 	@Override
@@ -54,24 +68,18 @@ public final class ConvertedJavaFXPanel<T extends ResettableController> extends 
 	{
 		GuiAssertions.assertIsNotJavaFXThread();
 		Platform.runLater(() ->
-			panel.getControllerFromJavaFXThread().reset()
+			fxmlLoader.<T>getController().reset()
 		);
 	}
 
 	@Override
 	public void setOptionsBasedOnControls()
 	{
-		panel.getController().apply();
+		fxmlLoader.<T>getController().apply();
 	}
 
 	public T getController()
 	{
-		return this.panel.getController();
-	}
-
-	@Override
-	public String toString()
-	{
-		return getTitle();
+		return fxmlLoader.getController();
 	}
 }
