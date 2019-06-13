@@ -23,6 +23,7 @@ import java.net.URL;
 
 import pcgen.gui2.prefs.PCGenPrefsPanel;
 import pcgen.gui3.GuiAssertions;
+import pcgen.gui3.GuiUtility;
 import pcgen.gui3.ResettableController;
 import pcgen.system.LanguageBundle;
 import pcgen.util.Logging;
@@ -83,6 +84,7 @@ public final class ConvertedJavaFXPanel<T extends ResettableController> extends 
 
 	public T getController()
 	{
-		return fxmlLoader.getController();
+		GuiAssertions.assertIsNotJavaFXThread();
+		return GuiUtility.runOnJavaFXThreadNow(() -> fxmlLoader.getController());
 	}
 }

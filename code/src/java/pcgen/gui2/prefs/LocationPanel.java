@@ -21,7 +21,6 @@ import java.io.File;
 
 import pcgen.cdom.base.Constants;
 import pcgen.gui3.GuiAssertions;
-import pcgen.gui3.GuiUtility;
 import pcgen.system.ConfigurationSettings;
 import pcgen.system.ConfigurationSettings.SettingsFilesPath;
 import pcgen.system.LanguageBundle;
@@ -252,7 +251,7 @@ public final class LocationPanel extends PCGenPrefsPanel
 		vBox.getChildren().add(pcgenFilesDirButton);
 		pcgenFilesDirButton.setOnAction(this::prefsButtonHandler);
 
-		this.add(GuiUtility.wrapParentAsJFXPanel(vBox));
+		this.getChildren().add(vBox);
 	}
 
 	@Override

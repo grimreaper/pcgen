@@ -27,6 +27,7 @@ import pcgen.util.Logging;
 
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -53,7 +54,7 @@ public final class PaneFromResource<T> extends Pane implements Controllable<T>
 		Platform.runLater(() -> {
 			try
 			{
-				Pane pane = fxmlLoader.load();
+				ScrollPane pane = fxmlLoader.load();
 				this.getChildren().add(pane);
 			} catch (IOException e)
 			{

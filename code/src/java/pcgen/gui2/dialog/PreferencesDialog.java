@@ -37,10 +37,13 @@ import pcgen.system.LanguageBundle;
 import pcgen.util.Logging;
 
 import javafx.application.Platform;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.text.Text;
 
 /**
  *  PCGen preferences dialog
@@ -89,6 +92,7 @@ public final class PreferencesDialog extends AbstractDialog
 		Platform.runLater(() -> {
 
 			settingsTree.setRoot(root);
+			settingsTree.setCellFactory(p -> new PCGenPrefsPanelTreeCell());
 
 			settingsTree.showRootProperty().set(false);
 			settingsTree.selectionModelProperty().get().setSelectionMode(SelectionMode.SINGLE);
@@ -165,4 +169,12 @@ public final class PreferencesDialog extends AbstractDialog
 		return true;
 	}
 
+	private static class PCGenPrefsPanelTreeCell extends TreeCell<PCGenPrefsPanel>
+	{
+		@Override
+		public Node getStyleableNode()
+		{
+			return new Text("intro bill");
+		}
+	}
 }
