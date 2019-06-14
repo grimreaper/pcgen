@@ -84,7 +84,7 @@ public class RunConvertPanel extends ConvertSubPanel implements Observer, Conver
 
 	private JProgressBar progressBar;
 	private ArrayList<Campaign> totalCampaigns;
-	private final EditorLoadContext context;
+	private final EditorLoadContext editorLoadContext;
 	private JTextArea messageArea;
 	private String lastNotifiedFilename = "";
 	private String currFilename = "";
@@ -93,7 +93,7 @@ public class RunConvertPanel extends ConvertSubPanel implements Observer, Conver
 
 	public RunConvertPanel(Component statusField)
 	{
-		context = new EditorLoadContext();
+		editorLoadContext = new EditorLoadContext();
 		this.statusField = statusField;
 		PropertyContext context = PCGenSettings.getInstance();
 		String dataLogFileName = context.initProperty(PCGenSettings.CONVERT_DATA_LOG_FILE, "dataChanges.log");
@@ -132,7 +132,7 @@ public class RunConvertPanel extends ConvertSubPanel implements Observer, Conver
 			SettingsHandler.setGame(pc.get(ObjectKey.GAME_MODE).getName());
 			GameMode mode = SettingsHandler.getGame();
 			//Necessary for "good" behavior
-			mode.resolveInto(context.getReferenceContext());
+			mode.resolveInto(editorLoadContext.getReferenceContext());
 			//Necessary for those still using Globals.getContext
 			mode.resolveInto(mode.getContext().getReferenceContext());
 			LSTConverter converter;
@@ -145,7 +145,7 @@ public class RunConvertPanel extends ConvertSubPanel implements Observer, Conver
 				               .append(startTime)
 				               .append("\n");
 				changeLogWriter.append("Outputting files to " + outDir.getAbsolutePath() + "\n");
-				converter = new LSTConverter(context, rootDir, outDir.getAbsolutePath(), this, changeLogWriter);
+				converter = new LSTConverter(editorLoadContext, rootDir, outDir.getAbsolutePath(), this, changeLogWriter);
 				converter.addObserver(this);
 				int numFiles = totalCampaigns.stream()
 				                             .mapToInt(converter::getNumFilesInCampaign)
@@ -153,7 +153,7 @@ public class RunConvertPanel extends ConvertSubPanel implements Observer, Conver
 				setTotalFileCount(numFiles);
 				converter.initCampaigns(totalCampaigns);
 				totalCampaigns.forEach(converter::processCampaign);
-				ObjectInjector oi = new ObjectInjector(context, outDir, rootDir, converter);
+				ObjectInjector oi = new ObjectInjector(editorLoadContext, outDir, rootDir, converter);
 				oi.writeInjectedObjects(totalCampaigns);
 			}
 			catch (IOException e1)

@@ -47,8 +47,6 @@ import pcgen.gui2.tools.Utility;
 
 public class ConvertPanel extends JPanel
 {
-	private static final long serialVersionUID = 1686411319132380251L;
-
 	private final JPanel basePanel = new JPanel();
 
 	private final JButton finishButton;
@@ -167,16 +165,15 @@ public class ConvertPanel extends JPanel
 
 	public void prepare(ConvertSubPanel panel, boolean allowPrev)
 	{
-		setButtonVisibility(panel.isLast(), allowPrev);
+		setButtonVisibility(allowPrev);
 		panel.addProgressListener(pl);
 		panel.performAnalysis(properties);
 	}
 
-	private void setButtonVisibility(boolean displayingLast, boolean allowPrev)
+	private void setButtonVisibility(boolean allowPrev)
 	{
 		nextButton.setEnabled(false);
 		prevButton.setEnabled(allowPrev);
-		//finishButton.setVisible(displayingLast);
 		cancelButton.setVisible(true);
 	}
 
