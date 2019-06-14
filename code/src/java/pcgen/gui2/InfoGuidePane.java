@@ -18,17 +18,8 @@
  */
 package pcgen.gui2;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.util.Objects;
 
-import javax.swing.BorderFactory;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
 import javax.swing.plaf.UIResource;
 
 import pcgen.cdom.base.Constants;
@@ -37,9 +28,14 @@ import pcgen.facade.core.SourceSelectionFacade;
 import pcgen.gui2.tools.Icons;
 import pcgen.gui2.tools.TipOfTheDayHandler;
 import pcgen.gui2.util.HtmlInfoBuilder;
-import pcgen.gui3.JFXPanelFromResource;
-import pcgen.gui3.SimpleHtmlPanelController;
+import pcgen.gui3.GuiAssertions;
 import pcgen.system.LanguageBundle;
+
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.web.WebView;
 
 /**
  * This class provides a guide for first time 
@@ -47,7 +43,7 @@ import pcgen.system.LanguageBundle;
  * Note: this class extends UIResource so that the component can be added
  * as a child of a JTabbedPane without it becoming a tab
  */
-class InfoGuidePane extends JComponent implements UIResource
+class InfoGuidePane extends Pane implements UIResource
 {
 
 	/**
@@ -55,67 +51,57 @@ class InfoGuidePane extends JComponent implements UIResource
 	 */
 	private final UIContext uiContext;
 	private final PCGenFrame frame;
-	private final JFXPanelFromResource<SimpleHtmlPanelController> gameModeLabel;
-	private final JFXPanelFromResource<SimpleHtmlPanelController> campaignList;
-	private final JFXPanelFromResource<SimpleHtmlPanelController> tipPane;
+	private final WebView gameModeLabel;
+	private final WebView campaignList;
+	private final WebView tipPane;
 
 	InfoGuidePane(PCGenFrame frame, UIContext uiContext)
 	{
+		GuiAssertions.assertIsJavaFXThread();
 		this.uiContext = Objects.requireNonNull(uiContext);
 		this.frame = frame;
-		this.gameModeLabel = createHtmlPane();
-		this.campaignList = createHtmlPane();
-		this.tipPane = createHtmlPane();
+		this.gameModeLabel = new WebView();
+		this.campaignList = new WebView();
+		this.tipPane = new WebView();
 		TipOfTheDayHandler.getInstance().loadTips();
 		initComponents();
 		initListeners();
-	}
 
-	private static JFXPanelFromResource<SimpleHtmlPanelController> createHtmlPane()
-	{
-		return new JFXPanelFromResource<>(
-				SimpleHtmlPanelController.class,
-				"SimpleHtmlPanel.fxml"
-		);
 	}
 
 	private void initComponents()
 	{
-		/*
-		 * The layout here is kind of wonky and forces us into a fixed size.
-		 * As we convert to JavaFX strongly consider replacing fixed constants with layout that respect their parents.
-		 */
-		JPanel mainPanel = new JPanel();
-		mainPanel.setBorder(
-			BorderFactory.createTitledBorder(null, "", TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION, null));
+		GuiAssertions.assertIsJavaFXThread();
+		BorderPane mainPanel = new BorderPane();
+		VBox sourcesPanel = new VBox();
+		sourcesPanel.setPrefSize(650, 250);
 
-		mainPanel.setLayout(new GridLayout(0, 1));
-		mainPanel.setPreferredSize(new Dimension(650, 650));
-		setOpaque(false);
 
-		JPanel sourcesPanel = new JPanel(new GridLayout(0, 1));
+		sourcesPanel.getChildren().add(new Text(LanguageBundle.getString("in_si_intro")));
+		sourcesPanel.getChildren().add(new Text(LanguageBundle.getString("in_si_gamemode")));
+		sourcesPanel.getChildren().add(gameModeLabel);
+		sourcesPanel.getChildren().add(new Text(LanguageBundle.getString("in_si_sources")));
+		sourcesPanel.getChildren().add(campaignList);
 
-		sourcesPanel.setPreferredSize(new Dimension(650, 250));
-		sourcesPanel.add(new JLabel(LanguageBundle.getString("in_si_intro")));
-		sourcesPanel.add(new JLabel(LanguageBundle.getString("in_si_gamemode")));
-		sourcesPanel.add(gameModeLabel);
-		sourcesPanel.add(new JLabel(LanguageBundle.getString("in_si_sources")));
-		sourcesPanel.add(campaignList);
+		WebView guidePane = new WebView();
+		guidePane.getEngine().loadContent(LanguageBundle.getFormattedString(
+						"in_si_whatnext",
+						Icons.New16.getImageIcon(),
+						Icons.Open16.getImageIcon()
+				));
+		mainPanel.getChildren().add(sourcesPanel);
+		mainPanel.getChildren().add(guidePane);
+		mainPanel.getChildren().add(tipPane);
 
-		var guidePane = createHtmlPane();
-		guidePane.getController().setHtml(LanguageBundle.getFormattedString("in_si_whatnext",
-				Icons.New16.getImageIcon(),
-			Icons.Open16.getImageIcon()));
-
-		mainPanel.add(sourcesPanel);
-		mainPanel.add(guidePane);
-		mainPanel.add(tipPane);
 		refreshDisplayedSources(null);
 
-		setLayout(new FlowLayout());
-		add(mainPanel, BorderLayout.CENTER);
+		getChildren().add(mainPanel);
 
-		tipPane.getController().setHtml(LanguageBundle.getFormattedString("in_si_tip", TipOfTheDayHandler.getInstance().getNextTip()));
+		tipPane.getEngine()
+		       .loadContent(LanguageBundle.getFormattedString(
+				       "in_si_tip",
+				       TipOfTheDayHandler.getInstance().getNextTip()
+		       ));
 	}
 
 	private void initListeners()
@@ -124,7 +110,7 @@ class InfoGuidePane extends JComponent implements UIResource
 			if (e.getNewReference() == null)
 			{
 				this.setVisible(true);
-				tipPane.getController().setHtml(
+				tipPane.getEngine().loadContent(
 						LanguageBundle.getFormattedString(
 								"in_si_tip",
 								TipOfTheDayHandler.getInstance().getNextTip()
@@ -142,17 +128,18 @@ class InfoGuidePane extends JComponent implements UIResource
 
 	private void refreshDisplayedSources(SourceSelectionFacade sources)
 	{
+		GuiAssertions.assertIsJavaFXThread();
 		if (sources == null)
 		{
-			gameModeLabel.getController().setHtml(Constants.WRAPPED_NONE_SELECTED);
+			gameModeLabel.getEngine().loadContent(Constants.WRAPPED_NONE_SELECTED);
 		}
 		else
 		{
-			gameModeLabel.getController().setHtml(sources.getGameMode().get().getDisplayName());
+			gameModeLabel.getEngine().loadContent(sources.getGameMode().get().getDisplayName());
 		}
 		if (sources == null || sources.getCampaigns().isEmpty())
 		{
-			campaignList.getController().setHtml(LanguageBundle.getString("in_si_nosources"));
+			campaignList.getEngine().loadContent(LanguageBundle.getString("in_si_nosources"));
 		}
 		else
 		{
@@ -161,7 +148,7 @@ class InfoGuidePane extends JComponent implements UIResource
 			{
 				builder.append(campaign.getKeyName()).appendLineBreak();
 			}
-			campaignList.getController().setHtml(builder.toString());
+			campaignList.getEngine().loadContent(builder.toString());
 		}
 	}
 

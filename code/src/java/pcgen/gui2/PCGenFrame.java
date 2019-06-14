@@ -179,7 +179,12 @@ public final class PCGenFrame extends JFrame implements UIDelegate, CharacterSel
 		root.setActionMap(actionMap);
 		root.setInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT, createInputMap(actionMap));
 
-		characterTabs.add(new InfoGuidePane(this, uiContext));
+		InfoGuidePane infoGuidePane = GuiUtility.runOnJavaFXThreadNow(
+				() -> new InfoGuidePane(this, uiContext));
+		JPanel jPanelWrapperForInfoGuidePane = new JPanel();
+		jPanelWrapperForInfoGuidePane.add(GuiUtility.wrapParentAsJFXPanel(infoGuidePane));
+		characterTabs.add(jPanelWrapperForInfoGuidePane);
+
 
 		setJMenuBar(pcGenMenuBar);
 		PCGenToolBar pcGenToolBar = new PCGenToolBar(this);
