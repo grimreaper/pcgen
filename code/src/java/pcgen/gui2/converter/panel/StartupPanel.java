@@ -18,13 +18,13 @@
 package pcgen.gui2.converter.panel;
 
 import java.awt.Dimension;
+import java.awt.GridLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
 import pcgen.cdom.base.CDOMObject;
-import pcgen.gui2.converter.UnstretchingGridLayout;
 import pcgen.gui2.converter.event.ProgressEvent;
 import pcgen.persistence.CampaignFileLoader;
 import pcgen.persistence.GameModeFileLoader;
@@ -50,19 +50,16 @@ public class StartupPanel extends ConvertSubPanel
 		this.gameModeFileLoader = gameModeFileLoader;
 		this.campaignFileLoader = campaignFileLoader;
 		message = new JPanel();
-		message.setLayout(new UnstretchingGridLayout(0, 1));
+		message.setLayout(new GridLayout(0, 1));
 		message
 			.add(new JLabel("Welcome to the PCGen " + PCGenPropBundle.getProdVersionSeries() + " Data Converter..."));
-		message.add(new JLabel(" "));
-		message.add(new JLabel("Loading Game Modes and Campaign Information."));
-		message.add(new JLabel(" "));
+		message.add(new JLabel(" Loading Game Modes and Campaign Information. "));
 
 		progressBar = new JProgressBar(0, 3);
 		progressBar.setValue(0);
 		progressBar.setStringPainted(true);
 
 		message.add(progressBar);
-		message.add(new JLabel(" "));
 	}
 
 	@Override
@@ -97,11 +94,4 @@ public class StartupPanel extends ConvertSubPanel
 		panel.add(message);
 		panel.setPreferredSize(new Dimension(800, 500));
 	}
-
-	@Override
-	public boolean isLast()
-	{
-		return false;
-	}
-
 }

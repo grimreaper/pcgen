@@ -29,8 +29,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.AbstractTableModel;
 
 import pcgen.cdom.base.CDOMObject;
@@ -116,32 +114,26 @@ public class CampaignPanel extends ConvertSubPanel
 				java.awt.Point p = e.getPoint();
 				int rowIndex = rowAtPoint(p);
 				int colIndex = columnAtPoint(p);
-				String tip = String.valueOf(getValueAt(rowIndex, colIndex));
-				return tip;
+				return String.valueOf(getValueAt(rowIndex, colIndex));
 			}
 		};
-		table.getSelectionModel().addListSelectionListener(new ListSelectionListener()
-		{
-			@Override
-			public void valueChanged(ListSelectionEvent event)
+		table.getSelectionModel().addListSelectionListener(event -> {
+			pc.removeListFor(ListKey.CAMPAIGN);
+			int[] selRows = table.getSelectedRows();
+			if (selRows.length == 0)
 			{
-				pc.removeListFor(ListKey.CAMPAIGN);
-				int[] selRows = table.getSelectedRows();
-				if (selRows.length == 0)
+				saveSourceSelection(pc);
+				fireProgressEvent(ProgressEvent.NOT_ALLOWED);
+			}
+			else
+			{
+				for (int row : selRows)
 				{
-					saveSourceSelection(pc);
-					fireProgressEvent(ProgressEvent.NOT_ALLOWED);
+					Campaign selCampaign = (Campaign) model.getValueAt(row, 0);
+					pc.addToListFor(ListKey.CAMPAIGN, selCampaign);
 				}
-				else
-				{
-					for (int row : selRows)
-					{
-						Campaign selCampaign = (Campaign) model.getValueAt(row, 0);
-						pc.addToListFor(ListKey.CAMPAIGN, selCampaign);
-					}
-					saveSourceSelection(pc);
-					fireProgressEvent(ProgressEvent.ALLOWED);
-				}
+				saveSourceSelection(pc);
+				fireProgressEvent(ProgressEvent.ALLOWED);
 			}
 		});
 
@@ -179,7 +171,7 @@ public class CampaignPanel extends ConvertSubPanel
 		}
 	}
 
-	private void saveSourceSelection(CDOMObject pc)
+	private static void saveSourceSelection(CDOMObject pc)
 	{
 		List<Campaign> selCampaigns = pc.getSafeListFor(ListKey.CAMPAIGN);
 		PCGenSettings context = PCGenSettings.getInstance();
@@ -211,7 +203,8 @@ public class CampaignPanel extends ConvertSubPanel
 			int i = 0;
 			for (Campaign campaign : campList)
 			{
-				rowData[i++] = new Object[]{campaign, campaign.getSourceURI().toString().substring(prefix.length())};
+				rowData[i] = new Object[]{campaign, campaign.getSourceURI().toString().substring(prefix.length())};
+				i++;
 			}
 		}
 

@@ -41,11 +41,8 @@ import pcgen.util.Logging;
  * The Class {@code ConversionChoiceDialog} is responsible for
  * displaying choices the user needs to make as part of the conversion 
  * of some data items. 
- * 
- * 
  */
-@SuppressWarnings("serial")
-public class ConversionChoiceDialog extends JDialog implements ActionListener
+public final class ConversionChoiceDialog extends JDialog implements ActionListener
 {
 
 	private final List<String> choices;
@@ -65,7 +62,7 @@ public class ConversionChoiceDialog extends JDialog implements ActionListener
 	 * @param choices The list of choices the user can make. The first item is the default.
 	 * @param defaultChoice The index of the initially selected option.
 	 */
-	public ConversionChoiceDialog(Frame parent, String introText, List<String> choices, int defaultChoice)
+	ConversionChoiceDialog(Frame parent, String introText, List<String> choices, int defaultChoice)
 	{
 		super(parent, "PCGenDataConvert", true);
 

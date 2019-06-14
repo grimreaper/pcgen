@@ -31,11 +31,6 @@ public abstract class ConvertSubPanel implements ProgressMonitor
 {
 	private final ProgressSupport support;
 
-	public boolean isLast()
-	{
-		return false;
-	}
-
 	protected ConvertSubPanel()
 	{
 		support = new ProgressSupport(this);
@@ -56,16 +51,6 @@ public abstract class ConvertSubPanel implements ProgressMonitor
 	public void addProgressListener(ProgressListener listener)
 	{
 		support.addProgressListener(listener);
-	}
-
-	public ProgressListener[] getProgressListeners()
-	{
-		return support.getProgressListeners();
-	}
-
-	public void removeProgressListener(ProgressListener listener)
-	{
-		support.removeProgressListener(listener);
 	}
 
 	@Override
@@ -96,16 +81,6 @@ public abstract class ConvertSubPanel implements ProgressMonitor
 		private void addProgressListener(ProgressListener listener)
 		{
 			listenerList.add(ProgressListener.class, listener);
-		}
-
-		private synchronized ProgressListener[] getProgressListeners()
-		{
-			return listenerList.getListeners(ProgressListener.class);
-		}
-
-		private void removeProgressListener(ProgressListener listener)
-		{
-			listenerList.remove(ProgressListener.class, listener);
 		}
 
 		@Override

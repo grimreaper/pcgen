@@ -41,14 +41,14 @@ import pcgen.util.Logging;
  * of some data items. 
  */
 @SuppressWarnings("serial")
-public class ConversionInputDialog extends JDialog implements ActionListener
+public final class ConversionInputDialog extends JDialog implements ActionListener
 {
 
 	private final String introText;
 
 	private String result;
 
-	private JTextField field;
+	private final JTextField field;
 
 	/**
 	 * Instantiates a new decision dialog for the data converter.
@@ -62,23 +62,8 @@ public class ConversionInputDialog extends JDialog implements ActionListener
 
 		this.introText = introText;
 
-		initComponents();
 		setLocationRelativeTo(parent);
-	}
 
-	/**
-	 * @return the result
-	 */
-	public String getResult()
-	{
-		return result;
-	}
-
-	/**
-	 * Initialises the user interface.
-	 */
-	private void initComponents()
-	{
 		setLayout(new GridBagLayout());
 
 		JLabel introLabel = new JLabel(introText);
@@ -118,7 +103,14 @@ public class ConversionInputDialog extends JDialog implements ActionListener
 				logInput();
 			}
 		});
+	}
 
+	/**
+	 * @return the result
+	 */
+	public String getResult()
+	{
+		return result;
 	}
 
 	@Override

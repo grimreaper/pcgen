@@ -38,6 +38,7 @@ import pcgen.cdom.enumeration.VariableKey;
 import pcgen.core.Ability;
 import pcgen.core.AbilityCategory;
 import pcgen.gui2.converter.event.TokenProcessEvent;
+import pcgen.gui2.converter.event.TokenProcessor;
 import pcgen.gui2.converter.event.TokenProcessorPlugin;
 import pcgen.system.PluginLoader;
 import pcgen.util.Logging;
@@ -52,13 +53,13 @@ public final class TokenConverter
 	private static final DoubleKeyMapToList<Class<?>, String, TokenProcessorPlugin> TOKEN_CACHE =
 			new DoubleKeyMapToList<>();
 
-	private static final DefaultTokenProcessor DEFAULT_PROC = new DefaultTokenProcessor();
+	private static final TokenProcessor DEFAULT_PROC = new DefaultTokenProcessor();
 
 	private TokenConverter()
 	{
 	}
 
-	public static void addToTokenMap(TokenProcessorPlugin tpp)
+	private static void addToTokenMap(TokenProcessorPlugin tpp)
 	{
 		TokenProcessorPlugin old = MAP.put(tpp.getProcessedClass(), tpp.getProcessedToken(), tpp);
 		if (old != null)
@@ -145,7 +146,7 @@ public final class TokenConverter
 		}
 	}
 
-	static class ConverterIterator implements Iterator<TokenProcessorPlugin>
+	static final class ConverterIterator implements Iterator<TokenProcessorPlugin>
 	{
 
 		private Class<?> rootClass;
@@ -153,7 +154,7 @@ public final class TokenConverter
 		private TokenProcessorPlugin nextToken = null;
 		private boolean needNewToken = true;
 
-		public ConverterIterator(Class<?> cl, String key)
+		private ConverterIterator(Class<?> cl, String key)
 		{
 			rootClass = cl;
 			tokenKey = key;
@@ -166,7 +167,7 @@ public final class TokenConverter
 			return !needNewToken;
 		}
 
-		protected void setNextToken()
+		private void setNextToken()
 		{
 			if (needNewToken)
 			{
@@ -180,7 +181,7 @@ public final class TokenConverter
 			}
 		}
 
-		protected TokenProcessorPlugin grabToken(Class<?> cl, String key)
+		private static TokenProcessorPlugin grabToken(Class<?> cl, String key)
 		{
 			return MAP.get(cl, key);
 		}
@@ -204,7 +205,7 @@ public final class TokenConverter
 		}
 	}
 
-	public static List<TokenProcessorPlugin> getTokens(Class<?> cl, String name)
+	private static List<TokenProcessorPlugin> getTokens(Class<?> cl, String name)
 	{
 		List<TokenProcessorPlugin> list = TOKEN_CACHE.getListFor(cl, name);
 		if (!CACHED.containsKey(cl, name))
