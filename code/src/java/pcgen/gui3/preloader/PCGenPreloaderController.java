@@ -18,6 +18,7 @@
 
 package pcgen.gui3.preloader;
 
+import pcgen.gui3.GuiAssertions;
 import pcgen.gui3.component.PCGenStatusBar;
 
 import javafx.fxml.FXML;
@@ -32,6 +33,7 @@ public final class PCGenPreloaderController
 
 	public void setProgress(String message, double progress)
 	{
+		GuiAssertions.assertIsNotJavaFXThread();
 		pcGenStatusBar.setProgress(message, progress);
 	}
 }

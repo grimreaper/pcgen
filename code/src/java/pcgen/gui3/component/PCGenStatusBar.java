@@ -20,6 +20,7 @@ package pcgen.gui3.component;
 
 import java.io.IOException;
 
+import pcgen.gui3.GuiAssertions;
 import pcgen.gui3.core.IORuntimeException;
 import pcgen.system.LanguageBundle;
 
@@ -74,11 +75,13 @@ public final class PCGenStatusBar extends HBox
 
 	public void setProgress(String message, double progress)
 	{
+		GuiAssertions.assertIsNotJavaFXThread();
 		setProgress(message, progress, String.format("%.0f%%", progress * 100));
 	}
 
 	public void setProgress(String message, double progress, String progressText)
 	{
+		GuiAssertions.assertIsNotJavaFXThread();
 		Platform.runLater(() -> {
 			model.messageProperty().setValue(message);
 			model.percentDoneProperty().setValue(progress);

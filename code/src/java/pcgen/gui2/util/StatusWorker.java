@@ -17,12 +17,6 @@
  *
  */
 
-/**
- * 
- * StatusWorker extends SwingWorker to handle progress display in the status bar.
- * 		It replaces TaskExecutor, which was a private class inside PCGenStatusBar.
- *
- */
 package pcgen.gui2.util;
 
 import java.util.ArrayList;
@@ -39,6 +33,12 @@ import pcgen.system.PCGenTaskEvent;
 import pcgen.system.PCGenTaskListener;
 import pcgen.util.Logging;
 
+/**
+ *
+ * StatusWorker extends SwingWorker to handle progress display in the status bar.
+ * 		It replaces TaskExecutor, which was a private class inside PCGenStatusBar.
+ *
+ */
 public class StatusWorker extends SwingWorker<List<LogRecord>, List<LogRecord>> implements PCGenTaskListener
 {
 	private final String statusMsg;
@@ -74,9 +74,8 @@ public class StatusWorker extends SwingWorker<List<LogRecord>, List<LogRecord>> 
 		{
 			dirty = true;
 			SwingUtilities.invokeLater(() -> {
-				statusBar.getProgressBar().getModel().setRangeProperties(task.getProgress(), 1, 0,
-					task.getMaximum(), true);
-				statusBar.getProgressBar().setString(task.getMessage());
+				statusBar.setProgressValue(task.getProgress() / task.getMaximum());
+				statusBar.setContextMessage(task.getMessage());
 				dirty = false;
 			});
 		}
@@ -101,7 +100,7 @@ public class StatusWorker extends SwingWorker<List<LogRecord>, List<LogRecord>> 
 	{
 		final String oldMessage = statusBar.getContextMessage();
 		statusBar.startShowingProgress(statusMsg, false);
-		statusBar.getProgressBar().getModel().setRangeProperties(task.getProgress(), 1, 0, task.getMaximum(), true);
+		statusBar.setProgressValue(task.getProgress() / (task.getMaximum()+1));
 
 		task.addPCGenTaskListener(this);
 
@@ -109,7 +108,7 @@ public class StatusWorker extends SwingWorker<List<LogRecord>, List<LogRecord>> 
 		{
 			task.run();
 		}
-		catch (Exception e)
+		catch (RuntimeException e)
 		{
 			Logging.errorPrint(e.getLocalizedMessage(), e);
 		}

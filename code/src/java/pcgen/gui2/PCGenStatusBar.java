@@ -21,11 +21,7 @@ package pcgen.gui2;
 import java.util.List;
 import java.util.logging.LogRecord;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JProgressBar;
 import javax.swing.SwingWorker;
 
 import pcgen.gui2.tools.CursorControlUtilities;
@@ -39,9 +35,13 @@ import pcgen.util.Logging;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 
 /**
  * This is the southern component of the PCGenFrame.
@@ -52,30 +52,24 @@ import javafx.scene.image.ImageView;
 public final class PCGenStatusBar extends JPanel
 {
 	private final PCGenFrame frame;
-	private final JLabel messageLabel;
-	private final JProgressBar progressBar;
+	private final Text messageLabel;
+	private final ProgressBar progressBar;
 	private final Button loadStatusButton;
 
 	PCGenStatusBar(PCGenFrame frame)
 	{
 		this.frame = frame;
-		this.messageLabel = new JLabel();
-		this.progressBar = new JProgressBar();
+		this.messageLabel = new Text();
+		this.progressBar = new ProgressBar();
 		this.loadStatusButton = new Button();
-		initComponents();
-	}
-
-	private void initComponents()
-	{
-		setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
-		add(messageLabel);
-		add(Box.createHorizontalGlue());
-		progressBar.setStringPainted(true);
-		progressBar.setVisible(false);
-		add(progressBar);
-		add(Box.createHorizontalGlue());
-		add(GuiUtility.wrapParentAsJFXPanel(loadStatusButton));
-		loadStatusButton.setOnAction(this::loadStatusLabelAction);
+		loadStatusButton.setOnAction(this::loadStatusOnClick);
+		StackPane stackPane = new StackPane();
+		stackPane.getChildren().add(progressBar);
+		stackPane.getChildren().add(messageLabel);
+		HBox hBox = new HBox();
+		hBox.getChildren().add(stackPane);
+		hBox.getChildren().add(loadStatusButton);
+		this.add(GuiUtility.wrapParentAsJFXPanel(hBox));
 	}
 
 	public void setContextMessage(String message)
@@ -88,9 +82,9 @@ public final class PCGenStatusBar extends JPanel
 		return messageLabel.getText();
 	}
 
-	public JProgressBar getProgressBar()
+	public void setProgressValue(double value)
 	{
-		return progressBar;
+		progressBar.progressProperty().set(value);
 	}
 
 	void setSourceLoadErrors(List<LogRecord> errors)
@@ -136,6 +130,8 @@ public final class PCGenStatusBar extends JPanel
 				));
 				loadStatusButton.setTooltip(tooltip);
 			});
+			Tooltip tooltip = new Tooltip(nerrors + " errors and " + nwarnings + " warnings occurred while loading the sources");
+			loadStatusButton.setTooltip(tooltip);
 		}
 	}
 
@@ -164,18 +160,14 @@ public final class PCGenStatusBar extends JPanel
 	 */
 	public void startShowingProgress(final String msg, boolean indeterminate)
 	{
-		if (!PCGenStatusBar.this.isValid())
-		{
-			// Do nothing if called during startup or shutdown
-			return;
-		}
 		setVisible(true);
 		CursorControlUtilities.startWaitCursor(this);
 		setContextMessage(msg);
-		getProgressBar().setVisible(true);
-		getProgressBar().setIndeterminate(indeterminate);
-		getProgressBar().setStringPainted(true);
-		getProgressBar().setString(msg);
+		progressBar.setVisible(true);
+		if (indeterminate) {
+			progressBar.progressProperty().set(-1);
+		}
+		messageLabel.setText(msg);
 	}
 
 	/**
@@ -185,14 +177,14 @@ public final class PCGenStatusBar extends JPanel
 	{
 		CursorControlUtilities.stopWaitCursor(this);
 		setContextMessage(null);
-		getProgressBar().setString(null);
-		getProgressBar().setVisible(false);
+		messageLabel.setText("");
+		progressBar.setVisible(false);
 	}
 
 	/**
 	 * Shows the log window when the load status icon is clicked.
 	 */
-	private void loadStatusLabelAction(final ActionEvent actionEvent)
+	public void loadStatusOnClick(ActionEvent actionEvent)
 	{
 		frame.getActionMap().get(PCGenActionMap.LOG_COMMAND).actionPerformed(null);
 	}
