@@ -23,9 +23,7 @@ import java.io.IOException;
 import java.io.StringReader;
 
 import javax.swing.BorderFactory;
-import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.text.BadLocationException;
@@ -33,13 +31,19 @@ import javax.swing.text.Document;
 import javax.swing.text.EditorKit;
 
 import pcgen.base.lang.UnreachableError;
+import pcgen.gui3.GuiUtility;
 import pcgen.system.LanguageBundle;
 
-public class InfoPane extends JScrollPane
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.layout.Pane;
+import org.controlsfx.control.HyperlinkLabel;
+
+public final class InfoPane extends Pane
 {
 
-	private JTextPane textPane;
-	private TitledBorder titledBorder;
+	Birder
+	private final HyperlinkLabel textPane;
+	private final TitledBorder titledBorder;
 
 	public InfoPane()
 	{
@@ -48,27 +52,21 @@ public class InfoPane extends JScrollPane
 
 	public InfoPane(String title)
 	{
-		super(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		String name = title;
 		if (title.startsWith("in_")) //$NON-NLS-1$
 		{
 			name = LanguageBundle.getString(title);
 		}
+		this.setBorder();
 		this.titledBorder =
 				BorderFactory.createTitledBorder(null, name, TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION);
-		this.textPane = new JTextPane();
-		initComponents();
-	}
-
-	private void initComponents()
-	{
+		this.textPane = new HyperlinkLabel();
 		setBorder(BorderFactory.createCompoundBorder(titledBorder, getBorder()));
 
-		textPane.setEditable(false);
-		setViewportView(textPane);
-		textPane.setContentType("text/html"); //$NON-NLS-1$
+		this.getChildren().add(textPane);
 		setPreferredSize(new Dimension(300, 200));
 	}
+
 
 	public String getTitle()
 	{
@@ -78,8 +76,6 @@ public class InfoPane extends JScrollPane
 	public void setTitle(String title)
 	{
 		titledBorder.setTitle(title);
-		validate();
-		repaint();
 	}
 
 	public void setText(String text)

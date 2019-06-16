@@ -144,7 +144,7 @@ public class PurchaseInfoTab extends FlippingSplitPane implements CharacterInfoT
 		this.addEquipmentButton = new JButton();
 		this.sellEquipmentButton = new JButton();
 		this.removeEquipmentButton = new JButton();
-		this.infoPane = new InfoPane();
+		this.infoPane = new InfoPane(LanguageBundle.getString("in_igEqInfo"));
 		this.wealthLabel = new JFormattedTextField(NumberFormat.getNumberInstance());
 		this.goldField = new JFormattedTextField(NumberFormat.getNumberInstance());
 		this.goldModField = new JFormattedTextField(NumberFormat.getNumberInstance());
@@ -230,7 +230,6 @@ public class PurchaseInfoTab extends FlippingSplitPane implements CharacterInfoT
 			splitPane.setLeftComponent(panel);
 		}
 		{// Bottom Right Panel
-			infoPane.setTitle(LanguageBundle.getString("in_igEqInfo")); //$NON-NLS-1$
 			splitPane.setRightComponent(infoPane);
 		}
 		splitPane.setResizeWeight(0.25);
