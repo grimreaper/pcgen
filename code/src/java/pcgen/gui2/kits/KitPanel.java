@@ -65,14 +65,13 @@ import pcgen.system.LanguageBundle;
  * 
  */
 @SuppressWarnings("serial")
-public class KitPanel extends FlippingSplitPane
+public final class KitPanel extends FlippingSplitPane
 {
 
 	private final FilteredTreeViewTable<Object, Kit> availableTable;
 	private final FilteredTreeViewTable<Object, Kit> selectedTable;
 	private final JButton addButton;
 	private final InfoPane infoPane;
-	private final CharacterFacade character;
 	private final QualifiedTreeCellRenderer renderer;
 	private final AddAction addAction;
 	private final FilterButton<Object, Kit> qFilterButton;
@@ -83,7 +82,6 @@ public class KitPanel extends FlippingSplitPane
 	 */
 	public KitPanel(CharacterFacade character)
 	{
-		this.character = character;
 		this.availableTable = new FilteredTreeViewTable<>();
 		this.selectedTable = new FilteredTreeViewTable<>();
 		this.addButton = new JButton();
@@ -92,12 +90,6 @@ public class KitPanel extends FlippingSplitPane
 		this.addAction = new AddAction(character);
 		this.qFilterButton = new FilterButton<>("KitQualified");
 
-		initComponents();
-		initDefaults();
-	}
-
-	private void initComponents()
-	{
 		renderer.setCharacter(character);
 		FlippingSplitPane topPane = new FlippingSplitPane();
 		setTopComponent(topPane);
@@ -136,10 +128,7 @@ public class KitPanel extends FlippingSplitPane
 		topPane.setRightComponent(selPanel);
 		setBottomComponent(infoPane);
 		setResizeWeight(0.75);
-	}
 
-	private void initDefaults()
-	{
 		InfoHandler infoHandler = new InfoHandler(character);
 		availableTable.getSelectionModel().addListSelectionListener(infoHandler);
 		selectedTable.getSelectionModel().addListSelectionListener(infoHandler);

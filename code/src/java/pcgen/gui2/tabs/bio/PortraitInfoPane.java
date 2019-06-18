@@ -73,17 +73,12 @@ public class PortraitInfoPane extends JScrollPane implements CharacterInfoTab
 
 	public PortraitInfoPane()
 	{
-		super();
 		this.tnPane = new ThumbnailPane();
 		this.portraitPane = new PortraitPane();
 		this.loadButton = new JButton();
 		this.clearButton = new JButton();
 		this.zoomSlider = new JSlider(SwingConstants.VERTICAL);
-		initComponents();
-	}
 
-	private void initComponents()
-	{
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		Utility.buildConstraints(gbc, 0, 0, 2, 1, 0, 0);

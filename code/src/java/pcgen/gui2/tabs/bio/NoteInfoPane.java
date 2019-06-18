@@ -46,7 +46,7 @@ import pcgen.system.LanguageBundle;
  * 
  */
 @SuppressWarnings("serial")
-public class NoteInfoPane extends JPanel implements CharacterInfoTab
+public final class NoteInfoPane extends JPanel implements CharacterInfoTab
 {
 	private final TabTitle title;
 	private final JTextField nameField;
@@ -69,11 +69,7 @@ public class NoteInfoPane extends JPanel implements CharacterInfoTab
 		this.removeButton = new JButton(LanguageBundle.getString("in_descDelNote")); //$NON-NLS-1$
 		nameField.setEditable(note.getPCStringKey().isEmpty());
 		removeButton.setEnabled(note.getPCStringKey().isEmpty());
-		initComponents();
-	}
 
-	private void initComponents()
-	{
 		setLayout(new BorderLayout());
 
 		Box hbox = Box.createHorizontalBox();

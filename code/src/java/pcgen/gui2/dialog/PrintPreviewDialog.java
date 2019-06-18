@@ -129,14 +129,7 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 		this.zoomOutButton = new JButton();
 		this.printButton = new JButton();
 		this.cancelButton = new JButton();
-		initComponents();
-		initLayout();
-		pack();
-		new SheetLoader().execute();
-	}
 
-	private <E> void initComponents()
-	{
 		setTitle("Print Preview");
 		sheetBox.setRenderer(new DefaultListCellRenderer()
 		{
@@ -200,6 +193,9 @@ public final class PrintPreviewDialog extends JDialog implements ActionListener
 		enableEditGroup(false);
 
 		Utility.installEscapeCloseOperation(this);
+		initLayout();
+		pack();
+		new SheetLoader().execute();
 	}
 
 	private void enableEditGroup(boolean enable)

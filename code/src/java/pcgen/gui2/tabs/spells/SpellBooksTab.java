@@ -61,7 +61,6 @@ import pcgen.util.enumeration.Tab;
 
 import org.apache.commons.lang3.StringUtils;
 
-@SuppressWarnings("serial")
 public class SpellBooksTab extends FlippingSplitPane implements CharacterInfoTab
 {
 
@@ -97,11 +96,7 @@ public class SpellBooksTab extends FlippingSplitPane implements CharacterInfoTab
 		this.spellsPane = new InfoPane(LanguageBundle.getString("InfoSpells.spell.info"));
 		this.classPane = new InfoPane(LanguageBundle.getString("InfoSpells.class.info"));
 		this.defaultBookCombo = new JComboBox();
-		initComponents();
-	}
 
-	private void initComponents()
-	{
 		availableTable.setTreeCellRenderer(spellRenderer);
 		selectedTable.setTreeCellRenderer(spellRenderer);
 		selectedTable.setRowSorter(new SortableTableRowSorter()

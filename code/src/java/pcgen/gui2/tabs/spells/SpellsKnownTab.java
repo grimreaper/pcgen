@@ -74,8 +74,8 @@ public class SpellsKnownTab extends FlippingSplitPane implements CharacterInfoTa
 	private final JTextField spellSheetField;
 	private final InfoPane spellsPane;
 	private final InfoPane classPane;
-	private JButton previewSpellsButton;
-	private JButton exportSpellsButton;
+	private final JButton previewSpellsButton;
+	private final JButton exportSpellsButton;
 
 	public SpellsKnownTab()
 	{
@@ -100,11 +100,7 @@ public class SpellsKnownTab extends FlippingSplitPane implements CharacterInfoTa
 		this.spellSheetField = new JTextField();
 		this.spellsPane = new InfoPane(LanguageBundle.getString("InfoSpells.spell.info"));
 		this.classPane = new InfoPane(LanguageBundle.getString("InfoSpells.class.info"));
-		initComponents();
-	}
 
-	private void initComponents()
-	{
 		availableTable.setTreeCellRenderer(spellRenderer);
 		selectedTable.setTreeCellRenderer(spellRenderer);
 		selectedTable.setRowSorter(new SortableTableRowSorter()

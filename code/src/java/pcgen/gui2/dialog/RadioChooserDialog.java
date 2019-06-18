@@ -78,11 +78,6 @@ public class RadioChooserDialog extends JDialog
 		this.chooser = chooser;
 		committed = false;
 
-		initComponents();
-	}
-
-	private void initComponents()
-	{
 		Pane outerPane = new VBox();
 		JFXPanel jfxPanel = new JFXPanel();
 		jfxPanel.setLayout(new BorderLayout());

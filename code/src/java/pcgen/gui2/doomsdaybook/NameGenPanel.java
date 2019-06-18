@@ -76,7 +76,7 @@ import org.xml.sax.InputSource;
  * Main panel of the random name generator.
  */
 @SuppressWarnings({"UseOfObsoleteCollectionType", "PMD.ReplaceVectorWithList", "PMD.UseArrayListInsteadOfVector"})
-public class NameGenPanel extends JPanel
+public final class NameGenPanel extends JPanel
 {
 	private final Map<String, List<RuleSet>> categories = new HashMap<>();
 	private JButton generateButton;
@@ -132,7 +132,194 @@ public class NameGenPanel extends JPanel
 	 */
 	public NameGenPanel(File dataPath)
 	{
-		initComponents();
+		genCtrlPanel = new JPanel();
+		jPanel4 = new JPanel();
+		jPanel13 = new JPanel();
+		jPanel10 = new JPanel();
+		jLabel4 = new JLabel();
+		cbCatalog = new JComboBox<>();
+		jPanel8 = new JPanel();
+		jLabel1 = new JLabel();
+		cbCategory = new JComboBox<>();
+		jPanel14 = new JPanel();
+		jPanel11 = new JPanel();
+		generateButton = new JButton();
+		jPanel9 = new JPanel();
+		jLabel5 = new JLabel();
+		cbGender = new JComboBox<>();
+		jPanel7 = new JPanel();
+		jSeparator4 = new JSeparator();
+		jPanel12 = new JPanel();
+		jLabel6 = new JLabel();
+		cbStructure = new JComboBox<>();
+		chkStructure = new JCheckBox();
+		buttonPanel = new JPanel();
+		nameDisplayPanel = new JPanel();
+		nameSubInfoPanel = new JPanel();
+		jSeparator2 = new JSeparator();
+		jLabel2 = new JLabel();
+		meaning = new JLabel();
+		jSeparator1 = new JSeparator();
+		jLabel3 = new JLabel();
+		pronounciation = new JLabel();
+		jSeparator3 = new JSeparator();
+		namePanel = new JPanel();
+		name = new JTextField();
+		nameActionPanel = new JPanel();
+		jButton1 = new JButton();
+
+		setLayout(new BorderLayout(0, 5));
+
+		genCtrlPanel.setLayout(new BorderLayout());
+
+		jPanel4.setLayout(new BoxLayout(jPanel4, BoxLayout.X_AXIS));
+
+		jPanel13.setLayout(new BorderLayout());
+
+		jPanel10.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+		jLabel4.setText(LanguageBundle.getString("in_rndNameCatalog")); //$NON-NLS-1$
+		jPanel10.add(jLabel4);
+
+		cbCatalog.addActionListener(this::cbCatalogActionPerformed);
+
+		jPanel10.add(cbCatalog);
+
+		jPanel13.add(jPanel10, BorderLayout.CENTER);
+
+		jPanel8.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+		jLabel1.setText(LanguageBundle.getString("in_rndNameCategory")); //$NON-NLS-1$
+		jPanel8.add(jLabel1);
+
+		cbCategory.addActionListener(this::cbCategoryActionPerformed);
+
+		jPanel8.add(cbCategory);
+
+		jPanel13.add(jPanel8, BorderLayout.NORTH);
+
+		jPanel4.add(jPanel13);
+
+		jPanel14.setLayout(new BorderLayout());
+
+		jPanel11.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+		generateButton.setText(LanguageBundle.getString("in_rndNameGenerate")); //$NON-NLS-1$
+		generateButton.addActionListener(this::generateButtonActionPerformed);
+
+		jPanel11.add(generateButton);
+
+		jPanel14.add(jPanel11, BorderLayout.CENTER);
+
+		jPanel9.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+		jLabel5.setText(LanguageBundle.getString("in_rndNameSex")); //$NON-NLS-1$
+		jPanel9.add(jLabel5);
+
+		cbGender.addActionListener(this::cbGenderActionPerformed);
+
+		jPanel9.add(cbGender);
+
+		jPanel14.add(jPanel9, BorderLayout.NORTH);
+
+		jPanel4.add(jPanel14);
+
+		genCtrlPanel.add(jPanel4, BorderLayout.NORTH);
+
+		jPanel7.setLayout(new BorderLayout());
+
+		jPanel7.add(jSeparator4, BorderLayout.NORTH);
+
+		jPanel12.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+		jLabel6.setText(LanguageBundle.getString("in_rndNameStructure")); //$NON-NLS-1$
+		jPanel12.add(jLabel6);
+
+		cbStructure.setEnabled(false);
+		cbStructure.addActionListener(this::cbStructureActionPerformed);
+		jPanel12.add(cbStructure);
+
+		chkStructure.setSelected(true);
+		chkStructure.setText(LanguageBundle.getString("in_randomButton")); //$NON-NLS-1$
+		chkStructure.addActionListener(this::chkStructureActionPerformed);
+
+		jPanel12.add(chkStructure);
+
+		jPanel7.add(jPanel12, BorderLayout.CENTER);
+		jPanel7.add(new JSeparator(), BorderLayout.SOUTH);
+
+		JPanel adjustNamePanel = new JPanel();
+		adjustNamePanel.setLayout(new BorderLayout());
+
+		JLabel adjNameLabel = new JLabel(LanguageBundle.getString("in_rndNameAdjust")); //$NON-NLS-1$
+
+		adjustNamePanel.add(adjNameLabel, BorderLayout.NORTH);
+
+		buttonPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		// CODE-2099 Component needed to have correct vertical space available.
+		JLabel nb = new JLabel(" "); //$NON-NLS-1$
+		buttonPanel.add(nb);
+
+		adjustNamePanel.add(buttonPanel, BorderLayout.CENTER);
+
+		add(adjustNamePanel, BorderLayout.SOUTH);
+
+		genCtrlPanel.add(jPanel7, BorderLayout.CENTER);
+
+		// Name display
+		nameDisplayPanel.setLayout(new BorderLayout());
+
+		nameSubInfoPanel.setLayout(new BoxLayout(nameSubInfoPanel, BoxLayout.Y_AXIS));
+
+		nameSubInfoPanel.add(jSeparator2);
+
+		jLabel2.setText(LanguageBundle.getString("in_rndNameMeaning")); //$NON-NLS-1$
+		nameSubInfoPanel.add(jLabel2);
+
+		meaning.setText(LanguageBundle.getString("in_rndNmDefault")); //$NON-NLS-1$
+		nameSubInfoPanel.add(meaning);
+
+		nameSubInfoPanel.add(jSeparator1);
+
+		jLabel3.setText(LanguageBundle.getString("in_rndNmPronounciation")); //$NON-NLS-1$
+		nameSubInfoPanel.add(jLabel3);
+
+		pronounciation.setText("nAm");
+		nameSubInfoPanel.add(pronounciation);
+
+		nameSubInfoPanel.add(jSeparator3);
+
+		nameDisplayPanel.add(nameSubInfoPanel, BorderLayout.SOUTH);
+
+		JLabel nameTitleLabel = new JLabel(LanguageBundle.getString("in_sumName")); //$NON-NLS-1$
+		JPanel nameTitlePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		nameTitlePanel.add(nameTitleLabel);
+
+		JPanel topPanel = new JPanel();
+		topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
+
+		namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.X_AXIS));
+
+		FontManipulation.xxlarge(name);
+		name.setText(LanguageBundle.getString("in_nameLabel")); //$NON-NLS-1$
+		namePanel.add(name);
+
+		nameActionPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+
+		jButton1.setIcon(Icons.Copy16.getImageIcon());
+		jButton1.setAlignmentY(0.0F);
+		jButton1.setIconTextGap(0);
+		jButton1.setMargin(new Insets(2, 2, 2, 2));
+		jButton1.addActionListener(this::jButton1ActionPerformed);
+		nameActionPanel.add(jButton1);
+
+		namePanel.add(nameActionPanel);
+
+		topPanel.add(genCtrlPanel);
+		topPanel.add(nameTitlePanel);
+		topPanel.add(namePanel);
+		topPanel.add(nameDisplayPanel);
+		add(topPanel, BorderLayout.NORTH);
 		loadData(dataPath);
 	}
 
@@ -360,214 +547,12 @@ public class NameGenPanel extends JPanel
 		}
 	}
 
-	//GEN-LAST:event_generateButtonActionPerformed
-
-	/**
-	 * This method is called from within the constructor to
-	 * initialize the form.
-	 */
-	private void initComponents()
-	{
-		genCtrlPanel = new JPanel();
-		jPanel4 = new JPanel();
-		jPanel13 = new JPanel();
-		jPanel10 = new JPanel();
-		jLabel4 = new JLabel();
-		cbCatalog = new JComboBox<>();
-		jPanel8 = new JPanel();
-		jLabel1 = new JLabel();
-		cbCategory = new JComboBox<>();
-		jPanel14 = new JPanel();
-		jPanel11 = new JPanel();
-		generateButton = new JButton();
-		jPanel9 = new JPanel();
-		jLabel5 = new JLabel();
-		cbGender = new JComboBox<>();
-		jPanel7 = new JPanel();
-		jSeparator4 = new JSeparator();
-		jPanel12 = new JPanel();
-		jLabel6 = new JLabel();
-		cbStructure = new JComboBox<>();
-		chkStructure = new JCheckBox();
-		buttonPanel = new JPanel();
-		nameDisplayPanel = new JPanel();
-		nameSubInfoPanel = new JPanel();
-		jSeparator2 = new JSeparator();
-		jLabel2 = new JLabel();
-		meaning = new JLabel();
-		jSeparator1 = new JSeparator();
-		jLabel3 = new JLabel();
-		pronounciation = new JLabel();
-		jSeparator3 = new JSeparator();
-		namePanel = new JPanel();
-		name = new JTextField();
-		nameActionPanel = new JPanel();
-		jButton1 = new JButton();
-
-		setLayout(new BorderLayout(0, 5));
-
-		genCtrlPanel.setLayout(new BorderLayout());
-
-		jPanel4.setLayout(new BoxLayout(jPanel4, BoxLayout.X_AXIS));
-
-		jPanel13.setLayout(new BorderLayout());
-
-		jPanel10.setLayout(new FlowLayout(FlowLayout.LEFT));
-
-		jLabel4.setText(LanguageBundle.getString("in_rndNameCatalog")); //$NON-NLS-1$
-		jPanel10.add(jLabel4);
-
-		cbCatalog.addActionListener(this::cbCatalogActionPerformed);
-
-		jPanel10.add(cbCatalog);
-
-		jPanel13.add(jPanel10, BorderLayout.CENTER);
-
-		jPanel8.setLayout(new FlowLayout(FlowLayout.LEFT));
-
-		jLabel1.setText(LanguageBundle.getString("in_rndNameCategory")); //$NON-NLS-1$
-		jPanel8.add(jLabel1);
-
-		cbCategory.addActionListener(this::cbCategoryActionPerformed);
-
-		jPanel8.add(cbCategory);
-
-		jPanel13.add(jPanel8, BorderLayout.NORTH);
-
-		jPanel4.add(jPanel13);
-
-		jPanel14.setLayout(new BorderLayout());
-
-		jPanel11.setLayout(new FlowLayout(FlowLayout.LEFT));
-
-		generateButton.setText(LanguageBundle.getString("in_rndNameGenerate")); //$NON-NLS-1$
-		generateButton.addActionListener(this::generateButtonActionPerformed);
-
-		jPanel11.add(generateButton);
-
-		jPanel14.add(jPanel11, BorderLayout.CENTER);
-
-		jPanel9.setLayout(new FlowLayout(FlowLayout.LEFT));
-
-		jLabel5.setText(LanguageBundle.getString("in_rndNameSex")); //$NON-NLS-1$
-		jPanel9.add(jLabel5);
-
-		cbGender.addActionListener(this::cbGenderActionPerformed);
-
-		jPanel9.add(cbGender);
-
-		jPanel14.add(jPanel9, BorderLayout.NORTH);
-
-		jPanel4.add(jPanel14);
-
-		genCtrlPanel.add(jPanel4, BorderLayout.NORTH);
-
-		jPanel7.setLayout(new BorderLayout());
-
-		jPanel7.add(jSeparator4, BorderLayout.NORTH);
-
-		jPanel12.setLayout(new FlowLayout(FlowLayout.LEFT));
-
-		jLabel6.setText(LanguageBundle.getString("in_rndNameStructure")); //$NON-NLS-1$
-		jPanel12.add(jLabel6);
-
-		cbStructure.setEnabled(false);
-		cbStructure.addActionListener(this::cbStructureActionPerformed);
-		jPanel12.add(cbStructure);
-
-		chkStructure.setSelected(true);
-		chkStructure.setText(LanguageBundle.getString("in_randomButton")); //$NON-NLS-1$
-		chkStructure.addActionListener(this::chkStructureActionPerformed);
-
-		jPanel12.add(chkStructure);
-
-		jPanel7.add(jPanel12, BorderLayout.CENTER);
-		jPanel7.add(new JSeparator(), BorderLayout.SOUTH);
-
-		JPanel adjustNamePanel = new JPanel();
-		adjustNamePanel.setLayout(new BorderLayout());
-
-		JLabel adjNameLabel = new JLabel(LanguageBundle.getString("in_rndNameAdjust")); //$NON-NLS-1$
-
-		adjustNamePanel.add(adjNameLabel, BorderLayout.NORTH);
-
-		buttonPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-		// CODE-2099 Component needed to have correct vertical space available.
-		JLabel nb = new JLabel(" "); //$NON-NLS-1$
-		buttonPanel.add(nb);
-
-		adjustNamePanel.add(buttonPanel, BorderLayout.CENTER);
-
-		add(adjustNamePanel, BorderLayout.SOUTH);
-
-		genCtrlPanel.add(jPanel7, BorderLayout.CENTER);
-
-		// Name display
-		nameDisplayPanel.setLayout(new BorderLayout());
-
-		nameSubInfoPanel.setLayout(new BoxLayout(nameSubInfoPanel, BoxLayout.Y_AXIS));
-
-		nameSubInfoPanel.add(jSeparator2);
-
-		jLabel2.setText(LanguageBundle.getString("in_rndNameMeaning")); //$NON-NLS-1$
-		nameSubInfoPanel.add(jLabel2);
-
-		meaning.setText(LanguageBundle.getString("in_rndNmDefault")); //$NON-NLS-1$
-		nameSubInfoPanel.add(meaning);
-
-		nameSubInfoPanel.add(jSeparator1);
-
-		jLabel3.setText(LanguageBundle.getString("in_rndNmPronounciation")); //$NON-NLS-1$
-		nameSubInfoPanel.add(jLabel3);
-
-		pronounciation.setText("nAm");
-		nameSubInfoPanel.add(pronounciation);
-
-		nameSubInfoPanel.add(jSeparator3);
-
-		nameDisplayPanel.add(nameSubInfoPanel, BorderLayout.SOUTH);
-
-		JLabel nameTitleLabel = new JLabel(LanguageBundle.getString("in_sumName")); //$NON-NLS-1$
-		JPanel nameTitlePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		nameTitlePanel.add(nameTitleLabel);
-
-		JPanel topPanel = new JPanel();
-		topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
-
-		namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.X_AXIS));
-
-		FontManipulation.xxlarge(name);
-		name.setText(LanguageBundle.getString("in_nameLabel")); //$NON-NLS-1$
-		namePanel.add(name);
-
-		nameActionPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-
-		jButton1.setIcon(Icons.Copy16.getImageIcon());
-		jButton1.setAlignmentY(0.0F);
-		jButton1.setIconTextGap(0);
-		jButton1.setMargin(new Insets(2, 2, 2, 2));
-		jButton1.addActionListener(this::jButton1ActionPerformed);
-		nameActionPanel.add(jButton1);
-
-		namePanel.add(nameActionPanel);
-
-		topPanel.add(genCtrlPanel);
-		topPanel.add(nameTitlePanel);
-		topPanel.add(namePanel);
-		topPanel.add(nameDisplayPanel);
-		add(topPanel, BorderLayout.NORTH);
-	}
-
-	//GEN-END:initComponents
-
 	private void jButton1ActionPerformed(ActionEvent evt)
-	{ //GEN-FIRST:event_jButton1ActionPerformed
+	{
 		Clipboard cb = getToolkit().getSystemClipboard();
 		StringSelection ss = new StringSelection(name.getText());
 		cb.setContents(ss, ss);
 	}
-
-	//GEN-LAST:event_jButton1ActionPerformed
 
 	private void loadCatalogDD()
 	{

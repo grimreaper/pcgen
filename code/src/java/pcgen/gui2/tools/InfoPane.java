@@ -35,11 +35,11 @@ import javax.swing.text.EditorKit;
 import pcgen.base.lang.UnreachableError;
 import pcgen.system.LanguageBundle;
 
-public class InfoPane extends JScrollPane
+public final class InfoPane extends JScrollPane
 {
 
-	private JTextPane textPane;
-	private TitledBorder titledBorder;
+	private final JTextPane textPane;
+	private final TitledBorder titledBorder;
 
 	public InfoPane()
 	{
@@ -57,11 +57,7 @@ public class InfoPane extends JScrollPane
 		this.titledBorder =
 				BorderFactory.createTitledBorder(null, name, TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION);
 		this.textPane = new JTextPane();
-		initComponents();
-	}
 
-	private void initComponents()
-	{
 		setBorder(BorderFactory.createCompoundBorder(titledBorder, getBorder()));
 
 		textPane.setEditable(false);

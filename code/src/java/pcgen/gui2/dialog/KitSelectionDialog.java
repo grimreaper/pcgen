@@ -53,12 +53,7 @@ public final class KitSelectionDialog extends JDialog
 		setTitle(LanguageBundle.getString("in_mnuEditAddKit")); //$NON-NLS-1$
 		this.kitPanel = new KitPanel(character);
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-		initComponents();
-		pack();
-	}
 
-	private void initComponents()
-	{
 		Container pane = getContentPane();
 		pane.setLayout(new BorderLayout());
 
@@ -72,6 +67,7 @@ public final class KitSelectionDialog extends JDialog
 		pane.add(buttons, BorderLayout.PAGE_END);
 
 		Utility.installEscapeCloseOperation(this);
+		pack();
 	}
 
 	private void onClose(final javafx.event.ActionEvent actionEvent)

@@ -154,11 +154,6 @@ public class PurchaseInfoTab extends FlippingSplitPane implements CharacterInfoT
 		this.allowDebt = new JCheckBox();
 		this.currencyLabels = new ArrayList<>();
 
-		initComponents();
-	}
-
-	private void initComponents()
-	{
 		setOrientation(VERTICAL_SPLIT);
 		FlippingSplitPane splitPane = new FlippingSplitPane(); //$NON-NLS-1$
 		splitPane.setOrientation(HORIZONTAL_SPLIT);

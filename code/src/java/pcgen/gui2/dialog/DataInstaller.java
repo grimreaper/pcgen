@@ -421,7 +421,7 @@ public final class DataInstaller extends JFrame
 	 * 
 	 * @return Should the install process continue
 	 */
-	private boolean checkNonStandardOK(Collection<String> files)
+	private static boolean checkNonStandardOK(Collection<String> files)
 	{
 		Collection<String> nonStandardFiles = new ArrayList<>();
 		for (String filename : files)

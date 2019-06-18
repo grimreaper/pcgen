@@ -40,15 +40,14 @@ import pcgen.util.Logging;
  * displaying choices the user needs to make as part of the conversion 
  * of some data items. 
  */
-@SuppressWarnings("serial")
-public class ConversionInputDialog extends JDialog implements ActionListener
+public final class ConversionInputDialog extends JDialog implements ActionListener
 {
 
 	private final String introText;
 
 	private String result;
 
-	private JTextField field;
+	private final JTextField field;
 
 	/**
 	 * Instantiates a new decision dialog for the data converter.
@@ -62,23 +61,6 @@ public class ConversionInputDialog extends JDialog implements ActionListener
 
 		this.introText = introText;
 
-		initComponents();
-		setLocationRelativeTo(parent);
-	}
-
-	/**
-	 * @return the result
-	 */
-	public String getResult()
-	{
-		return result;
-	}
-
-	/**
-	 * Initialises the user interface.
-	 */
-	private void initComponents()
-	{
 		setLayout(new GridBagLayout());
 
 		JLabel introLabel = new JLabel(introText);
@@ -90,7 +72,7 @@ public class ConversionInputDialog extends JDialog implements ActionListener
 
 		field = new JTextField(20);
 		Utility.buildRelativeConstraints(gbc, GridBagConstraints.REMAINDER, 1, 1.0, 0, GridBagConstraints.HORIZONTAL,
-			GridBagConstraints.WEST);
+				GridBagConstraints.WEST);
 		gbc.insets = new Insets(5, 10, 5, 10);
 		add(field, gbc);
 
@@ -102,7 +84,7 @@ public class ConversionInputDialog extends JDialog implements ActionListener
 		okButton.addActionListener(this);
 		getRootPane().setDefaultButton(okButton);
 		Utility.buildRelativeConstraints(gbc, GridBagConstraints.REMAINDER, GridBagConstraints.REMAINDER, 0, 0,
-			GridBagConstraints.NONE, GridBagConstraints.EAST);
+				GridBagConstraints.NONE, GridBagConstraints.EAST);
 		gbc.insets = new Insets(5, 5, 10, 10);
 		add(okButton, gbc);
 
@@ -119,6 +101,15 @@ public class ConversionInputDialog extends JDialog implements ActionListener
 			}
 		});
 
+		setLocationRelativeTo(parent);
+	}
+
+	/**
+	 * @return the result
+	 */
+	public String getResult()
+	{
+		return result;
 	}
 
 	@Override

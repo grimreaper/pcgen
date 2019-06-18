@@ -88,13 +88,7 @@ public final class LanguageChooserDialog extends JDialog implements ReferenceLis
 		treeViewModel.setDelegate(chooser.getAvailableList());
 		listModel.setListFacade(chooser.getSelectedList());
 		chooser.getRemainingSelections().addReferenceListener(this);
-		initComponents();
-		pack();
-		Utility.installEscapeCloseOperation(this);
-	}
 
-	private void initComponents()
-	{
 		setTitle(chooser.getName());
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		addWindowListener(new WindowAdapter()
@@ -158,6 +152,8 @@ public final class LanguageChooserDialog extends JDialog implements ReferenceLis
 				this::doRollback
 		);
 		pane.add(GuiUtility.wrapParentAsJFXPanel(buttonBar), BorderLayout.PAGE_END);
+		pack();
+		Utility.installEscapeCloseOperation(this);
 	}
 
 	@Override

@@ -89,7 +89,7 @@ import pcgen.util.enumeration.Tab;
  * This component allows the user to manage a character's skills.
  */
 @SuppressWarnings("serial")
-public class SkillInfoTab extends FlippingSplitPane implements CharacterInfoTab, TodoHandler
+public final class SkillInfoTab extends FlippingSplitPane implements CharacterInfoTab, TodoHandler
 {
 
 	private final FilteredTreeViewTable<CharacterFacade, Skill> skillTable;
@@ -115,11 +115,7 @@ public class SkillInfoTab extends FlippingSplitPane implements CharacterInfoTab,
 				"SimpleHtmlPanel.fxml"
 		);;
 		this.skillFilterBox = new JComboBox<>();
-		initComponents();
-	}
 
-	private void initComponents()
-	{
 		setOrientation(VERTICAL_SPLIT);
 		setResizeWeight(0.70);
 

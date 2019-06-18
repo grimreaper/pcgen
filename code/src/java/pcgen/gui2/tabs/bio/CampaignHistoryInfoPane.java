@@ -61,7 +61,7 @@ import org.apache.commons.lang3.math.NumberUtils;
  * The CampaignHistoryInfoPane displays a set of chronicles that the user can fill in for his
  * character.
  */
-public class CampaignHistoryInfoPane extends JPanel implements CharacterInfoTab
+public final class CampaignHistoryInfoPane extends JPanel implements CharacterInfoTab
 {
 
 	private static final String ADD_COMMAND = "ADD";
@@ -79,11 +79,7 @@ public class CampaignHistoryInfoPane extends JPanel implements CharacterInfoTab
 		this.allButton = new JButton();
 		this.noneButton = new JButton();
 		this.chroniclesPane = new ChroniclesPane();
-		initComponents();
-	}
 
-	private void initComponents()
-	{
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
 		addButton.setText("Add Next Chronicle");

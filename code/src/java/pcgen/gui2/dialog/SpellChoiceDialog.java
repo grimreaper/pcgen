@@ -40,7 +40,6 @@ import javafx.scene.control.ButtonBar;
  */
 public final class SpellChoiceDialog extends JDialog
 {
-	private final SpellChoicePanel spellChoicePanel;
 	private boolean cancelled;
 
 	/**
@@ -51,15 +50,10 @@ public final class SpellChoiceDialog extends JDialog
 	{
 		super(frame, true);
 		setTitle(LanguageBundle.getString("in_csdChooseSpell"));
-		this.spellChoicePanel = new SpellChoicePanel(builder);
+		SpellChoicePanel spellChoicePanel = new SpellChoicePanel(builder);
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		Utility.installEscapeCloseOperation(this);
-		initComponents();
-		pack();
-	}
 
-	private void initComponents()
-	{
 		Container pane = getContentPane();
 		pane.setLayout(new BorderLayout());
 
@@ -71,6 +65,7 @@ public final class SpellChoiceDialog extends JDialog
 		);
 
 		pane.add(GuiUtility.wrapParentAsJFXPanel(buttonBar), BorderLayout.PAGE_END);
+		pack();
 	}
 
 	private void onOK(javafx.event.ActionEvent event)

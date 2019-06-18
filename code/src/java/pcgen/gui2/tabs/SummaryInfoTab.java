@@ -114,7 +114,7 @@ import org.apache.commons.lang3.StringUtils;
  * alignment, race, class, and stat information.
  */
 @SuppressWarnings("serial")
-public class SummaryInfoTab extends JPanel implements CharacterInfoTab, TodoHandler
+public final class SummaryInfoTab extends JPanel implements CharacterInfoTab, TodoHandler
 {
 
 	private final TabTitle tabTitle;
@@ -215,11 +215,7 @@ public class SummaryInfoTab extends JPanel implements CharacterInfoTab, TodoHand
 		this.todoPane = new JEditorPane();
 		this.infoBoxRenderer = new InfoBoxRenderer();
 		this.classBoxRenderer = new ClassBoxRenderer();
-		initComponents();
-	}
 
-	private void initComponents()
-	{
 		this.setFocusCycleRoot(true);
 		this.setFocusTraversalPolicyProvider(true);
 		this.setFocusTraversalPolicy(new SummaryTabFocusTraversalPolicy());

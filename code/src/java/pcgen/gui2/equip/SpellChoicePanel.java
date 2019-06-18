@@ -47,7 +47,7 @@ import pcgen.system.LanguageBundle;
  * 
  */
 @SuppressWarnings("serial")
-public class SpellChoicePanel extends JPanel
+public final class SpellChoicePanel extends JPanel
 {
 	private final JComboBox<InfoFacade> classComboBox;
 	private final JComboBox<Integer> spellLevelComboBox;
@@ -57,14 +57,14 @@ public class SpellChoicePanel extends JPanel
 	private final JComboBox<String> spellTypeComboBox;
 	private final JList<AbilityFacade> metamagicList;
 
-	private CharacterComboBoxModel<InfoFacade> classModel;
-	private CharacterComboBoxModel<Integer> spellLevelModel;
-	private CharacterComboBoxModel<InfoFacade> spellModel;
-	private CharacterComboBoxModel<String> variantModel;
-	private CharacterComboBoxModel<Integer> casterLevelModel;
-	private CharacterComboBoxModel<String> spellTypeModel;
+	private final CharacterComboBoxModel<InfoFacade> classModel;
+	private final CharacterComboBoxModel<Integer> spellLevelModel;
+	private final CharacterComboBoxModel<InfoFacade> spellModel;
+	private final CharacterComboBoxModel<String> variantModel;
+	private final CharacterComboBoxModel<Integer> casterLevelModel;
+	private final CharacterComboBoxModel<String> spellTypeModel;
 	private final SpellBuilderFacade spellBuilderFacade;
-	private MetamagicFeatListModel metamgicModel;
+	private final MetamagicFeatListModel metamgicModel;
 
 	/**
 	 * Create a new spell choice panel instance.
@@ -82,15 +82,6 @@ public class SpellChoicePanel extends JPanel
 		this.spellTypeComboBox = new JComboBox<>();
 		this.metamagicList = new JList<>();
 
-		initModels();
-		initComponents();
-	}
-
-	/**
-	 * Create the various box models which will drive the choices. 
-	 */
-	private void initModels()
-	{
 		classModel = new CharacterComboBoxModel<>()
 		{
 			@Override
@@ -168,13 +159,7 @@ public class SpellChoicePanel extends JPanel
 		metamgicModel.setListFacade(spellBuilderFacade.getAvailMetamagicFeats());
 		metamagicList.setModel(metamgicModel);
 		metamagicList.addListSelectionListener(metamgicModel);
-	}
 
-	/**
-	 * Initialise the on screen components.
-	 */
-	private void initComponents()
-	{
 		setLayout(new GridBagLayout());
 
 		addGridBagLayer(this, "in_sumClass", classComboBox); //$NON-NLS-1$
@@ -196,7 +181,7 @@ public class SpellChoicePanel extends JPanel
 		setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
 	}
 
-	private void addGridBagLayer(JPanel panel, String text, JComponent comp)
+	private static void addGridBagLayer(JPanel panel, String text, JComponent comp)
 	{
 		Insets insets = new Insets(0, 0, 3, 2);
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -215,7 +200,7 @@ public class SpellChoicePanel extends JPanel
 	 * DisablingCharacterComboBoxModel is a model that disables its combo box
 	 * when there are no possible selections.
 	 */
-	private abstract class DisablingCharacterComboBoxModel extends CharacterComboBoxModel<String>
+	private abstract static class DisablingCharacterComboBoxModel extends CharacterComboBoxModel<String>
 	{
 
 		private final JComboBox<String> box;

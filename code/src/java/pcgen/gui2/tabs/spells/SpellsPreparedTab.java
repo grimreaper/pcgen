@@ -104,11 +104,7 @@ public class SpellsPreparedTab extends FlippingSplitPane implements CharacterInf
 		this.spellListField = new JTextField();
 		this.spellsPane = new InfoPane(LanguageBundle.getString("InfoSpells.spell.info"));
 		this.classPane = new InfoPane(LanguageBundle.getString("InfoSpells.class.info"));
-		initComponents();
-	}
 
-	private void initComponents()
-	{
 		availableTable.setTreeCellRenderer(spellRenderer);
 		selectedTable.setTreeCellRenderer(spellRenderer);
 		selectedTable.setRowSorter(new SortableTableRowSorter()

@@ -58,7 +58,6 @@ import org.apache.commons.lang3.math.NumberUtils;
 public final class CharacterHPDialog extends JDialog implements ActionListener
 {
 
-	private final CharacterFacade character;
 	private final CharacterLevelsFacade levels;
 	private final JLabel totalHp;
 	private final HPTableModel tableModel;
@@ -66,24 +65,9 @@ public final class CharacterHPDialog extends JDialog implements ActionListener
 	private CharacterHPDialog(Frame frame, CharacterFacade character)
 	{
 		super(frame, true);
-		this.character = character;
 		this.levels = character.getCharacterLevelsFacade();
 		this.totalHp = new JLabel();
 		this.tableModel = new HPTableModel();
-		initComponents();
-		pack();
-	}
-
-	public static void showHPDialog(Component parent, CharacterFacade character)
-	{
-		Frame frame = JOptionPane.getFrameForComponent(parent);
-		CharacterHPDialog dialog = new CharacterHPDialog(frame, character);
-		dialog.setLocationRelativeTo(frame);
-		dialog.setVisible(true);
-	}
-
-	private void initComponents()
-	{
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
 		Container pane = getContentPane();
@@ -154,6 +138,15 @@ public final class CharacterHPDialog extends JDialog implements ActionListener
 		});
 
 		Utility.installEscapeCloseOperation(this);
+		pack();
+	}
+
+	public static void showHPDialog(Component parent, CharacterFacade character)
+	{
+		Frame frame = JOptionPane.getFrameForComponent(parent);
+		CharacterHPDialog dialog = new CharacterHPDialog(frame, character);
+		dialog.setLocationRelativeTo(frame);
+		dialog.setVisible(true);
 	}
 
 	@Override
@@ -164,7 +157,7 @@ public final class CharacterHPDialog extends JDialog implements ActionListener
 			for (int l = 0; l < levels.getSize(); l++)
 			{
 				CharacterLevelFacade level = levels.getElementAt(l);
-				Integer i = Integer.valueOf(levels.getClassTaken(level).getHD());
+				int i = Integer.valueOf(levels.getClassTaken(level).getHD());
 				int rolled = RollingMethods.roll(i);
 				levels.setHPRolled(level, rolled);
 			}

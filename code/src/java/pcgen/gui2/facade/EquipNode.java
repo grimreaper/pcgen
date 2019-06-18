@@ -225,7 +225,7 @@ public class EquipNode implements Comparable<EquipNode>
 	 * @param equipNodeImpl The node to be examined.
 	 * @return The order applicable to the node.
 	 */
-	private String getOrder(EquipNode equipNodeImpl)
+	private static String getOrder(EquipNode equipNodeImpl)
 	{
 		if (StringUtils.isNotBlank(equipNodeImpl.order))
 		{

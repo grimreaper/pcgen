@@ -85,7 +85,7 @@ import pcgen.util.Logging;
 
 import org.apache.commons.lang3.StringUtils;
 
-class AdvancedSourceSelectionPanel extends JPanel
+final class AdvancedSourceSelectionPanel extends JPanel
 		implements ListSelectionListener, ListListener<Campaign>, ActionListener
 {
 
@@ -129,13 +129,6 @@ class AdvancedSourceSelectionPanel extends JPanel
 		this.infoPane = new InfoPane(LanguageBundle.getString("in_src_info")); //$NON-NLS-1$
 		this.linkAction = new InfoPaneLinkAction(infoPane);
 
-		initComponents();
-		initDefaults();
-		selectedCampaigns.addListListener(this);
-	}
-
-	private void initComponents()
-	{
 		FlippingSplitPane mainPane = new FlippingSplitPane(JSplitPane.VERTICAL_SPLIT);
 		FlippingSplitPane topPane = new FlippingSplitPane();
 		topPane.setResizeWeight(0.6);
@@ -208,10 +201,7 @@ class AdvancedSourceSelectionPanel extends JPanel
 		mainPane.setResizeWeight(0.7);
 		setLayout(new BorderLayout());
 		add(mainPane, BorderLayout.CENTER);
-	}
 
-	private void initDefaults()
-	{
 		String defaultGame = CONTEXT.initProperty(PROP_SELECTED_GAME, "");
 		GameModeDisplayFacade modeDisplay = null;
 		if (StringUtils.isNotEmpty(defaultGame))
@@ -229,8 +219,9 @@ class AdvancedSourceSelectionPanel extends JPanel
 		if (modeDisplay == null && gameModeList.getModel().getSize() > 0)
 		{
 			gameModeList.setSelectedIndex(0);
-			modeDisplay = (GameModeDisplayFacade) gameModeList.getSelectedItem();
 		}
+
+		selectedCampaigns.addListListener(this);
 	}
 
 	/**

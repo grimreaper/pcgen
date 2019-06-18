@@ -45,7 +45,7 @@ import pcgen.util.Logging;
  * 
  */
 @SuppressWarnings("serial")
-public class ConversionChoiceDialog extends JDialog implements ActionListener
+public final class ConversionChoiceDialog extends JDialog implements ActionListener
 {
 
 	private final List<String> choices;
@@ -54,8 +54,7 @@ public class ConversionChoiceDialog extends JDialog implements ActionListener
 	/** The result selected by the user. */
 	private int result = -1;
 
-	private JComboBox<String> choiceCombo;
-	private final int defaultChoice;
+	private final JComboBox<String> choiceCombo;
 
 	/**
 	 * Instantiates a new decision dialog for the data converter.
@@ -71,25 +70,7 @@ public class ConversionChoiceDialog extends JDialog implements ActionListener
 
 		this.introText = introText;
 		this.choices = choices;
-		this.defaultChoice = defaultChoice;
 
-		initComponents();
-		setLocationRelativeTo(parent);
-	}
-
-	/**
-	 * @return the result
-	 */
-	public int getResult()
-	{
-		return result;
-	}
-
-	/**
-	 * Initialises the user interface.
-	 */
-	private void initComponents()
-	{
 		setLayout(new GridBagLayout());
 
 		JTextArea introLabel = new JTextArea(introText, 5, 40);
@@ -140,7 +121,16 @@ public class ConversionChoiceDialog extends JDialog implements ActionListener
 				logChoice();
 			}
 		});
+		setLocationRelativeTo(parent);
+	}
 
+
+	/**
+	 * @return the result
+	 */
+	public int getResult()
+	{
+		return result;
 	}
 
 	@Override

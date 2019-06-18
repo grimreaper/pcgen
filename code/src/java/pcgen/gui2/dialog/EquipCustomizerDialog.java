@@ -58,12 +58,7 @@ public final class EquipCustomizerDialog extends JDialog
 
 		this.equipCustomPanel = new EquipCustomPanel(character, builder);
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-		initComponents();
-		pack();
-	}
 
-	private void initComponents()
-	{
 		Container pane = getContentPane();
 		pane.setLayout(new BorderLayout());
 
@@ -79,6 +74,7 @@ public final class EquipCustomizerDialog extends JDialog
 
 		pane.add(GuiUtility.wrapParentAsJFXPanel(buttonBar), BorderLayout.PAGE_END);
 		Utility.installEscapeCloseOperation(this);
+		pack();
 	}
 
 	private void doOK(javafx.event.ActionEvent event)
