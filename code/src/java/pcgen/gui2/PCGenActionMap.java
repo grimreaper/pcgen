@@ -251,14 +251,11 @@ public final class PCGenActionMap extends ActionMap
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			GuiAssertions.assertIsNotJavaFXThread();
-			Platform.runLater(() -> {
-				if (dialog == null)
-				{
-					dialog = new DebugDialog();
-				}
-				dialog.show();
-			});
+			if (dialog == null)
+			{
+				dialog = new DebugDialog();
+			}
+			dialog.show();
 		}
 
 	}
